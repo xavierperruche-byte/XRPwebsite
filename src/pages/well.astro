@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const excuses = [
+  "Teaching hamsters to code...",
+  "Bribing the servers with cookies...",
+  "Untangling spaghetti code...",
+  "Downloading more RAM...",
+  "Asking ChatGPT how to build this...",
+  "Converting coffee to code...",
+];
+
+const randomExcuse = excuses[Math.floor(Math.random() * excuses.length)];
+---
+
+<Layout title="Work in Progress">
+  <style>
+    .wip-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .content {
+      text-align: center;
+      padding: 2rem;
+      max-width: 600px;
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: bounce 2s infinite;
+    }
+
+    .emoji {
+      font-size: 5rem;
+      animation: spin 3s linear infinite;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .excuse {
+      font-size: 1.5rem;
+      margin: 2rem 0;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 30px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #ff6b6b, #feca57);
+      animation: loading 2s ease-in-out infinite;
+      border-radius: 15px;
+    }
+
+    .note {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes loading {
+      0% { width: 0%; }
+      50% { width: 70%; }
+      100% { width: 0%; }
+    }
+
+    .tools {
+      position: absolute;
+      font-size: 2rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .tool-1 { top: 10%; left: 10%; animation-delay: 0s; }
+    .tool-2 { top: 20%; right: 15%; animation-delay: 0.5s; }
+    .tool-3 { bottom: 15%; left: 20%; animation-delay: 1s; }
+    .tool-4 { bottom: 25%; right: 10%; animation-delay: 1.5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+  </style>
+
+  <div class="wip-container">
+    <div class="tools tool-1">🔧</div>
+    <div class="tools tool-2">⚙️</div>
+    <div class="tools tool-3">🔨</div>
+    <div class="tools tool-4">🛠️</div>
+
+    <div class="content">
+      <div class="emoji">🚧</div>
+      <h1>Work in Progress!</h1>
+      <div class="excuse">{randomExcuse}</div>
+      
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+
+      <p class="note">
+        We're working harder than a cat avoiding water to get this ready.<br>
+        Please check back in... approximately <strong>2 weeks™</strong>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Add some interactivity
+    const emoji = document.querySelector('.emoji');
+    
+    if (emoji) {
+      emoji.addEventListener('click', () => {
+        emoji.style.animation = 'none';
+        setTimeout(() => {
+          emoji.style.animation = 'spin 0.5s linear 1';
+          setTimeout(() => {
+            emoji.style.animation = 'spin 3s linear infinite';
+          }, 500);
+        }, 10);
+      });
+    }
+  </script>
+</Layout>

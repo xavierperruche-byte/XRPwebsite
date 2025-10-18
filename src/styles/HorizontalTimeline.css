@@ -1,0 +1,361 @@
+*{margin: 0;padding: 0;}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #dddddd;
+  padding: 0px 50px; 
+  /* La valeur '50px' est la marge latérale (gauche et droite).  Changez-la pour ajuster l'espacement. */
+  box-sizing: border-box; /* Assure que le padding n'augmente pas la largeur totale au-delà de 100% */
+  /* Garantit que la page prend 100% de la largeur du viewport */
+}
+
+#container {
+  height: 800px;
+  width: calc(100vw - 2 * var(--timeline-margin));
+  margin: 0 var(--timeline-margin);
+  /*margin-right: 0px;            */
+  /*margin-left: 0px;             */
+  padding-right: 0px;            /* supprime les marges internes */
+  padding-left: var(--timeline-left-space);
+
+
+  background-color: #ddd;
+  overflow-x: scroll; /* Permet le défilement horizontal */
+  overflow-y: hidden; /* Empêche le défilement vertical */
+  position: relative;
+  margin-top: 30px;
+  /* display: inline-block; <-- Vous pouvez laisser ou supprimer, mais 'display: block' est souvent plus simple pour la largeur 100% */
+  /* Propriété essentielle pour le "panning" */
+  /*-webkit-user-select: none; /* Pour Chrome/Safari */
+  /*-moz-user-select: none; /* Pour Firefox */
+  /*-ms-user-select: none; /* Pour Edge/IE */
+  /*user-select: none; /* Standard */
+  
+  /* Propriété pour le retour visuel (curseur) */
+  cursor: grab;
+}
+
+#container.dragging {
+  cursor: grabbing !important;
+}
+
+/* Optionnel : meilleure indication visuelle quand l'utilisateur clique */
+#container:active {
+  cursor: grabbing;
+}
+
+/* Personnalisation de la scrollbar */
+#container::-webkit-scrollbar {
+  height: 10px; /* épaisseur de la scrollbar */
+}
+
+#container::-webkit-scrollbar-track {
+  background: #ccc;
+  border-radius: 10px; /* 👈 arrondi du fond */
+}
+
+#container::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 10px; /* 👈 arrondi du curseur */
+  transition: background 0.3s ease;
+}
+
+#container::-webkit-scrollbar-thumb:hover {
+  background: #666; /* couleur au survol */
+}
+
+#thumbs {
+  background-color: #dddddd00;
+  /* Avant : position: absolute; */
+  /* Correction : */
+  position: static; /* Supprime l'effet "accroché" et permet le défilement */
+  /* top: 0px; */
+  /* left: 0px; */
+  height: 100%;
+  width: fit-content; /* Laisse le contenu définir la largeur totale */
+  overflow: visible; /* Laissez le contenu déborder pour le défilement */
+  white-space: nowrap; /* Essentiel pour garder les blocs sur une seule ligne */
+  padding: 30px 100px;
+}
+
+.history-block {
+  height: 100%;
+  width: 300px;
+  background-color: #cdcdcd;
+  margin: 0 -2px;
+  border-right: 1px solid #fff;
+  display: inline-block;
+  /*font-family: 'roboto condensed', sans-serif;*/
+  font-size:60px;
+  font-weight: 100;
+  color: #FFF;
+  cursor: pointer;
+  border-radius: 16px; /* 👈 arrondi des coins */
+  overflow: hidden;    /* pour que le fond ou l’image respecte l’arrondi */
+  box-shadow: 2px 5px 20px rgba(0,0,0,0.4);
+  transition: width 0.2s;
+}
+
+.history-block:last-of-type {
+  border-right: none;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  transition: background .5s;
+  background: rgba(0,0,0,0.8);
+}
+
+.cover:hover {
+  width: 100%;
+  height: 100%;
+  transition: background .5s;
+  background: rgba(0,0,0,0.4);
+}
+
+.year {
+  position: absolute;
+    top: 0px;
+    font-size: 20px;
+  font-weight:500;
+    margin: 40px 30px;
+}
+
+.title {
+  position: absolute;
+  display: block;
+  width: 260px;
+    top: 60px;
+    font-size: 15px;
+    margin: 30px;
+  white-space: normal;
+  transition: width 0.2s;
+}
+
+.timeline {
+  display:none;
+  position: absolute;
+  bottom: 80px;
+    font-size: 20px;
+    margin: 20px;
+  transition: display 0.8s;
+}
+
+.timeline ul {
+  margin: 0;
+padding: 0;
+list-style-type: none;
+text-align: center;
+}
+
+.timeline ul li {
+  display: inline;
+  font-size: 15px;
+  font-weight: 100;
+  padding: 0px 5px;
+}
+
+.timeline ul li {
+  display: inline;
+  font-size: 15px;
+  font-weight: 100;
+  padding: 0px 5px;
+}
+
+.timeline ul li:before {
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  color: rgba(255,255,255,0.5);
+  content: '\f10c';
+  position: absolute;
+  top: 30px;
+  margin-left:10px;
+  transition: all 0.5s;
+}
+
+.timeline ul li:after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  margin-left:-10px;
+  width: 36px;
+  height:2px;
+  border: 1px solid rgba(255,255,255,0.5);
+  transition: all 0.5s;
+}
+
+.timelineYear, .timelineYear:hover {
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.8s;
+}
+
+.timeline ul li:hover:before {
+  content: '\f111';
+  color: #ffffff;
+  font-size: 18px;
+  transition: all 0.5s;
+  top: 29px;
+  margin-left:9px
+}
+
+.timeline ul li:hover:after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  margin-left:-10px;
+  width: 36px;
+  height:2px;
+  border: 1px solid #fff;
+  transition: all 0.5s;
+}
+
+.timeline ul li:hover .timelineYear {
+  position: static;
+  top:-10px;
+}
+
+.bg-2025101 {
+  background: url(/images/2025101.webp);
+  background-size:cover;
+  background-position: center;
+}
+
+.bg-2025091 {
+  background: url(/images/2025091.webp);
+  background-size:cover;
+  background-position: center;
+}
+
+.bg-2025092 {
+  background: url(/images/2025092.webp);
+  background-size:cover;
+  background-position: center;
+}
+
+.bg-2025061 {
+  background: url(/images/2025061.webp);
+  background-size:cover;
+  background-position: center;
+}
+
+.bg-2025051 {
+  background: url(/images/2025051.webp);
+  background-size:cover;
+  background-position: center;
+}
+
+.bg-2025041 {
+  background: url(/images/2025041.webp);
+  background-size:cover;
+  background-position: center;
+}
+
+.bg-2024121 {
+  background: url(/images/2024121.webp);
+  background-size:cover;
+  background-position: center;
+}
+
+.bg-2024122 {
+  background: url(/images/2024122.webp);
+  background-size:cover;
+  background-position: center;
+}
+
+.bg-86 {
+  background: url('https://upload.wikimedia.org/wikipedia/commons/e/e8/Power_Plant_(Tianjin,_China).jpg');
+  background-size:cover;
+}
+
+.bg-96 {
+  background: url(http://www.oxfordbusinessgroup.com/sites/default/files/styles/chapter_header__710x233_/public/chapter_headers/ind1_2.png?itok=uxI_081i&c=af7608f5f35cf219c326e9b6e6a7d34c);
+  background-size:cover;
+}
+
+.bg-06 {
+  background: url(http://www.3adi.org/tl_files/3ADIDocuments/Pictures/Greenshot_2014-01-08_18-32-54.jpg);
+  background-size:cover;
+}
+
+.bg-16 {
+  background: url(https://i.dailymail.co.uk/i/pix/2012/07/23/article-0-142DF918000005DC-387_468x665.jpg);
+  background-size:cover;
+}
+
+/* Ajoutez cette classe dans votre fichier horizontal.css */
+:root {
+  --timeline-expanded-width: 600px; /* 👈 règle ici la largeur */
+  --timeline-margin: 50px;
+  --timeline-left-space: 400px; /* largeur réservée pour le tooltip */
+}
+
+.history-block.expanded {
+  width: var(--timeline-expanded-width) !important;
+  transition: width 0.3s ease; /* animation douce */
+}
+
+.history-block.expanded .title {
+  width: 500px !important; /* Force la largeur du titre dans le bloc étendu */
+}
+
+/* src/styles/HorizontalTimeline.css (Ajoutez ces nouvelles règles) */
+
+/* --- STYLE DU BLOC DE DESCRIPTION LORSQU'IL EST ÉLARGI --- */
+
+.event-description {
+    position: fixed;
+    top: 50%; /* centre verticalement */
+    left: 40px; /* petit espace du bord gauche */
+    transform: translateY(-50%); /* corrige le centrage */
+    width: calc(var(--timeline-left-space) - 10px); /* largeur dynamique = espace réservé - marges */
+    max-height: 70vh;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.95); /* Fond blanc semi-transparent */
+    color: #333;
+    padding: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    /* Cache initialement si le bloc n'est pas "expanded" (mais la logique React gère déjà le rendu) */
+    z-index: 20; 
+    animation: fadeIn 0.0s ease-out; /* Ajout d'une petite animation */
+    text-align: left; 
+}
+
+.event-description p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    white-space: normal; /* Permet au texte de revenir à la ligne */
+    text-align: left; 
+}
+
+/* Bouton Fermer */
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #999;
+}
+
+/* Optionnel : Animation pour un effet plus doux */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- AJUSTEMENT DES AUTRES ÉLÉMENTS LORS DE L'EXPANSION --- */
+
+
+/* Le 'timeline' est affiché via le style en ligne dans le JSX, 
+   ce qui remplace le 'display: none' initial du CSS */

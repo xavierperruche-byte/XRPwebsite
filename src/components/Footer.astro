@@ -1,0 +1,210 @@
+---
+// Footer.astro - Floating footer matching header style
+interface Props {
+  mottoLeft?: string;
+  mottoRight?: string;
+}
+
+const { 
+  mottoLeft = 'Business With Attitude',
+  mottoRight = 'Genève - Paris - Singapore'
+} = Astro.props;
+---
+
+<footer class="floating-footer">
+  <div class="footer-container">
+    <!-- Left Motto -->
+    <div class="footer-motto left">
+      <span class="motto-text">{mottoLeft}</span>
+    </div>
+
+    <!-- Center Logo and Legal Link -->
+    <div class="footer-center">
+      <a href="/" class="footer-logo">
+        <img src="/images/logo.svg" alt="Logo" class="logo-img" />
+        <span class="logo-text">We-TheAgency</span>
+      </a>
+      <a href="/legal" class="legal-link">Terms & Conditions</a>
+    </div>
+
+    <!-- Right Motto -->
+    <div class="footer-motto right">
+      <span class="motto-text">{mottoRight}</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .floating-footer {
+    position: relative;
+    margin: 4rem auto 2rem;
+    width: 95%;
+    max-width: 1200px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .floating-footer:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+    transform: translateY(-2px);
+  }
+
+  .footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    position: relative;
+    gap: 2rem;
+  }
+
+  /* Motto Sections */
+  .footer-motto {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-motto.left {
+    justify-content: flex-start;
+  }
+
+  .footer-motto.right {
+    justify-content: flex-end;
+  }
+
+  .motto-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #555;
+    transition: color 0.3s ease;
+  }
+
+  .floating-footer:hover .motto-text {
+    color: #000;
+  }
+
+  /* Center Section */
+  .footer-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    transition: transform 0.2s ease;
+  }
+
+  .footer-logo:hover {
+    transform: scale(1.05);
+  }
+
+  .logo-img {
+    height: 32px;
+    width: auto;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    background: linear-gradient(45deg, #000, #000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 15px;
+    font-weight: 200;
+    letter-spacing: 5px;
+  }
+
+  .legal-link {
+    font-size: 0.75rem;
+    color: #888;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.25rem 0.75rem;
+    border-radius: 8px;
+  }
+
+  .legal-link:hover {
+    color: #000;
+    background: rgba(171, 171, 171, 0.2);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .footer-container {
+      gap: 1rem;
+    }
+
+    .motto-text {
+      font-size: 0.85rem;
+    }
+
+    .logo-text {
+      font-size: 12px;
+      letter-spacing: 3px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .floating-footer {
+      width: 90%;
+      margin: 3rem auto 1.5rem;
+    }
+
+    .footer-container {
+      flex-direction: column;
+      padding: 1rem 1.5rem;
+      gap: 0.75rem;
+    }
+
+    .footer-motto {
+      width: 100%;
+      justify-content: center !important;
+      text-align: center;
+    }
+
+    .footer-center {
+      order: -1;
+    }
+
+    .motto-text {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .floating-footer {
+      width: 95%;
+    }
+
+    .footer-container {
+      padding: 0.75rem 1rem;
+    }
+
+    .logo-text {
+      display: none;
+    }
+
+    .logo-img {
+      height: 24px;
+    }
+
+    .motto-text {
+      font-size: 0.75rem;
+    }
+
+    .legal-link {
+      font-size: 0.7rem;
+    }
+  }
+</style>

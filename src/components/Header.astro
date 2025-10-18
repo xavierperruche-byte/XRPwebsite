@@ -1,0 +1,408 @@
+---
+// Header.astro - Reusable floating header component with auto-responsive detection
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = '' } = Astro.props;
+
+const navItems = [
+  { name: 'agence', href: '/', icon: '👩‍💻' },
+  { name: 'services', href: '/offer', icon: '📖' },
+  { name: 'we.llbeing', href: '/well', icon: '🧘‍♀️' },
+  { name: 'magazine.we', href: '/magazine', icon: '📰' },
+  { name: 'presse', href: '/press', icon: '📰' },
+  { name: 'contact', href: '/contact', icon: '📧' }
+];
+---
+
+<header class="floating-header" id="floatingHeader">
+  <div class="header-container" id="headerContainer">
+    <!-- Logo/Brand -->
+    <div class="logo">
+      <a href="/">
+        <img src="/images/logo.svg" alt="Logo" class="logo-img" />
+        <span class="logo-text">We-TheAgency</span>
+      </a>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav" id="desktopNav">
+      {navItems.map((item) => (
+        <a 
+          href={item.href} 
+          class={`nav-link ${currentPage === item.href ? 'active' : ''}`}
+        >
+          <span class="nav-icon">{item.icon}</span>
+          <span class="nav-text">{item.name}</span>
+        </a>
+      ))}
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <span class="hamburger"></span>
+      <span class="hamburger"></span>
+      <span class="hamburger"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav" id="mobileNav">
+    {navItems.map((item) => (
+      <a 
+        href={item.href} 
+        class={`mobile-nav-link ${currentPage === item.href ? 'active' : ''}`}
+      >
+        <span class="nav-icon">{item.icon}</span>
+        <span class="nav-text">{item.name}</span>
+      </a>
+    ))}
+  </nav>
+</header>
+
+<style>
+  .logo-img {
+    height: 32px;
+    width: auto;
+    margin-right: 0.5rem;
+  }
+
+  .floating-header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 1200px;
+    z-index: 1000;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .floating-header:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+    transform: translateX(-50%) translateY(-2px);
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    position: relative;
+  }
+
+  /* Logo */
+  .logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+  }
+
+  .logo a:hover {
+    transform: scale(1.05);
+  }
+
+  .logo-text {
+    background: linear-gradient(45deg, #000, #000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 15px;
+    font-weight: 200;
+    letter-spacing: 5px;
+  }
+
+  /* Desktop Navigation */
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    color: #555;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    background: rgba(171, 171, 171, 0.3);
+    color: #000000;
+    transform: translateY(-2px);
+  }
+
+  .nav-link.active {
+    background: linear-gradient(45deg, #857f74, #000000);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  }
+
+  .nav-icon {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .nav-text {
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+
+  /* Mobile Menu Button */
+  .mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+
+  .mobile-menu-btn:hover {
+    background: #cac6c0;
+  }
+
+  .hamburger {
+    width: 25px;
+    height: 3px;
+    background: #000;
+    margin: 3px 0;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-btn.active .hamburger:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+  }
+
+  .mobile-menu-btn.active .hamburger:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-btn.active .hamburger:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  /* Mobile Navigation */
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    padding: 1rem 2rem 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    gap: 0.5rem;
+  }
+
+  .mobile-nav.active {
+    display: flex;
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    text-decoration: none;
+    color: #555;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link.active {
+    background: linear-gradient(45deg, #000, #cac6c0);
+    color: white;
+  }
+
+  /* Auto-responsive mode - activated by JavaScript */
+  .floating-header.mobile-mode .desktop-nav {
+    display: none;
+  }
+
+  .floating-header.mobile-mode .mobile-menu-btn {
+    display: flex;
+  }
+
+  /* Fallback responsive for very small screens */
+  @media (max-width: 768px) {
+    .floating-header {
+      width: 90%;
+      top: 10px;
+    }
+
+    .header-container {
+      padding: 1rem 1.5rem;
+    }
+
+    .desktop-nav {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+    }
+
+    .logo-text {
+      font-size: 12px;
+      letter-spacing: 3px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .floating-header {
+      width: 95%;
+    }
+
+    .header-container {
+      padding: 0.75rem 1rem;
+    }
+
+    .logo-text {
+      display: none;
+    }
+
+    .nav-text {
+      font-size: 0.85rem;
+    }
+  }
+
+  /* Scroll Effect */
+  .floating-header.scrolled {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  }
+</style>
+
+<script>
+  function initResponsiveHeader() {
+    const header = document.getElementById('floatingHeader');
+    const headerContainer = document.getElementById('headerContainer');
+    const desktopNav = document.getElementById('desktopNav');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    if (!header || !headerContainer || !desktopNav || !mobileMenuBtn || !mobileNav) {
+      return;
+    }
+
+    let isMobileMode = false;
+
+    function checkOverflow() {
+      // Always start fresh - remove mobile mode to get true measurements
+      header.classList.remove('mobile-mode');
+      mobileNav.classList.remove('active');
+      mobileMenuBtn.classList.remove('active');
+
+      // Wait for layout to settle
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const headerRect = headerContainer.getBoundingClientRect();
+          const navLinks = desktopNav.querySelectorAll('.nav-link');
+          const navRect = desktopNav.getBoundingClientRect();
+          let hasOverflow = false;
+
+          // Check if nav extends beyond header bounds
+          if (navRect.right > headerRect.right - 10) {
+            hasOverflow = true;
+          }
+
+          // Check if any individual nav link is outside bounds or wrapping
+          navLinks.forEach((link) => {
+            const linkRect = link.getBoundingClientRect();
+            
+            // Check if link extends beyond header right edge
+            if (linkRect.right > headerRect.right - 10) {
+              hasOverflow = true;
+            }
+            
+            // Check if link has wrapped to a new line (comparing to first link)
+            const firstLink = navLinks[0];
+            const firstLinkRect = firstLink.getBoundingClientRect();
+            if (Math.abs(linkRect.top - firstLinkRect.top) > 10) {
+              hasOverflow = true;
+            }
+          });
+
+          // Switch to mobile mode ONLY if overflow detected
+          if (hasOverflow) {
+            isMobileMode = true;
+            header.classList.add('mobile-mode');
+          } else {
+            isMobileMode = false;
+          }
+        });
+      });
+    }
+
+    // Mobile menu toggle
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenuBtn.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking a link
+    const mobileLinks = mobileNav.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuBtn.classList.remove('active');
+        mobileNav.classList.remove('active');
+      });
+    });
+
+    // Scroll effect
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+      lastScrollTop = scrollTop;
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const target = e.target as Node;
+      if (mobileMenuBtn && mobileNav && header && !header.contains(target)) {
+        mobileMenuBtn.classList.remove('active');
+        mobileNav.classList.remove('active');
+      }
+    });
+
+    // Check overflow on load and resize
+    checkOverflow();
+    
+    let resizeTimeout: number;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(checkOverflow, 150) as unknown as number;
+    });
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initResponsiveHeader);
+  } else {
+    initResponsiveHeader();
+  }
+</script>
