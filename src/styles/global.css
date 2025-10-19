@@ -247,22 +247,22 @@ body {
 /* Version simplifiée (alternative plus légère) */
 .stabilo-simple {
   background: linear-gradient(180deg, 
-    transparent 50%, 
+    transparent 85%, 
     #ffee66 50%
   );
   padding: 0 0.2em;
 }
 
 .stabilo-simple.rose {
-  background: linear-gradient(180deg, transparent 50%, #ff66c4 50%);
+  background: linear-gradient(180deg, transparent 10%, #ff66c4 80%);
 }
 
 .stabilo-simple.vert {
-  background: linear-gradient(180deg, transparent 50%, #66ff99 50%);
+  background: linear-gradient(180deg, transparent 10%, #66ff99 80%);
 }
 
 .stabilo-simple.orange {
-  background: linear-gradient(180deg, transparent 50%, #ff9933 50%);
+  background: linear-gradient(180deg, transparent 10%, #ff9933 80%);
 }
 
 .stabilo-simple.bleu {
