@@ -5,6 +5,7 @@ npm create astro@latest XRPwebsite
 cd C:\Users\xavie\XRPwebsite
 npm run dev
 npm run build
+npx astro preview
    
 //LOCAL URL
 http://localhost:4321/   
@@ -12,7 +13,9 @@ demo.we-theagency.com
    
 
 //GitHub token 
-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
+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
+git remote set-url origin https://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@github.com/xavierperruche-byte/XRPwebsite.git 
+
 
 
 //Git commands
