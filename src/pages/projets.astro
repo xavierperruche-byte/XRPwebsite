@@ -3,6 +3,7 @@
 import Layout from '../layouts/layout.astro';
 import Carousel from '../layouts/SwiperCarousel.astro';
 import '../styles/global.css';
+import BackToTop from '../components/BackToTop.astro';
 ---
 
 <Layout 
@@ -41,12 +42,18 @@ import '../styles/global.css';
 
   <div class="divider-line"></div>
 
-  <!-- Content Sections - Accordéons -->
+  <!-- Content Sections - Carousel -->
   <section class="content-section">
     <Carousel />
     <div class="container">
     </div>
   </section>
+
+
+  <div class="divider-line"></div>
+
+ 
+<BackToTop />
 </Layout>
 
 <style>

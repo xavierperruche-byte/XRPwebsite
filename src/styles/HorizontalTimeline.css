@@ -17,6 +17,7 @@ body {
   height: 800px;
   width: calc(100vw - 2 * var(--timeline-margin));
   margin: 0 var(--timeline-margin);
+       border-radius: 20px;
   /*margin-right: 0px;            */
   /*margin-left: 0px;             */
   padding-right: 0px;            /* supprime les marges internes */

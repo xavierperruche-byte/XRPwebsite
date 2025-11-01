@@ -1,0 +1,103 @@
+// src/components/BackToTop.astro
+---
+// Composant BackToTop - Version Noir & Blanc
+---
+
+<button id="backToTop" class="back-to-top" aria-label="Retour en haut de la page">
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" 
+    fill="currentColor" 
+    width="28" 
+    height="28"
+  >
+    <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.59L20 12l-8-8-8 8z"/>
+  </svg>
+</button>
+
+<style>
+  /* Variables pour les couleurs monochromes */
+  :root {
+    --bg-color: rgba(30, 30, 30, 0.85); /* Gris très foncé semi-transparent */
+    --fg-color: #ffffff; /* Texte et icône en blanc */
+    --hover-bg-color: #1e1e1e; /* Noir pur au survol */
+    --shadow-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .back-to-top {
+    position: fixed;
+    bottom: 40px; 
+    right: 40px; 
+    width: 50px; /* Taille classique */
+    height: 50px;
+    
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    border: none;
+    border-radius: 8px; /* Forme carrée légèrement arrondie */
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background-color 0.3s;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    /* Effet de flou maintenu si vous le souhaitez */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .back-to-top svg {
+    /* Style de l'icône, elle utilise la couleur 'color' du bouton */
+    transform: translateY(0);
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .back-to-top:hover {
+    background-color: var(--hover-bg-color); /* Devient complètement noir */
+    transform: translateY(-3px); /* Petit effet d'élévation */
+    box-shadow: 0 8px 15px var(--shadow-color);
+  }
+
+  .back-to-top:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px var(--shadow-color);
+  }
+
+  /* Désactiver sur mobile */
+  @media (max-width: 768px) {
+    .back-to-top {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Le script JavaScript reste identique et fonctionne toujours
+  document.addEventListener('DOMContentLoaded', () => {
+    const backToTopButton = document.getElementById('backToTop');
+    
+    if (backToTopButton) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopButton.classList.add('visible');
+        } else {
+          backToTopButton.classList.remove('visible');
+        }
+      });
+
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+  });
+</script>
