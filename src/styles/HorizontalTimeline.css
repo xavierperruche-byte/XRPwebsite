@@ -23,7 +23,6 @@ body {
   padding-right: 0px;            /* supprime les marges internes */
   padding-left: var(--timeline-left-space);
 
-
   background-color: #ddd;
   overflow-x: scroll; /* Permet le défilement horizontal */
   overflow-y: hidden; /* Empêche le défilement vertical */

@@ -60,12 +60,11 @@ import BackToTop from '../components/BackToTop.astro';
   /* Navigation secondaire flottante - Style identique au header */
   .floating-subnav {
     position: fixed;
-    top: 100px; /* Positionné sous le header principal */
-    left: 50%;
-    transform: translateX(-50%);
+    top: 10px; /* Positionné sous le header principal */
+    left: 2%;
     width: auto;
-    max-width: 600px;
-    z-index: 999;
+    max-width: 200px;
+    z-index: 9999;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     background: rgba(255, 255, 255, 0.95);
@@ -77,15 +76,17 @@ import BackToTop from '../components/BackToTop.astro';
 
   .floating-subnav:hover {
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
-    transform: translateX(-50%) translateY(-2px);
+    transform: translateX(-2%) translateY(-2px);
   }
 
   .subnav-container {
     display: flex;
+    flex-direction: column;
+    width: 100%;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1.5rem;
-    gap: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    gap: 0.2rem;
   }
 
   .subnav-link {
