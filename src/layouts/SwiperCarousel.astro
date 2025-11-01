@@ -1,0 +1,241 @@
+---
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { register } from 'swiper/element/bundle';
+import '../styles/global.css';
+
+// Enregistre Swiper Element côté serveur si nécessaire
+if (typeof window === 'undefined') {
+  register();
+}
+---
+
+<section class="full-width-carousel">
+  <swiper-container
+    class="mySwiper"
+    loop="true"
+    pagination="true"
+    pagination-clickable="true"
+    navigation="true"
+    slides-per-view="4"
+    space-between="20"
+  >
+
+    <swiper-slide>
+      <div class="slide-content">
+        <img src="/images/NOWHERE.webp" alt="NOWHERE SOCIETY" loading="lazy" /> 
+        <div class="slide-text">
+          <h2>WELL BEING | OLFACTIVE</h2>
+          <p>NOWHERE SOCIETY</p>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="slide-content">
+        <img src="/images/Sleep.webp" alt="Sleep Atelier with Studiolfactif" loading="lazy" /> 
+        <div class="slide-text">
+          <h2>WELL BEING | OLFACTIVE</h2>
+          <p>Sleep Atelier with Studiolfactif</p>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="slide-content">
+        <img src="/images/shilliger.webp" alt="Shilliger with Studiolfactif" loading="lazy" /> 
+        <div class="slide-text">
+          <h2>WELL BEING | OLFACTIVE</h2>
+          <p>Shilliger with Studiolfactif</p>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="slide-content">
+        <img src="/images/bucherer1.webp" alt="Bucherer" loading="lazy" /> 
+        <div class="slide-text">
+          <h2>WELL BEING | OLFACTIVE</h2>
+          <p>Bucherer</p>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="slide-content">
+        <img src="/images/fashion.webp" alt="fashion" loading="lazy" /> 
+        <div class="slide-text">
+          <h2>FASHION</h2>
+          <p> </p>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="slide-content">
+        <img src="/images/bucherer2.webp" alt="Bucherer" loading="lazy" /> 
+        <div class="slide-text">
+          <h2>ART BRANDING CREATIVE DESIGN</h2>
+          <p>Bucherer drawing</p>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="slide-content">
+        <img src="/images/artsq.webp" alt="ArtSquare" loading="lazy" /> 
+        <div class="slide-text">
+          <h2>ART BRANDING CREATIVE DESIGN</h2>
+          <p>ArtSquare</p>
+        </div>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</section>
+
+
+<style>
+  .full-width-carousel {
+    width: 80%;
+    height: 85vh;
+    position: relative;
+  }
+
+  .mySwiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  swiper-slide {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-wrapper {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .slide-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  .slide-content img {
+    width: auto;
+    height: 600px;
+    max-width: 100%;
+    object-fit: cover;
+     border-radius: 20px;
+  }
+
+  .slide-text {
+    text-align: center;
+    color: black;
+    padding: 1rem 0;
+  }
+
+  .slide-text h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .slide-text p {
+    font-size: 1rem;
+    margin: 0.5rem 0 0 0;
+  }
+
+
+  /* Personnalisation des flèches de navigation */
+  .mySwiper::part(button-prev),
+  .mySwiper::part(button-next) {
+    color: black;
+  }
+
+  /* Personnalisation des points de pagination */
+  .mySwiper::part(bullet) {
+    background-color: black;
+    opacity: 0.5;
+  }
+
+  .mySwiper::part(bullet-active) {
+    background-color: black;
+    opacity: 1;
+  }
+
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .slide-content img {
+      height: 400px;
+    }
+    
+    .slide-text h2 {
+      font-size: 1rem;
+    }
+    
+    .slide-text p {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .full-width-carousel {
+      width: 95%;
+      height: auto;
+      min-height: 60vh;
+    }
+
+    .slide-content img {
+      height: 300px;
+    }
+    
+    .slide-text h2 {
+      font-size: 0.8rem;
+    }
+    
+    .slide-text p {
+      font-size: 0.75rem;
+    }
+
+    .slide-text {
+      padding: 0.5rem;
+    }
+  }
+
+</style>
+
+<script>
+  import { register } from 'swiper/element/bundle';
+  
+  // Enregistre Swiper Element côté client
+  register();
+
+  // Configuration responsive via JavaScript après initialisation
+  document.addEventListener('DOMContentLoaded', () => {
+    const swiperEl = document.querySelector('.mySwiper');
+    
+    if (swiperEl) {
+      const updateSlidesPerView = () => {
+        const width = window.innerWidth;
+        
+        if (width < 640) {
+          swiperEl.setAttribute('slides-per-view', '1');
+          swiperEl.setAttribute('space-between', '10');
+        } else if (width < 1024) {
+          swiperEl.setAttribute('slides-per-view', '1');
+          swiperEl.setAttribute('space-between', '15');
+        } else if (width < 1280) {
+          swiperEl.setAttribute('slides-per-view', '2');
+          swiperEl.setAttribute('space-between', '20');
+        } else {
+          swiperEl.setAttribute('slides-per-view', '3');
+          swiperEl.setAttribute('space-between', '20');
+        }
+      };
+      
+      updateSlidesPerView();
+      window.addEventListener('resize', updateSlidesPerView);
+    }
+  });
+
+</script>
