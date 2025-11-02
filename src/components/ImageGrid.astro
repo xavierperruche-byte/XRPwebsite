@@ -1,0 +1,123 @@
+---
+export interface Image {
+  src: string;
+  alt: string;
+  caption?: string;
+  pdfUrl?: string; // Chemin vers le fichier PDF
+}
+
+export interface Props {
+  images: Image[];
+  columns?: number; // Nombre de colonnes (5 images peuvent se faire en 5x1, 3x2, etc.)
+}
+
+const { images, columns = 5 } = Astro.props;
+
+// Calculer le nombre de colonnes pour les 5 éléments :
+// Nous allons forcer 3 colonnes par défaut pour un meilleur affichage sur 85% de largeur.
+const effectiveColumns = (images.length === 5) ? 3 : columns; 
+
+// Sorter le tableau (si vous voulez un ordre précis, cette logique doit être dans les données)
+// Ici, on trie par src, mais cela n'aura pas d'impact visuel si les noms sont aléatoires.
+const sortedImages = [...images].slice(0, 5); // Conserve les 5 premières images
+---
+
+    
+<div class="UniformGrid-wrapper">
+<div 
+    class="UniformGrid" 
+    style={`--grid-cols: ${effectiveColumns};`} 
+  >
+  {sortedImages.map((image) => (
+      <figure 
+        class="grid-item"
+        data-pdf-url={image.pdfUrl}
+        onclick={`openPdfViewer('${image.pdfUrl}', '${image.alt}')`} // <-- AJOUTEZ CECI
+        style={image.pdfUrl ? 'cursor: pointer;' : ''} // Affiche un curseur cliquable
+      >
+        <div class="image-aspect-ratio">
+            <img src={image.src} alt={image.alt} loading="lazy" />
+        </div>
+        {image.caption && <figcaption>{image.caption}</figcaption>}
+      </figure>
+    ))}
+  </div>
+
+<style>
+ /* --- 1. Conteneur Externe (Largeur 85% et Centrage) --- */
+.UniformGrid-wrapper {
+  width: 85%;
+  margin: 3rem auto;
+}
+
+/* --- 2. La Grille Uniforme (CSS Grid) --- */
+.UniformGrid {
+  display: grid;
+  /* La règle par défaut pour les GRANDS ÉCRANS (3 colonnes) */
+  grid-template-columns: repeat(var(--grid-cols, 3), 1fr); 
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+/* --- 3. Les Éléments (Hauteur Fixe) --- */
+.grid-item {
+  margin: 10px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s; 
+}
+
+.image-aspect-ratio {
+  height: 110vh; 
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #eee;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 🚀 Transformation au Survol de l'Item */
+.grid-item:hover {
+  transform: scale(0.98); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* --- 4. L'Image (object-fit: cover pour remplir) --- */
+.image-aspect-ratio img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  object-fit: cover;
+  
+  display: block;
+  transition: none; 
+}
+
+figcaption {
+  padding: 0.75rem 0;
+  font-size: 0.85rem;
+  color: #555;
+  text-align: center;
+}
+
+/* --- 5. RESPONSIVE --- */
+
+/* Tablette (Max 1224px) : 2 colonnes */
+@media (max-width: 1224px) { /* Ancien: 1200px */
+  .UniformGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile (Max 968px) : 1 colonne */
+@media (max-width: 968px) { /* Ancien: 900px */
+  .UniformGrid {
+    grid-template-columns: 1fr;
+  }
+  .UniformGrid-wrapper {
+      width: 95%;
+  }
+}
+</style>

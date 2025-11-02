@@ -1,0 +1,113 @@
+---
+export interface ImageItem {
+  src: string;        // Chemin vers l'image
+  alt: string;        // Texte alternatif
+  caption?: string;   // Légende optionnelle
+  url: string;        // URL à ouvrir au clic
+}
+
+export interface Props {
+  images: ImageItem[];
+  columns?: number; // Nombre de colonnes par défaut (ex: 3)
+}
+
+const { images, columns = 3 } = Astro.props;
+---
+
+<div class="ClickableMasonryGrid-wrapper">
+  <div 
+    class="ClickableMasonryGrid" 
+    style={`--masonry-cols: ${columns};`} 
+  >
+    {images.map((image) => (
+      <a 
+        href={image.url} 
+        target="_blank"             rel="noopener noreferrer"   class="grid-item-link"
+      >
+        <figure class="grid-item">
+          <img src={image.src} alt={image.alt} loading="lazy" />
+          {image.caption && <figcaption>{image.caption}</figcaption>}
+        </figure>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  /* --- 1. Conteneur Externe (Largeur et Centrage) --- */
+  .ClickableMasonryGrid-wrapper {
+    /* La largeur est généralement gérée par le conteneur parent ou ici. */
+    /* Vous pouvez ajuster cette largeur si vous la voulez fixe (ex: 900px) */
+    width: 90%; 
+    margin: 3rem auto; 
+  }
+
+  /* --- 2. La Grille Masonry (Basée sur les Colonnes CSS) --- */
+  .ClickableMasonryGrid {
+    column-count: var(--masonry-cols, 3); 
+    column-gap: 3rem; 
+  }
+
+  /* --- 3. Les Éléments Clicables --- */
+  .grid-item-link {
+    display: block; /* Important pour que l'ancre couvre l'image */
+    text-decoration: none;
+    color: inherit;
+    /* Propriété clé pour le Masonry : empêche les ruptures à l'intérieur de l'élément */
+    break-inside: avoid-column;
+    margin-bottom: 1.5rem; 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    border-radius: 8px; /* Appliquer le bord radius ici pour l'effet de survol */
+    overflow: hidden;
+  }
+  
+  /* Effet de survol sur la boîte entière */
+  .grid-item-link:hover {
+      transform: translateY(-5px); /* Léger effet 3D */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .grid-item {
+    margin: 0;
+  }
+
+  .grid-item img {
+    width: 100%;
+    height: auto; 
+    display: block;
+    object-fit: cover;
+    transition: filter 0.3s;
+  }
+  
+  .grid-item-link:hover img {
+    filter: brightness(0.95); /* Léger assombrissement au survol */
+  }
+  
+  figcaption {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    color: #555;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  /* --- 4. RESPONSIVE --- */
+
+  /* Tablette (2 colonnes) */
+  @media (max-width: 1024px) {
+    .ClickableMasonryGrid {
+      column-count: 2;
+    }
+  }
+
+  /* Mobile (1 colonne - Empilement) */
+  @media (max-width: 600px) {
+    .ClickableMasonryGrid {
+      column-count: 1;
+      column-gap: 0;
+    }
+    .ClickableMasonryGrid-wrapper {
+        width: 95%;
+    }
+  }
+</style>

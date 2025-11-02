@@ -1,152 +1,630 @@
 ---
+// src/pages/magazine.astro - Homepage example using the layout
 import Layout from '../layouts/Layout.astro';
-
-const excuses = [
-  "Teaching hamsters to code...",
-  "Bribing the servers with cookies...",
-  "Untangling spaghetti code...",
-  "Downloading more RAM...",
-  "Asking ChatGPT how to build this...",
-  "Converting coffee to code...",
-];
-
-const randomExcuse = excuses[Math.floor(Math.random() * excuses.length)];
+import '../styles/global.css';
+import UniformGrid from '../components/ImageGrid.astro';
+import ClickableMasonryGrid from '../components/ClickableMasonryGrid.astro';
+import BackToTop from '../components/BackToTop.astro';
 ---
 
-<Layout title="Work in Progress">
-  <style>
-    .wip-container {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      overflow: hidden;
-      position: relative;
-    }
 
-    .content {
-      text-align: center;
-      padding: 2rem;
-      max-width: 600px;
-      position: relative;
-      z-index: 10;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      animation: bounce 2s infinite;
-    }
-
-    .emoji {
-      font-size: 5rem;
-      animation: spin 3s linear infinite;
-      display: inline-block;
-      cursor: pointer;
-    }
-
-    .excuse {
-      font-size: 1.5rem;
-      margin: 2rem 0;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      backdrop-filter: blur(10px);
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 30px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 15px;
-      overflow: hidden;
-      margin: 2rem 0;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #ff6b6b, #feca57);
-      animation: loading 2s ease-in-out infinite;
-      border-radius: 15px;
-    }
-
-    .note {
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    @keyframes loading {
-      0% { width: 0%; }
-      50% { width: 70%; }
-      100% { width: 0%; }
-    }
-
-    .tools {
-      position: absolute;
-      font-size: 2rem;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .tool-1 { top: 10%; left: 10%; animation-delay: 0s; }
-    .tool-2 { top: 20%; right: 15%; animation-delay: 0.5s; }
-    .tool-3 { bottom: 15%; left: 20%; animation-delay: 1s; }
-    .tool-4 { bottom: 25%; right: 10%; animation-delay: 1.5s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-  </style>
-
-  <div class="wip-container">
-    <div class="tools tool-1">🔧</div>
-    <div class="tools tool-2">⚙️</div>
-    <div class="tools tool-3">🔨</div>
-    <div class="tools tool-4">🛠️</div>
-
-    <div class="content">
-      <div class="emoji">🚧</div>
-      <h1>Work in Progress!</h1>
-      <div class="excuse">{randomExcuse}</div>
-      
-      <div class="progress-bar">
-        <div class="progress-fill"></div>
-      </div>
-
-      <p class="note">
-        We're working harder than a cat avoiding water to get this ready.<br>
-        Please check back in... approximately <strong>2 weeks™</strong>
-      </p>
+<Layout 
+  title="Services | We.TheAgency" 
+  description="Une marque qui inspire. Une stratégie qui performe.."
+  currentPage="/magazine"
+>
+ 
+  <!-- Navigation secondaire flottante -->
+  <nav class="floating-subnav" id="floatingSubnav">
+    <div class="subnav-container">
+      <a href="#Fashion" class="subnav-link active">
+        <span class="nav-icon">👗</span>
+        <span class="nav-text">Fashion</span>
+      </a>
+      <a href="#Active" class="subnav-link">
+        <span class="nav-icon">🏊</span>
+        <span class="nav-text">Active & Swim</span>
+      </a>
+      <a href="#Beauty" class="subnav-link">
+        <span class="nav-icon">💅</span>
+        <span class="nav-text">Beauty & Saoul</span>
+      </a>
+     <a href="#Lifestyle" class="subnav-link">
+        <span class="nav-icon">🧳</span>
+        <span class="nav-text">Lifestyle</span>
+      </a>
+      <a href="#Gateways" class="subnav-link">
+        <span class="nav-icon">🛫</span>
+        <span class="nav-text">Gateways</span>
+      </a>
+      <a href="#Meet" class="subnav-link">
+        <span class="nav-icon">🤝</span>
+        <span class="nav-text">Meet</span>
+      </a>
+        <a href="#Art" class="subnav-link">
+        <span class="nav-icon">🗿</span>
+        <span class="nav-text">Art & Books</span>
+      </a>
+     <a href="#Edition" class="subnav-link">
+        <span class="nav-icon">📖</span>
+        <span class="nav-text">Edition</span>
+      </a>
     </div>
-  </div>
+  </nav>
 
-  <script>
-    // Add some interactivity
-    const emoji = document.querySelector('.emoji');
-    
-    if (emoji) {
-      emoji.addEventListener('click', () => {
-        emoji.style.animation = 'none';
-        setTimeout(() => {
-          emoji.style.animation = 'spin 0.5s linear 1';
-          setTimeout(() => {
-            emoji.style.animation = 'spin 3s linear infinite';
-          }, 500);
-        }, 10);
-      });
-    }
-  </script>
+
+  <!-- Spacer pour compenser le header et la subnav -->
+  <div class="spacer-top"></div>
+
+
+  <!-- Hero Section - First Title -->
+  <section class="hero-section-first">
+    <div class="hero-container">
+      <h2 class="hero-title-first">magazine</h2>
+    </div>
+  </section>
+
+  <!-- Hero Section - Second Title -->
+  <section class="hero-section-second">
+    <div class="hero-container">
+      <h2 class="hero-title-second">Septembre – Décembre 2025</h2>
+    </div>
+  </section>
+
+  <div class="divider-line"></div>
+</section>
+
+
+  <!-- Features Section -->
+
+
+<section id="Fashion" class="hero-section-first">
+
+  <div class="hero-container">
+      <h2 class="hero-title-first">Fashion</h2>
+    </div>
+
+
+<ClickableMasonryGrid 
+    images={[
+      {src: '/images/IMG_8796.webp', alt: 'Around Mrs. O', caption: 'Around Mrs. O - Voyage au bout des steppes', url: 'https://www.we-theagency.com/aroundmrs-o/' },
+      {src: '/images/Viyara.webp', alt: 'Viyara', caption: 'Viyara - avoir la foi', url: 'https://www.we-theagency.com/viyara-atelier/' },
+      {src: '/images/Ulaland.webp', alt: 'Ulaland', caption: 'Ulaland - Chaque pièce est conçue pour rendre visible cette joie imperturbable qui ne vient pas de l’extérieur mais de ce qui est en nous.', url: 'https://www.wepopup.net/prod/ulaland/' },
+      {src: '/images/Meune.webp', alt: 'Meune', caption: 'Meune - Ce qui me lit', url: 'https://www.wepopup.net/prod/meune-ce-qui-me-lie/' },
+      // Ajoutez autant d'images que vous voulez ici
+    ]}
+    columns={3} // Affichera 4 colonnes sur desktop
+  />
+</section>
+
+<section id="Active" class="hero-section-first">
+  <div class="divider-line"></div>
+  <div class="hero-container">
+      <h2 class="hero-title-first">Active & Swim</h2>
+    </div>
+
+
+<ClickableMasonryGrid 
+    images={[
+      {src: '/images/Kaio.webp', alt: 'Kaio Swim', caption: 'Kaio Swim - Le Plunge Red, monochrome et iconique. A glisser dans son vestiaire swimwear cet été.', url: 'https://www.wepopup.net/prod/le-plunge-red-monochrome-et-iconique/' },
+      {src: '/images/Atelier1202.webp', alt: 'Atelier 1202', caption: 'Atelier 1202 - A brand of intimates, swimwear and accessories with a romantic minimalist vein, developed from the desire to blend the essence of Brazilian fashion with the high standard of Swiss quality.', url: 'https://www.we-theagency.com/brandmooks-ss-20/' },
+      // Ajoutez autant d'images que vous voulez ici
+    ]}
+    columns={2} // Affichera 4 colonnes sur desktop
+  />
+
+</section>
+
+<section id="Beauty" class="hero-section-first">
+  <div class="divider-line"></div>
+
+  <div class="hero-container">
+      <h2 class="hero-title-first">Beauty & Saoul</h2>
+    </div>
+
+
+</section>
+
+
+  <div class="spacer-top"></div>    <div class="spacer-top"></div>      <div class="spacer-top"></div>        <div class="spacer-top"></div>
+
+
+<section id="Lifestyle" class="hero-section-first">
+  <div class="divider-line"></div>
+</section>
+
+  <div class="spacer-top"></div>    <div class="spacer-top"></div>      <div class="spacer-top"></div>        <div class="spacer-top"></div>
+
+
+<section id="Gateways" class="hero-section-first">
+  <div class="divider-line"></div>
+</section>
+
+  <div class="spacer-top"></div>    <div class="spacer-top"></div>      <div class="spacer-top"></div>        <div class="spacer-top"></div>
+
+
+<section id="Meet" class="hero-section-first">
+  <div class="divider-line"></div>
+</section>
+
+  <div class="spacer-top"></div>    <div class="spacer-top"></div>      <div class="spacer-top"></div>        <div class="spacer-top"></div>
+
+
+<section id="Art" class="hero-section-first">
+  <div class="divider-line"></div>
+  <div class="spacer-top">
+</section>
+
+
+  </div>    <div class="spacer-top"></div>      <div class="spacer-top"></div>        <div class="spacer-top"></div>
+
+
+<section id="Edition" class="hero-section-first">
+<div class="divider-line"></div>
+    <div class="hero-container">
+      <h2 class="hero-title-first">Editions</h2>
+    </div>
+
+
+<UniformGrid
+    images={[
+      { src: '/images/COVERfw21.webp', alt: 'We Le Magazine', caption: 'We Le Magazine - Fall 2021', pdfUrl: '/images/COVERfw21.pdf'  },
+      { src: '/images/COVERss21.webp', alt: 'We Le Magazine', caption: 'We Le Magazine - Spring 2021', pdfUrl: '/images/COVERss21.pdf' },
+      { src: '/images/COVERfw20.webp', alt: 'We Le Magazine', caption: 'BrandMooks - Fall 2020', pdfUrl: '/images/COVERfw20.pdf' },
+      { src: '/images/COVERss20.webp', alt: 'We Le Magazine', caption: 'BrandMooks - Spring 2020', pdfUrl: '/images/COVERss20.pdf' },
+      { src: '/images/COVERfw19.webp', alt: 'We Le Magazine', caption: 'BrandMooks - Fall 2019', pdfUrl: '/images/COVERfw19.pdf' },
+    ]}
+    columns={3} 
+  />
+</section>
+
+<div id="pdfViewerModal" class="pdf-modal">
+    <div class="pdf-modal-content">
+        <span class="pdf-close-btn" onclick="closePdfViewer()">&times;</span>
+        <h3 id="pdfTitle"></h3>
+        <iframe id="pdfIframe" src="" frameborder="0" width="100%" height="100%"></iframe>
+    </div>
+</div>
+
+
+<BackToTop />
 </Layout>
+
+<style>
+
+ /* Hero Sections - Style Elementor */
+  .hero-section-first,
+  .hero-section-second {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hero-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin: 0 auto;
+  }
+
+  .hero-title-second {
+    font-family: var(--font-main);
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 4px;
+    color: #000;
+    margin: 0;
+    padding: 1.5rem 0;
+    text-align: center;
+  }
+
+  .hero-title-first {
+    font-family: var(--font-main);
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 5px;
+    color: #000;
+    margin: 0;
+    padding: 1.5rem 0;
+    text-align: center;
+  }
+
+  /* Divider */
+  .divider-line {
+    width: 100%;
+    height: 1px;
+    background: #000;
+    margin: 2rem 0;
+  }
+  
+  /* Spacer pour éviter que le contenu soit caché sous les navs */
+  .spacer-top {
+    height: 130px; /* Header (80px) + Subnav (60px) + marge (40px) */
+  }
+
+/* Navigation secondaire flottante - Style identique au header */
+  .floating-subnav {
+    position: fixed;
+    top: 10px; /* Positionné sous le header principal */
+    left: 2%;
+    width: auto;
+    max-width: 200px;
+    z-index: 9999;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden; /* Important : assure que l'ombre reste bien à l'intérieur */
+  }
+
+  .floating-subnav:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+    transform: translateX(-2%) translateY(-2px);
+  }
+
+  .subnav-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start; /* Aligne le contenu à gauche (mieux pour un menu vertical) */
+    justify-content: center;
+    padding: 0.1rem 0.2rem;
+    gap: 0.1rem;
+  }
+
+/* Masque tous les liens par défaut */
+.subnav-link {
+  /* Style de base... */
+  opacity: 0;
+  max-height: 0;
+  padding: 5; /* Important : supprime le padding pour le masquer */
+  margin: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, max-height 0.3s, padding 0.3s, margin 0.3s, transform 0.3s ease;
+}
+
+/* Affiche UNIQUEMENT le lien actif */
+.subnav-link.active {
+  opacity: 1;
+  max-height: 50px; /* Une hauteur suffisante pour le lien */
+  padding: 0.75rem 1.25rem; /* Rétablit le padding du lien actif */
+  margin: 0.5rem 0.5rem; /* Ajoute un petit espace vertical */
+  visibility: visible;
+  /* Styles de couleur actifs (conservés) */
+  background: linear-gradient(45deg, #857f74, #000000);
+  color: white;
+  box-shadow: 0 3px 5px rgba(102, 126, 234, 0.1);
+}
+
+
+/* 🚀 NOUVEAU : Affiche TOUS les liens au survol du conteneur parent */
+.floating-subnav:hover .subnav-link {
+  opacity: 1;
+  max-height: 50px; /* Hauteur maximale pour le déploiement */
+  padding: 0.75rem 1.25rem; /* Rétablit le padding pour tous les liens */
+  margin: 0.1rem 0;
+  visibility: visible;
+  /* Le lien actif garde ses styles de couleur spécifiques */
+}
+
+/* Règle de survol pour les liens NON actifs */
+.floating-subnav:hover .subnav-link:not(.active):hover {
+  background: rgba(171, 171, 171, 0.3); /* Effet de survol sur les autres liens */
+  color: #000000;
+  transform: translateY(-2px);
+}
+
+  .subnav-link:hover {
+    background: rgba(171, 171, 171, 0.3);
+    color: #000000;
+    transform: translateY(-2px);
+  }
+
+  .subnav-link.active {
+    background: linear-gradient(45deg, #857f74, #000000);
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+  }
+
+  .subnav-link .nav-icon {
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .subnav-link .nav-text {
+    font-weight: 200;
+    font-size: 0.8rem;
+  }
+
+  /* Scroll Effect pour la subnav */
+  .floating-subnav.scrolled {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  }
+
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .floating-subnav {
+      top: 90px;
+      width: 90%;
+    }
+
+    .subnav-container {
+      padding: 0.5rem 1rem;
+      gap: 0.25rem;
+    }
+
+    .subnav-link {
+      padding: 0.6rem 1rem;
+    }
+
+    .subnav-link .nav-text {
+      font-size: 0.9rem;
+    }
+
+    .hero-container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .floating-subnav {
+      top: 80px;
+      width: 90%;
+    }
+
+    .subnav-container {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .subnav-link {
+      padding: 0.5rem 0.85rem;
+      font-size: 0.85rem;
+    }
+
+    .subnav-link .nav-icon {
+      font-size: 0.9rem;
+    }
+
+    .spacer-top {
+      height: 160px;
+    }
+
+    .hero-title-first {
+      font-size: 20px;
+      padding: 1rem 0;
+    }
+
+    .hero-title-second {
+      font-size: 18px;
+      padding: 1rem 0;
+    }
+
+    .hero-container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+   .content-section {
+      padding: 2rem 0 4rem 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .floating-subnav {
+      width: 95%;
+      top: 70px;
+    }
+
+    .subnav-container {
+      padding: 0.5rem;
+    }
+
+    .subnav-link {
+      padding: 0.5rem 0.75rem;
+    }
+
+    .subnav-link .nav-text {
+      font-size: 0.75rem;
+    }
+
+    .subnav-link .nav-icon {
+      font-size: 0.85rem;
+      margin-right: 0.3rem;
+    }
+
+    .spacer-top {
+      height: 140px;
+    }
+
+    .hero-title-first {
+      font-size: 18px;
+    }
+
+    .hero-title-second {
+      font-size: 16px;
+    }
+
+    .hero-container {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+
+    .text-content {
+      font-size: 13px;
+    }
+}
+
+/* --- Modale PDF Responsive --- */
+.pdf-modal {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    z-index: 10000; /* Assurez-vous qu'elle est au-dessus de tout */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9); /* Fond noir semi-transparent */
+}
+
+.pdf-modal.open {
+    display: block;
+}
+
+.pdf-modal-content {
+    background-color: #fefefe;
+    margin: 1% auto; /* Centrage vertical et horizontal */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 95%; /* Largeur de la modale sur ordinateur */
+    height: 95%; /* Hauteur pour que l'iframe soit grand */
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+#pdfTitle {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+#pdfIframe {
+    flex-grow: 1; /* L'iframe prend tout l'espace restant dans la modale */
+    border: none;
+}
+
+/* Bouton Fermer */
+.pdf-close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 20px;
+    transition: 0.3s;
+}
+
+.pdf-close-btn:hover,
+.pdf-close-btn:focus {
+    color: #000;
+}
+
+/* Responsive pour les petits écrans */
+@media (max-width: 768px) {
+    .pdf-modal-content {
+        width: 95%; /* Modale plus large sur mobile */
+        height: 95%; 
+        margin: 2.5% auto;
+    }
+}
+
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section[id]'); // Cible toutes les sections avec un ID
+    const subnavLinks = document.querySelectorAll('.subnav-link');
+
+    // Récupère la hauteur de votre barre de navigation flottante pour ajuster le seuil
+    const floatingSubnav = document.getElementById('floatingSubnav');
+    // Une valeur de seuil pour déterminer quand l'intersection se produit
+    const threshold = floatingSubnav ? (floatingSubnav.offsetHeight + 10) / window.innerHeight : 0.2;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute('id');
+        const correspondingLink = document.querySelector(`.subnav-link[href="#${id}"]`);
+
+        if (correspondingLink) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            // Section est au moins à moitié visible
+            // 1. Désactiver tous les liens
+            subnavLinks.forEach(link => link.classList.remove('active'));
+            // 2. Activer le lien correspondant
+            correspondingLink.classList.add('active');
+          } else if (entry.isIntersecting && entry.boundingClientRect.top < 0) {
+            // Cas où la section commence à disparaître en haut de l'écran (pour les transitions)
+            // C'est un peu plus complexe à gérer parfaitement, souvent on se base sur le ratio > 0.5.
+          }
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -50% 0px', // Ajuste la "ligne de détection" (ex: quand la section atteint le milieu de l'écran)
+      threshold: [0, 0.5, 1] // Détecte l'intersection à 0%, 50% et 100% de visibilité
+    });
+
+    // Observateur pour chaque section ciblée
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  });
+
+// Fonctions de gestion de la modale PDF
+  window.openPdfViewer = function(pdfUrl, title) {
+    if (!pdfUrl) return;
+
+    const modal = document.getElementById('pdfViewerModal');
+    const iframe = document.getElementById('pdfIframe');
+    const pdfTitle = document.getElementById('pdfTitle');
+
+// Construction des paramètres d'URL
+    let finalUrl = pdfUrl;
+    
+ // Détecter la taille de l'écran pour le mode responsive (mobile)
+    const isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
+
+    if (!isMobile) {
+      // ✅ Mode Double Page avec Page de Garde (pour Desktop)
+      // view=TwoPageRight: Force la mise en page double page.
+      // L'effet "page de garde séparée" est obtenu car la page 1 n'a pas de page à sa gauche.
+      finalUrl += '#pagemode=ShowCoverPageDuringTwoUp&pageLayout=TwoColumnRight&page=1'; 
+    } else {
+      // Mode Page Simple pour Mobile (plus facile à lire)
+      finalUrl += '#toolbar=0&view=Fit';
+    }
+
+    iframe.src = pdfUrl; 
+    pdfTitle.textContent = title;
+    
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden'; 
+  }
+
+  window.closePdfViewer = function() {
+    const modal = document.getElementById('pdfViewerModal');
+    const iframe = document.getElementById('pdfIframe');
+    
+    modal.classList.remove('open');
+    iframe.src = '';
+    document.body.style.overflow = 'auto';
+  }
+  
+  // Fermer si l'utilisateur clique en dehors de la modale
+  const modal = document.getElementById('pdfViewerModal');
+  if (modal) {
+      window.addEventListener('click', (event) => {
+          if (event.target === modal) {
+              window.closePdfViewer();
+          }
+      });
+  }
+
+</script>
