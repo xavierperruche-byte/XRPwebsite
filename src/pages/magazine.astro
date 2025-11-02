@@ -27,7 +27,7 @@ import BackToTop from '../components/BackToTop.astro';
       </a>
       <a href="#Beauty" class="subnav-link">
         <span class="nav-icon">💅</span>
-        <span class="nav-text">Beauty & Saoul</span>
+        <span class="nav-text">Beauty & Soul</span>
       </a>
      <a href="#Lifestyle" class="subnav-link">
         <span class="nav-icon">🧳</span>
@@ -71,16 +71,14 @@ import BackToTop from '../components/BackToTop.astro';
     </div>
   </section>
 
-  <div class="divider-line"></div>
-</section>
-
 
   <!-- Features Section -->
 
 
 <section id="Fashion" class="hero-section-first">
-
-  <div class="hero-container">
+ <div class="spacer-top"></div>  
+ <div class="divider-line"></div>
+ <div class="hero-container">
       <h2 class="hero-title-first">Fashion</h2>
     </div>
 
@@ -90,15 +88,18 @@ import BackToTop from '../components/BackToTop.astro';
       {src: '/images/IMG_8796.webp', alt: 'Around Mrs. O', caption: 'Around Mrs. O - Voyage au bout des steppes', url: 'https://www.we-theagency.com/aroundmrs-o/' },
       {src: '/images/Viyara.webp', alt: 'Viyara', caption: 'Viyara - avoir la foi', url: 'https://www.we-theagency.com/viyara-atelier/' },
       {src: '/images/Ulaland.webp', alt: 'Ulaland', caption: 'Ulaland - Chaque pièce est conçue pour rendre visible cette joie imperturbable qui ne vient pas de l’extérieur mais de ce qui est en nous.', url: 'https://www.wepopup.net/prod/ulaland/' },
-      {src: '/images/Meune.webp', alt: 'Meune', caption: 'Meune - Ce qui me lit', url: 'https://www.wepopup.net/prod/meune-ce-qui-me-lie/' },
+      {src: '/images/BeyondMC.webp', alt: 'Meune', caption: 'Meune - Ce qui me lit', url: 'https://www.wepopup.net/prod/meune-ce-qui-me-lie/' },
+      {src: '/images/PIOUPIOUxLUCAS.webp', alt: 'Meune', caption: 'Meune - Ce qui me lit', url: 'https://www.wepopup.net/prod/meune-ce-qui-me-lie/' },
+      {src: '/images/Timeline.webp', alt: 'Meune', caption: 'Meune - Ce qui me lit', url: 'https://www.wepopup.net/prod/meune-ce-qui-me-lie/' },
       // Ajoutez autant d'images que vous voulez ici
     ]}
-    columns={3} // Affichera 4 colonnes sur desktop
+    columns={3} 
   />
 </section>
 
 <section id="Active" class="hero-section-first">
-  <div class="divider-line"></div>
+ <div class="spacer-top"></div>  
+ <div class="divider-line"></div>
   <div class="hero-container">
       <h2 class="hero-title-first">Active & Swim</h2>
     </div>
@@ -110,57 +111,112 @@ import BackToTop from '../components/BackToTop.astro';
       {src: '/images/Atelier1202.webp', alt: 'Atelier 1202', caption: 'Atelier 1202 - A brand of intimates, swimwear and accessories with a romantic minimalist vein, developed from the desire to blend the essence of Brazilian fashion with the high standard of Swiss quality.', url: 'https://www.we-theagency.com/brandmooks-ss-20/' },
       // Ajoutez autant d'images que vous voulez ici
     ]}
-    columns={2} // Affichera 4 colonnes sur desktop
+    columns={2} 
   />
 
 </section>
 
 <section id="Beauty" class="hero-section-first">
-  <div class="divider-line"></div>
-
+ <div class="spacer-top"></div>  
+ <div class="divider-line"></div>
   <div class="hero-container">
-      <h2 class="hero-title-first">Beauty & Saoul</h2>
+      <h2 class="hero-title-first">Beauty & Soul</h2>
     </div>
 
-
+<ClickableMasonryGrid 
+    images={[
+      {src: '/images/Clarins.webp', alt: 'Clarins', caption: 'Clarins - La biodiversité, c’est la vie. En prendre soin, c’est donner du sens à la sienne.', url: 'https://www.we-theagency.com/we-lemagazine-fw2021/' },
+      {src: '/images/VisuelStudio.webp', alt: 'Diane Servant', caption: 'Diane Servant - Une adresse confidentielle à Genève.', url: 'https://www.we-theagency.com/dianeservant/' },
+      {src: '/images/Kalos.webp', alt: 'Kalos', caption: 'Kalos Montreux - La Beauté', url: 'https://www.we-theagency.com/la-beaute/' },
+      {src: '/images/BeyondMC.webp', alt: 'Beyond Men\'s Care', caption: 'Beyond Men\'s Care - Pour un hédonisme engagé.', url: 'https://www.wepopup.net/prod/beyond-men-s-care/' },
+      {src: '/images/PIOUPIOUxLUCAS.webp', alt: 'PiouPiou Lucas du Tertre', caption: 'PiouPiou Cosmetics x Lucas du Tertre - Nous nous réunissons dans le monde de l’enfance.', url: 'https://www.wepopup.net/prod/pioupiou-cosmetics/' },
+      {src: '/images/Timeline.webp', alt: 'Timeline® Skin Health', caption: 'Timeline® Skin Health - La marque suisse de longévité cellulaire annonce une découverte dans la technologie du vieillissement cutané et lance : Timeline® Skin Health.', url: 'https://www.we-theagency.com/timelinenutrition/' },     // Ajoutez autant d'images que vous voulez ici
+      {src: '/images/tessaang.webp', alt: 'Tessa Ang', caption: 'Over 50, Et Alors ? Une interview avec Tessa Ang', url: 'https://www.we-theagency.com/over-50-et-alors/' },     
+      // Ajoutez autant d'images que vous voulez ici
+    ]}
+    columns={3} 
+  />
 </section>
-
-
-  <div class="spacer-top"></div>    <div class="spacer-top"></div>      <div class="spacer-top"></div>        <div class="spacer-top"></div>
-
 
 <section id="Lifestyle" class="hero-section-first">
-  <div class="divider-line"></div>
+ <div class="spacer-top"></div>  
+ <div class="divider-line"></div>
+  <div class="hero-container">
+      <h2 class="hero-title-first">Lifestyle</h2>
+    </div>
+
+<ClickableMasonryGrid 
+    images={[
+      {src: '/images/Partisan.webp', alt: 'PARTISAN COLLECTOR', caption: 'PARTISAN COLLECTOR- L’essence du beau.', url: 'https://www.we-theagency.com/we-lemagazine-fw2021/' },
+      {src: '/images/Escalet.webp', alt: 'L\'Escalet', caption: 'L\'Escalet - The sparkle of turquoise water under the morning sun, the cool and transparent coves, the crystal-clear nights lit by the Milky Way and the endless constellations are the main inputs for my jewellery designs.', url: 'https://www.we-theagency.com/dianeservant/' },
+      {src: '/images/Thalie.webp', alt: 'THALIE PARIS', caption: 'THALIE PARIS - Thalie, une muse par qui la nature refleurit.', url: 'https://www.we-theagency.com/la-beaute/' },
+    ]}
+    columns={3} 
+    />
+
 </section>
-
-  <div class="spacer-top"></div>    <div class="spacer-top"></div>      <div class="spacer-top"></div>        <div class="spacer-top"></div>
-
 
 <section id="Gateways" class="hero-section-first">
-  <div class="divider-line"></div>
+ <div class="spacer-top"></div>  
+ <div class="divider-line"></div>
+  <div class="hero-container">
+      <h2 class="hero-title-first">Gateways</h2>
+    </div>
+
+<ClickableMasonryGrid 
+    images={[
+      {src: '/images/Monaco.webp', alt: 'Visit Monaco', caption: 'Visit Monaco', url: 'https://www.we-theagency.com/visit-monaco/' },
+      {src: '/images/garenne.webp', alt: 'Garenne', caption: 'Garenne - On chante en cœur, les oliviers sont bleus et l’amour est joyeux.', url: 'https://www.we-theagency.com/garenne-des-oliviers-et-des-vignes/' },
+      {src: '/images/horloger.webp', alt: 'Hôtel des horlogers', caption: 'Hôtel des horlogers', url: 'https://www.we-theagency.com/make-time-hotel-des-horlogers/' },
+      {src: '/images/Perolles.webp', alt: 'Le Pérolles', caption: 'Le Pérolles', url: 'https://www.wepopup.net/prod/dialogue-entre-larchitecture-et-lart-culinaire/' },
+      {src: '/images/Hilton.webp', alt: 'Hilton Geneva', caption: 'Hilton Geneva & Conference Centre - un hôtel genevois dédié au tourisme d’affaires.', url: 'https://www.wepopup.net/prod/travel-with-purpose-une-journee-au-hilton-geneva/' },
+      // Ajoutez autant d'images que vous voulez ici
+    ]}
+    columns={3} 
+  />
+
+
 </section>
-
-  <div class="spacer-top"></div>    <div class="spacer-top"></div>      <div class="spacer-top"></div>        <div class="spacer-top"></div>
-
-
 <section id="Meet" class="hero-section-first">
-  <div class="divider-line"></div>
+ <div class="spacer-top"></div>  
+ <div class="divider-line"></div>
+  <div class="hero-container">
+      <h2 class="hero-title-first">Meet</h2>
+    </div>
+
+<ClickableMasonryGrid 
+    images={[
+      {src: '/images/futuriste.webp', alt: 'Art et science', caption: 'Art et science. Cultivons l’hybridité.', url: 'https://www.we-theagency.com/art-et-science-cultivons-lhybridite/' },
+      {src: '/images/ArtScience.webp', alt: 'Art et science', caption: 'Art et science. Cultivons l’hybridité.', url: 'https://www.we-theagency.com/art-et-science-cultivons-lhybridite/' },
+      {src: '/images/Laigneau.webp', alt: 'Pauline Laigneau', caption: 'Pauline Laigneau - Le Podcast Le Gratin.', url: 'https://www.we-theagency.com/meet-paulinelaigneau/' },
+      {src: '/images/SOSF.webp', alt: 'Save Our Seas', caption: 'Save Our Seas - Interview with James Lea.', url: 'https://www.we-theagency.com/save-our-seas/' },
+      // Ajoutez autant d'images que vous voulez ici
+    ]}
+    columns={3} 
+  />
 </section>
-
-  <div class="spacer-top"></div>    <div class="spacer-top"></div>      <div class="spacer-top"></div>        <div class="spacer-top"></div>
-
 
 <section id="Art" class="hero-section-first">
-  <div class="divider-line"></div>
-  <div class="spacer-top">
+ <div class="spacer-top"></div>  
+ <div class="divider-line"></div>
+  <div class="hero-container">
+      <h2 class="hero-title-first">Art & Book</h2>
+    </div>
+
+<ClickableMasonryGrid 
+    images={[
+      {src: '/images/MMenzi.webp', alt: 'Manuela Menzi Studio', caption: 'Manuela Menzi Studio', url: 'https://www.wepopup.net/prod/manuela-menzi-studio/' },
+      {src: '/images/DiamantBleu.webp', alt: 'Le Diamant Bleu', caption: 'Le Diamant Bleu', url: 'https://www.we-theagency.com/le-diamant-bleu/' },
+      // Ajoutez autant d'images que vous voulez ici
+    ]}
+    columns={2} 
+  />
+
 </section>
 
-
-  </div>    <div class="spacer-top"></div>      <div class="spacer-top"></div>        <div class="spacer-top"></div>
-
-
 <section id="Edition" class="hero-section-first">
-<div class="divider-line"></div>
+ <div class="spacer-top"></div>  
+ <div class="divider-line"></div>
     <div class="hero-container">
       <h2 class="hero-title-first">Editions</h2>
     </div>
@@ -246,27 +302,27 @@ import BackToTop from '../components/BackToTop.astro';
   }
 
 /* Navigation secondaire flottante - Style identique au header */
-  .floating-subnav {
-    position: fixed;
-    top: 10px; /* Positionné sous le header principal */
-    left: 2%;
-    width: auto;
-    max-width: 200px;
-    z-index: 9999;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    overflow: hidden; /* Important : assure que l'ombre reste bien à l'intérieur */
-  }
+.floating-subnav {
+  position: fixed;
+  top: 10px;
+  left: 2%;
+  width: auto;
+  max-width: 200px;
+  z-index: 9999;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
 
-  .floating-subnav:hover {
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
-    transform: translateX(-2%) translateY(-2px);
-  }
+.floating-subnav:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  transform: translateX(-2%) translateY(-2px);
+}
 
   .subnav-container {
     display: flex;
@@ -377,25 +433,6 @@ import BackToTop from '../components/BackToTop.astro';
   }
 
   @media (max-width: 768px) {
-    .floating-subnav {
-      top: 80px;
-      width: 90%;
-    }
-
-    .subnav-container {
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .subnav-link {
-      padding: 0.5rem 0.85rem;
-      font-size: 0.85rem;
-    }
-
-    .subnav-link .nav-icon {
-      font-size: 0.9rem;
-    }
-
     .spacer-top {
       height: 160px;
     }
@@ -420,49 +457,28 @@ import BackToTop from '../components/BackToTop.astro';
     }
   }
 
-  @media (max-width: 480px) {
-    .floating-subnav {
-      width: 95%;
-      top: 70px;
-    }
+  
+@media (max-width: 480px) {
+  .spacer-top {
+    height: 140px;
+  }
 
-    .subnav-container {
-      padding: 0.5rem;
-    }
+  .hero-title-first {
+    font-size: 18px;
+  }
 
-    .subnav-link {
-      padding: 0.5rem 0.75rem;
-    }
+  .hero-title-second {
+    font-size: 16px;
+  }
 
-    .subnav-link .nav-text {
-      font-size: 0.75rem;
-    }
+  .hero-container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
 
-    .subnav-link .nav-icon {
-      font-size: 0.85rem;
-      margin-right: 0.3rem;
-    }
-
-    .spacer-top {
-      height: 140px;
-    }
-
-    .hero-title-first {
-      font-size: 18px;
-    }
-
-    .hero-title-second {
-      font-size: 16px;
-    }
-
-    .hero-container {
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
-    }
-
-    .text-content {
-      font-size: 13px;
-    }
+  .text-content {
+    font-size: 13px;
+  }
 }
 
 /* --- Modale PDF Responsive --- */
@@ -539,43 +555,60 @@ import BackToTop from '../components/BackToTop.astro';
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('section[id]'); // Cible toutes les sections avec un ID
-    const subnavLinks = document.querySelectorAll('.subnav-link');
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('section[id]');
+  const subnavLinks = document.querySelectorAll('.subnav-link');
 
-    // Récupère la hauteur de votre barre de navigation flottante pour ajuster le seuil
-    const floatingSubnav = document.getElementById('floatingSubnav');
-    // Une valeur de seuil pour déterminer quand l'intersection se produit
-    const threshold = floatingSubnav ? (floatingSubnav.offsetHeight + 10) / window.innerHeight : 0.2;
+  // Fonction pour mettre à jour le lien actif
+  function updateActiveLink() {
+    let currentSection = '';
+    const scrollPosition = window.scrollY + 200; // Offset pour déclencher plus tôt
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const id = entry.target.getAttribute('id');
-        const correspondingLink = document.querySelector(`.subnav-link[href="#${id}"]`);
-
-        if (correspondingLink) {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-            // Section est au moins à moitié visible
-            // 1. Désactiver tous les liens
-            subnavLinks.forEach(link => link.classList.remove('active'));
-            // 2. Activer le lien correspondant
-            correspondingLink.classList.add('active');
-          } else if (entry.isIntersecting && entry.boundingClientRect.top < 0) {
-            // Cas où la section commence à disparaître en haut de l'écran (pour les transitions)
-            // C'est un peu plus complexe à gérer parfaitement, souvent on se base sur le ratio > 0.5.
-          }
-        }
-      });
-    }, {
-      rootMargin: '0px 0px -50% 0px', // Ajuste la "ligne de détection" (ex: quand la section atteint le milieu de l'écran)
-      threshold: [0, 0.5, 1] // Détecte l'intersection à 0%, 50% et 100% de visibilité
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        currentSection = section.getAttribute('id');
+      }
     });
 
-    // Observateur pour chaque section ciblée
-    sections.forEach(section => {
-      observer.observe(section);
+    // Mettre à jour les liens actifs
+    subnavLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${currentSection}`) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  // Écouter le scroll
+  window.addEventListener('scroll', updateActiveLink);
+  
+  // Écouter les clics sur les liens pour une navigation smooth
+  subnavLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const targetSection = document.getElementById(targetId);
+      
+      if (targetSection) {
+        const offsetTop = targetSection.offsetTop - 150; // Ajuster l'offset selon vos besoins
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+        
+        // Mettre à jour immédiatement le lien actif
+        subnavLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
     });
   });
+
+  // Appeler une première fois au chargement
+  updateActiveLink();
+});
 
 // Fonctions de gestion de la modale PDF
   window.openPdfViewer = function(pdfUrl, title) {

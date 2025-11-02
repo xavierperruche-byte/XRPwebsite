@@ -32,8 +32,8 @@ const sortedImages = [...images].slice(0, 5); // Conserve les 5 premières image
       <figure 
         class="grid-item"
         data-pdf-url={image.pdfUrl}
-        onclick={`openPdfViewer('${image.pdfUrl}', '${image.alt}')`} // <-- AJOUTEZ CECI
-        style={image.pdfUrl ? 'cursor: pointer;' : ''} // Affiche un curseur cliquable
+        onclick={`openPdfViewer('${image.pdfUrl}', '${image.alt}')`}
+        style={image.pdfUrl ? 'cursor: pointer;' : ''}
       >
         <div class="image-aspect-ratio">
             <img src={image.src} alt={image.alt} loading="lazy" />
@@ -42,6 +42,7 @@ const sortedImages = [...images].slice(0, 5); // Conserve les 5 premières image
       </figure>
     ))}
   </div>
+</div>
 
 <style>
  /* --- 1. Conteneur Externe (Largeur 85% et Centrage) --- */
@@ -62,17 +63,20 @@ const sortedImages = [...images].slice(0, 5); // Conserve les 5 premières image
 
 /* --- 3. Les Éléments (Hauteur Fixe) --- */
 .grid-item {
-  margin: 10px;
+  margin: 0;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s; 
+  border-radius: 20px;
+    background-color: #ffffff;
 }
 
 .image-aspect-ratio {
   height: 110vh; 
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
-  background-color: #eee;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  background-color: #ffffff;
+
+  padding: 1rem;
 }
 
 /* 🚀 Transformation au Survol de l'Item */
@@ -81,15 +85,16 @@ const sortedImages = [...images].slice(0, 5); // Conserve les 5 premières image
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* --- 4. L'Image (object-fit: cover pour remplir) --- */
+/* --- 4. L'Image (object-fit: contain pour afficher entièrement) --- */
 .image-aspect-ratio img {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  
-  object-fit: cover;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 0rem);
+  height: calc(100% - 0rem);
+  border-radius: 20px;
+  object-fit: contain;
   
   display: block;
   transition: none; 
@@ -97,27 +102,26 @@ const sortedImages = [...images].slice(0, 5); // Conserve les 5 premières image
 
 figcaption {
   padding: 0.75rem 0;
-  font-size: 0.85rem;
-  color: #555;
+  font-size: 1.1rem;
+  color: #1b1b1bff;
   text-align: center;
 }
 
 /* --- 5. RESPONSIVE --- */
 
-/* Tablette (Max 1224px) : 2 colonnes */
-@media (max-width: 1224px) { /* Ancien: 1200px */
+/* Tablette (Max 1400px) : 2 colonnes */
+@media (max-width: 1400px) {
   .UniformGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Mobile (Max 968px) : 1 colonne */
-@media (max-width: 968px) { /* Ancien: 900px */
+/* Mobile (Max 800) : 1 colonne */
+@media (max-width: 800px) {
   .UniformGrid {
     grid-template-columns: 1fr;
   }
-  .UniformGrid-wrapper {
-      width: 95%;
-  }
+
+
 }
 </style>

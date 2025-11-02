@@ -38,7 +38,7 @@ const { images, columns = 3 } = Astro.props;
   .ClickableMasonryGrid-wrapper {
     /* La largeur est généralement gérée par le conteneur parent ou ici. */
     /* Vous pouvez ajuster cette largeur si vous la voulez fixe (ex: 900px) */
-    width: 90%; 
+    width: 75%; 
     margin: 3rem auto; 
   }
 
@@ -57,7 +57,7 @@ const { images, columns = 3 } = Astro.props;
     break-inside: avoid-column;
     margin-bottom: 1.5rem; 
     transition: transform 0.3s ease-in-out, box-shadow 0.3s;
-    border-radius: 8px; /* Appliquer le bord radius ici pour l'effet de survol */
+    border-radius: 20px; /* Appliquer le bord radius ici pour l'effet de survol */
     overflow: hidden;
   }
   
@@ -68,11 +68,12 @@ const { images, columns = 3 } = Astro.props;
   }
 
   .grid-item {
-    margin: 0;
+    margin: 5vh;
   }
 
   .grid-item img {
     width: 100%;
+    border-radius: 20px;
     height: auto; 
     display: block;
     object-fit: cover;
@@ -85,9 +86,8 @@ const { images, columns = 3 } = Astro.props;
   
   figcaption {
     padding: 0.75rem 1rem;
-    font-size: 0.95rem;
-    color: #555;
-    background-color: #fff;
+    font-size: 1.1rem;
+    color: #202020ff;
     text-align: center;
   }
   
