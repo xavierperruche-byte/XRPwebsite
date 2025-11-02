@@ -7,7 +7,7 @@ const RECAPTCHA_SITE_KEY = "6LdwdNsrAAAAAASMuuyUjO8isoLadajEvJL4yvD1";
 
 <Layout title="Contact Us">
   <style>
-    .contact-container {
+    .contact-container {  
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -18,7 +18,9 @@ const RECAPTCHA_SITE_KEY = "6LdwdNsrAAAAAASMuuyUjO8isoLadajEvJL4yvD1";
       background-position: center;
       background-attachment: fixed;
       padding: 10rem;
+      transition: background-image 1.5s ease-in-out; 
     }
+
 
     .form-wrapper {
       background: rgba(255, 255, 255, 0.55);
@@ -164,6 +166,15 @@ const RECAPTCHA_SITE_KEY = "6LdwdNsrAAAAAASMuuyUjO8isoLadajEvJL4yvD1";
         font-size: 2rem;
       }
     }
+
+  
+@media (max-width: 600px) {
+  form {
+    padding: 0rem;
+    max-width: 100%;
+  }
+}
+
   </style>
 
   <div class="contact-container">
@@ -297,5 +308,37 @@ const RECAPTCHA_SITE_KEY = "6LdwdNsrAAAAAASMuuyUjO8isoLadajEvJL4yvD1";
         }
       });
     }
+
+// Liste des URLs des images pour le carrousel
+  const backgroundImages = [
+    '/images/contact.webp', // Première image initiale
+    '/images/contact2.webp', // Ajoutez vos autres images
+    // ... ajoutez autant d'images que vous le souhaitez
+  ];
+  
+  const contactContainer = document.querySelector('.contact-container');
+  let currentIndex = 0;
+  const intervalTime = 8000; 
+
+  /**
+   * Change l'image de fond du conteneur.
+   */
+  function changeBackground() {
+    currentIndex = (currentIndex + 1) % backgroundImages.length;
+    const nextImage = backgroundImages[currentIndex];
+    
+    // Construit la nouvelle propriété background-image, en conservant le dégradé
+    const newBackground = `linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3)),url('${nextImage}')`;
+
+    if (contactContainer) {
+      contactContainer.style.backgroundImage = newBackground;
+    }
+  }
+
+  // Démarre le carrousel si le conteneur est trouvé
+  if (contactContainer) {
+    // La première image est déjà définie en CSS, nous commençons après 4 secondes.
+    setInterval(changeBackground, intervalTime); 
+  }
   </script>
 </Layout>
