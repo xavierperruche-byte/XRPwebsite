@@ -1,152 +1,576 @@
 ---
-import Layout from '../layouts/Layout.astro';
-
-const excuses = [
-  "Teaching hamsters to code...",
-  "Bribing the servers with cookies...",
-  "Untangling spaghetti code...",
-  "Downloading more RAM...",
-  "Asking ChatGPT how to build this...",
-  "Converting coffee to code...",
-];
-
-const randomExcuse = excuses[Math.floor(Math.random() * excuses.length)];
+// src/pages/press.astro
+import Layout from '../layouts/layout.astro';
+import '../styles/global.css';
+import ClickableMasonryGrid from '../components/ClickableMasonryGrid.astro';
+import BackToTop from '../components/BackToTop.astro';
 ---
 
-<Layout title="Work in Progress">
-  <style>
-    .wip-container {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      overflow: hidden;
-      position: relative;
-    }
+<Layout 
+  title="Services | We.TheAgency" 
+  description="Une marque qui inspire. Une stratégie qui performe.."
+  currentPage="/press"
+>
 
-    .content {
-      text-align: center;
-      padding: 2rem;
-      max-width: 600px;
-      position: relative;
-      z-index: 10;
-    }
+  <!-- Spacer pour compenser le header et la subnav -->
+  <div class="spacer-top"></div>
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      animation: bounce 2s infinite;
-    }
-
-    .emoji {
-      font-size: 5rem;
-      animation: spin 3s linear infinite;
-      display: inline-block;
-      cursor: pointer;
-    }
-
-    .excuse {
-      font-size: 1.5rem;
-      margin: 2rem 0;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      backdrop-filter: blur(10px);
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 30px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 15px;
-      overflow: hidden;
-      margin: 2rem 0;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #ff6b6b, #feca57);
-      animation: loading 2s ease-in-out infinite;
-      border-radius: 15px;
-    }
-
-    .note {
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    @keyframes loading {
-      0% { width: 0%; }
-      50% { width: 70%; }
-      100% { width: 0%; }
-    }
-
-    .tools {
-      position: absolute;
-      font-size: 2rem;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .tool-1 { top: 10%; left: 10%; animation-delay: 0s; }
-    .tool-2 { top: 20%; right: 15%; animation-delay: 0.5s; }
-    .tool-3 { bottom: 15%; left: 20%; animation-delay: 1s; }
-    .tool-4 { bottom: 25%; right: 10%; animation-delay: 1.5s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-  </style>
-
-  <div class="wip-container">
-    <div class="tools tool-1">🔧</div>
-    <div class="tools tool-2">⚙️</div>
-    <div class="tools tool-3">🔨</div>
-    <div class="tools tool-4">🛠️</div>
-
-    <div class="content">
-      <div class="emoji">🚧</div>
-      <h1>Work in Progress!</h1>
-      <div class="excuse">{randomExcuse}</div>
-      
-      <div class="progress-bar">
-        <div class="progress-fill"></div>
-      </div>
-
-      <p class="note">
-        We're working harder than a cat avoiding water to get this ready.<br>
-        Please check back in... approximately <strong>2 weeks™</strong>
-      </p>
+  <!-- Hero Section - First Title -->
+  <section class="hero-section-first">
+    <div class="hero-container">
+      <h2 class="hero-title-first">Seen in the press (2024)</h2>
     </div>
-  </div>
+  </section>
 
-  <script>
-    // Add some interactivity
-    const emoji = document.querySelector('.emoji');
-    
-    if (emoji) {
-      emoji.addEventListener('click', () => {
-        emoji.style.animation = 'none';
-        setTimeout(() => {
-          emoji.style.animation = 'spin 0.5s linear 1';
-          setTimeout(() => {
-            emoji.style.animation = 'spin 3s linear infinite';
-          }, 500);
-        }, 10);
-      });
-    }
-  </script>
+
+<!-- Features Section -->
+
+
+<ClickableMasonryGrid 
+    images={[
+      {src: '/images/prestige.webp', alt: 'Prestige', caption: 'Prestige' },
+      {src: '/images/marieclaire.webp', alt: 'Marie Claire', caption: 'Marie Claire - Les bonnes adresses, Santé & Bien-être- 16 septembre 2024', url: 'https://www.marieclaire.ch/sculpter-tonifier-corps-inshape-barre-studio-geneve/' },
+      {src: '/images/market.webp', alt: 'market', caption: 'market' },
+      // Ajoutez autant d'images que vous voulez ici
+    ]}
+    columns={3} 
+  />
+
+</section>
+
+
+ 
+<BackToTop />
 </Layout>
+
+<style>
+  /* Navigation secondaire flottante - Style identique au header */
+  .floating-subnav {
+    position: fixed;
+    top: 10px; /* Positionné sous le header principal */
+    left: 2%;
+    width: auto;
+    max-width: 200px;
+    z-index: 9999;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .floating-subnav:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+    transform: translateX(-2%) translateY(-2px);
+  }
+
+  .subnav-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem 0.5rem;
+    gap: 0.2rem;
+  }
+
+  .subnav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    color: #555;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .subnav-link:hover {
+    background: rgba(171, 171, 171, 0.3);
+    color: #000000;
+    transform: translateY(-2px);
+  }
+
+  .subnav-link.active {
+    background: linear-gradient(45deg, #857f74, #000000);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  }
+
+  .subnav-link .nav-icon {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .subnav-link .nav-text {
+    font-weight: 500;
+    font-size: 1rem;
+  }
+
+  /* Spacer pour éviter que le contenu soit caché sous les navs */
+  .spacer-top {
+    height: 130px; /* Header (80px) + Subnav (60px) + marge (40px) */
+  }
+
+  /* Hero Sections - Style Elementor */
+  .hero-section-first,
+  .hero-section-second {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hero-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin: 0 auto;
+  }
+
+  .hero-title-second {
+    font-family: var(--font-main);
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 4px;
+    color: #000;
+    margin: 0;
+    padding: 1.5rem 0;
+    text-align: center;
+  }
+
+  .hero-title-first {
+    font-family: var(--font-main);
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 5px;
+    color: #000;
+    margin: 0;
+    padding: 1.5rem 0;
+    text-align: center;
+  }
+
+
+  .hero-text {
+    font-family: var(--font-main);
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: 3px;
+    color: #000;
+    width: 60vw;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    text-align: center;
+    padding: 1rem 0;
+    text-align: center;
+  }
+
+
+  /* Divider */
+  .divider-line {
+    width: 100%;
+    height: 1px;
+    background: #000;
+    margin: 2rem 0;
+  }
+
+  /* Content Sections - Accordéons */
+  .content-section {
+    padding: 3rem 0 6rem 0;
+  }
+
+/* Content Sections - Accordéons */
+.content-section {
+  padding: 3rem 0 6rem 0;
+}
+
+.accordion-grid {
+  /* MODIFICATION pour 2x2 par défaut sur les grands écrans */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Force 2 colonnes de taille égale */
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Ajout d'une media query pour passer à 1x4 sur les petits écrans (ex: moins de 768px ou 1024px) */
+/* L'exemple original basculait déjà vers une seule colonne à 768px, nous allons le maintenir */
+
+@media (max-width: 1024px) {
+  /* Maintenir la structure flexible ou passer à 1 colonne si nécessaire */
+  .accordion-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Maintenu de l'original */
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .accordion-grid {
+    /* Bascule vers 1x4 (une seule colonne) */
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  /* ... autres styles existants ... */
+}
+
+  .accordion-box {
+    background: #f5f5f5;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+    opacity: 0;
+    animation: fadeInDown 0.8s ease forwards;
+  }
+
+  .accordion-box:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .accordion-box.active {
+    background: #fff;
+    border-color: #000;
+  }
+
+  .accordion-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .accordion-header:hover {
+    background: rgba(0, 0, 0, 0.02);
+  }
+
+  .accordion-title {
+    font-family: var(--font-main);
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    text-align: left;
+    color: #000;
+  }
+
+  .accordion-icon {
+    font-size: 28px;
+    font-weight: 300;
+    color: #000;
+    transition: transform 0.3s ease;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .accordion-box.active .accordion-icon {
+    transform: rotate(45deg);
+    background: #000;
+    color: #fff;
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 1.5rem;
+  }
+
+  .accordion-box.active .accordion-content {
+    max-height: 1000px;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+  }
+
+  .fade-in-down {
+    animation-delay: 0.2s;
+  }
+
+  .text-content {
+    font-family: var(--font-main);
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .text-content p {
+    margin-bottom: 1rem;
+  }
+
+  .link-special {
+    color: #000;
+    text-decoration: underline;
+    transition: opacity 0.3s;
+  }
+
+  .link-special:hover {
+    opacity: 0.6;
+  }
+
+  /* Animations */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Scroll Effect pour la subnav */
+  .floating-subnav.scrolled {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .floating-subnav {
+      top: 90px;
+      width: 90%;
+    }
+
+    .subnav-container {
+      padding: 0.5rem 1rem;
+      gap: 0.25rem;
+    }
+
+    .subnav-link {
+      padding: 0.6rem 1rem;
+    }
+
+    .subnav-link .nav-text {
+      font-size: 0.9rem;
+    }
+
+    .hero-container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .accordion-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.25rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .floating-subnav {
+      top: 80px;
+      width: 90%;
+    }
+
+    .subnav-container {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .subnav-link {
+      padding: 0.5rem 0.85rem;
+      font-size: 0.85rem;
+    }
+
+    .subnav-link .nav-icon {
+      font-size: 0.9rem;
+    }
+
+  .spacer-top {
+    height: 130px; /* Header (80px) + Subnav (60px) + marge (40px) */
+  }
+
+    .hero-title-first {
+      font-size: 20px;
+      padding: 1rem 0;
+    }
+
+    .hero-title-second {
+      font-size: 18px;
+      padding: 1rem 0;
+    }
+
+    .hero-container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .accordion-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .accordion-header {
+      padding: 1.25rem;
+    }
+
+    .accordion-title {
+      font-size: 16px;
+    }
+
+    .accordion-icon {
+      font-size: 24px;
+      width: 28px;
+      height: 28px;
+    }
+
+    .content-section {
+      padding: 2rem 0 4rem 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .floating-subnav {
+      width: 95%;
+      top: 70px;
+    }
+
+    .subnav-container {
+      padding: 0.5rem;
+    }
+
+    .subnav-link {
+      padding: 0.5rem 0.75rem;
+    }
+
+    .subnav-link .nav-text {
+      font-size: 0.75rem;
+    }
+
+    .subnav-link .nav-icon {
+      font-size: 0.85rem;
+      margin-right: 0.3rem;
+    }
+
+    .spacer-top {
+      height: 140px;
+    }
+
+    .hero-title-first {
+      font-size: 18px;
+    }
+
+    .hero-title-second {
+      font-size: 16px;
+    }
+
+    .hero-container {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+
+    .text-content {
+      font-size: 13px;
+    }
+
+    .accordion-header {
+      padding: 1rem;
+    }
+
+    .accordion-title {
+      font-size: 15px;
+    }
+
+    .accordion-box.active .accordion-content {
+      padding: 0 1rem 1rem 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Gestion des accordéons
+  function initAccordions() {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    
+    accordionHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const accordionBox = header.closest('.accordion-box');
+        const contentId = header.getAttribute('data-accordion');
+        const content = document.getElementById(contentId);
+        
+        // Toggle active state
+        const isActive = accordionBox.classList.contains('active');
+        
+        if (isActive) {
+          // Fermer l'accordéon
+          accordionBox.classList.remove('active');
+        } else {
+          // Ouvrir l'accordéon
+          accordionBox.classList.add('active');
+        }
+      });
+    });
+  }
+
+  // Scroll effect pour la subnav
+  function initSubnavScroll() {
+    const subnav = document.getElementById('floatingSubnav');
+    
+    if (!subnav) return;
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > 100) {
+        subnav.classList.add('scrolled');
+      } else {
+        subnav.classList.remove('scrolled');
+      }
+    });
+  }
+
+  // Scroll animations pour le contenu
+  function initScrollAnimations() {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    const animateElements = document.querySelectorAll('.fade-in-down');
+    animateElements.forEach(el => observer.observe(el));
+  }
+
+  // Initialiser au chargement
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initAccordions();
+      initSubnavScroll();
+      initScrollAnimations();
+    });
+  } else {
+    initAccordions();
+    initSubnavScroll();
+    initScrollAnimations();
+  }
+
+  // Support pour les transitions de page Astro
+  document.addEventListener('astro:page-load', () => {
+    initAccordions();
+    initSubnavScroll();
+    initScrollAnimations();
+  });
+</script>
