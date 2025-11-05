@@ -1,6 +1,7 @@
 ---
 // src/pages/index.astro - Homepage example using the layout
 import Layout from '../layouts/Layout.astro';
+import HorizontalTimeline from '../components/HorizontalTimeline.jsx';
 import Carousel from '../layouts/SwiperCarouselHome.astro';
 import '../styles/global.css';
 import BackToTop from '../components/BackToTop.astro';
@@ -74,6 +75,7 @@ import BackToTop from '../components/BackToTop.astro';
   <div class="timeline-section fullwidth">
     <div class="section-header text-center scroll-animate">
     <h1 style={{ textAlign: 'center', marginTop: '40px' }}>Nos derniers projets :</h1> 
+    <HorizontalTimeline client:load /> 
     </div>
   </div>
 </section>

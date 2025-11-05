@@ -1,0 +1,686 @@
+---
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { register } from 'swiper/element/bundle';
+import '../styles/global.css';
+
+// Enregistre Swiper Element côté serveur si nécessaire
+if (typeof window === 'undefined') {
+  register();
+}
+---
+
+<section class="full-width-carousel">
+  <button class="custom-prev" aria-label="Previous slide">‹</button>
+  <button class="custom-next" aria-label="Next slide">›</button>
+  
+  <swiper-container
+    class="mySwiper"
+    loop="false"
+    pagination="true"
+    pagination-clickable="true"
+    navigation="false"
+    slides-per-view="4"
+    space-between="20"
+  >
+    <swiper-slide>
+      <div class="slide-content" 
+           data-image="/images/2025101.webp" 
+           data-title="Octobre 2025" 
+           data-description="Nom, Identité Visuelle et Site Internet artsquare.ch"
+           data-details="<a href='https://www.artsquare.ch' target='_blank' rel='noopener'>artsquare.ch</a></p><p> est bien plus qu’une plateforme : c’est un espace vivant dédié à la scène artistique contemporaine suisse. </p><p>Pour accompagner sa naissance, notre agence a imaginé et façonné une identité complète, de la création du nom à la mise en ligne du site.</p> <p>- <strong>Naming</strong> : Le nom Artsquare évoque à la fois un lieu de rencontre, un carrefour créatif et une vitrine ouverte sur l\’art. Il incarne l\’ambition du projet : connecter, valoriser et faire rayonner les talents.</p><p>- <strong>Identité visuelle</strong> : Un logo minimaliste et structuré, une colorimétrie subtile mêlant modernité et chaleur, et une direction artistique pensée pour refléter l\’élégance et l\’accessibilité.</p><p>- <strong>Site web</strong> : Une interface fluide, responsive et intuitive, qui met en lumière les artistes, les événements et les contenus éditoriaux. Le design s\’adapte à tous les écrans, garantissant une expérience immersive et cohérente.</p><p>Notre approche a combiné stratégie, esthétique et technologie pour créer une marque qui inspire, rassemble et s’inscrit durablement dans le paysage culturel suisse.">
+        <img src="/images/2025101.webp" alt="NOWHERE SOCIETY" loading="lazy" /> 
+        <div class="slide-text">
+          <h2>Octobre 2025</h2>
+          <p>Nom, Identité Visuelle et Site Internet artsquare.ch</p>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="slide-content" 
+           data-image="/images/2025091.webp" 
+           data-title="Septembre 2025" 
+           data-description="Nouvelle Collaboration : N°OW'HERE Society"
+           data-details="À Genève, ville de raffinement et de discrétion, un nouveau cercle privé redéfinit l’art de se réunir, d’imaginer, d’appartenir.">
+        <img src="/images/2025091.webp" alt="Sleep Atelier with Studiolfactif" loading="lazy" /> 
+        <div class="slide-text">
+          <h2>Septembre 2025</h2>
+          <p>Nouvelle Collaboration : N°OW'HERE Society</p>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="slide-content" 
+           data-image="/images/2025092.webp" 
+           data-title="Septembre 2025" 
+           data-description="Magazine Art et Science. Cultivons l'hybridité"
+           data-details="Art et science. Cultivons l'hybridité.</p><p>Réjane Salaün.">
+        <img src="/images/2025092.webp" alt="Shilliger with Studiolfactif" loading="lazy" /> 
+        <div class="slide-text">
+          <h2>Septembre 2025</h2>
+          <p>Magazine Art et Science. Cultivons l'hybridité</p>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="slide-content" 
+           data-image="/images/2025061.webp" 
+           data-title="Juin 2025" 
+           data-description="Nouvelle Collaboration : STUDIOLFACTIF X BUCHERER GENEVE"
+           data-details="STUDIOLFACTIF X BUCHERER GENEVE</span></p><p>Sur invitation exclusivement.">
+        <img src="/images/2025061.webp" alt="Bucherer" loading="lazy" /> 
+        <div class="slide-text">
+          <h2>Juin 2025</h2>
+          <p>Nouvelle Collaboration : STUDIOLFACTIF X BUCHERER GENEVE</p>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="slide-content" 
+           data-image="/images/2025041.webp" 
+           data-title="Mai 2025" 
+           data-description="Nouvelle Collaboration : STUDIOLFACTIF X GARDEN CENTRE SCHILLIGER"
+           data-details="STUDIOLFACTIF X GARDEN CENTRE SCHILLIGER</p><p>Ateliers olfactifs les 03 et 10 mai 2025.">
+        <img src="/images/2025041.webp" alt="fashion" loading="lazy" /> 
+        <div class="slide-text">
+          <h2>Mai 2025</h2>
+          <p>Nouvelle Collaboration : STUDIOLFACTIF X GARDEN CENTRE SCHILLIGER </p>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="slide-content" 
+           data-image="/images/2024121.webp" 
+           data-title="Avril 2025" 
+           data-description="Cercle des Entrepreneurs de l'Urban Belt"
+           data-details="ENTREPRENANTES ET HUMANISTES comme vous.</p><p>- Des rencontres stratégiques pour tisser des connexions à fort impact.</p><p>- Des ateliers animés par des Membres Expertes pour perfectionner vos compétences clés. </p><p>- Des évènements conférences inspirantes pour nourrir votre vision et votre ambition.">
+        <img src="/images/2024121.webp" alt="Bucherer" loading="lazy" /> 
+        <div class="slide-text">
+          <h2>Avril 2025</h2>
+          <p>Cercle des Entrepreneurs de l'Urban Belt</p>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="slide-content" 
+           data-image="/images/2024122.webp" 
+           data-title="Décembre 2024" 
+           data-description="L'Agence"
+           data-details="Nous sommes des narrateurs visuels.">
+        <img src="/images/2024122.webp" alt="ArtSquare" loading="lazy" /> 
+        <div class="slide-text">
+          <h2>Décembre 2024</h2>
+          <p>L'Agence</p>
+        </div>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+
+  <!-- Overlay pour afficher l'image en grand avec texte -->
+  <div class="image-overlay" id="imageOverlay">
+    <button class="close-overlay" id="closeOverlay">&times;</button>
+    <div class="overlay-content">
+      <div class="overlay-image-container">
+        <img src="" alt="Image agrandie" id="overlayImage" />
+      </div>
+      <div class="overlay-text-container">
+        <h2 id="overlayTitle"></h2>
+        <p id="overlayDescription"></p>
+        <div class="overlay-additional-info" id="overlayDetails">
+          <!-- Le contenu sera inséré dynamiquement depuis data-details -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<style>
+  .full-width-carousel {
+    width: 85%;
+    height: 95vh;
+    position: relative;
+    padding: 0 60px;
+    overflow: visible;
+  }
+
+  /* Boutons de navigation personnalisés */
+  .custom-prev,
+  .custom-next {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    color: black;
+    font-size: 3rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .custom-prev:hover,
+  .custom-next:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .custom-prev {
+    left: -60px;
+  }
+
+  .custom-next {
+    right: -60px;
+  }
+
+  .mySwiper {
+    width: 100%;
+    height: 100%;
+    overflow: visible !important;
+  }
+
+  swiper-container {
+    overflow: visible !important;
+  }
+
+  swiper-slide {
+    justify-content: center;
+    align-items: center;
+    overflow: visible !important;
+  }
+
+  .slide-wrapper {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .slide-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .slide-content:hover {
+    transform: scale(0.98);
+  }
+
+  /* Overlay pour l'image agrandie */
+  .image-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.98);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+  }
+
+  .image-overlay.active {
+    display: flex;
+  }
+
+  .overlay-content {
+    display: flex;
+    gap: 40px;
+    max-width: 1400px;
+    width: 100%;
+    height: 90%;
+    align-items: center;
+  }
+
+  .overlay-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .overlay-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+
+  .overlay-text-container {
+    flex: 0 0 400px;
+    height: 100%;
+    overflow-y: auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    color: white;
+  }
+
+  .overlay-text-container h2 {
+    font-size: 2rem;
+    margin: 0 0 20px 0;
+    font-weight: 600;
+    color: white;
+  }
+
+  .overlay-text-container p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .overlay-additional-info {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .overlay-additional-info p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 15px;
+  }
+
+  /* Styling pour le contenu HTML dans data-details */
+  .overlay-additional-info strong {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .overlay-additional-info br {
+    display: block;
+    content: "";
+    margin: 8px 0;
+  }
+
+  /* Style pour les listes à puces (•) */
+  .overlay-additional-info {
+    font-size: 0.95rem;
+  }
+
+  /* Animation d'apparition du contenu */
+  .overlay-additional-info {
+    animation: fadeInUp 0.5s ease-out 0.2s both;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Style pour les sections avec des bullet points */
+  .overlay-additional-info ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 15px 0;
+  }
+
+  .overlay-additional-info ul li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .overlay-additional-info ul li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: bold;
+  }
+
+  .close-overlay {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 4rem;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.2s;
+  }
+
+  .close-overlay:hover {
+    transform: scale(1.2);
+  }
+
+  .slide-content img {
+    width: auto;
+    height: 70vh;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  .slide-text {
+    text-align: center;
+    color: black;
+    padding: 5rem 0;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .slide-text h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .slide-text p {
+    font-size: 1rem;
+    margin: 0.5rem 0 0 0;
+  }
+
+  /* Personnalisation des flèches de navigation - cachées car on utilise des boutons custom */
+  .mySwiper::part(button-prev),
+  .mySwiper::part(button-next) {
+    display: none;
+  }
+
+  /* Personnalisation des points de pagination */
+  .mySwiper::part(bullet) {
+    background-color: black;
+    opacity: 0.5;
+  }
+
+  .mySwiper::part(bullet-active) {
+    background-color: black;
+    opacity: 1;
+  }
+
+  /* Pagination positionnée en dessous du carousel */
+  .mySwiper::part(pagination) {
+    bottom: 0vh;
+  }
+
+  /* Responsive pour l'overlay */
+  @media (max-width: 1024px) {
+    .overlay-content {
+      flex-direction: column;
+      height: auto;
+      max-height: 90%;
+      overflow-y: auto;
+    }
+
+    .overlay-image-container {
+      flex: none;
+      max-height: 50vh;
+    }
+
+    .overlay-text-container {
+      flex: none;
+      width: 100%;
+      max-height: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .image-overlay {
+      padding: 20px;
+    }
+
+    .overlay-content {
+      gap: 20px;
+    }
+
+    .overlay-text-container {
+      padding: 20px;
+    }
+
+    .overlay-text-container h2 {
+      font-size: 1.5rem;
+    }
+
+    .overlay-text-container p {
+      font-size: 0.95rem;
+    }
+
+    .close-overlay {
+      font-size: 3rem;
+      top: 10px;
+      right: 20px;
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 1250px) {
+    .full-width-carousel {
+      width: 85%;
+      height: auto;
+      min-height: 60vh;
+    }
+    .slide-content img {
+      height: 60vh;
+    }
+   
+    .slide-text h2 {
+      font-size: 1rem;
+    }
+    
+    .slide-text p {
+      font-size: 0.9rem;
+    }
+
+    .mySwiper::part(pagination) {
+      bottom: 10vh;
+    }
+    .custom-prev {
+      left: -50px;
+    }
+
+    .custom-next {
+      right: -50px;
+    }
+
+    .custom-prev,
+    .custom-next {
+      top: 35%;
+      width: 45px;
+      height: 45px;
+      font-size: 2.5rem;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .full-width-carousel {
+      width: 85%;
+      height: auto;
+      min-height: 60vh;
+    }
+    .slide-content img {
+      height: 60vh;
+    }
+   
+    .slide-text h2 {
+      font-size: 1rem;
+    }
+    
+    .slide-text p {
+      font-size: 0.9rem;
+    }
+
+    .mySwiper::part(pagination) {
+      bottom: 10vh;
+    }
+    .custom-prev {
+      left: -50px;
+    }
+
+    .custom-next {
+      right: -50px;
+    }
+
+    .custom-prev,
+    .custom-next {
+      top: 35%;
+      width: 45px;
+      height: 45px;
+      font-size: 2.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .full-width-carousel {
+      width: 85%;
+      height: auto;
+      min-height: 60vh;
+    }
+
+    .slide-content img {
+      height: 60vh;
+    }
+    
+    .slide-text h2 {
+      font-size: 0.8rem;
+    }
+    
+    .slide-text p {
+      font-size: 0.75rem;
+    }
+
+    .slide-text {
+      padding: 0.5rem;
+    }
+    .custom-prev {
+      left: -50px;
+    }
+
+    .custom-next {
+      right: -50px;
+    }
+
+    .custom-prev,
+    .custom-next {
+      top: 35%;
+      width: 45px;
+      height: 45px;
+      font-size: 2.5rem;
+    }
+     
+    .mySwiper::part(pagination) {
+      bottom: 25vh;
+    }
+  }
+</style>
+
+<script>
+  import { register } from 'swiper/element/bundle';
+  
+  // Enregistre Swiper Element côté client
+  register();
+
+  // Configuration responsive via JavaScript après initialisation
+  document.addEventListener('DOMContentLoaded', () => {
+    const swiperEl = document.querySelector('.mySwiper');
+    const prevBtn = document.querySelector('.custom-prev');
+    const nextBtn = document.querySelector('.custom-next');
+    const overlay = document.getElementById('imageOverlay');
+    const overlayImage = document.getElementById('overlayImage');
+    const overlayTitle = document.getElementById('overlayTitle');
+    const overlayDescription = document.getElementById('overlayDescription');
+    const overlayDetails = document.getElementById('overlayDetails');
+    const closeBtn = document.getElementById('closeOverlay');
+    
+    if (swiperEl) {
+      // Gestion des boutons de navigation personnalisés
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          swiperEl.swiper.slidePrev();
+        });
+      }
+      
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          swiperEl.swiper.slideNext();
+        });
+      }
+
+      // Gestion du clic sur les images pour l'overlay
+      const slideContents = document.querySelectorAll('.slide-content');
+      slideContents.forEach(content => {
+        content.addEventListener('click', () => {
+          const imageSrc = content.getAttribute('data-image');
+          const title = content.getAttribute('data-title');
+          const description = content.getAttribute('data-description');
+          const details = content.getAttribute('data-details');
+          
+          if (imageSrc && overlay && overlayImage) {
+            overlayImage.src = imageSrc;
+            if (overlayTitle) overlayTitle.textContent = title || '';
+            if (overlayDescription) overlayDescription.textContent = description || '';
+            if (overlayDetails) overlayDetails.innerHTML = details || '<p>Aucun détail supplémentaire disponible.</p>';
+            overlay.classList.add('active');
+          }
+        });
+      });
+
+      // Fermer l'overlay
+      if (closeBtn && overlay) {
+        closeBtn.addEventListener('click', () => {
+          overlay.classList.remove('active');
+        });
+        
+        // Fermer en cliquant sur le fond
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) {
+            overlay.classList.remove('active');
+          }
+        });
+      }
+
+      // Fermer avec la touche Echap
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay) {
+          overlay.classList.remove('active');
+        }
+      });
+
+      const updateSlidesPerView = () => {
+        const width = window.innerWidth;
+        
+        if (width < 640) {
+          swiperEl.setAttribute('slides-per-view', '1');
+          swiperEl.setAttribute('space-between', '10');
+        } else if (width < 1024) {
+          swiperEl.setAttribute('slides-per-view', '2');
+          swiperEl.setAttribute('space-between', '15');
+        } else if (width < 1280) {
+          swiperEl.setAttribute('slides-per-view', '3');
+          swiperEl.setAttribute('space-between', '20');
+        } else {
+          swiperEl.setAttribute('slides-per-view', '4');
+          swiperEl.setAttribute('space-between', '20');
+        }
+      };
+      
+      updateSlidesPerView();
+      window.addEventListener('resize', updateSlidesPerView);
+    }
+  });
+</script>
