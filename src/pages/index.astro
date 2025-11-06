@@ -2,31 +2,109 @@
 // src/pages/index.astro - Homepage example using the layout
 import Layout from '../layouts/Layout.astro';
 import Carousel from '../layouts/SwiperCarouselHome.astro';
-import '../styles/global.css';
 import BackToTop from '../components/BackToTop.astro';
+
+// Define your projects/exhibitions data
+const projects = [
+  {
+    id: 1,
+    title: 'Identité de Marque',
+    type: 'Services',
+    /*year: 2025,*/
+    image: '/images/contact.webp',
+    slug: 'offer',
+    description: 'Branding et créations d\'identité visuelle'
+  },
+  {
+    id: 2,
+    title: 'WebDesign',
+    type: 'Services',
+    /*year: 2025,*/
+    image: '/images/contact2.webp',
+    slug: 'offer',
+    description: 'Création de sites Web'
+  },
+  {
+    id: 3,
+    title: 'Croissance',
+    type: 'Services',
+    /*year: 2025,*/
+    image: '/images/contactold.webp',
+    slug: 'offer',
+    description: 'Le développement commercial est dans notre ADN'
+  }
+];
 ---
 
 
 <Layout title="We-TheAgency" description="Business with attitude" currentPage="/">
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="container">
-      <div class="hero-content scroll-animate">
-        <h1 class="hero-title">
-          De l’idée à l’influence&nbsp;: nous façonnons votre empreinte. 
-        </h1>
-        <p class="hero-description">    Une marque qui inspire. Une stratégie qui performe.. </p>
+    <!-- Hero Slider Section -->
+    <main class="portfolio-page">
+    <section class="hero-slider">
+      <div class="slider-container">
+        {projects.map((project, index) => (
+          <div 
+            class={`slide ${index === 0 ? 'active' : ''}`}
+            data-slide={index}
+          >
+            <div class="slide-background">
+              <img 
+                src={project.image} 
+                alt={project.title}
+                class="slide-image"
+              />
+              <div class="slide-overlay"></div>
+            </div>
+            <div class="slide-content">
+              <div class="slide-info">
+                <span class="slide-type">{project.type}</span>
+                <h1 class="slide-title">{project.title}</h1>
+                <p class="slide-description">{project.description}</p>
+                <div class="slide-meta">
+                  <span class="slide-year">{project.year}</span>
+                </div>
+                <a href={`/${project.slug}`} class="slide-cta">
+                  Découvrir ...
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
 
-      </div>
-      <div class="hero-visual scroll-animate">
-      <div class="floating-cards">
-        <div class="card card-1" data-tooltip="Web design creation">💻 SITES WEB</div>
-        <div class="card card-2" data-tooltip="Branding and visual identity creation">🍎 IDENTITE DE MARQUE</div>
-       <div class="card card-4" data-tooltip="Business development in our DNA">📈 CROISSANCE</div> 
+      <!-- Slider Controls -->
+      <button class="slider-nav prev" aria-label="Previous slide">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="slider-nav next" aria-label="Next slide">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Slider Indicators -->
+      <div class="slider-indicators">
+        {projects.map((_, index) => (
+          <button 
+            class={`indicator ${index === 0 ? 'active' : ''}`}
+            data-slide={index}
+            aria-label={`Go to slide ${index + 1}`}
+          ></button>
+        ))}
       </div>
 
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator">
+        <span>Défiler</span>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M10 4v12M6 12l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
-    </div>
   </section>
 
   <!-- Features Section -->
@@ -67,6 +145,7 @@ import BackToTop from '../components/BackToTop.astro';
     </div>
   </div>
 </section>
+  </main>
 
 
 <!-- Nos Projets -->
@@ -127,6 +206,9 @@ import BackToTop from '../components/BackToTop.astro';
 
 
 <style>
+
+  .content-section {}
+
   .about-section {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     padding: 4rem 0;
@@ -281,6 +363,190 @@ import BackToTop from '../components/BackToTop.astro';
     rgba(221, 226, 235, 1) 100%   /* fade to background color */
   );
 }
+
+  .portfolio-page {
+    min-height: 100vh;
+  }
+
+  /* Hero Slider Styles */
+  .hero-slider {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+  }
+
+  .slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+  }
+
+  .slide-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: kenburns 20s ease-out infinite;
+    opacity: 0.55;
+  }
+
+  @keyframes kenburns {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  .slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+  }
+
+
+  .slide-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    z-index: 1;
+  }
+
+  .slide-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    z-index: 2;
+  }
+
+  .slide-info {
+    max-width: 600px;
+    color: white;
+    animation: slideIn 0.8s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .slide.active .slide-info {
+    animation: slideIn 0.8s ease-out;
+  }
+
+  .slide-type {
+    display: inline-block;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 2px;
+  }
+
+  .slide-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 1.5rem 0;
+    color: white;
+  }
+
+  .slide-description {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1rem;
+  }
+
+  .slide-meta {
+    margin-bottom: 2rem;
+  }
+
+  .slide-year {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .slide-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: white;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .slide-cta:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateX(5px);
+  }
+
+  .slide-cta svg {
+    transition: transform 0.3s ease;
+  }
+
+  .slide-cta:hover svg {
+    transform: translateX(5px);
+  }
+
 
 
   /* Responsive Design */
@@ -707,3 +973,96 @@ import BackToTop from '../components/BackToTop.astro';
 </style>
 <BackToTop />
 </Layout>
+
+
+<script>
+  // Slider functionality
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const indicators = document.querySelectorAll('.indicator');
+  const totalSlides = slides.length;
+  let autoSlideInterval: number | null = null;
+  function showSlide(index: number) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(indicator => indicator.classList.remove('active'));
+    
+    slides[index].classList.add('active');
+    indicators[index].classList.add('active');
+    currentSlide = index;
+  }
+
+  function nextSlide() {
+    const next = (currentSlide + 1) % totalSlides;
+    showSlide(next);
+  }
+
+  function prevSlide() {
+    const prev = (currentSlide - 1 + totalSlides) % totalSlides;
+    showSlide(prev);
+  }
+
+
+  function startAutoSlide() {
+    // Clear any existing interval
+    if (autoSlideInterval) {
+      clearInterval(autoSlideInterval);
+    }
+    // Start new interval
+    autoSlideInterval = setInterval(nextSlide, 5000);
+  }
+
+  function stopAutoSlide() {
+    if (autoSlideInterval) {
+      clearInterval(autoSlideInterval);
+      autoSlideInterval = null;
+    }
+  }
+
+  // Navigation buttons
+  document.querySelector('.slider-nav.next')?.addEventListener('click', () => {
+    nextSlide();
+    stopAutoSlide();
+    startAutoSlide(); // Restart timer after manual interaction
+  });
+
+  document.querySelector('.slider-nav.prev')?.addEventListener('click', () => {
+    prevSlide();
+    stopAutoSlide();
+    startAutoSlide(); // Restart timer after manual interaction
+  });
+
+  // Indicators
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+      showSlide(index);
+      stopAutoSlide();
+      startAutoSlide(); // Restart timer after manual interaction
+    });
+  });
+
+  // Start auto-advance slides
+  startAutoSlide();
+
+  // Pause auto-advance on hover
+  //document.querySelector('.hero-slider')?.addEventListener('mouseenter', () => {
+  //  stopAutoSlide();
+  //});
+
+  document.querySelector('.hero-slider')?.addEventListener('mouseleave', () => {
+    startAutoSlide();
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      prevSlide();
+      stopAutoSlide();
+      startAutoSlide(); // Restart timer after manual interaction
+    }
+    if (e.key === 'ArrowRight') {
+      nextSlide();
+      stopAutoSlide();
+      startAutoSlide(); // Restart timer after manual interaction
+    }
+  });
+</script>
