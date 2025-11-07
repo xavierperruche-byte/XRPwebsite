@@ -234,18 +234,18 @@ p {
 .stabilo-orange {
   background: linear-gradient(
       104deg,
-      rgba(255, 153, 51, 0) 0.9%,
-      rgba(255, 153, 51, 1.25) 2.4%,
-      rgba(255, 153, 51, 0.5) 5.8%,
-      rgba(255, 153, 51, 0.1) 93%,
-      rgba(255, 153, 51, 0.7) 96%,
-      rgba(255, 153, 51, 0) 98%
+      rgba(253, 121, 34, 0) 0.9%,
+      rgba(253, 121, 34, 1.25) 2.4%,
+      rgba(253, 121, 34, 0.5) 5.8%,
+      rgba(253, 121, 34, 0.1) 93%,
+      rgba(253, 121, 34, 0.7) 96%,
+      rgba(253, 121, 34, 0) 98%
     ),
     linear-gradient(
       183deg,
-      rgba(255, 153, 51, 0) 0%,
-      rgba(255, 153, 51, 0.3) 7.9%,
-      rgba(255, 153, 51, 0) 15%
+      rgba(253, 121, 34, 0) 0%,
+      rgba(253, 121, 34, 0.3) 7.9%,
+      rgba(253, 121, 34, 0) 15%
     );
 }
 
@@ -282,7 +282,7 @@ p {
 }
 
 .stabilo-simple.orange {
-  background: linear-gradient(180deg, transparent 10%, #ff9933 80%);
+  background: linear-gradient(180deg, transparent 10%, #fd7922 80%);
 }
 
 .stabilo-simple.bleu {
