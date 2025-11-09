@@ -1,0 +1,261 @@
+---
+// Carousel.astro (F2 - production clean)
+export interface Props {
+  images: Array<{ src: string; alt: string }>;
+  slidesToShow?: number;
+}
+const { images = [], slidesToShow = 3 } = Astro.props;
+const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
+---
+<div class="carousel" id={carouselId} data-slides-to-show={slidesToShow}>
+  <div class="carousel-container">
+    <button class="carousel-btn prev" aria-label="Previous images">‹</button>
+    <div class="carousel-track-wrapper">
+      <div class="carousel-track">
+        {images.map((img, i) => (
+          <div class="carousel-slide" data-index={i}>
+            <img src={img.src} alt={img.alt} data-lightbox-index={i} />
+          </div>
+        ))}
+      </div>
+    </div>
+    <button class="carousel-btn next" aria-label="Next images">›</button>
+  </div>
+
+  <div class="carousel-dots">
+    {Array.from({ length: Math.max(1, Math.ceil(images.length / slidesToShow)) }).map((_, i) => (
+      <button class={`dot ${i === 0 ? 'active' : ''}`} data-index={i} aria-label={`Go to slide group ${i + 1}`} />
+    ))}
+  </div>
+</div>
+
+<div class="lightbox" id={`lightbox-${carouselId}`}>
+  <button class="lightbox-close" aria-label="Close lightbox">×</button>
+  <button class="lightbox-btn lightbox-prev" aria-label="Previous image">‹</button>
+  <button class="lightbox-btn lightbox-next" aria-label="Next image">›</button>
+  <div class="lightbox-content">
+    <img class="lightbox-image" src="" alt="" />
+  </div>
+  <div class="lightbox-counter"></div>
+</div>
+
+<style>
+.carousel { width:100%; max-width:100%; margin:0 auto; }
+.carousel-container { position: relative; width:100%; overflow: hidden; border-radius:8px; }
+.carousel-track-wrapper { overflow: hidden; }
+.carousel-track { display:flex; transition: transform 0.5s ease; gap:1rem; align-items: stretch; }
+.carousel-slide { min-width: calc(33.333% - 0.667rem); height:600px; display:flex; align-items:center; justify-content:center; background:#f5f5f5; border-radius:4px; overflow:hidden; cursor:pointer; }
+.carousel-slide img { width:100%; height:100%; object-fit:cover; transition: transform 0.3s; }
+.carousel-slide:hover img { transform: scale(1.05); }
+.carousel-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.6); color:white; border:none; font-size:3rem; width:60px; height:60px; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:10; border-radius:50%; }
+.carousel-btn.prev { left:1rem; } .carousel-btn.next { right:1rem; }
+.carousel-dots { display:flex; justify-content:center; gap:0.75rem; margin-top:1.5rem; }
+.dot { width:14px; height:14px; border-radius:50%; background:#ccc; border:none; cursor:pointer; padding:0; }
+.dot.active { background:#333; transform:scale(1.2); }
+.lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:9999; align-items:center; justify-content:center; }
+.lightbox.active { display:flex; }
+.lightbox-content { max-width:90%; max-height:90%; display:flex; align-items:center; justify-content:center; }
+.lightbox-image { max-width:100%; max-height:90vh; object-fit:contain; border-radius:4px; }
+.lightbox-close { position:absolute; top:20px; right:30px; background:none; border:none; color:white; font-size:50px; cursor:pointer; z-index:10000; line-height:1; padding:0; width:50px; height:50px; transition:transform 0.2s; }
+.lightbox-close:hover { transform:scale(1.2); }
+.lightbox-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.2); color:white; border:none; font-size:4rem; width:80px; height:80px; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:10000; border-radius:50%; }
+.lightbox-prev { left:30px; } .lightbox-next { right:30px; }
+.lightbox-counter { position:absolute; bottom:30px; left:50%; transform:translateX(-50%); color:white; font-size:1.2rem; background:rgba(0,0,0,0.6); padding:0.5rem 1rem; border-radius:20px; }
+@media (max-width:1024px) { .carousel-slide{ min-width: calc(50% - 0.5rem); height:500px; } }
+@media (max-width:768px) { .carousel-slide{ min-width:100%; height:400px; } .carousel-btn{ font-size:2rem; width:45px; height:45px;} }
+</style>
+
+<script define:vars={{ carouselId, images }}>
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.getElementById(carouselId);
+  if (!carousel) return;
+
+  const track = carousel.querySelector('.carousel-track');
+  const prevBtn = carousel.querySelector('.prev');
+  const nextBtn = carousel.querySelector('.next');
+  const dots = Array.from(carousel.querySelectorAll('.dot'));
+  const lightbox = document.getElementById(`lightbox-${carouselId}`);
+  const lightboxImg = lightbox.querySelector('.lightbox-image');
+  const lightboxClose = lightbox.querySelector('.lightbox-close');
+  const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+  const lightboxNext = lightbox.querySelector('.lightbox-next');
+  const lightboxCounter = lightbox.querySelector('.lightbox-counter');
+
+  let slidesToShowLocal = parseInt(carousel.dataset.slidesToShow) || 3;
+  let originalSlides = Array.from(track.children);
+  const originalCount = originalSlides.length;
+  if (originalCount === 0) return;
+  let clonesCount = Math.min(originalCount, slidesToShowLocal * 2); // Doubler ou prendre le total//
+  function getGapPx() {
+    const styles = getComputedStyle(track);
+    const gap = styles.gap || styles.columnGap || '0px';
+    return parseFloat(gap) || 0;
+  }
+
+  function createClones() {
+    Array.from(track.querySelectorAll('.clone')).forEach(n => n.remove());
+    const currentChildren = Array.from(track.children);
+    const prependItems = currentChildren.slice(-clonesCount).map((node, idx) => {
+      const clone = node.cloneNode(true);
+      clone.classList.add('clone');
+      const img = clone.querySelector('img');
+      if (img) {
+        const origIdx = (originalCount - clonesCount + idx) % originalCount;
+        img.dataset.originalIndex = origIdx;
+      }
+      return clone;
+    }).reverse();
+    prependItems.forEach(n => track.insertBefore(n, track.firstChild));
+    const appendItems = currentChildren.slice(0, clonesCount).map((node, idx) => {
+      const clone = node.cloneNode(true);
+      clone.classList.add('clone');
+      const img = clone.querySelector('img');
+      if (img) {
+        img.dataset.originalIndex = idx;
+      }
+      return clone;
+    });
+    appendItems.forEach(n => track.appendChild(n));
+  }
+
+  let slideWidthPx = 0;
+  let movePx = 0;
+  let totalSlidesDom = 0;
+  let currentIndex = 0;
+  let isTransitioning = false;
+
+  function measure() {
+    const allSlides = Array.from(track.children);
+    totalSlidesDom = allSlides.length;
+    const sample = allSlides.find(s => s.getBoundingClientRect().width > 0) || allSlides[0];
+    const gapPx = getGapPx();
+    slideWidthPx = sample.getBoundingClientRect().width;
+    movePx = slideWidthPx + gapPx;
+  }
+
+  function init() {
+    if (window.innerWidth <= 768) {
+      slidesToShowLocal = 1;
+    } else if (window.innerWidth <= 1024) {
+      slidesToShowLocal = Math.min(2, slidesToShow);
+    } else {
+      slidesToShowLocal = parseInt(carousel.dataset.slidesToShow) || slidesToShow;
+    }
+    clonesCount = Math.min(originalCount, slidesToShowLocal * 2); // Doubler ou prendre le total
+    Array.from(track.querySelectorAll('.clone')).forEach(n => n.remove());
+    createClones();
+    measure();
+    currentIndex = clonesCount;
+    track.style.transition = 'none';
+    track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+    requestAnimationFrame(() => { track.style.transition = 'transform 0.1s ease'; });
+    updateDots();
+    attachImageClicks();
+  }
+
+  function updateDots() {
+    if (!dots.length) return;
+    const relativeIndex = (currentIndex - clonesCount + originalCount) % originalCount;
+    const dotIndex = Math.floor(relativeIndex / slidesToShowLocal);
+    dots.forEach((d, i) => d.classList.toggle('active', i === dotIndex));
+  }
+
+  function moveToIndex(index, withTransition = true) {
+    track.style.transition = withTransition ? 'transform 0.5s ease' : 'none';
+    currentIndex = index;
+    track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+    isTransitioning = !!withTransition;
+  }
+
+  function next() {
+    if (isTransitioning) return;
+    moveToIndex(currentIndex + 1, true);
+  }
+  function prev() {
+    if (isTransitioning) return;
+    moveToIndex(currentIndex - 1, true);
+  }
+
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
+    const leftBound = clonesCount;
+    const rightBound = clonesCount + originalCount - 1;
+    if (currentIndex > rightBound) {
+      const newIndex = currentIndex - originalCount;
+      track.style.transition = 'none';
+      currentIndex = newIndex;
+      track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+      requestAnimationFrame(() => { track.style.transition = 'transform 0.5s ease'; });
+    }
+    if (currentIndex < leftBound) {
+      const newIndex = currentIndex + originalCount;
+      track.style.transition = 'none';
+      currentIndex = newIndex;
+      track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+      requestAnimationFrame(() => { track.style.transition = 'transform 0.5s ease'; });
+    }
+    updateDots();
+  });
+
+  const dotsEls = dots;
+  dotsEls.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.index);
+      const targetRelative = idx * slidesToShowLocal;
+      const targetDomIndex = clonesCount + (targetRelative % originalCount);
+      moveToIndex(targetDomIndex, true);
+    });
+  });
+
+  function attachImageClicks() {
+    const allImgs = track.querySelectorAll('img');
+    allImgs.forEach(img => {
+      const originalIndex = (img.dataset.originalIndex !== undefined) ? parseInt(img.dataset.originalIndex) : parseInt(img.dataset.lightboxIndex || img.closest('.carousel-slide')?.dataset.index || 0);
+      img.dataset._orig = originalIndex;
+      img.addEventListener('click', () => openLightbox(originalIndex));
+    });
+  }
+
+  let lightboxIndex = 0;
+  function openLightbox(index) {
+    lightboxIndex = index;
+    updateLightbox();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+  function updateLightbox() {
+    lightboxImg.src = images[lightboxIndex].src;
+    lightboxImg.alt = images[lightboxIndex].alt;
+    lightboxCounter.textContent = `${lightboxIndex + 1} / ${images.length}`;
+  }
+  function navigateLightbox(direction) {
+    lightboxIndex += direction;
+    if (lightboxIndex >= images.length) lightboxIndex = 0;
+    if (lightboxIndex < 0) lightboxIndex = images.length - 1;
+    updateLightbox();
+  }
+
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightboxPrev?.addEventListener('click', () => navigateLightbox(-1));
+  lightboxNext?.addEventListener('click', () => navigateLightbox(1));
+  lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+  });
+
+  prevBtn?.addEventListener('click', prev);
+  nextBtn?.addEventListener('click', next);
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { init(); }, 150);
+  });
+
+  init();
+});
+</script>

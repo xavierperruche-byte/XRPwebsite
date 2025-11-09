@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="description" content="We - TheAgency"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/images/logo.svg"><title>We-TheAgency</title><!-- Preload fonts for better performance --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/aroundmrso.B8Mo34t6.css">
+<link rel="stylesheet" href="/_astro/aroundmrso.-jxeEgAJ.css"></head> <body> <!-- Floating Header --> <header class="floating-header" id="floatingHeader" data-astro-cid-3ef6ksr2> <div class="header-container" id="headerContainer" data-astro-cid-3ef6ksr2> <!-- Logo/Brand --> <div class="logo" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2> <img src="/images/logo.svg" alt="Logo" class="logo-img" data-astro-cid-3ef6ksr2> <span class="logo-text" data-astro-cid-3ef6ksr2>We-TheAgency</span> </a> </div> <!-- Desktop Navigation --> <nav class="desktop-nav" id="desktopNav" data-astro-cid-3ef6ksr2> <a href="/" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>👩‍💻</span> <span class="nav-text" data-astro-cid-3ef6ksr2>agence</span> </a><a href="/offer" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📖</span> <span class="nav-text" data-astro-cid-3ef6ksr2>services</span> </a><a href="/well" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>🧘‍♀️</span> <span class="nav-text" data-astro-cid-3ef6ksr2>we.llbeing</span> </a><a href="/magazine" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>magazine.we</span> </a><a href="/press" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>presse</span> </a><a href="/contact" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📧</span> <span class="nav-text" data-astro-cid-3ef6ksr2>contact</span> </a> </nav> <!-- Mobile Menu Button --> <button class="mobile-menu-btn" id="mobileMenuBtn" data-astro-cid-3ef6ksr2> <span class="hamburger" data-astro-cid-3ef6ksr2></span> <span class="hamburger" data-astro-cid-3ef6ksr2></span> <span class="hamburger" data-astro-cid-3ef6ksr2></span> </button> </div> <!-- Mobile Navigation --> <nav class="mobile-nav" id="mobileNav" data-astro-cid-3ef6ksr2> <a href="/" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>👩‍💻</span> <span class="nav-text" data-astro-cid-3ef6ksr2>agence</span> </a><a href="/offer" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📖</span> <span class="nav-text" data-astro-cid-3ef6ksr2>services</span> </a><a href="/well" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>🧘‍♀️</span> <span class="nav-text" data-astro-cid-3ef6ksr2>we.llbeing</span> </a><a href="/magazine" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>magazine.we</span> </a><a href="/press" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>presse</span> </a><a href="/contact" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📧</span> <span class="nav-text" data-astro-cid-3ef6ksr2>contact</span> </a> </nav> </header>  <script type="module">function m(){const e=document.getElementById("floatingHeader"),l=document.getElementById("headerContainer"),c=document.getElementById("desktopNav"),t=document.getElementById("mobileMenuBtn"),n=document.getElementById("mobileNav");if(!e||!l||!c||!t||!n)return;function a(){e.classList.remove("mobile-mode"),n.classList.remove("active"),t.classList.remove("active"),requestAnimationFrame(()=>{requestAnimationFrame(()=>{const i=l.getBoundingClientRect(),o=c.querySelectorAll(".nav-link"),v=c.getBoundingClientRect();let s=!1;v.right>i.right-10&&(s=!0),o.forEach(u=>{const d=u.getBoundingClientRect();d.right>i.right-10&&(s=!0);const g=o[0].getBoundingClientRect();Math.abs(d.top-g.top)>10&&(s=!0)}),s&&e.classList.add("mobile-mode")})})}t.addEventListener("click",()=>{t.classList.toggle("active"),n.classList.toggle("active")}),n.querySelectorAll("a").forEach(i=>{i.addEventListener("click",()=>{t.classList.remove("active"),n.classList.remove("active")})}),window.addEventListener("scroll",()=>{(window.pageYOffset||document.documentElement.scrollTop)>100?e.classList.add("scrolled"):e.classList.remove("scrolled")}),document.addEventListener("click",i=>{const o=i.target;t&&n&&e&&!e.contains(o)&&(t.classList.remove("active"),n.classList.remove("active"))}),a();let r;window.addEventListener("resize",()=>{clearTimeout(r),r=setTimeout(a,150)})}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",m):m();</script> <!-- Main Content --> <main class="main-content">  <main class="article-page" data-astro-cid-zm77yjld> <article class="article-container" data-astro-cid-zm77yjld> <!-- Main Image --> <div class="article-hero" data-astro-cid-zm77yjld> <img src="/images/viyara1.webp" alt="Viyara Atelier" class="article-main-image" data-astro-cid-zm77yjld> </div> <!-- Article Header --> <header class="article-header" data-astro-cid-zm77yjld> <h1 class="article-title" data-astro-cid-zm77yjld>Ulaland</h1> <time class="article-date" datetime="2023-07-03" data-astro-cid-zm77yjld> July 3, 2023 </time> <!-- Tags --> <div class="article-tags" data-astro-cid-zm77yjld> <a href="/tags/fashion" class="tag" data-astro-cid-zm77yjld> fashion </a> </div> </header> <!-- Article Content (your markdown renders here) --> <div class="article-content" data-astro-cid-zm77yjld> <h1 id="alexandrina-spasov-fondatrice-de-viyara-atelier">Alexandrina Spasov, fondatrice de VIYARA ATELIER.</h1>
+<br>
+<b><i>Chère Alexandrina, je suis très heureuse de présenter VIYARA ATELIER dans Le Magazine.
+Viyara est une jeune entreprise parisienne créée il y a à peine une année. Les collections sont très féminines, mystérieuses, spirituelles. Alexandrina Spasov s’inspire des matières brutes et naturelles pour créer un univers fluide, minimaliste et de danse.
+Alexandrina, pourriez vous nous parler de l’origine de Viyara Atelier ? Déjà, que signifie Viyara ?</i></b>
+<p>Viyara signifie « avoir la foi », en bulgare. C’est un mot très symbolique à mes yeux du à sa signification et du fait qu’il renvoie à mes origines.</p>
+<p>J’ai souhaité à travers VIYARA atelier proposer une marque de mode durable qui reconnecte le vêtement à l’environnement en lui redonnant une âme et de la valeur.</p>
+<p>Etant contre la production de masse, nos pièces sont créés en petites séries dans notre atelier à Paris.</p>
+<p>C’est cette volonté de créer, l’indépendance, la passion et la liberté dans la gestion d’une entreprise ainsi que de mettre en place les outils nécessaires afin de transformer une idée en réalité – qui sont les éléments qui ont permis la naissance de la marque.</p>
+<p>Je transmet à travers mes créations ma philosophie de vie holistique, comprenant que tout est énergie.</p>
+<p>Créer et faire partager cet univers spirituel et minimaliste à travers son identité et mes pièces afin que les gens puissent s’identifier, percevoir et surtout ressentir la marque.</p>
+<p>Je souhaite que nos clients partagent nos valeurs, nos convictions, nos messages – qu’elles se connectent à nous et qu’on les guide vers l’avant.</p>
+<br>
+<b><i>Pourriez-vous nous présenter la Collection 2023 ? Quelles sont vos sources d’inspiration ?</i></b>
+<p>La collection VIYARA atelier 2023 sera composée de robes fluides et confortables qui s’alignent à la collection précédente mais proposera également des pièces plus minimalistes, élégantes et sexy avec l’utilisation de soie matte d’origine Italienne. Chaque robe sera ainsi pensée pour être portée du jour au soir.</p>
+<p>L’univers spirituel et mystique est l’une de mes sources d’inspirations principales.</p>
+<p>Mais il y a aussi la femme Viyara, au travers qui elle est.</p>
+<p>Le livre “The Women who run with wolves” par Clarrisa Pinkola a été une grande source d’inspiration pour l’identité de la femme Viyara. C’est un livre très lourd et profond, mais très éclairant pour la psyché d’une femme.</p>
+<p>Ainsi, je souhaite dans cette collection mettre encore plus en avant la femme VIYARA, qui incarne l’énergie féminine empreinte de spiritualité et d’authenticité.</p>
+<p>Quelle est la palette de couleurs ?</p>
+<p>La palette de couleurs cette année est représentée par des tons naturels et neutres tel que champagne, sable, dark brown, rustic brown, cappuccino, bleu/gris.</p>
+<br>
+<b><i>Le Magazine aime parler de Beauté et de Philosophie. Quelle est votre définition de la beauté ? Pensez-vous que la beauté puisse etre spirituelle ? Qu’en dites vous ?</i></b>
+<p>La beauté est partout. C’est elle qui permet de donner plaisir aux sens tant à l’extérieur qu’à l’intérieur de nous-même. Elle est unique.</p>
+<p>Puisque nous parlons de donner plaisir à nos sens intérieurs, elle nous incite à être la meilleure version possible de nous-même et d’être alignés.</p>
+<p>La beauté est la façon dont nous nous tenons, la façon dont nous traitons les gens, la façons dont nous aimons, c’est aussi l’acceptation de soi.</p>
+<p>La spiritualité est la compréhension de ce que nous sommes au fond de nous.</p>
+<p>De ce fait, je suis tout à fait d’accord de dire que la beauté peut-être spirituelle car finalement, la beauté est dans l’âme.</p>
+<br>
+<b><i>Diriez -vous que vous adhérez au panthéisme* ? Je suis personnellement très attachée à cette pensée.</i></b>
+<p>La pensée panthéisme, qui prône l’unité de l’être est une philosophie qui me parle beaucoup. L’idée de la totalité et de l’unicité entre Dieu et l’univers est une vision à laquelle j’adhère complètement.</p>
+<p>Que nous croyions Dieu, en l’univers ou en quoi que ce soit d’autre, il est certain que le bien-être et la paix de l’esprit sont des facteurs extrêmement importants dans nos vies. Et c’est ce que nous recherchons tous au final.</p>
+<br>
+<b><i>La danse est très présente dans vos photographies. Avez-vous pratiqué cette activité que je considère relever davantage de l’art, de la création salvatrice que du sport ?</i></b>
+<p>J’ai pratiqué la danse étant plus jeune et je continue encore à pratiquer cet « art » aujourd’hui, à ma manière. La danse et la musique ont la capacité de créer une déconnexion avec la réalité en quelques sortes, c’est ce qui me fait sentir vivante.</p>
+<p>« Dancing is a spiritual exercise in a physical form. »</p>
+<p>Elle nous incite à nous reconnecter avec nous même, à imaginer, rêver et ainsi – à créer.</p>
+<br>
+<b><i>L’entreprise est encore à ses prémices. Comment voyez-vous Viyara dans 5 ans ?</i></b>
+Mon objectif est de continuer à cultiver VIYARA Atelier sous toutes ses formes qu‘elles soient créatives ou techniques.
+<p>J’espère avoir déjà bien élargi la collection en proposant différents styles, couleurs et matières, m’adaptant à toutes les morphologies tout en gardant son identité qui lui est propre.</p>
+<p>Dans 5 ans, j’imagine VIYARA atelier rester fidèle à son univers de marque, proposer et développer ses produits tout en restant alignée sur l’aspect éthique et durable et enfin, la création d’une véritable communauté au sein de la marque, qui est très important pour moi.</p>
+<br>
+<b><i>Une dernière question : quel est votre adresse favorite à Paris ? une recommandation ? un musée, une expo ?</i></b>
+J’adore visiter les musées, ils m’apaisent. Le musée des Arts Décoratifs est l’un de mes préférés, pour ses expositions toujours plus diversifiées et inspirantes.
+<p>Le Loulou restaurant est juste à côté, il propose une cuisine Italienne délicieuse, le combo parfait – il met en avant le fait que la vie est un art.</p>
+<br>
+<b><i>Alexandrina, nous vous remercions.</i></b> </div> <!-- Carousel --> <section class="article-carousel" data-astro-cid-zm77yjld> <div class="carousel" id="carousel-4aj65q4a4" data-slides-to-show="3" data-astro-cid-wfe7xcno> <div class="carousel-container" data-astro-cid-wfe7xcno> <button class="carousel-btn prev" aria-label="Previous images" data-astro-cid-wfe7xcno>‹</button> <div class="carousel-track-wrapper" data-astro-cid-wfe7xcno> <div class="carousel-track" data-astro-cid-wfe7xcno> <div class="carousel-slide" data-index="0" data-astro-cid-wfe7xcno> <img src="/images/viyara2.webp" alt="Viyara Atelier" data-lightbox-index="0" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="1" data-astro-cid-wfe7xcno> <img src="/images/viyara3.webp" alt="Viyara Atelier" data-lightbox-index="1" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="2" data-astro-cid-wfe7xcno> <img src="/images/viyara4.webp" alt="Viyara Atelier" data-lightbox-index="2" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="3" data-astro-cid-wfe7xcno> <img src="/images/viyara5.webp" alt="Viyara Atelier" data-lightbox-index="3" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="4" data-astro-cid-wfe7xcno> <img src="/images/viyara6.webp" alt="Viyara Atelier" data-lightbox-index="4" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="5" data-astro-cid-wfe7xcno> <img src="/images/viyara7.webp" alt="Viyara Atelier" data-lightbox-index="5" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="6" data-astro-cid-wfe7xcno> <img src="/images/viyara8.webp" alt="Viyara Atelier" data-lightbox-index="6" data-astro-cid-wfe7xcno> </div> </div> </div> <button class="carousel-btn next" aria-label="Next images" data-astro-cid-wfe7xcno>›</button> </div> <div class="carousel-dots" data-astro-cid-wfe7xcno> <button class="dot active" data-index="0" aria-label="Go to slide group 1" data-astro-cid-wfe7xcno></button><button class="dot " data-index="1" aria-label="Go to slide group 2" data-astro-cid-wfe7xcno></button><button class="dot " data-index="2" aria-label="Go to slide group 3" data-astro-cid-wfe7xcno></button> </div> </div> <div class="lightbox" id="lightbox-carousel-4aj65q4a4" data-astro-cid-wfe7xcno> <button class="lightbox-close" aria-label="Close lightbox" data-astro-cid-wfe7xcno>×</button> <button class="lightbox-btn lightbox-prev" aria-label="Previous image" data-astro-cid-wfe7xcno>‹</button> <button class="lightbox-btn lightbox-next" aria-label="Next image" data-astro-cid-wfe7xcno>›</button> <div class="lightbox-content" data-astro-cid-wfe7xcno> <img class="lightbox-image" src="" alt="" data-astro-cid-wfe7xcno> </div> <div class="lightbox-counter" data-astro-cid-wfe7xcno></div> </div>  <script>(function(){const carouselId = "carousel-4aj65q4a4";
+const images = [{"src":"/images/viyara2.webp","alt":"Viyara Atelier","caption":"Viyara Atelier"},{"src":"/images/viyara3.webp","alt":"Viyara Atelier","caption":"Viyara Atelier"},{"src":"/images/viyara4.webp","alt":"Viyara Atelier","caption":"Viyara Atelier"},{"src":"/images/viyara5.webp","alt":"Viyara Atelier","caption":"Viyara Atelier"},{"src":"/images/viyara6.webp","alt":"Viyara Atelier","caption":"Viyara Atelier"},{"src":"/images/viyara7.webp","alt":"Viyara Atelier","caption":"Viyara Atelier"},{"src":"/images/viyara8.webp","alt":"Viyara Atelier","caption":"Viyara Atelier"}];
+
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.getElementById(carouselId);
+  if (!carousel) return;
+
+  const track = carousel.querySelector('.carousel-track');
+  const prevBtn = carousel.querySelector('.prev');
+  const nextBtn = carousel.querySelector('.next');
+  const dots = Array.from(carousel.querySelectorAll('.dot'));
+  const lightbox = document.getElementById(`lightbox-${carouselId}`);
+  const lightboxImg = lightbox.querySelector('.lightbox-image');
+  const lightboxClose = lightbox.querySelector('.lightbox-close');
+  const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+  const lightboxNext = lightbox.querySelector('.lightbox-next');
+  const lightboxCounter = lightbox.querySelector('.lightbox-counter');
+
+  let slidesToShowLocal = parseInt(carousel.dataset.slidesToShow) || 3;
+  let originalSlides = Array.from(track.children);
+  const originalCount = originalSlides.length;
+  if (originalCount === 0) return;
+  let clonesCount = Math.min(originalCount, slidesToShowLocal * 2); // Doubler ou prendre le total//
+  function getGapPx() {
+    const styles = getComputedStyle(track);
+    const gap = styles.gap || styles.columnGap || '0px';
+    return parseFloat(gap) || 0;
+  }
+
+  function createClones() {
+    Array.from(track.querySelectorAll('.clone')).forEach(n => n.remove());
+    const currentChildren = Array.from(track.children);
+    const prependItems = currentChildren.slice(-clonesCount).map((node, idx) => {
+      const clone = node.cloneNode(true);
+      clone.classList.add('clone');
+      const img = clone.querySelector('img');
+      if (img) {
+        const origIdx = (originalCount - clonesCount + idx) % originalCount;
+        img.dataset.originalIndex = origIdx;
+      }
+      return clone;
+    }).reverse();
+    prependItems.forEach(n => track.insertBefore(n, track.firstChild));
+    const appendItems = currentChildren.slice(0, clonesCount).map((node, idx) => {
+      const clone = node.cloneNode(true);
+      clone.classList.add('clone');
+      const img = clone.querySelector('img');
+      if (img) {
+        img.dataset.originalIndex = idx;
+      }
+      return clone;
+    });
+    appendItems.forEach(n => track.appendChild(n));
+  }
+
+  let slideWidthPx = 0;
+  let movePx = 0;
+  let totalSlidesDom = 0;
+  let currentIndex = 0;
+  let isTransitioning = false;
+
+  function measure() {
+    const allSlides = Array.from(track.children);
+    totalSlidesDom = allSlides.length;
+    const sample = allSlides.find(s => s.getBoundingClientRect().width > 0) || allSlides[0];
+    const gapPx = getGapPx();
+    slideWidthPx = sample.getBoundingClientRect().width;
+    movePx = slideWidthPx + gapPx;
+  }
+
+  function init() {
+    if (window.innerWidth <= 768) {
+      slidesToShowLocal = 1;
+    } else if (window.innerWidth <= 1024) {
+      slidesToShowLocal = Math.min(2, slidesToShow);
+    } else {
+      slidesToShowLocal = parseInt(carousel.dataset.slidesToShow) || slidesToShow;
+    }
+    clonesCount = Math.min(originalCount, slidesToShowLocal * 2); // Doubler ou prendre le total
+    Array.from(track.querySelectorAll('.clone')).forEach(n => n.remove());
+    createClones();
+    measure();
+    currentIndex = clonesCount;
+    track.style.transition = 'none';
+    track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+    requestAnimationFrame(() => { track.style.transition = 'transform 0.1s ease'; });
+    updateDots();
+    attachImageClicks();
+  }
+
+  function updateDots() {
+    if (!dots.length) return;
+    const relativeIndex = (currentIndex - clonesCount + originalCount) % originalCount;
+    const dotIndex = Math.floor(relativeIndex / slidesToShowLocal);
+    dots.forEach((d, i) => d.classList.toggle('active', i === dotIndex));
+  }
+
+  function moveToIndex(index, withTransition = true) {
+    track.style.transition = withTransition ? 'transform 0.5s ease' : 'none';
+    currentIndex = index;
+    track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+    isTransitioning = !!withTransition;
+  }
+
+  function next() {
+    if (isTransitioning) return;
+    moveToIndex(currentIndex + 1, true);
+  }
+  function prev() {
+    if (isTransitioning) return;
+    moveToIndex(currentIndex - 1, true);
+  }
+
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
+    const leftBound = clonesCount;
+    const rightBound = clonesCount + originalCount - 1;
+    if (currentIndex > rightBound) {
+      const newIndex = currentIndex - originalCount;
+      track.style.transition = 'none';
+      currentIndex = newIndex;
+      track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+      requestAnimationFrame(() => { track.style.transition = 'transform 0.5s ease'; });
+    }
+    if (currentIndex < leftBound) {
+      const newIndex = currentIndex + originalCount;
+      track.style.transition = 'none';
+      currentIndex = newIndex;
+      track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+      requestAnimationFrame(() => { track.style.transition = 'transform 0.5s ease'; });
+    }
+    updateDots();
+  });
+
+  const dotsEls = dots;
+  dotsEls.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.index);
+      const targetRelative = idx * slidesToShowLocal;
+      const targetDomIndex = clonesCount + (targetRelative % originalCount);
+      moveToIndex(targetDomIndex, true);
+    });
+  });
+
+  function attachImageClicks() {
+    const allImgs = track.querySelectorAll('img');
+    allImgs.forEach(img => {
+      const originalIndex = (img.dataset.originalIndex !== undefined) ? parseInt(img.dataset.originalIndex) : parseInt(img.dataset.lightboxIndex || img.closest('.carousel-slide')?.dataset.index || 0);
+      img.dataset._orig = originalIndex;
+      img.addEventListener('click', () => openLightbox(originalIndex));
+    });
+  }
+
+  let lightboxIndex = 0;
+  function openLightbox(index) {
+    lightboxIndex = index;
+    updateLightbox();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+  function updateLightbox() {
+    lightboxImg.src = images[lightboxIndex].src;
+    lightboxImg.alt = images[lightboxIndex].alt;
+    lightboxCounter.textContent = `${lightboxIndex + 1} / ${images.length}`;
+  }
+  function navigateLightbox(direction) {
+    lightboxIndex += direction;
+    if (lightboxIndex >= images.length) lightboxIndex = 0;
+    if (lightboxIndex < 0) lightboxIndex = images.length - 1;
+    updateLightbox();
+  }
+
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightboxPrev?.addEventListener('click', () => navigateLightbox(-1));
+  lightboxNext?.addEventListener('click', () => navigateLightbox(1));
+  lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+  });
+
+  prevBtn?.addEventListener('click', prev);
+  nextBtn?.addEventListener('click', next);
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { init(); }, 150);
+  });
+
+  init();
+});
+})();</script> </section> </article> </main>  </main> <footer class="full-width-footer" data-astro-cid-sz7xmlte> <div class="footer-container" data-astro-cid-sz7xmlte> <!-- Left Motto --> <div class="footer-motto left" data-astro-cid-sz7xmlte> <span class="motto-text" data-astro-cid-sz7xmlte>
+Business With Attitude<br data-astro-cid-sz7xmlte>Genève - Paris - Singapore
+</span> </div> <!-- Center Logo and Legal Link --> <div class="footer-center" data-astro-cid-sz7xmlte> <a href="/" class="footer-logo" data-astro-cid-sz7xmlte> <img src="/images/logo.svg" alt="Logo" class="logo-img" data-astro-cid-sz7xmlte> <span class="logo-text" data-astro-cid-sz7xmlte>We-TheAgency</span> </a> <a href="/legal" class="legal-link" data-astro-cid-sz7xmlte>Terms & Conditions</a> </div> <!-- Right Motto with Instagram --> <div class="footer-motto right" data-astro-cid-sz7xmlte> <span class="motto-text" data-astro-cid-sz7xmlte> </span> <a href="https://www.instagram.com/wta.wpp/" target="_blank" rel="noopener noreferrer" class="instagram-link" aria-label="Instagram" data-astro-cid-sz7xmlte> <svg class="instagram-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-astro-cid-sz7xmlte> <path d="M12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2ZM12 20C7.589 20 4 16.411 4 12C4 7.589 7.589 4 12 4C16.411 4 20 7.589 20 12C20 16.411 16.411 20 12 20Z" fill="currentColor" data-astro-cid-sz7xmlte></path> <path d="M12 7C9.243 7 7 9.243 7 12C7 14.757 9.243 17 12 17C14.757 17 17 14.757 17 12C17 9.243 14.757 7 12 7ZM12 15C10.346 15 9 13.654 9 12C9 10.346 10.346 9 12 9C13.654 9 15 10.346 15 12C15 13.654 13.654 15 12 15Z" fill="currentColor" data-astro-cid-sz7xmlte></path> <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" data-astro-cid-sz7xmlte></circle> </svg> </a> </div> </div></footer>   <script type="module">const n={threshold:.1,rootMargin:"0px 0px -50px 0px"},o=new IntersectionObserver(e=>{e.forEach(t=>{t.isIntersecting&&t.target.classList.add("animate")})},n);document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".scroll-animate").forEach(t=>o.observe(t))});document.addEventListener("click",e=>{if(e.target.matches('a[href^="#"]')){e.preventDefault();const t=e.target.getAttribute("href"),r=document.querySelector(t);r&&r.scrollIntoView({behavior:"smooth",block:"start"})}});</script> </body></html> 

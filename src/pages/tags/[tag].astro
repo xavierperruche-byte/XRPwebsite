@@ -1,0 +1,234 @@
+---
+// src/pages/tags/[tag].astro
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  // 🔍 Fetch ALL article files from src/pages/articles/
+  //const mdArticles = await Astro.glob('../articles/*.md');
+  //const astroArticles = await Astro.glob('../articles/*.astro');
+  //const articles = [...mdArticles, ...astroArticles];
+
+  // if onlwy looking for md files:
+  const articles = await Astro.glob('../articles/*.md');
+
+  // 📦 Create a map to organize articles by tag
+  const tagMap = new Map();
+  
+  // 🔄 Loop through each article
+    articles.forEach(article => {
+    // Ajout d'une vérification pour s'assurer que frontmatter existe
+    const frontmatter = article.frontmatter;
+    if (!frontmatter) return; // Ignore cet article s'il n'a pas de frontmatter
+    
+    // Get tags from the article's frontmatter
+    const tags = frontmatter.tags || [];
+    
+    // For each tag in this article
+    tags.forEach(tag => {
+      // Normalize tag name (lowercase, replace spaces with hyphens)
+      const normalizedTag = tag.toLowerCase().replace(/\s+/g, '-');
+      
+      // If this is the first time we see this tag, create an entry
+      if (!tagMap.has(normalizedTag)) {
+        tagMap.set(normalizedTag, {
+          displayName: tag,  // Original tag name for display
+          articles: []       // Array to store articles with this tag
+        });
+      }
+      
+      // Add this article to the tag's article list
+      tagMap.get(normalizedTag).articles.push({
+        title: article.frontmatter.title,
+        slug: article.url,
+        mainImage: article.frontmatter.mainImage,
+        mainImageAlt: article.frontmatter.mainImageAlt,
+        excerpt: article.frontmatter.excerpt || '',
+        publishDate: article.frontmatter.publishDate
+      });
+    });
+  });
+  
+  // 🎯 Generate a static path for EACH unique tag
+  // This creates: /tags/astro, /tags/web-development, etc.
+  return Array.from(tagMap.entries()).map(([tag, data]) => ({
+    params: { tag },  // The URL parameter (e.g., "astro")
+    props: { 
+      tagName: data.displayName,  // Original tag name (e.g., "Astro")
+      articles: data.articles.sort((a, b) => 
+        new Date(b.publishDate) - new Date(a.publishDate)
+      )  // Articles sorted by date (newest first)
+    }
+  }));
+}
+
+// 📥 Receive the data passed from getStaticPaths()
+const { tag } = Astro.params;  // URL parameter (e.g., "astro")
+const { tagName, articles } = Astro.props;  // Data: tag name + filtered articles
+---
+
+<Layout title={`Articles tagged "${tagName}"`}>
+  
+  <main class="tag-gallery">
+    <div class="gallery-header">
+      <h1>Articles tagged: <span class="tag-name">{tagName}</span></h1>
+      <p class="article-count">{articles.length} {articles.length === 1 ? 'article' : 'articles'} found</p>
+    </div>
+
+    <div class="articles-grid">
+      {articles.map(article => (
+        <article class="article-card">
+          <a href={article.slug} class="card-link">
+            <div class="card-image">
+              <img src={article.mainImage} alt={article.mainImageAlt} />
+            </div>
+            <div class="card-content">
+              <h2 class="card-title">{article.title}</h2>
+              {article.publishDate && (
+                <time class="card-date" datetime={article.publishDate}>
+                  {new Date(article.publishDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                  })}
+                </time>
+              )}
+              {article.excerpt && (
+                <p class="card-excerpt">{article.excerpt}</p>
+              )}
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <div class="back-link">
+      <a href="/articles">← Back to all articles</a>
+    </div>
+  </main>
+
+</Layout>
+
+<style>
+
+  .tag-gallery {
+    max-width: 80vw;
+    margin: 150px auto;
+    padding: 2rem 1rem;
+    padding-bottom:0rem;
+    margin-bottom:0px;
+  }
+
+  .gallery-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .gallery-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+  }
+
+  .tag-name {
+    color: #666;
+  }
+
+  .article-count {
+    color: #666;
+    font-size: 1rem;
+  }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .article-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .article-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .article-card:hover .card-image img {
+    transform: scale(1.05);
+  }
+
+  .card-content {
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem 0;
+    color: #1a1a1a;
+  }
+
+  .card-date {
+    display: block;
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-excerpt {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .back-link {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .back-link a {
+    color: #000000ff;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+
+  .back-link a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-header h1 {
+      font-size: 1.8rem;
+    }
+
+    .articles-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>

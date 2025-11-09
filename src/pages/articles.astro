@@ -1,0 +1,255 @@
+---
+// src/pages/articles.astro
+import Layout from '../layouts/Layout.astro';
+
+// 🔍 Fetch ALL article files from src/pages/articles/
+const rawArticles = await Astro.glob('./articles/*.md');
+
+// 📦 Logique d'extraction et de tri des articles et des tags
+const tagMap = new Map();
+
+const articles = rawArticles
+  .map(article => {
+    const frontmatter = article.frontmatter;
+    if (!frontmatter) return null;
+
+    // --- 1. Logique d'extraction des tags ---
+    const tags = frontmatter.tags || [];
+    tags.forEach(tag => {
+      const normalizedTag = tag.toLowerCase().replace(/\s+/g, '-');
+      if (!tagMap.has(normalizedTag)) {
+        tagMap.set(normalizedTag, {
+          displayName: tag,
+          slug: normalizedTag // L'URL normalisée du tag
+        });
+      }
+    });
+    // ----------------------------------------
+
+    return {
+      title: frontmatter.title,
+      slug: article.url,
+      mainImage: frontmatter.mainImage,
+      mainImageAlt: frontmatter.mainImageAlt,
+      excerpt: frontmatter.excerpt || '',
+      publishDate: frontmatter.publishDate
+    };
+  })
+  .filter(article => article && article.publishDate)
+  .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
+
+// Liste finale des tags uniques pour l'affichage
+const allTags = Array.from(tagMap.values()).sort((a, b) => a.displayName.localeCompare(b.displayName));
+
+const pageTitle = "All Articles";
+---
+
+<Layout title={pageTitle}>
+  <main class="tag-gallery">
+    <div class="gallery-header">
+      <h1>{pageTitle}</h1>
+      <p class="article-count">{articles.length} {articles.length === 1 ? 'article' : 'articles'} found</p>
+      
+      <section class="tag-list-index">
+        {allTags.map(tag => (
+          <a href={`/tags/${tag.slug}`} class="tag">
+            {tag.displayName}
+          </a>
+        ))}
+      </section>
+      </div>
+
+    <div class="articles-grid">
+      {articles.map(article => (
+        <article class="article-card">
+          <a href={article.slug} class="card-link">
+            <div class="card-image">
+              <img src={article.mainImage} alt={article.mainImageAlt} />
+            </div>
+            <div class="card-content">
+              <h2 class="card-title">{article.title}</h2>
+              {article.publishDate && (
+                <time class="card-date" datetime={article.publishDate}>
+                  {new Date(article.publishDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                  })}
+                </time>
+              )}
+              {article.excerpt && (
+                <p class="card-excerpt">{article.excerpt}</p>
+              )}
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+    
+    </main>
+</Layout>
+
+<style>
+  /* Copiez et collez tous les styles de .tag-gallery, .articles-grid et .article-card depuis votre [tag].astro */
+  
+  .tag-gallery {
+    max-width: 80vw;
+    margin: 150px auto;
+    padding: 2rem 1rem;
+    padding-bottom:0rem;
+    margin-bottom:0px;
+  }
+
+  .gallery-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .gallery-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+  }
+
+  .tag-name {
+    color: #666;
+  }
+
+  .article-count {
+    color: #666;
+    font-size: 1rem;
+  }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .article-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .article-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .article-card:hover .card-image img {
+    transform: scale(1.05);
+  }
+
+  .card-content {
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem 0;
+    color: #1a1a1a;
+  }
+
+  .card-date {
+    display: block;
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-excerpt {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+    .tag-list-index {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e5e5e5; /* Séparateur visuel */
+    }
+
+    /* Réutilisation des styles de tag de ArticleLayout.astro pour l'apparence */
+  .tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+  }
+
+  .tag:hover {
+    background: #e0e0e0;
+  }
+
+
+
+  @media (max-width: 768px) {
+    .gallery-header h1 {
+      font-size: 1.8rem;
+    }
+
+    .articles-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .tag-list-index {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e5e5e5; /* Séparateur visuel */
+    }
+
+    /* Réutilisation des styles de tag de ArticleLayout.astro pour l'apparence */
+  .tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+  }
+
+  .tag:hover {
+    background: #e0e0e0;
+  }
+
+  }
+</style>
