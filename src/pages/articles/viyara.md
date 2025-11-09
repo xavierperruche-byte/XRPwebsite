@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/ArticleLayout.astro
-title: "Ulaland"
+title: "Viyara Atelier"
 mainImage: "/images/viyara1.webp"
 mainImageAlt: "Viyara Atelier"
 excerpt: "Viyara Atelier, 'avoir la foi'"

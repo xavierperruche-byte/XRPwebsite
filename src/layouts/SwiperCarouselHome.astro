@@ -24,6 +24,31 @@ if (typeof window === 'undefined') {
     slides-per-view="4"
     space-between="20"
   >
+
+    <!-- SLIDE AVEC VIDÉO -->
+    <swiper-slide>
+      <div class="slide-content slide-video" 
+           data-video="/videos/WTA_WPP.mp4"
+           data-title="Décembre 2025" 
+           data-description="Nouveau site de l'Agence"
+           data-details="<p>nouvelles technologies....</p>">
+        <div class="video-container">
+          <video 
+            src="/videos/WTA_WPP.mp4" 
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
+        <div class="slide-text">
+          <h2>Décembre 2025</h2>
+          <p>Nouveau site de l'Agence</p>
+        </div>
+      </div>
+    </swiper-slide>
+
+
     <swiper-slide>
       <div class="slide-content" 
            data-image="/images/2025101.webp" 
@@ -117,12 +142,15 @@ if (typeof window === 'undefined') {
     </swiper-slide>
   </swiper-container>
 
-  <!-- Overlay pour afficher l'image en grand avec texte -->
+  <!-- Overlay pour afficher l'image/vidéo en grand avec texte -->
   <div class="image-overlay" id="imageOverlay">
     <button class="close-overlay" id="closeOverlay">&times;</button>
     <div class="overlay-content">
-      <div class="overlay-image-container">
+      <div class="overlay-image-container" id="overlayMediaContainer">
         <img src="" alt="Image agrandie" id="overlayImage" />
+        <video id="overlayVideo" loop muted playsinline style="display: none;">
+          <source src="" type="video/mp4">
+        </video>
       </div>
       <div class="overlay-text-container">
         <h2 id="overlayTitle"></h2>
@@ -215,6 +243,28 @@ if (typeof window === 'undefined') {
     transform: scale(0.98);
   }
 
+  /* Styles pour le conteneur vidéo */
+  .video-container {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  .video-container video {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 20px;
+    will-change: transform;
+  }
+
+
   /* Overlay pour l'image agrandie */
   .image-overlay {
     display: none;
@@ -251,12 +301,36 @@ if (typeof window === 'undefined') {
     height: 100%;
   }
 
-  .overlay-image-container img {
+    .overlay-image-container img,
+  .overlay-image-container video {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
     border-radius: 10px;
   }
+
+
+  /* Masquer les contrôles vidéo au survol */
+  video::-webkit-media-controls {
+    display: none !important;
+  }
+
+  video::-webkit-media-controls-enclosure {
+    display: none !important;
+  }
+
+  video::-webkit-media-controls-panel {
+    display: none !important;
+  }
+
+  video::-webkit-media-controls-play-button {
+    display: none !important;
+  }
+
+  video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+  }
+
 
   .overlay-text-container {
     flex: 0 0 400px;
@@ -314,10 +388,6 @@ if (typeof window === 'undefined') {
   /* Style pour les listes à puces (•) */
   .overlay-additional-info {
     font-size: 0.95rem;
-  }
-
-  /* Animation d'apparition du contenu */
-  .overlay-additional-info {
     animation: fadeInUp 0.5s ease-out 0.2s both;
   }
 
@@ -419,6 +489,7 @@ if (typeof window === 'undefined') {
     bottom: 0vh;
   }
 
+
   /* Responsive pour l'overlay */
   @media (max-width: 1024px) {
     .overlay-content {
@@ -466,6 +537,13 @@ if (typeof window === 'undefined') {
       top: 10px;
       right: 20px;
     }
+
+
+  .video-play-icon {
+      font-size: 3rem;
+      width: 60px;
+      height: 60px;
+    }
   }
 
   /* Responsive */
@@ -475,7 +553,11 @@ if (typeof window === 'undefined') {
       height: auto;
       min-height: 60vh;
     }
+
     .slide-content img {
+      height: 60vh;
+    }
+    .video-container {
       height: 60vh;
     }
    
@@ -513,7 +595,11 @@ if (typeof window === 'undefined') {
       height: auto;
       min-height: 60vh;
     }
+
     .slide-content img {
+      height: 60vh;
+    }
+    .video-container {
       height: 60vh;
     }
    
@@ -553,6 +639,10 @@ if (typeof window === 'undefined') {
     }
 
     .slide-content img {
+      height: 60vh;
+    }
+
+    .video-container {
       height: 60vh;
     }
     
@@ -602,11 +692,39 @@ if (typeof window === 'undefined') {
     const nextBtn = document.querySelector('.custom-next');
     const overlay = document.getElementById('imageOverlay');
     const overlayImage = document.getElementById('overlayImage');
+    const overlayVideo = document.getElementById('overlayVideo');
     const overlayTitle = document.getElementById('overlayTitle');
     const overlayDescription = document.getElementById('overlayDescription');
     const overlayDetails = document.getElementById('overlayDetails');
     const closeBtn = document.getElementById('closeOverlay');
     
+    // Gestion de la lecture automatique des vidéos dans le carousel
+    const videoSlides = document.querySelectorAll('.slide-video');
+    videoSlides.forEach(slide => {
+      const video = slide.querySelector('video');
+      if (video) {
+        // Configuration pour une boucle fluide
+        video.preload = 'auto';
+        
+        // Forcer le rechargement complet
+        video.load();
+        
+        // Démarrer la lecture
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(e => console.log('Autoplay prevented:', e));
+        }
+        
+        // Méthode alternative pour boucle fluide : revenir légèrement avant la fin
+        video.addEventListener('timeupdate', function() {
+          if (this.duration - this.currentTime < 0.1) {
+            this.currentTime = 0;
+          }
+        });
+      }
+    });
+    
+
     if (swiperEl) {
       // Gestion des boutons de navigation personnalisés
       if (prevBtn) {
@@ -626,15 +744,46 @@ if (typeof window === 'undefined') {
       slideContents.forEach(content => {
         content.addEventListener('click', () => {
           const imageSrc = content.getAttribute('data-image');
+          const videoSrc = content.getAttribute('data-video');
           const title = content.getAttribute('data-title');
           const description = content.getAttribute('data-description');
           const details = content.getAttribute('data-details');
           
-          if (imageSrc && overlay && overlayImage) {
-            overlayImage.src = imageSrc;
+          if (overlay) {
             if (overlayTitle) overlayTitle.textContent = title || '';
             if (overlayDescription) overlayDescription.textContent = description || '';
             if (overlayDetails) overlayDetails.innerHTML = details || '<p>Aucun détail supplémentaire disponible.</p>';
+
+                        
+            // Si c'est une vidéo
+            if (videoSrc && overlayVideo) {
+              overlayImage.style.display = 'none';
+              overlayVideo.style.display = 'block';
+              overlayVideo.querySelector('source').src = videoSrc;
+              overlayVideo.loop = true;
+              overlayVideo.muted = true;
+              overlayVideo.preload = 'auto';
+              overlayVideo.load();
+              
+              // Méthode alternative pour boucle fluide
+              overlayVideo.addEventListener('timeupdate', function() {
+                if (this.duration - this.currentTime < 0.1) {
+                  this.currentTime = 0;
+                }
+              });
+              
+              const playPromise = overlayVideo.play();
+              if (playPromise !== undefined) {
+                playPromise.catch(e => console.log('Video play error:', e));
+              }
+            } 
+            // Si c'est une image
+            else if (imageSrc && overlayImage) {
+              overlayVideo.style.display = 'none';
+              overlayImage.style.display = 'block';
+              overlayImage.src = imageSrc;
+            }
+            
             overlay.classList.add('active');
           }
         });
@@ -644,12 +793,22 @@ if (typeof window === 'undefined') {
       if (closeBtn && overlay) {
         closeBtn.addEventListener('click', () => {
           overlay.classList.remove('active');
+          if (overlayVideo) {
+            overlayVideo.pause();
+            overlayVideo.currentTime = 0;
+          }
+
         });
         
         // Fermer en cliquant sur le fond
         overlay.addEventListener('click', (e) => {
           if (e.target === overlay) {
             overlay.classList.remove('active');
+            if (overlayVideo) {
+              overlayVideo.pause();
+              overlayVideo.currentTime = 0;
+            }
+
           }
         });
       }
@@ -658,6 +817,11 @@ if (typeof window === 'undefined') {
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && overlay) {
           overlay.classList.remove('active');
+          if (overlayVideo) {
+            overlayVideo.pause();
+            overlayVideo.currentTime = 0;
+          }
+
         }
       });
 

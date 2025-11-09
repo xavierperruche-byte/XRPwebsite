@@ -11,25 +11,7 @@ import BackToTop from '../components/BackToTop.astro';
   description="Une marque qui inspire. Une stratégie qui performe.."
   currentPage="/past-projects"
 >
-  <!-- Navigation secondaire flottante -->
-  <nav class="floating-subnav" id="floatingSubnav">
-    <div class="subnav-container">
-      <a href="/offer" class="subnav-link">
-        <span class="nav-icon">📋</span>
-        <span class="nav-text">Offre</span>
-      </a>
-      <a href="/projets" class="subnav-link">
-        <span class="nav-icon">🖥️</span>
-        <span class="nav-text">Projets</span>
-      </a>
-      <a href="/past-projets" class="subnav-link active">
-        <span class="nav-icon">📚</span>
-        <span class="nav-text">Projets passés</span>
-      </a>
-    </div>
-  </nav
 
- 
 
 
   <!-- Spacer pour compenser le header et la subnav -->
@@ -60,7 +42,7 @@ import BackToTop from '../components/BackToTop.astro';
       {src: '/images/mink.webp', alt: 'Mme Mink', caption: 'MME MINK (2020) US brand – Event canceled in Geneva (COVID)' },
       {src: '/images/Kaio.webp', alt: 'Kaio', caption: 'Kaio Swim (2019-2026): Business Dev. Golden Age with 9 Retailers in Switzerland (Geneva, Lausanne, Gstaad, Zurich, Basel…) & 1 on French Riviera + online marketplaces.'},
       {src: '/images/PIOUPIOUxLUCAS.webp', alt: 'Pioupiou x Lucas du Tertre', caption: 'Collaboration Pioupiou Cosmetic X LDT (2022)'},
-      {src: '/images/fashion.webp', alt: 'Lucas du Tertre', caption: 'Lucas du Tertre: Business Developement (2012-2013 Retailer in Singapore | 2022 Retailer in Geneva)'},
+      {src: '/images/fashion.webp', alt: 'Lucas du Tertre', caption: 'Lucas du Tertre: Business Developement (2022 Retailer in Geneva)'},
       // Ajoutez autant d'images que vous voulez ici
     ]}
     columns={3} 
@@ -79,6 +61,7 @@ import BackToTop from '../components/BackToTop.astro';
     images={[
       {src: '/images/feyue.png', alt: 'feyue', caption: 'Feyue' },
       {src: '/images/toupy.webp', alt: 'Toupy', caption: 'Toupy'},
+      {src: '/images/fashion.webp', alt: 'Lucas du Tertre', caption: 'Lucas du Tertre: Business Developement (2012-2013 Retailer in Singapore)'},
       {src: '/images/cp.webp', alt: 'Je suis en CP', caption: 'Je suis en CP' },
       // Ajoutez autant d'images que vous voulez ici
     ]}

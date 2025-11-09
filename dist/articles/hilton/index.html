@@ -1,0 +1,261 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="description" content="We - TheAgency"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/images/logo.svg"><title>We-TheAgency</title><!-- Preload fonts for better performance --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/aroundmrso.B8Mo34t6.css">
+<link rel="stylesheet" href="/_astro/aroundmrso.-jxeEgAJ.css"></head> <body> <!-- Floating Header --> <header class="floating-header" id="floatingHeader" data-astro-cid-3ef6ksr2> <div class="header-container" id="headerContainer" data-astro-cid-3ef6ksr2> <!-- Logo/Brand --> <div class="logo" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2> <img src="/images/logo.svg" alt="Logo" class="logo-img" data-astro-cid-3ef6ksr2> <span class="logo-text" data-astro-cid-3ef6ksr2>We-TheAgency</span> </a> </div> <!-- Desktop Navigation --> <nav class="desktop-nav" id="desktopNav" data-astro-cid-3ef6ksr2> <a href="/" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>👩‍💻</span> <span class="nav-text" data-astro-cid-3ef6ksr2>agence</span> </a><a href="/projets" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📖</span> <span class="nav-text" data-astro-cid-3ef6ksr2>services</span> </a><a href="/well" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>🧘‍♀️</span> <span class="nav-text" data-astro-cid-3ef6ksr2>we.llbeing</span> </a><a href="/magazine" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>magazine.we</span> </a><a href="/press" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>presse</span> </a><a href="/contact" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📧</span> <span class="nav-text" data-astro-cid-3ef6ksr2>contact</span> </a> </nav> <!-- Mobile Menu Button --> <button class="mobile-menu-btn" id="mobileMenuBtn" data-astro-cid-3ef6ksr2> <span class="hamburger" data-astro-cid-3ef6ksr2></span> <span class="hamburger" data-astro-cid-3ef6ksr2></span> <span class="hamburger" data-astro-cid-3ef6ksr2></span> </button> </div> <!-- Mobile Navigation --> <nav class="mobile-nav" id="mobileNav" data-astro-cid-3ef6ksr2> <a href="/" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>👩‍💻</span> <span class="nav-text" data-astro-cid-3ef6ksr2>agence</span> </a><a href="/projets" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📖</span> <span class="nav-text" data-astro-cid-3ef6ksr2>services</span> </a><a href="/well" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>🧘‍♀️</span> <span class="nav-text" data-astro-cid-3ef6ksr2>we.llbeing</span> </a><a href="/magazine" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>magazine.we</span> </a><a href="/press" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>presse</span> </a><a href="/contact" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📧</span> <span class="nav-text" data-astro-cid-3ef6ksr2>contact</span> </a> </nav> </header>  <script type="module">function m(){const e=document.getElementById("floatingHeader"),l=document.getElementById("headerContainer"),c=document.getElementById("desktopNav"),t=document.getElementById("mobileMenuBtn"),n=document.getElementById("mobileNav");if(!e||!l||!c||!t||!n)return;function a(){e.classList.remove("mobile-mode"),n.classList.remove("active"),t.classList.remove("active"),requestAnimationFrame(()=>{requestAnimationFrame(()=>{const i=l.getBoundingClientRect(),o=c.querySelectorAll(".nav-link"),v=c.getBoundingClientRect();let s=!1;v.right>i.right-10&&(s=!0),o.forEach(u=>{const d=u.getBoundingClientRect();d.right>i.right-10&&(s=!0);const g=o[0].getBoundingClientRect();Math.abs(d.top-g.top)>10&&(s=!0)}),s&&e.classList.add("mobile-mode")})})}t.addEventListener("click",()=>{t.classList.toggle("active"),n.classList.toggle("active")}),n.querySelectorAll("a").forEach(i=>{i.addEventListener("click",()=>{t.classList.remove("active"),n.classList.remove("active")})}),window.addEventListener("scroll",()=>{(window.pageYOffset||document.documentElement.scrollTop)>100?e.classList.add("scrolled"):e.classList.remove("scrolled")}),document.addEventListener("click",i=>{const o=i.target;t&&n&&e&&!e.contains(o)&&(t.classList.remove("active"),n.classList.remove("active"))}),a();let r;window.addEventListener("resize",()=>{clearTimeout(r),r=setTimeout(a,150)})}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",m):m();</script> <!-- Main Content --> <main class="main-content">  <main class="article-page" data-astro-cid-zm77yjld> <article class="article-container" data-astro-cid-zm77yjld> <!-- Main Image --> <div class="article-hero" data-astro-cid-zm77yjld> <img src="/images/hilton1.webp" alt="Hilton Geneva &#38; Conference Center" class="article-main-image" data-astro-cid-zm77yjld> </div> <!-- Article Header --> <header class="article-header" data-astro-cid-zm77yjld> <h1 class="article-title" data-astro-cid-zm77yjld>Hilton Geneva &amp; Conference Center</h1> <time class="article-date" datetime="2023-11-08" data-astro-cid-zm77yjld> November 8, 2023 </time> <!-- Tags --> <div class="article-tags" data-astro-cid-zm77yjld> <a href="/tags/escapade" class="tag" data-astro-cid-zm77yjld> escapade </a> </div> </header> <!-- Article Content (your markdown renders here) --> <div class="article-content" data-astro-cid-zm77yjld> <h1 id="un-hôtel-genevois-dédié-au-tourisme-daffaires">Un hôtel genevois dédié au tourisme d’affaires.</h1>
+<p>Le tourisme est une activité mondiale incontournable. Dans ce cadre, les acteurs du tourisme ont le devoir de mettre en place une politique de RSE pertinente et ambitieuse.</p>
+<p>J’aimerais faire ici un petit aparté sur le concept de RSE (CSR en anglais). Historiquement, aux États-Unis, c’est l’éthique personnelle du dirigeant qui est à l’origine du concept de la RSE. Pour des raisons morales ou religieuses, le dirigeant doit faire le bien autour de lui : l’entreprise qui se confond avec son dirigeant est considérée comme un « être moral ». Howard Bowen dans son ouvrage intitulé « Social Responsibilities of the businessman » et qui est identifié comme le père fondateur de la RSE, définit la responsabilité sociale de l’entrepreneur comme telle : « La responsabilité sociale renvoie aux obligations de l’homme d’affaire de poursuivre telles politiques, de prendre telles décisions ou de suivre telles lignes d’action qui sont désirables en fonction des objectifs et des valeurs de notre société ». Il s’agit de placer les valeurs reconnues dans la société au-dessus des valeurs personnelles et cela dans un mouvement volontaire de la raison, car l’homme d’affaire ayant plus de pouvoir que le simple citoyen, il doit être capable de comprendre l’impact de son action sur la société.</p>
+<p>A partir des années 1970, le tourisme connait un essor fulgurant sur un plan mondial. Avec l’émergence des préoccupations sociales et environnementales, le développement touristique est de plus en plus confronté à la question du développement humain des populations locales et de la protection de l’environnement.</p>
+<p>Qui plus est, la crise sanitaire de 2020/21 a soulevé de nouvelles contraintes sociales et sanitaires et accéléré la mise en place de politiques audacieuses et impactantes dans l’industrie de l’hôtellerie.</p>
+<p>Avec Une journée au Hilton de Genève, je vous propose d’explorer l’ensemble des efforts et les actions initiés par l’équipe du Hilton, un hôtel genevois 4* supérieur ici dédié principalement au tourisme d’affaires.</p>
+<p>Mon histoire avec les hôtels Hilton est durable. Celle-ci a déjà commencé au Hilton San Antonio en 1996, s’en est suivi quelques années plus tard avec le Hilton New Orleans Riverside, Singapore, NYC, et elle se poursuit encore aujourd’hui grâce à la confiance accordée par Hilton Geneva &#x26; Conference Centre.</p>
+<p>Je suis donc ravie de publier cet article sur les engagements éco responsables de l’hôtel de Genève et je remercie infiniment Jeanne et François, Mathilde et Louis, Miguel du restaurant Olivo.</p>
+<p>Proposant une offre gastronomique inspirée par le terroir, ainsi qu’un espace wellness et fitness de 2000 m2, cet hôtel réunit tous les attraits pour séduire tant une clientèle business que privée.</p>
+<p>Les engagements du HILTON portent essentiellement sur les points suivants :</p>
+<p>Fournir au client un cadre de vie plus sain
+Faire des choix énergétiques permettant de diminuer fortement ou de supprimer l’utilisation d’énergies non renouvelables
+Réduire au minimum sa quantité de déchets non recyclables (par le tri et le compostage) et supprimer le plastique au maximum
+Limiter le gaspillage par différentes actions (poubelles connectées pour adapter les quantités commandées chaque semaine, dons des surplus de production à l’association Le Caré, Too Good To Go, etc)
+Favoriser l’impact économique local par une politique d’achat et d’emploi adaptée
+Adapter ses pratiques managériales en impliquant son personnel dans la gestion au quotidien de l’entreprise (suivi des consommations, choix des produits d’entretien, implication dans la gestion différenciée des espaces verts, …)
+Rendre accessible la prestation d’hébergement à différentes parties de la population notamment les personnes handicapées
+Hilton avec sa stratégie “Travel with Purpose ” vise à diviser par deux l’impact environnemental en réduisant les consommations d’énergie, d’eau, le gaspillage et doubler l’investissement social.</p>
+<p>Le soleil se lève sur Genève. Je suis au 7è étage dans une des suites du Hilton Geneva &#x26; Conference Centre.</p>
+<p>Ma journée commence comme toutes les journées : Pour stimuler mon organisme, je commence toujours par m’hydrater avec un grand verre d’eau.</p>
+<p>Le Hilton a banni tous les plastiques inutiles en chambre (et l’interdiction des pailles) : verre et bouteille en verre recyclés sont disponibles. Plus de 30 millions de bouteilles d’eau ont ainsi été bannies des chambres dans l’ensemble des hôtels du groupe Hilton dans le monde (chiffres en date de 2018).</p>
+<p>Lors de mes déplacements professionnels, j’aime prendre mon petit déjeuner en chambre et lire les journaux du matin. La Suite est spacieuse et agréablement conçue, avec de larges baies vitrées.</p>
+<p>L’objectif du Hilton de Genève serait que 100% du petit déjeuner soit suisse. Dans la salle de restauration, les gourmands retrouveront également une live station pour déguster des omelettes et autres plats chaud selon le jour.</p>
+<p>Aujourd’hui, j’aspire à découvrir la piscine intérieure chauffée.  Doté d’un spacieux espace wellness de 500 m2, l’hôtel dispose d’un sauna, d’un hammam, d’un jacuzzi et même de la plus grande piscine intérieure d’hôtel à Genève (une longueur de 20 mètres). Chauffée à 28 degrés, elle accueille régulièrement des cours de natation et d’aqua bike.</p>
+<p>On se jette à l’eau ?</p>
+<p>De retour en chambre, j’aimerais mentionner les efforts faits dans la salle de bain : les mini flacons de douche et shampooing ont laissé la place aux grands flacons rechargeables, estampillés ici Crabtree&#x26;Evelyn.</p>
+<p>Proposition est faite de conserver son linge de toilette sur quelques jours et réduire tous les déchets plastique en chambre et salle de bain.</p>
+<p>Des économies d’énergie sont faites grâce à l’utilisation d’ampoules LED basse consommation.</p>
+<p>Nous parlerons ultérieurement du projet Genilac. GeniLac utilisera l’eau du Léman pour chauffer et rafraichir (climatisation) les chambres d’ici 2025.</p>
+<p>À la belle saison, la terrasse extérieure végétalisée de l’Olivo est une invitation au dépaysement. Que ce soit pour un déjeuner d’affaires ou un dîner en tête-à-tête, elle accueille les convives dans un environnement calme et ombragé, parcouru par un point d’eau et agrémenté de deux oliviers, de fleurs et de plants. Le chef a installé son herbier aromatique dont les plantes entrent dans la composition de ses créations culinaires faites maison.</p>
+<p>Ambassadeur du terroir genevois, l’établissement met un point d’honneur à privilégier des produits locaux, provenant majoritairement d’un rayon de 200 kilomètres, s’approvisionner de façon durable et locale en viande, produits frais, poisson et intégrer ainsi des aliments de source durable dans nos assiettes sont des engagements clairs et pertinents. Traçabilité, approche écologique et réduction du gaspillage alimentaire, telles sont les valeurs que défend le prestigieux groupe international. Engagé pour les communautés locales, le Hilton de Genève soutient tout au long de l’année des associations locales telle que Le Caré et Partage avec des dons de nourriture, d’ustensiles et de vêtements. Les employés se portent régulièrement bénévoles pour aider le Caré à la distribution de repas aux genevois les plus précaires.</p>
+<p>Ici encore le groupe s’est également fixé pour but de diminuer de moitié la consommation d’eau et la production de déchets.</p>
+<p>Louis nous a recommandé les salades, et j’ai choisi le PokeBowl, un déjeuner extrêmement rafraichissant et plutôt délicat, accompagné de jus de fruits frais concocté au bar. Je suis séduite de découvrir cet oasis à quelques minutes de l’aéroport. Nous nous sommes régalés dans cet oasis méditerranéen, joliment décoré de citronniers, de chiliennes et du chant de l’eau. Le hamac et les balançoires apportent une touche de légèreté à la terrasse, et prônent la paresse et le temps long. Les champs de coquelicots s’invitent aussi dans ce cadre estival. Une vraie surprise, une ode à l’été.</p>
+<p>Revenons aux actions sociales et solidaires un instant :</p>
+<p>Le Hilton de Genève a déjà consacré plus de 421 heures de bénévolat depuis janvier 2023, bénévolat réalisé par nos employés avec l’association Le Caré, ainsi que des donations de vêtements pour La Croix-Rouge.</p>
+<p>En espérant que ce chiffre insufflera de la motivation aux autres entreprises genevoises qui liront notre article 😉</p>
+<p>Le Hilton est premier groupe hôtelier d’envergure, le « chef de file » à s’être fixé des objectifs basés sur des données scientifiques concrètes, d’autres grands groupes ont par la suite développé leurs propres objectifs de développement durable.</p>
+<p>Pour les séminaires et les réunions d’entreprise, Hilton utilise le système LightStay qui évalue la consommation d’énergie, d’eau, de carbone et de déchets de chaque réunion et permet aux clients d’obtenir une estimation de l’empreinte carbone de leur événement. Le Hilton s’engage à convertir ces crédits carbones en finançant des projets de développement durable avec le partenaire ClimeCo. Ce système est appliqué ici à Genève sans frais supplémentaire pour le client.</p>
+<p>Check In / Check Out</p>
+<p>Une nouveauté au Hilton de Genève : une solution de serrure numérique qui permet déjà de ne pas passer de main en main des clefs ou des cartes magnétiques (c’était un phénomène aliénant pendant la crise sanitaire). En outre ne pas avoir de clefs c’est aussi réduire la consommation de plastique (pas de clef donc pas de plastique). À l’aide de son smartphone, le client peut demander l’enregistrement à l’hôtel avant ou dès son arrivée. Les clients dispose d’une clé numérique sécurisée directement sur leur smartphone par sms ou via une application Hilton Honors dédiée. La clé numérique peut contenir le numéro de la chambre, le réseau WiFi et les instructions de mot de passe ainsi que des informations sur les équipements de l’établissement tels que le spa, la salle de remise en forme, les options de restauration et l’heure de départ…</p>
+<p>Conclusion
+Hilton est reconnu par EcoVadis depuis 2012 et a récemment reçu une médaille d’argent en 2021. EcoVadis est la référence la plus importante et la plus fiable au monde d’évaluations de la durabilité des entreprises. La branche achats de Hilton, Hilton Supply Management, continue de faire des progrès significatifs dans les initiatives d’approvisionnement responsable de l’entreprise. Selon les études actuelles, les critères sociaux, environnementaux et éthiques sont des facteurs de choix d’hôtel de plus en plus importants, surtout au niveau des nouvelles générations.</p>
+<p>– Hilton a été reconnu comme #1 Best Workplace Switzerland 2023 par Great Place to Work (catégorie medium 49 – 250 employés)
+– Également reconnu Swisstainable niveau 3 (Leading) par Swiss Tourism grâce aux certifications ISO9001 et ISO14001</p>
+<p><br><br></p>
+<div style="text-align: center;">Merci.<br><br>
+_________________________________________
+<br><br>
+<p><a href="https://www.instagram.com/hiltongeneva/">Instagram @hiltongeneva</a></p>
+<p>Crédit Photographies : <a href="https://www.we-theagency.com/">Victor pour l’Agence</a></p>
+</div>
+<p><br><br></p>
+<div style="text-align: center;">Merci.<br><br>
+_________________________________________
+<br><br>
+<p>Remerciements.</p>
+<p><a href="https://www.clarins.ch/">Clarins Suisse</a> (make up)</p>
+<p>Maison Ohlala (chambre)</p>
+<p><a href="https://www.lucasdutertre.com/">Lucas du Tertre</a> (kimono et trousse de toilette)</p>
+<p><a href="https://kaioswim.com/">Kaio Swim</a> (crossover swimsuit)</p>
+<p><a href="https://www.viyara-atelier.com/">Viyara Atelier</a> (robe en soie)</p>
+<p><a href="https://www.rive-claire.com/">Rive Claire</a> (sac cabas en cuir de pomme). []</p>
+</div> </div> <!-- Carousel --> <section class="article-carousel" data-astro-cid-zm77yjld> <div class="carousel" id="carousel-0m650nihk" data-slides-to-show="3" data-astro-cid-wfe7xcno> <div class="carousel-container" data-astro-cid-wfe7xcno> <button class="carousel-btn prev" aria-label="Previous images" data-astro-cid-wfe7xcno>‹</button> <div class="carousel-track-wrapper" data-astro-cid-wfe7xcno> <div class="carousel-track" data-astro-cid-wfe7xcno> <div class="carousel-slide" data-index="0" data-astro-cid-wfe7xcno> <img src="/images/hilton2.webp" alt="Hilton Geneva &#38; Conference Center" data-lightbox-index="0" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="1" data-astro-cid-wfe7xcno> <img src="/images/hilton3.webp" alt="Hilton Geneva &#38; Conference Center" data-lightbox-index="1" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="2" data-astro-cid-wfe7xcno> <img src="/images/hilton4.webp" alt="Hilton Geneva &#38; Conference Center" data-lightbox-index="2" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="3" data-astro-cid-wfe7xcno> <img src="/images/hilton5.webp" alt="Hilton Geneva &#38; Conference Center" data-lightbox-index="3" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="4" data-astro-cid-wfe7xcno> <img src="/images/hilton6.webp" alt="Hilton Geneva &#38; Conference Center" data-lightbox-index="4" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="5" data-astro-cid-wfe7xcno> <img src="/images/hilton7.webp" alt="Hilton Geneva &#38; Conference Center" data-lightbox-index="5" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="6" data-astro-cid-wfe7xcno> <img src="/images/hilton8.webp" alt="Hilton Geneva &#38; Conference Center" data-lightbox-index="6" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="7" data-astro-cid-wfe7xcno> <img src="/images/hilton9.webp" alt="Hilton Geneva &#38; Conference Center" data-lightbox-index="7" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="8" data-astro-cid-wfe7xcno> <img src="/images/hilton10.webp" alt="Hilton Geneva &#38; Conference Center" data-lightbox-index="8" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="9" data-astro-cid-wfe7xcno> <img src="/images/hilton11.webp" alt="Hilton Geneva &#38; Conference Center" data-lightbox-index="9" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="10" data-astro-cid-wfe7xcno> <img src="/images/hilton12.webp" alt="Hilton Geneva &#38; Conference Center" data-lightbox-index="10" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="11" data-astro-cid-wfe7xcno> <img src="/images/hilton13.webp" alt="Hilton Geneva &#38; Conference Center" data-lightbox-index="11" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="12" data-astro-cid-wfe7xcno> <img src="/images/hilton14.webp" alt="Hilton Geneva &#38; Conference Center" data-lightbox-index="12" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="13" data-astro-cid-wfe7xcno> <img src="/images/hilton15.webp" alt="Hilton Geneva &#38; Conference Center" data-lightbox-index="13" data-astro-cid-wfe7xcno> </div> </div> </div> <button class="carousel-btn next" aria-label="Next images" data-astro-cid-wfe7xcno>›</button> </div> <div class="carousel-dots" data-astro-cid-wfe7xcno> <button class="dot active" data-index="0" aria-label="Go to slide group 1" data-astro-cid-wfe7xcno></button><button class="dot " data-index="1" aria-label="Go to slide group 2" data-astro-cid-wfe7xcno></button><button class="dot " data-index="2" aria-label="Go to slide group 3" data-astro-cid-wfe7xcno></button><button class="dot " data-index="3" aria-label="Go to slide group 4" data-astro-cid-wfe7xcno></button><button class="dot " data-index="4" aria-label="Go to slide group 5" data-astro-cid-wfe7xcno></button> </div> </div> <div class="lightbox" id="lightbox-carousel-0m650nihk" data-astro-cid-wfe7xcno> <button class="lightbox-close" aria-label="Close lightbox" data-astro-cid-wfe7xcno>×</button> <button class="lightbox-btn lightbox-prev" aria-label="Previous image" data-astro-cid-wfe7xcno>‹</button> <button class="lightbox-btn lightbox-next" aria-label="Next image" data-astro-cid-wfe7xcno>›</button> <div class="lightbox-content" data-astro-cid-wfe7xcno> <img class="lightbox-image" src="" alt="" data-astro-cid-wfe7xcno> </div> <div class="lightbox-counter" data-astro-cid-wfe7xcno></div> </div>  <script>(function(){const carouselId = "carousel-0m650nihk";
+const images = [{"src":"/images/hilton2.webp","alt":"Hilton Geneva & Conference Center","caption":"Hilton Geneva & Conference Center"},{"src":"/images/hilton3.webp","alt":"Hilton Geneva & Conference Center","caption":"Hilton Geneva & Conference Center"},{"src":"/images/hilton4.webp","alt":"Hilton Geneva & Conference Center","caption":"Hilton Geneva & Conference Center"},{"src":"/images/hilton5.webp","alt":"Hilton Geneva & Conference Center","caption":"Hilton Geneva & Conference Center"},{"src":"/images/hilton6.webp","alt":"Hilton Geneva & Conference Center","caption":"Hilton Geneva & Conference Center"},{"src":"/images/hilton7.webp","alt":"Hilton Geneva & Conference Center","caption":"Hilton Geneva & Conference Center"},{"src":"/images/hilton8.webp","alt":"Hilton Geneva & Conference Center","caption":"Hilton Geneva & Conference Center"},{"src":"/images/hilton9.webp","alt":"Hilton Geneva & Conference Center","caption":"Hilton Geneva & Conference Center"},{"src":"/images/hilton10.webp","alt":"Hilton Geneva & Conference Center","caption":"Hilton Geneva & Conference Center"},{"src":"/images/hilton11.webp","alt":"Hilton Geneva & Conference Center","caption":"Hilton Geneva & Conference Center"},{"src":"/images/hilton12.webp","alt":"Hilton Geneva & Conference Center","caption":"Hilton Geneva & Conference Center"},{"src":"/images/hilton13.webp","alt":"Hilton Geneva & Conference Center","caption":"Hilton Geneva & Conference Center"},{"src":"/images/hilton14.webp","alt":"Hilton Geneva & Conference Center","caption":"Hilton Geneva & Conference Center"},{"src":"/images/hilton15.webp","alt":"Hilton Geneva & Conference Center","caption":"Hilton Geneva & Conference Center"}];
+
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.getElementById(carouselId);
+  if (!carousel) return;
+
+  const track = carousel.querySelector('.carousel-track');
+  const prevBtn = carousel.querySelector('.prev');
+  const nextBtn = carousel.querySelector('.next');
+  const dots = Array.from(carousel.querySelectorAll('.dot'));
+  const lightbox = document.getElementById(`lightbox-${carouselId}`);
+  const lightboxImg = lightbox.querySelector('.lightbox-image');
+  const lightboxClose = lightbox.querySelector('.lightbox-close');
+  const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+  const lightboxNext = lightbox.querySelector('.lightbox-next');
+  const lightboxCounter = lightbox.querySelector('.lightbox-counter');
+
+  let slidesToShowLocal = parseInt(carousel.dataset.slidesToShow) || 3;
+  let originalSlides = Array.from(track.children);
+  const originalCount = originalSlides.length;
+  if (originalCount === 0) return;
+  let clonesCount = Math.min(originalCount, slidesToShowLocal * 2); // Doubler ou prendre le total//
+  function getGapPx() {
+    const styles = getComputedStyle(track);
+    const gap = styles.gap || styles.columnGap || '0px';
+    return parseFloat(gap) || 0;
+  }
+
+  function createClones() {
+    Array.from(track.querySelectorAll('.clone')).forEach(n => n.remove());
+    const currentChildren = Array.from(track.children);
+    const prependItems = currentChildren.slice(-clonesCount).map((node, idx) => {
+      const clone = node.cloneNode(true);
+      clone.classList.add('clone');
+      const img = clone.querySelector('img');
+      if (img) {
+        const origIdx = (originalCount - clonesCount + idx) % originalCount;
+        img.dataset.originalIndex = origIdx;
+      }
+      return clone;
+    }).reverse();
+    prependItems.forEach(n => track.insertBefore(n, track.firstChild));
+    const appendItems = currentChildren.slice(0, clonesCount).map((node, idx) => {
+      const clone = node.cloneNode(true);
+      clone.classList.add('clone');
+      const img = clone.querySelector('img');
+      if (img) {
+        img.dataset.originalIndex = idx;
+      }
+      return clone;
+    });
+    appendItems.forEach(n => track.appendChild(n));
+  }
+
+  let slideWidthPx = 0;
+  let movePx = 0;
+  let totalSlidesDom = 0;
+  let currentIndex = 0;
+  let isTransitioning = false;
+
+  function measure() {
+    const allSlides = Array.from(track.children);
+    totalSlidesDom = allSlides.length;
+    const sample = allSlides.find(s => s.getBoundingClientRect().width > 0) || allSlides[0];
+    const gapPx = getGapPx();
+    slideWidthPx = sample.getBoundingClientRect().width;
+    movePx = slideWidthPx + gapPx;
+  }
+
+  function init() {
+    if (window.innerWidth <= 768) {
+      slidesToShowLocal = 1;
+    } else if (window.innerWidth <= 1024) {
+      slidesToShowLocal = Math.min(2, slidesToShow);
+    } else {
+      slidesToShowLocal = parseInt(carousel.dataset.slidesToShow) || slidesToShow;
+    }
+    clonesCount = Math.min(originalCount, slidesToShowLocal * 2); // Doubler ou prendre le total
+    Array.from(track.querySelectorAll('.clone')).forEach(n => n.remove());
+    createClones();
+    measure();
+    currentIndex = clonesCount;
+    track.style.transition = 'none';
+    track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+    requestAnimationFrame(() => { track.style.transition = 'transform 0.1s ease'; });
+    updateDots();
+    attachImageClicks();
+  }
+
+  function updateDots() {
+    if (!dots.length) return;
+    const relativeIndex = (currentIndex - clonesCount + originalCount) % originalCount;
+    const dotIndex = Math.floor(relativeIndex / slidesToShowLocal);
+    dots.forEach((d, i) => d.classList.toggle('active', i === dotIndex));
+  }
+
+  function moveToIndex(index, withTransition = true) {
+    track.style.transition = withTransition ? 'transform 0.5s ease' : 'none';
+    currentIndex = index;
+    track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+    isTransitioning = !!withTransition;
+  }
+
+  function next() {
+    if (isTransitioning) return;
+    moveToIndex(currentIndex + 1, true);
+  }
+  function prev() {
+    if (isTransitioning) return;
+    moveToIndex(currentIndex - 1, true);
+  }
+
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
+    const leftBound = clonesCount;
+    const rightBound = clonesCount + originalCount - 1;
+    if (currentIndex > rightBound) {
+      const newIndex = currentIndex - originalCount;
+      track.style.transition = 'none';
+      currentIndex = newIndex;
+      track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+      requestAnimationFrame(() => { track.style.transition = 'transform 0.5s ease'; });
+    }
+    if (currentIndex < leftBound) {
+      const newIndex = currentIndex + originalCount;
+      track.style.transition = 'none';
+      currentIndex = newIndex;
+      track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+      requestAnimationFrame(() => { track.style.transition = 'transform 0.5s ease'; });
+    }
+    updateDots();
+  });
+
+  const dotsEls = dots;
+  dotsEls.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.index);
+      const targetRelative = idx * slidesToShowLocal;
+      const targetDomIndex = clonesCount + (targetRelative % originalCount);
+      moveToIndex(targetDomIndex, true);
+    });
+  });
+
+  function attachImageClicks() {
+    const allImgs = track.querySelectorAll('img');
+    allImgs.forEach(img => {
+      const originalIndex = (img.dataset.originalIndex !== undefined) ? parseInt(img.dataset.originalIndex) : parseInt(img.dataset.lightboxIndex || img.closest('.carousel-slide')?.dataset.index || 0);
+      img.dataset._orig = originalIndex;
+      img.addEventListener('click', () => openLightbox(originalIndex));
+    });
+  }
+
+  let lightboxIndex = 0;
+  function openLightbox(index) {
+    lightboxIndex = index;
+    updateLightbox();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+  function updateLightbox() {
+    lightboxImg.src = images[lightboxIndex].src;
+    lightboxImg.alt = images[lightboxIndex].alt;
+    lightboxCounter.textContent = `${lightboxIndex + 1} / ${images.length}`;
+  }
+  function navigateLightbox(direction) {
+    lightboxIndex += direction;
+    if (lightboxIndex >= images.length) lightboxIndex = 0;
+    if (lightboxIndex < 0) lightboxIndex = images.length - 1;
+    updateLightbox();
+  }
+
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightboxPrev?.addEventListener('click', () => navigateLightbox(-1));
+  lightboxNext?.addEventListener('click', () => navigateLightbox(1));
+  lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+  });
+
+  prevBtn?.addEventListener('click', prev);
+  nextBtn?.addEventListener('click', next);
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { init(); }, 150);
+  });
+
+  init();
+});
+})();</script> </section> </article> </main>  </main> <footer class="full-width-footer" data-astro-cid-sz7xmlte> <div class="footer-container" data-astro-cid-sz7xmlte> <!-- Left Motto --> <div class="footer-motto left" data-astro-cid-sz7xmlte> <span class="motto-text" data-astro-cid-sz7xmlte>
+Business With Attitude<br data-astro-cid-sz7xmlte>Genève - Paris - Singapore
+</span> </div> <!-- Center Logo and Legal Link --> <div class="footer-center" data-astro-cid-sz7xmlte> <a href="/" class="footer-logo" data-astro-cid-sz7xmlte> <img src="/images/logo.svg" alt="Logo" class="logo-img" data-astro-cid-sz7xmlte> <span class="logo-text" data-astro-cid-sz7xmlte>We-TheAgency</span> </a> <a href="/legal" class="legal-link" data-astro-cid-sz7xmlte>Terms & Conditions</a> </div> <!-- Right Motto with Instagram --> <div class="footer-motto right" data-astro-cid-sz7xmlte> <span class="motto-text" data-astro-cid-sz7xmlte> </span> <a href="https://www.instagram.com/wta.wpp/" target="_blank" rel="noopener noreferrer" class="instagram-link" aria-label="Instagram" data-astro-cid-sz7xmlte> <svg class="instagram-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-astro-cid-sz7xmlte> <path d="M12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2ZM12 20C7.589 20 4 16.411 4 12C4 7.589 7.589 4 12 4C16.411 4 20 7.589 20 12C20 16.411 16.411 20 12 20Z" fill="currentColor" data-astro-cid-sz7xmlte></path> <path d="M12 7C9.243 7 7 9.243 7 12C7 14.757 9.243 17 12 17C14.757 17 17 14.757 17 12C17 9.243 14.757 7 12 7ZM12 15C10.346 15 9 13.654 9 12C9 10.346 10.346 9 12 9C13.654 9 15 10.346 15 12C15 13.654 13.654 15 12 15Z" fill="currentColor" data-astro-cid-sz7xmlte></path> <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" data-astro-cid-sz7xmlte></circle> </svg> </a> </div> </div></footer>   <script type="module">const n={threshold:.1,rootMargin:"0px 0px -50px 0px"},o=new IntersectionObserver(e=>{e.forEach(t=>{t.isIntersecting&&t.target.classList.add("animate")})},n);document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".scroll-animate").forEach(t=>o.observe(t))});document.addEventListener("click",e=>{if(e.target.matches('a[href^="#"]')){e.preventDefault();const t=e.target.getAttribute("href"),r=document.querySelector(t);r&&r.scrollIntoView({behavior:"smooth",block:"start"})}});</script> </body></html> 

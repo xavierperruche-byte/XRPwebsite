@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="description" content="We - TheAgency"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/images/logo.svg"><title>We-TheAgency</title><!-- Preload fonts for better performance --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/aroundmrso.B8Mo34t6.css">
+<link rel="stylesheet" href="/_astro/aroundmrso.-jxeEgAJ.css"></head> <body> <!-- Floating Header --> <header class="floating-header" id="floatingHeader" data-astro-cid-3ef6ksr2> <div class="header-container" id="headerContainer" data-astro-cid-3ef6ksr2> <!-- Logo/Brand --> <div class="logo" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2> <img src="/images/logo.svg" alt="Logo" class="logo-img" data-astro-cid-3ef6ksr2> <span class="logo-text" data-astro-cid-3ef6ksr2>We-TheAgency</span> </a> </div> <!-- Desktop Navigation --> <nav class="desktop-nav" id="desktopNav" data-astro-cid-3ef6ksr2> <a href="/" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>👩‍💻</span> <span class="nav-text" data-astro-cid-3ef6ksr2>agence</span> </a><a href="/projets" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📖</span> <span class="nav-text" data-astro-cid-3ef6ksr2>services</span> </a><a href="/well" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>🧘‍♀️</span> <span class="nav-text" data-astro-cid-3ef6ksr2>we.llbeing</span> </a><a href="/magazine" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>magazine.we</span> </a><a href="/press" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>presse</span> </a><a href="/contact" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📧</span> <span class="nav-text" data-astro-cid-3ef6ksr2>contact</span> </a> </nav> <!-- Mobile Menu Button --> <button class="mobile-menu-btn" id="mobileMenuBtn" data-astro-cid-3ef6ksr2> <span class="hamburger" data-astro-cid-3ef6ksr2></span> <span class="hamburger" data-astro-cid-3ef6ksr2></span> <span class="hamburger" data-astro-cid-3ef6ksr2></span> </button> </div> <!-- Mobile Navigation --> <nav class="mobile-nav" id="mobileNav" data-astro-cid-3ef6ksr2> <a href="/" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>👩‍💻</span> <span class="nav-text" data-astro-cid-3ef6ksr2>agence</span> </a><a href="/projets" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📖</span> <span class="nav-text" data-astro-cid-3ef6ksr2>services</span> </a><a href="/well" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>🧘‍♀️</span> <span class="nav-text" data-astro-cid-3ef6ksr2>we.llbeing</span> </a><a href="/magazine" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>magazine.we</span> </a><a href="/press" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>presse</span> </a><a href="/contact" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📧</span> <span class="nav-text" data-astro-cid-3ef6ksr2>contact</span> </a> </nav> </header>  <script type="module">function m(){const e=document.getElementById("floatingHeader"),l=document.getElementById("headerContainer"),c=document.getElementById("desktopNav"),t=document.getElementById("mobileMenuBtn"),n=document.getElementById("mobileNav");if(!e||!l||!c||!t||!n)return;function a(){e.classList.remove("mobile-mode"),n.classList.remove("active"),t.classList.remove("active"),requestAnimationFrame(()=>{requestAnimationFrame(()=>{const i=l.getBoundingClientRect(),o=c.querySelectorAll(".nav-link"),v=c.getBoundingClientRect();let s=!1;v.right>i.right-10&&(s=!0),o.forEach(u=>{const d=u.getBoundingClientRect();d.right>i.right-10&&(s=!0);const g=o[0].getBoundingClientRect();Math.abs(d.top-g.top)>10&&(s=!0)}),s&&e.classList.add("mobile-mode")})})}t.addEventListener("click",()=>{t.classList.toggle("active"),n.classList.toggle("active")}),n.querySelectorAll("a").forEach(i=>{i.addEventListener("click",()=>{t.classList.remove("active"),n.classList.remove("active")})}),window.addEventListener("scroll",()=>{(window.pageYOffset||document.documentElement.scrollTop)>100?e.classList.add("scrolled"):e.classList.remove("scrolled")}),document.addEventListener("click",i=>{const o=i.target;t&&n&&e&&!e.contains(o)&&(t.classList.remove("active"),n.classList.remove("active"))}),a();let r;window.addEventListener("resize",()=>{clearTimeout(r),r=setTimeout(a,150)})}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",m):m();</script> <!-- Main Content --> <main class="main-content">  <main class="article-page" data-astro-cid-zm77yjld> <article class="article-container" data-astro-cid-zm77yjld> <!-- Main Image --> <div class="article-hero" data-astro-cid-zm77yjld> <img src="/images/pioupiou1.webp" alt="Pioupiou Cosmetics x Lucas du Tertre" class="article-main-image" data-astro-cid-zm77yjld> </div> <!-- Article Header --> <header class="article-header" data-astro-cid-zm77yjld> <h1 class="article-title" data-astro-cid-zm77yjld>Pioupiou Cosmetics x Lucas du Tertre</h1> <time class="article-date" datetime="2023-05-09" data-astro-cid-zm77yjld> May 9, 2023 </time> <!-- Tags --> <div class="article-tags" data-astro-cid-zm77yjld> <a href="/tags/beauté" class="tag" data-astro-cid-zm77yjld> beauté </a><a href="/tags/fashion" class="tag" data-astro-cid-zm77yjld> fashion </a> </div> </header> <!-- Article Content (your markdown renders here) --> <div class="article-content" data-astro-cid-zm77yjld> <p>Nous sommes très heureuses de vous faire part de la collaboration Pioupiou Cosmetics x Lucas du Tertre.</p>
+<p>Pioupiou Cosmetics est une jeune pousse suisse spécialisée dans les soins de peau pour les tout-petits, leurs mamans et toute la famille ; Lucas du Tertre est une entreprise engagée depuis 18 ans fondée par Marie et Clémence dans le domaine de la mode enfant et femme, et maison. Deux entreprises, 3 femmes maman et chefs d’entreprise.
+Une belle alchimie se crée toujours ainsi.
+Afin de célébrer en douceur la Fête de toutes les Maman en France, j’aimerais vous proposer une rencontre avec Claire Dhote, la fondatrice de Pioupiou Cosmetics.<br><br></p>
+<p><b><i>Claire, Qui es-tu ? Présente nous ta famille !</i></b></p>
+<p>Merci beaucoup pour cette opportunité. Je m’appelle Claire Dhote, je suis française, j’ai 34 ans et j’habite en Suisse alémanique depuis une dizaine d’années. Je suis la seule femme de la maison. Ma famille se compose de mon mari et de mes deux trésors, mes petits garçons âgés de 2 ans et 3 ans et demi.
+<br><br></p>
+<p><b><i>Pourquoi ce choix de développer des cosmétiques bébé et enfant ?</i></b></p>
+<p>Enceinte, puis avec des jeunes enfants, il était important pour moi de me sentir rassurée quant aux produits que j’utilisais. C’est tout naturellement que j’ai commencé à chercher et ensuite, j’ai ressenti le désir de créer des soins sains que je pourrais utiliser en toute confiance. Étant passionnée par l’industrie cosmétique et ayant observé la croissance de plusieurs belles marques, j’ai cru en la possibilité de créer quelque chose de significatif qui me représente. J’ai souhaité créer une marque à laquelle les familles pourraient s’identifier, une marque qui inspire confiance, qui offre une qualité exceptionnelle et qui procure une expérience agréable à chaque utilisation. Pour moi, c’est également une histoire à raconter et des engagements à respecter. Revenir à l’essentiel et proposer des alternatives saines sont mes priorités absolues.
+<br><br></p>
+<p><b><i>Comment parlerais tu de la gestion vie pro/ vie perso ?</i></b></p>
+<p>C’est un point extrêmement important pour moi, et je dois dire que tout a changé depuis que je suis devenue maman. Je suis passionnée par mon travail et travailler chaque jour sur Pioupiou est un véritable plaisir. Cependant, il est essentiel pour moi de trouver un bon équilibre entre ma vie professionnelle et ma vie de maman. Je souhaite consacrer du temps à mes enfants, les voir grandir et partager de nombreuses choses avec eux.
+Être entrepreneure demande beaucoup d’efforts et de sacrifices, mais je n’ai jamais voulu sacrifier ma famille. Les soirées et les week-ends sont réservés à mes proches, et je fais tout mon possible pour bien séparer ces deux aspects de ma vie. J’ai accepté que la croissance de mon entreprise se fasse à son propre rythme, en préservant ma santé et cet équilibre essentiel.
+Cependant, pour être honnête, le fait d’être à mon compte me procure certes de la flexibilité, mais cela peut parfois être déroutant d’être constamment connectée et de penser en permanence à la marque. Je l’accepte pour le moment et je suis prête à faire face à ces défis.
+<br><br></p>
+<p><b><i>Quelle est ton moment préféré dans ton quotidien de femme, de maman et de chef d’entreprise ?</i></b></p>
+<p>En tant que femme, maman et chef d’entreprise, j’apprécie énormément les différents moments de ma vie quotidienne. Il est difficile de choisir un seul moment préféré, car chacun d’entre eux apporte sa propre satisfaction et son épanouissement.
+Mais, si je devais en choisir un, ce serait retrouver mes enfants le soir et partager des moments à raconter leur journée, jouer ensemble, chanter et danser. Ensuite, vient la routine du soir où nous profitons tous ensemble avant d’aller au lit. Ces moments d’échange sont d’une grande importance pour moi. Comme nous l’avons mentionné précédemment, l’équilibre est essentiel, et je crois fermement qu’il est nécessaire de passer du temps de qualité ensemble pour notre bien-être à tous.
+Mon quotidien est rempli de moments précieux, et je me sens vraiment chanceuse.
+<br><br></p>
+<p><b><i>Appliques tu une routine de soin particulière avec tes deux jeunes enfants ?</i></b></p>
+<p>Depuis leur naissance, j’adore prendre soin de mes enfants et de leur peau délicate grâce à nos rituels quotidiens sur la table à langer. J’y consacre du temps en les changeant, les baignant, les massant, tout en jouant et en chantant… mais c’est un réel plaisir. C’est un moyen formidable de créer du lien, de passer un bon moment et d’offrir à tous un moment de détente, de calme et de douceur.
+En général, le soir, notre routine se compose du change, du bain, de l’hydratation, des soins pour les petits bobos quotidiens, et enfin pyjama !
+<br><br></p>
+<p><b><i>Quelques mots sur la collaboration avec Lucas du Tertre ?</i></b></p>
+<p>C’est une collaboration fantastique et je suis ravie de la proposer à mes clients. La marque Lucas du Tertre partage nos valeurs communes et nous accordons une grande importance aux détails et à la qualité, ce qui est très apprécié de tous. Nous nous réunissons dans le monde de l’enfance.
+J’ai vraiment apprécié proposer un accessoire qui reflète nos deux univers tout en étant en parfaite harmonie avec les deux marques. Cette petite pochette est proposée avec nos essentiels Pioupiou.
+Polyvalente et à transporter partout, elle constitue un excellent cadeau pour la fête des mères, ou encore un set de voyage parfait comprenant tous les soins nécessaires pour l’été.
+<br><br></p>
+<p><b><i>Un dernier mot ?</i></b></p>
+<p>Merci pour cet interview et d’avoir initié les discussions entre nos deux marques. C’est un véritable succès pour Pioupiou et je suis ravie. J’ai hâte d’entendre les retours de nos clients concernant cette collaboration. Leurs avis sont d’une grande valeur pour nous.
+<br><br></p>
+<p><b><i>Je te remercie Claire !</i></b></p>
+<p><br><br></p>
+<div style="text-align: center;">_________________________________________
+<br><br>
+<p><a href="https://www.pioupiou-cosmetics.com/">https://www.pioupiou-cosmetics.com/</a></p>
+<p>Instagram : <a href="https://www.instagram.com/pioupiou.cosmetics/?hl=fr">https://www.instagram.com/pioupiou.cosmetics/?hl=fr</a></p>
+</div> </div> <!-- Carousel --> <section class="article-carousel" data-astro-cid-zm77yjld> <div class="carousel" id="carousel-4ez0uzsbu" data-slides-to-show="3" data-astro-cid-wfe7xcno> <div class="carousel-container" data-astro-cid-wfe7xcno> <button class="carousel-btn prev" aria-label="Previous images" data-astro-cid-wfe7xcno>‹</button> <div class="carousel-track-wrapper" data-astro-cid-wfe7xcno> <div class="carousel-track" data-astro-cid-wfe7xcno> <div class="carousel-slide" data-index="0" data-astro-cid-wfe7xcno> <img src="/images/pioupiou2.webp" alt="Pioupiou Cosmetics x Lucas du Tertre" data-lightbox-index="0" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="1" data-astro-cid-wfe7xcno> <img src="/images/pioupiou3.webp" alt="Pioupiou Cosmetics x Lucas du Tertre" data-lightbox-index="1" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="2" data-astro-cid-wfe7xcno> <img src="/images/pioupiou4.webp" alt="Pioupiou Cosmetics x Lucas du Tertre" data-lightbox-index="2" data-astro-cid-wfe7xcno> </div> </div> </div> <button class="carousel-btn next" aria-label="Next images" data-astro-cid-wfe7xcno>›</button> </div> <div class="carousel-dots" data-astro-cid-wfe7xcno> <button class="dot active" data-index="0" aria-label="Go to slide group 1" data-astro-cid-wfe7xcno></button> </div> </div> <div class="lightbox" id="lightbox-carousel-4ez0uzsbu" data-astro-cid-wfe7xcno> <button class="lightbox-close" aria-label="Close lightbox" data-astro-cid-wfe7xcno>×</button> <button class="lightbox-btn lightbox-prev" aria-label="Previous image" data-astro-cid-wfe7xcno>‹</button> <button class="lightbox-btn lightbox-next" aria-label="Next image" data-astro-cid-wfe7xcno>›</button> <div class="lightbox-content" data-astro-cid-wfe7xcno> <img class="lightbox-image" src="" alt="" data-astro-cid-wfe7xcno> </div> <div class="lightbox-counter" data-astro-cid-wfe7xcno></div> </div>  <script>(function(){const carouselId = "carousel-4ez0uzsbu";
+const images = [{"src":"/images/pioupiou2.webp","alt":"Pioupiou Cosmetics x Lucas du Tertre","caption":"Pioupiou Cosmetics x Lucas du Tertre"},{"src":"/images/pioupiou3.webp","alt":"Pioupiou Cosmetics x Lucas du Tertre","caption":"Pioupiou Cosmetics x Lucas du Tertre"},{"src":"/images/pioupiou4.webp","alt":"Pioupiou Cosmetics x Lucas du Tertre","caption":"Pioupiou Cosmetics x Lucas du Tertre"}];
+
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.getElementById(carouselId);
+  if (!carousel) return;
+
+  const track = carousel.querySelector('.carousel-track');
+  const prevBtn = carousel.querySelector('.prev');
+  const nextBtn = carousel.querySelector('.next');
+  const dots = Array.from(carousel.querySelectorAll('.dot'));
+  const lightbox = document.getElementById(`lightbox-${carouselId}`);
+  const lightboxImg = lightbox.querySelector('.lightbox-image');
+  const lightboxClose = lightbox.querySelector('.lightbox-close');
+  const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+  const lightboxNext = lightbox.querySelector('.lightbox-next');
+  const lightboxCounter = lightbox.querySelector('.lightbox-counter');
+
+  let slidesToShowLocal = parseInt(carousel.dataset.slidesToShow) || 3;
+  let originalSlides = Array.from(track.children);
+  const originalCount = originalSlides.length;
+  if (originalCount === 0) return;
+  let clonesCount = Math.min(originalCount, slidesToShowLocal * 2); // Doubler ou prendre le total//
+  function getGapPx() {
+    const styles = getComputedStyle(track);
+    const gap = styles.gap || styles.columnGap || '0px';
+    return parseFloat(gap) || 0;
+  }
+
+  function createClones() {
+    Array.from(track.querySelectorAll('.clone')).forEach(n => n.remove());
+    const currentChildren = Array.from(track.children);
+    const prependItems = currentChildren.slice(-clonesCount).map((node, idx) => {
+      const clone = node.cloneNode(true);
+      clone.classList.add('clone');
+      const img = clone.querySelector('img');
+      if (img) {
+        const origIdx = (originalCount - clonesCount + idx) % originalCount;
+        img.dataset.originalIndex = origIdx;
+      }
+      return clone;
+    }).reverse();
+    prependItems.forEach(n => track.insertBefore(n, track.firstChild));
+    const appendItems = currentChildren.slice(0, clonesCount).map((node, idx) => {
+      const clone = node.cloneNode(true);
+      clone.classList.add('clone');
+      const img = clone.querySelector('img');
+      if (img) {
+        img.dataset.originalIndex = idx;
+      }
+      return clone;
+    });
+    appendItems.forEach(n => track.appendChild(n));
+  }
+
+  let slideWidthPx = 0;
+  let movePx = 0;
+  let totalSlidesDom = 0;
+  let currentIndex = 0;
+  let isTransitioning = false;
+
+  function measure() {
+    const allSlides = Array.from(track.children);
+    totalSlidesDom = allSlides.length;
+    const sample = allSlides.find(s => s.getBoundingClientRect().width > 0) || allSlides[0];
+    const gapPx = getGapPx();
+    slideWidthPx = sample.getBoundingClientRect().width;
+    movePx = slideWidthPx + gapPx;
+  }
+
+  function init() {
+    if (window.innerWidth <= 768) {
+      slidesToShowLocal = 1;
+    } else if (window.innerWidth <= 1024) {
+      slidesToShowLocal = Math.min(2, slidesToShow);
+    } else {
+      slidesToShowLocal = parseInt(carousel.dataset.slidesToShow) || slidesToShow;
+    }
+    clonesCount = Math.min(originalCount, slidesToShowLocal * 2); // Doubler ou prendre le total
+    Array.from(track.querySelectorAll('.clone')).forEach(n => n.remove());
+    createClones();
+    measure();
+    currentIndex = clonesCount;
+    track.style.transition = 'none';
+    track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+    requestAnimationFrame(() => { track.style.transition = 'transform 0.1s ease'; });
+    updateDots();
+    attachImageClicks();
+  }
+
+  function updateDots() {
+    if (!dots.length) return;
+    const relativeIndex = (currentIndex - clonesCount + originalCount) % originalCount;
+    const dotIndex = Math.floor(relativeIndex / slidesToShowLocal);
+    dots.forEach((d, i) => d.classList.toggle('active', i === dotIndex));
+  }
+
+  function moveToIndex(index, withTransition = true) {
+    track.style.transition = withTransition ? 'transform 0.5s ease' : 'none';
+    currentIndex = index;
+    track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+    isTransitioning = !!withTransition;
+  }
+
+  function next() {
+    if (isTransitioning) return;
+    moveToIndex(currentIndex + 1, true);
+  }
+  function prev() {
+    if (isTransitioning) return;
+    moveToIndex(currentIndex - 1, true);
+  }
+
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
+    const leftBound = clonesCount;
+    const rightBound = clonesCount + originalCount - 1;
+    if (currentIndex > rightBound) {
+      const newIndex = currentIndex - originalCount;
+      track.style.transition = 'none';
+      currentIndex = newIndex;
+      track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+      requestAnimationFrame(() => { track.style.transition = 'transform 0.5s ease'; });
+    }
+    if (currentIndex < leftBound) {
+      const newIndex = currentIndex + originalCount;
+      track.style.transition = 'none';
+      currentIndex = newIndex;
+      track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+      requestAnimationFrame(() => { track.style.transition = 'transform 0.5s ease'; });
+    }
+    updateDots();
+  });
+
+  const dotsEls = dots;
+  dotsEls.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.index);
+      const targetRelative = idx * slidesToShowLocal;
+      const targetDomIndex = clonesCount + (targetRelative % originalCount);
+      moveToIndex(targetDomIndex, true);
+    });
+  });
+
+  function attachImageClicks() {
+    const allImgs = track.querySelectorAll('img');
+    allImgs.forEach(img => {
+      const originalIndex = (img.dataset.originalIndex !== undefined) ? parseInt(img.dataset.originalIndex) : parseInt(img.dataset.lightboxIndex || img.closest('.carousel-slide')?.dataset.index || 0);
+      img.dataset._orig = originalIndex;
+      img.addEventListener('click', () => openLightbox(originalIndex));
+    });
+  }
+
+  let lightboxIndex = 0;
+  function openLightbox(index) {
+    lightboxIndex = index;
+    updateLightbox();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+  function updateLightbox() {
+    lightboxImg.src = images[lightboxIndex].src;
+    lightboxImg.alt = images[lightboxIndex].alt;
+    lightboxCounter.textContent = `${lightboxIndex + 1} / ${images.length}`;
+  }
+  function navigateLightbox(direction) {
+    lightboxIndex += direction;
+    if (lightboxIndex >= images.length) lightboxIndex = 0;
+    if (lightboxIndex < 0) lightboxIndex = images.length - 1;
+    updateLightbox();
+  }
+
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightboxPrev?.addEventListener('click', () => navigateLightbox(-1));
+  lightboxNext?.addEventListener('click', () => navigateLightbox(1));
+  lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+  });
+
+  prevBtn?.addEventListener('click', prev);
+  nextBtn?.addEventListener('click', next);
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { init(); }, 150);
+  });
+
+  init();
+});
+})();</script> </section> </article> </main>  </main> <footer class="full-width-footer" data-astro-cid-sz7xmlte> <div class="footer-container" data-astro-cid-sz7xmlte> <!-- Left Motto --> <div class="footer-motto left" data-astro-cid-sz7xmlte> <span class="motto-text" data-astro-cid-sz7xmlte>
+Business With Attitude<br data-astro-cid-sz7xmlte>Genève - Paris - Singapore
+</span> </div> <!-- Center Logo and Legal Link --> <div class="footer-center" data-astro-cid-sz7xmlte> <a href="/" class="footer-logo" data-astro-cid-sz7xmlte> <img src="/images/logo.svg" alt="Logo" class="logo-img" data-astro-cid-sz7xmlte> <span class="logo-text" data-astro-cid-sz7xmlte>We-TheAgency</span> </a> <a href="/legal" class="legal-link" data-astro-cid-sz7xmlte>Terms & Conditions</a> </div> <!-- Right Motto with Instagram --> <div class="footer-motto right" data-astro-cid-sz7xmlte> <span class="motto-text" data-astro-cid-sz7xmlte> </span> <a href="https://www.instagram.com/wta.wpp/" target="_blank" rel="noopener noreferrer" class="instagram-link" aria-label="Instagram" data-astro-cid-sz7xmlte> <svg class="instagram-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-astro-cid-sz7xmlte> <path d="M12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2ZM12 20C7.589 20 4 16.411 4 12C4 7.589 7.589 4 12 4C16.411 4 20 7.589 20 12C20 16.411 16.411 20 12 20Z" fill="currentColor" data-astro-cid-sz7xmlte></path> <path d="M12 7C9.243 7 7 9.243 7 12C7 14.757 9.243 17 12 17C14.757 17 17 14.757 17 12C17 9.243 14.757 7 12 7ZM12 15C10.346 15 9 13.654 9 12C9 10.346 10.346 9 12 9C13.654 9 15 10.346 15 12C15 13.654 13.654 15 12 15Z" fill="currentColor" data-astro-cid-sz7xmlte></path> <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" data-astro-cid-sz7xmlte></circle> </svg> </a> </div> </div></footer>   <script type="module">const n={threshold:.1,rootMargin:"0px 0px -50px 0px"},o=new IntersectionObserver(e=>{e.forEach(t=>{t.isIntersecting&&t.target.classList.add("animate")})},n);document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".scroll-animate").forEach(t=>o.observe(t))});document.addEventListener("click",e=>{if(e.target.matches('a[href^="#"]')){e.preventDefault();const t=e.target.getAttribute("href"),r=document.querySelector(t);r&&r.scrollIntoView({behavior:"smooth",block:"start"})}});</script> </body></html> 

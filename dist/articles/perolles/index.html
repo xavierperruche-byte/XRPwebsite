@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="description" content="We - TheAgency"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/images/logo.svg"><title>We-TheAgency</title><!-- Preload fonts for better performance --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/aroundmrso.B8Mo34t6.css">
+<link rel="stylesheet" href="/_astro/aroundmrso.-jxeEgAJ.css"></head> <body> <!-- Floating Header --> <header class="floating-header" id="floatingHeader" data-astro-cid-3ef6ksr2> <div class="header-container" id="headerContainer" data-astro-cid-3ef6ksr2> <!-- Logo/Brand --> <div class="logo" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2> <img src="/images/logo.svg" alt="Logo" class="logo-img" data-astro-cid-3ef6ksr2> <span class="logo-text" data-astro-cid-3ef6ksr2>We-TheAgency</span> </a> </div> <!-- Desktop Navigation --> <nav class="desktop-nav" id="desktopNav" data-astro-cid-3ef6ksr2> <a href="/" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>👩‍💻</span> <span class="nav-text" data-astro-cid-3ef6ksr2>agence</span> </a><a href="/projets" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📖</span> <span class="nav-text" data-astro-cid-3ef6ksr2>services</span> </a><a href="/well" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>🧘‍♀️</span> <span class="nav-text" data-astro-cid-3ef6ksr2>we.llbeing</span> </a><a href="/magazine" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>magazine.we</span> </a><a href="/press" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>presse</span> </a><a href="/contact" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📧</span> <span class="nav-text" data-astro-cid-3ef6ksr2>contact</span> </a> </nav> <!-- Mobile Menu Button --> <button class="mobile-menu-btn" id="mobileMenuBtn" data-astro-cid-3ef6ksr2> <span class="hamburger" data-astro-cid-3ef6ksr2></span> <span class="hamburger" data-astro-cid-3ef6ksr2></span> <span class="hamburger" data-astro-cid-3ef6ksr2></span> </button> </div> <!-- Mobile Navigation --> <nav class="mobile-nav" id="mobileNav" data-astro-cid-3ef6ksr2> <a href="/" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>👩‍💻</span> <span class="nav-text" data-astro-cid-3ef6ksr2>agence</span> </a><a href="/projets" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📖</span> <span class="nav-text" data-astro-cid-3ef6ksr2>services</span> </a><a href="/well" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>🧘‍♀️</span> <span class="nav-text" data-astro-cid-3ef6ksr2>we.llbeing</span> </a><a href="/magazine" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>magazine.we</span> </a><a href="/press" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>presse</span> </a><a href="/contact" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📧</span> <span class="nav-text" data-astro-cid-3ef6ksr2>contact</span> </a> </nav> </header>  <script type="module">function m(){const e=document.getElementById("floatingHeader"),l=document.getElementById("headerContainer"),c=document.getElementById("desktopNav"),t=document.getElementById("mobileMenuBtn"),n=document.getElementById("mobileNav");if(!e||!l||!c||!t||!n)return;function a(){e.classList.remove("mobile-mode"),n.classList.remove("active"),t.classList.remove("active"),requestAnimationFrame(()=>{requestAnimationFrame(()=>{const i=l.getBoundingClientRect(),o=c.querySelectorAll(".nav-link"),v=c.getBoundingClientRect();let s=!1;v.right>i.right-10&&(s=!0),o.forEach(u=>{const d=u.getBoundingClientRect();d.right>i.right-10&&(s=!0);const g=o[0].getBoundingClientRect();Math.abs(d.top-g.top)>10&&(s=!0)}),s&&e.classList.add("mobile-mode")})})}t.addEventListener("click",()=>{t.classList.toggle("active"),n.classList.toggle("active")}),n.querySelectorAll("a").forEach(i=>{i.addEventListener("click",()=>{t.classList.remove("active"),n.classList.remove("active")})}),window.addEventListener("scroll",()=>{(window.pageYOffset||document.documentElement.scrollTop)>100?e.classList.add("scrolled"):e.classList.remove("scrolled")}),document.addEventListener("click",i=>{const o=i.target;t&&n&&e&&!e.contains(o)&&(t.classList.remove("active"),n.classList.remove("active"))}),a();let r;window.addEventListener("resize",()=>{clearTimeout(r),r=setTimeout(a,150)})}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",m):m();</script> <!-- Main Content --> <main class="main-content">  <main class="article-page" data-astro-cid-zm77yjld> <article class="article-container" data-astro-cid-zm77yjld> <!-- Main Image --> <div class="article-hero" data-astro-cid-zm77yjld> <img src="/images/perolles1.webp" alt="Le Pérolles" class="article-main-image" data-astro-cid-zm77yjld> </div> <!-- Article Header --> <header class="article-header" data-astro-cid-zm77yjld> <h1 class="article-title" data-astro-cid-zm77yjld>Le Pérolles</h1> <time class="article-date" datetime="2022-09-08" data-astro-cid-zm77yjld> September 8, 2022 </time> <!-- Tags --> <div class="article-tags" data-astro-cid-zm77yjld> <a href="/tags/escapade" class="tag" data-astro-cid-zm77yjld> escapade </a> </div> </header> <!-- Article Content (your markdown renders here) --> <div class="article-content" data-astro-cid-zm77yjld> <h1 id="dialogue-entre-larchitecture-et-lart-culinaire">Dialogue entre l’Architecture et l’Art culinaire</h1>
+<p>Se protéger, se nourrir ? N’est-ce pas, depuis le début de l’humanité, une fonction essentielle à l’homme ?</p>
+<p>En 1965, l’architecte et historien de l’architecture Peter Collins (1920- 1981) évoquait cette analogie : pour comprendre l’architecture, il faut étudier la gastronomie. L’art culinaire et l’architecture sont deux arts qui se rencontrent souvent à table. L’espace n’est pas seulement l’endroit où l’on se projette mais c’est aussi une émotion. Que recherchent les clients d’un restaurant gastronomique ou bistronomique sinon avant tout une expérience culinaire et physique lorsqu’ils poussent la porte d’un nouvel établissement?</p>
+<p><br><br></p>
+<h1 id="mario-botta-larchitecte-et-pierrot-ayer-lartiste-culinaire-une-vocation-sociale-et-humaniste">Mario Botta, l’architecte et Pierrot Ayer, l’artiste culinaire. Une vocation sociale et humaniste.</h1>
+<p>A la suite de ma journée à Fribourg au Pérolles, j’ai réalisé ô combien il était désirable de mettre en lumière un espace, une dimension spatiale où se mêlent art, architecture et gastronomie.</p>
+<p>“Conjonction de choses, de faits, de lieux et de personnes, les plaisirs de la table semblent indissociables du cadre où nous les apprécions.”  Et les restaurateurs comme Pierrot et son fils Julien ne s’y trompent pas lorsqu’ils convoquent des architectes pour façonner leur lieu de travail.</p>
+<p>L’organisation de l’espace de la Banque Cantonale de Fribourg en deux étages a inspiré Pierrot et Julien Ayer à proposer un concept de restaurant double, destiné à deux types d’occasion, de public et de cuisine : au bas, un restaurant gastronomique signé Pierrot Ayer ; au haut, une rencontre entre restaurant, boutique et café. L’idée est de démocratiser et de rendre la gastronomie accessible et accueillante pour tous ; lui donner, en somme, un visage plus frais et séduisant. Le concept ravira autant les férus de gastronomie que les curieux de nouvelles saveurs et tend à compléter l’objectif premier du projet : favoriser l’échange entre des générations de gastronomes.</p>
+<p>Ce fut l’objet d’une riche conversation avec Madame Françoise Ayer dans l’espace du Petit Pérolles.
+<br><br></p>
+<div style="text-align: center;">_________________________________________
+<br><br>
+<b>« Lorsqu’il n’y aura plus de cuisine dans le monde, il n’y aura plus d’intelligence élevée, rapide, de relations liantes, il n’y aura plus d’unité sociale » Marie-Antoine Carême (1)</b>
+<br><br></div>
+<p>Un cuisinier historique, Marie-Antoine Carême (XVIIIe), était à l’origine architecte. Cela s’est retrouvé dans l’organisation de sa cuisine et même dans ses pâtisseries qui étaient de petites architectures. C’est peut-être ainsi que l’esthétique est arrivée dans la cuisine. Le « Pâtissier Pittoresque » (1815)  fut le maitre de l’art culinaire, en jouant l’architecte cuisinier. Pour lui, l’essentiel était de manger avec les yeux. L’esthétique avait la part belle. Deux siècles plus tard, Alain Ducasse est l’un des premiers Chefs du XXe siècle à rendre visible la cuisine. Il avait installé une salle à manger privée, pour des personnalités, des journalistes par exemple, dans sa cuisine. Cela est assez spectaculaire, pour quelqu’un qui ne connaît pas le métier, d’être immergé dans la cuisine d’un restaurant.</p>
+<p>Tout comme l’Alcazar un de mes endroits favoris du Quartier Latin fin des années 90 … Le Pérolles laisse entrevoir les cuisines, toutes en transparence.
+<br><br><br><br></p>
+<div style="text-align: center;">_________________________________________
+<br><br><b>L’éveil de tous nos sens, visuels, olfactifs, gustatifs, et kinesthésiques.</b><br><br></div>
+<p>La cuisine et l’architecture font appel à nos sens qui sont plus ou moins sensibles, et personnels, à notre pathos (l’appel de l’émotion) mais aussi à une dimension plus technique et raisonnée. Notre cerveau droit est en émoi devant la beauté d’une assiette, sa composition, ses couleurs, le sillage qu’elle génère. L’assiette est le tout qui va réunir, l’assiette est un espace, l’assiette raconte une histoire, comme un château sur la Loire.</p>
+<p>Le plein, le vide, les lignes, les lumières et les ombres, la transparence, les volumes et la structure, tout rappelle dans le dressage de l’assiette l’univers de l’architecture…</p>
+<p>Explorer une assiette est aussi agréable qu’une promenade architecturale, riche de surprises et de gloussements du plaisir, une joie enfantine.</p>
+<p>L’esthétique est cognitive, et le sensuel et l’émotionnel accèdent ainsi au sens par le biais du symbolique.</p>
+<p>La partie gauche est en plein exercice de frugalité. La frugalité est ici à entendre comme la raison et l’exigence ; le cerveau gauche pensera fonctions, techniques, alchimie, et architecture. Nous sommes ici dans la méthode, la séquence, tout en aliénant l’universalité, car malgré tout, la créativité est reine. Illustrons ces propos avec la préférence donnée par Mario Botta pour les formes simples et primaires combinées pour obtenir un ordre symétrique. La géométrie permet de contrôler l’équilibre des espaces les rendant ainsi reconnaissables et compréhensibles. N’oublions pas que Le Corbusier a eu une grande influence sur toute l’œuvre de Mario Botta.</p>
+<p>Botta aime la simplicité, autant que Pierrot Ayer et son équipe. Et cette symbiose éclate au grand jour lors de votre séjour au Pérolles. Mais le cuisinier se mue aussi en artiste plasticien, en peintre, en chorégraphe, en architecte…</p>
+<p><br><br></p>
+<div style="text-align: center;">_________________________________________
+<br><br><b>La déclaration éthique mentionnée plus haut (1) de M-A Carême prend tout son sens également dans l’architecture de Mario Botta. L'architecture devrait avoir une signification éthique plutôt qu'esthétique. Le fait architectural a pour but d'offrir des valeurs de vie de bonne qualité opposées à des images purement esthétiques. La recherche d'une meilleure qualité de vie passe par la recherche d'un meilleur espace de vie.<br><br>
+La cuisine et l’architecture partagent-elles des interrogations communes autour de la question du développement durable ?</b>
+</div>
+<br><br>
+Aujourd’hui les cuisiniers font un très gros effort pour utiliser des produits locaux, en circuit court, apportant de la fraîcheur du produit. C’est une démarche écologiste.
+<p>En outre, les architectes quant à eux sont obligés par la loi de trouver des matériaux qui consomment moins d’énergie à la fabrication, et permettre une mise en œuvre raisonnable avec peu de de transports.</p>
+<p>Lorsque l’on étudie un peu Mario Botta, nous réalisons que le style architectural de Botta s’inspire non seulement de Le Corbusier, mais aussi de John Ruskin. Ruskin, critique d’art britannique de la fin du 19e siècle, a posé les jalons de la « construction éthique » sur laquelle s’appuie la démarche de Botta : il faut que l’architecture ait des considérations éthiques, qui priment sur l’esthétique.</p>
+<p>Les constructions de Botta sont dédiées au peuple et non à une élite, afin que le plus grand nombre puisse y trouver un réconfort et un plaisir visuel, tout comme la cuisine de Le Pérolles.</p>
+<p>Botta croit également qu’un bâtiment construit dans un endroit donné doit respecter l’environnement dans lequel il se situe (autant esthétiquement que dans son aspect environnemental). Mario Botta et Pierrot Ayer vouent tous deux un véritable culte à la nature. Botta incorpore toujours arbres et plantes à ses constructions, Ayer utilise des végétaux locaux et autres légumes parfois oubliés ou méconnus dans ses divines recettes. Le bois est ainsi présent dans le restaurant dans le choix des tables, des éléments décoratifs.</p>
+<p>De la même façon, les matériaux naturels promus par Botta se caractérisent par leur résistance et leur durabilité. Ils ont également une grande ductilité, c’est-à-dire la capacité de modifier dans le temps et dans l’espace leur aspect, leur structure et, par conséquent, leur apparence.</p>
+<p><br><br></p>
+<div style="text-align: center;">_________________________________________
+<br><br><b>Le territoire de la mémoire, respect du grand passé.</b><br><br>
+</div>
+Pour favoriser un rapport différent et plus durable à l’environnement, il faut souligner l’importance du territoire de la mémoire, dont la valeur est proportionnelle à la valeur que l’on accorde au passé. Donner de l’importance à la mémoire oblige à actualiser, donc à s’approprier, les grandes idées du passé. Et ceci s’applique tout autant dans la Cuisine que dans l’Architecture. La transmission, l’héritage sont des préoccupations formidables qui animent autant le Chef du Pérolles, que Mario Botta qui a fondé une école d’architecture mondialement réputée à Mendrisio, sa ville natale.
+<p>Le Pérolles  et le Petit Pérolles ont chacun une atmosphère qui confère aux deux lieux un confort et une aisance à qui vient s’installer pour déjeuner ou pour y diner.</p>
+<p><br><br></p>
+<div style="text-align: center;">Merci.<br><br>
+_________________________________________
+<br><br></div>
+<p>Mille merci à Josef Zisyadis – Directeur Semaine suisse du Goût</p>
+<p><a href="https://www.instagram.com/goutgenussgusto/?hl=fr">Instagram @goutgenussgusto</a></p> </div> <!-- Carousel --> <section class="article-carousel" data-astro-cid-zm77yjld> <div class="carousel" id="carousel-1wumyy96h" data-slides-to-show="3" data-astro-cid-wfe7xcno> <div class="carousel-container" data-astro-cid-wfe7xcno> <button class="carousel-btn prev" aria-label="Previous images" data-astro-cid-wfe7xcno>‹</button> <div class="carousel-track-wrapper" data-astro-cid-wfe7xcno> <div class="carousel-track" data-astro-cid-wfe7xcno> <div class="carousel-slide" data-index="0" data-astro-cid-wfe7xcno> <img src="/images/perolles2.webp" alt="Le Pérolles" data-lightbox-index="0" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="1" data-astro-cid-wfe7xcno> <img src="/images/perolles3.webp" alt="Le Pérolles" data-lightbox-index="1" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="2" data-astro-cid-wfe7xcno> <img src="/images/perolles4.webp" alt="Le Pérolles" data-lightbox-index="2" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="3" data-astro-cid-wfe7xcno> <img src="/images/perolles5.webp" alt="Le Pérolles" data-lightbox-index="3" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="4" data-astro-cid-wfe7xcno> <img src="/images/perolles6.webp" alt="Le Pérolles" data-lightbox-index="4" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="5" data-astro-cid-wfe7xcno> <img src="/images/perolles7.webp" alt="Le Pérolles" data-lightbox-index="5" data-astro-cid-wfe7xcno> </div> </div> </div> <button class="carousel-btn next" aria-label="Next images" data-astro-cid-wfe7xcno>›</button> </div> <div class="carousel-dots" data-astro-cid-wfe7xcno> <button class="dot active" data-index="0" aria-label="Go to slide group 1" data-astro-cid-wfe7xcno></button><button class="dot " data-index="1" aria-label="Go to slide group 2" data-astro-cid-wfe7xcno></button> </div> </div> <div class="lightbox" id="lightbox-carousel-1wumyy96h" data-astro-cid-wfe7xcno> <button class="lightbox-close" aria-label="Close lightbox" data-astro-cid-wfe7xcno>×</button> <button class="lightbox-btn lightbox-prev" aria-label="Previous image" data-astro-cid-wfe7xcno>‹</button> <button class="lightbox-btn lightbox-next" aria-label="Next image" data-astro-cid-wfe7xcno>›</button> <div class="lightbox-content" data-astro-cid-wfe7xcno> <img class="lightbox-image" src="" alt="" data-astro-cid-wfe7xcno> </div> <div class="lightbox-counter" data-astro-cid-wfe7xcno></div> </div>  <script>(function(){const carouselId = "carousel-1wumyy96h";
+const images = [{"src":"/images/perolles2.webp","alt":"Le Pérolles","caption":"Le Pérolles"},{"src":"/images/perolles3.webp","alt":"Le Pérolles","caption":"Le Pérolles"},{"src":"/images/perolles4.webp","alt":"Le Pérolles","caption":"Le Pérolles"},{"src":"/images/perolles5.webp","alt":"Le Pérolles","caption":"Le Pérolles"},{"src":"/images/perolles6.webp","alt":"Le Pérolles","caption":"Le Pérolles"},{"src":"/images/perolles7.webp","alt":"Le Pérolles","caption":"Le Pérolles"}];
+
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.getElementById(carouselId);
+  if (!carousel) return;
+
+  const track = carousel.querySelector('.carousel-track');
+  const prevBtn = carousel.querySelector('.prev');
+  const nextBtn = carousel.querySelector('.next');
+  const dots = Array.from(carousel.querySelectorAll('.dot'));
+  const lightbox = document.getElementById(`lightbox-${carouselId}`);
+  const lightboxImg = lightbox.querySelector('.lightbox-image');
+  const lightboxClose = lightbox.querySelector('.lightbox-close');
+  const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+  const lightboxNext = lightbox.querySelector('.lightbox-next');
+  const lightboxCounter = lightbox.querySelector('.lightbox-counter');
+
+  let slidesToShowLocal = parseInt(carousel.dataset.slidesToShow) || 3;
+  let originalSlides = Array.from(track.children);
+  const originalCount = originalSlides.length;
+  if (originalCount === 0) return;
+  let clonesCount = Math.min(originalCount, slidesToShowLocal * 2); // Doubler ou prendre le total//
+  function getGapPx() {
+    const styles = getComputedStyle(track);
+    const gap = styles.gap || styles.columnGap || '0px';
+    return parseFloat(gap) || 0;
+  }
+
+  function createClones() {
+    Array.from(track.querySelectorAll('.clone')).forEach(n => n.remove());
+    const currentChildren = Array.from(track.children);
+    const prependItems = currentChildren.slice(-clonesCount).map((node, idx) => {
+      const clone = node.cloneNode(true);
+      clone.classList.add('clone');
+      const img = clone.querySelector('img');
+      if (img) {
+        const origIdx = (originalCount - clonesCount + idx) % originalCount;
+        img.dataset.originalIndex = origIdx;
+      }
+      return clone;
+    }).reverse();
+    prependItems.forEach(n => track.insertBefore(n, track.firstChild));
+    const appendItems = currentChildren.slice(0, clonesCount).map((node, idx) => {
+      const clone = node.cloneNode(true);
+      clone.classList.add('clone');
+      const img = clone.querySelector('img');
+      if (img) {
+        img.dataset.originalIndex = idx;
+      }
+      return clone;
+    });
+    appendItems.forEach(n => track.appendChild(n));
+  }
+
+  let slideWidthPx = 0;
+  let movePx = 0;
+  let totalSlidesDom = 0;
+  let currentIndex = 0;
+  let isTransitioning = false;
+
+  function measure() {
+    const allSlides = Array.from(track.children);
+    totalSlidesDom = allSlides.length;
+    const sample = allSlides.find(s => s.getBoundingClientRect().width > 0) || allSlides[0];
+    const gapPx = getGapPx();
+    slideWidthPx = sample.getBoundingClientRect().width;
+    movePx = slideWidthPx + gapPx;
+  }
+
+  function init() {
+    if (window.innerWidth <= 768) {
+      slidesToShowLocal = 1;
+    } else if (window.innerWidth <= 1024) {
+      slidesToShowLocal = Math.min(2, slidesToShow);
+    } else {
+      slidesToShowLocal = parseInt(carousel.dataset.slidesToShow) || slidesToShow;
+    }
+    clonesCount = Math.min(originalCount, slidesToShowLocal * 2); // Doubler ou prendre le total
+    Array.from(track.querySelectorAll('.clone')).forEach(n => n.remove());
+    createClones();
+    measure();
+    currentIndex = clonesCount;
+    track.style.transition = 'none';
+    track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+    requestAnimationFrame(() => { track.style.transition = 'transform 0.1s ease'; });
+    updateDots();
+    attachImageClicks();
+  }
+
+  function updateDots() {
+    if (!dots.length) return;
+    const relativeIndex = (currentIndex - clonesCount + originalCount) % originalCount;
+    const dotIndex = Math.floor(relativeIndex / slidesToShowLocal);
+    dots.forEach((d, i) => d.classList.toggle('active', i === dotIndex));
+  }
+
+  function moveToIndex(index, withTransition = true) {
+    track.style.transition = withTransition ? 'transform 0.5s ease' : 'none';
+    currentIndex = index;
+    track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+    isTransitioning = !!withTransition;
+  }
+
+  function next() {
+    if (isTransitioning) return;
+    moveToIndex(currentIndex + 1, true);
+  }
+  function prev() {
+    if (isTransitioning) return;
+    moveToIndex(currentIndex - 1, true);
+  }
+
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
+    const leftBound = clonesCount;
+    const rightBound = clonesCount + originalCount - 1;
+    if (currentIndex > rightBound) {
+      const newIndex = currentIndex - originalCount;
+      track.style.transition = 'none';
+      currentIndex = newIndex;
+      track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+      requestAnimationFrame(() => { track.style.transition = 'transform 0.5s ease'; });
+    }
+    if (currentIndex < leftBound) {
+      const newIndex = currentIndex + originalCount;
+      track.style.transition = 'none';
+      currentIndex = newIndex;
+      track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+      requestAnimationFrame(() => { track.style.transition = 'transform 0.5s ease'; });
+    }
+    updateDots();
+  });
+
+  const dotsEls = dots;
+  dotsEls.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.index);
+      const targetRelative = idx * slidesToShowLocal;
+      const targetDomIndex = clonesCount + (targetRelative % originalCount);
+      moveToIndex(targetDomIndex, true);
+    });
+  });
+
+  function attachImageClicks() {
+    const allImgs = track.querySelectorAll('img');
+    allImgs.forEach(img => {
+      const originalIndex = (img.dataset.originalIndex !== undefined) ? parseInt(img.dataset.originalIndex) : parseInt(img.dataset.lightboxIndex || img.closest('.carousel-slide')?.dataset.index || 0);
+      img.dataset._orig = originalIndex;
+      img.addEventListener('click', () => openLightbox(originalIndex));
+    });
+  }
+
+  let lightboxIndex = 0;
+  function openLightbox(index) {
+    lightboxIndex = index;
+    updateLightbox();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+  function updateLightbox() {
+    lightboxImg.src = images[lightboxIndex].src;
+    lightboxImg.alt = images[lightboxIndex].alt;
+    lightboxCounter.textContent = `${lightboxIndex + 1} / ${images.length}`;
+  }
+  function navigateLightbox(direction) {
+    lightboxIndex += direction;
+    if (lightboxIndex >= images.length) lightboxIndex = 0;
+    if (lightboxIndex < 0) lightboxIndex = images.length - 1;
+    updateLightbox();
+  }
+
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightboxPrev?.addEventListener('click', () => navigateLightbox(-1));
+  lightboxNext?.addEventListener('click', () => navigateLightbox(1));
+  lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+  });
+
+  prevBtn?.addEventListener('click', prev);
+  nextBtn?.addEventListener('click', next);
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { init(); }, 150);
+  });
+
+  init();
+});
+})();</script> </section> </article> </main>  </main> <footer class="full-width-footer" data-astro-cid-sz7xmlte> <div class="footer-container" data-astro-cid-sz7xmlte> <!-- Left Motto --> <div class="footer-motto left" data-astro-cid-sz7xmlte> <span class="motto-text" data-astro-cid-sz7xmlte>
+Business With Attitude<br data-astro-cid-sz7xmlte>Genève - Paris - Singapore
+</span> </div> <!-- Center Logo and Legal Link --> <div class="footer-center" data-astro-cid-sz7xmlte> <a href="/" class="footer-logo" data-astro-cid-sz7xmlte> <img src="/images/logo.svg" alt="Logo" class="logo-img" data-astro-cid-sz7xmlte> <span class="logo-text" data-astro-cid-sz7xmlte>We-TheAgency</span> </a> <a href="/legal" class="legal-link" data-astro-cid-sz7xmlte>Terms & Conditions</a> </div> <!-- Right Motto with Instagram --> <div class="footer-motto right" data-astro-cid-sz7xmlte> <span class="motto-text" data-astro-cid-sz7xmlte> </span> <a href="https://www.instagram.com/wta.wpp/" target="_blank" rel="noopener noreferrer" class="instagram-link" aria-label="Instagram" data-astro-cid-sz7xmlte> <svg class="instagram-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-astro-cid-sz7xmlte> <path d="M12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2ZM12 20C7.589 20 4 16.411 4 12C4 7.589 7.589 4 12 4C16.411 4 20 7.589 20 12C20 16.411 16.411 20 12 20Z" fill="currentColor" data-astro-cid-sz7xmlte></path> <path d="M12 7C9.243 7 7 9.243 7 12C7 14.757 9.243 17 12 17C14.757 17 17 14.757 17 12C17 9.243 14.757 7 12 7ZM12 15C10.346 15 9 13.654 9 12C9 10.346 10.346 9 12 9C13.654 9 15 10.346 15 12C15 13.654 13.654 15 12 15Z" fill="currentColor" data-astro-cid-sz7xmlte></path> <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" data-astro-cid-sz7xmlte></circle> </svg> </a> </div> </div></footer>   <script type="module">const n={threshold:.1,rootMargin:"0px 0px -50px 0px"},o=new IntersectionObserver(e=>{e.forEach(t=>{t.isIntersecting&&t.target.classList.add("animate")})},n);document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".scroll-animate").forEach(t=>o.observe(t))});document.addEventListener("click",e=>{if(e.target.matches('a[href^="#"]')){e.preventDefault();const t=e.target.getAttribute("href"),r=document.querySelector(t);r&&r.scrollIntoView({behavior:"smooth",block:"start"})}});</script> </body></html> 
