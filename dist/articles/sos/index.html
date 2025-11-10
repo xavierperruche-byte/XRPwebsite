@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="description" content="We - TheAgency"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/images/logo.svg"><title>We-TheAgency</title><!-- Preload fonts for better performance --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/aroundmrso.B8Mo34t6.css">
+<link rel="stylesheet" href="/_astro/aroundmrso.-jxeEgAJ.css"></head> <body> <!-- Floating Header --> <header class="floating-header" id="floatingHeader" data-astro-cid-3ef6ksr2> <div class="header-container" id="headerContainer" data-astro-cid-3ef6ksr2> <!-- Logo/Brand --> <div class="logo" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2> <img src="/images/logo.svg" alt="Logo" class="logo-img" data-astro-cid-3ef6ksr2> <span class="logo-text" data-astro-cid-3ef6ksr2>We-TheAgency</span> </a> </div> <!-- Desktop Navigation --> <nav class="desktop-nav" id="desktopNav" data-astro-cid-3ef6ksr2> <a href="/" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>👩‍💻</span> <span class="nav-text" data-astro-cid-3ef6ksr2>agence</span> </a><a href="/projets" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📖</span> <span class="nav-text" data-astro-cid-3ef6ksr2>services</span> </a><a href="/well" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>🧘‍♀️</span> <span class="nav-text" data-astro-cid-3ef6ksr2>we.llbeing</span> </a><a href="/magazine" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>magazine.we</span> </a><a href="/press" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>presse</span> </a><a href="/contact" class="nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📧</span> <span class="nav-text" data-astro-cid-3ef6ksr2>contact</span> </a> </nav> <!-- Mobile Menu Button --> <button class="mobile-menu-btn" id="mobileMenuBtn" data-astro-cid-3ef6ksr2> <span class="hamburger" data-astro-cid-3ef6ksr2></span> <span class="hamburger" data-astro-cid-3ef6ksr2></span> <span class="hamburger" data-astro-cid-3ef6ksr2></span> </button> </div> <!-- Mobile Navigation --> <nav class="mobile-nav" id="mobileNav" data-astro-cid-3ef6ksr2> <a href="/" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>👩‍💻</span> <span class="nav-text" data-astro-cid-3ef6ksr2>agence</span> </a><a href="/projets" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📖</span> <span class="nav-text" data-astro-cid-3ef6ksr2>services</span> </a><a href="/well" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>🧘‍♀️</span> <span class="nav-text" data-astro-cid-3ef6ksr2>we.llbeing</span> </a><a href="/magazine" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>magazine.we</span> </a><a href="/press" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📰</span> <span class="nav-text" data-astro-cid-3ef6ksr2>presse</span> </a><a href="/contact" class="mobile-nav-link " data-astro-cid-3ef6ksr2> <span class="nav-icon" data-astro-cid-3ef6ksr2>📧</span> <span class="nav-text" data-astro-cid-3ef6ksr2>contact</span> </a> </nav> </header>  <script type="module">function m(){const e=document.getElementById("floatingHeader"),l=document.getElementById("headerContainer"),c=document.getElementById("desktopNav"),t=document.getElementById("mobileMenuBtn"),n=document.getElementById("mobileNav");if(!e||!l||!c||!t||!n)return;function a(){e.classList.remove("mobile-mode"),n.classList.remove("active"),t.classList.remove("active"),requestAnimationFrame(()=>{requestAnimationFrame(()=>{const i=l.getBoundingClientRect(),o=c.querySelectorAll(".nav-link"),v=c.getBoundingClientRect();let s=!1;v.right>i.right-10&&(s=!0),o.forEach(u=>{const d=u.getBoundingClientRect();d.right>i.right-10&&(s=!0);const g=o[0].getBoundingClientRect();Math.abs(d.top-g.top)>10&&(s=!0)}),s&&e.classList.add("mobile-mode")})})}t.addEventListener("click",()=>{t.classList.toggle("active"),n.classList.toggle("active")}),n.querySelectorAll("a").forEach(i=>{i.addEventListener("click",()=>{t.classList.remove("active"),n.classList.remove("active")})}),window.addEventListener("scroll",()=>{(window.pageYOffset||document.documentElement.scrollTop)>100?e.classList.add("scrolled"):e.classList.remove("scrolled")}),document.addEventListener("click",i=>{const o=i.target;t&&n&&e&&!e.contains(o)&&(t.classList.remove("active"),n.classList.remove("active"))}),a();let r;window.addEventListener("resize",()=>{clearTimeout(r),r=setTimeout(a,150)})}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",m):m();</script> <!-- Main Content --> <main class="main-content">  <main class="article-page" data-astro-cid-zm77yjld> <article class="article-container" data-astro-cid-zm77yjld> <!-- Main Image --> <div class="article-hero" data-astro-cid-zm77yjld> <img src="/images/sos1.webp" alt="Save our Seas" class="article-main-image" data-astro-cid-zm77yjld> </div> <!-- Article Header --> <header class="article-header" data-astro-cid-zm77yjld> <h1 class="article-title" data-astro-cid-zm77yjld>Save our Seas</h1> <time class="article-date" datetime="2023-07-14" data-astro-cid-zm77yjld> July 14, 2023 </time> <!-- Tags --> <div class="article-tags" data-astro-cid-zm77yjld> <a href="/tags/rencontre" class="tag" data-astro-cid-zm77yjld> rencontre </a><a href="/tags/swim" class="tag" data-astro-cid-zm77yjld> swim </a> </div> </header> <!-- Article Content (your markdown renders here) --> <div class="article-content" data-astro-cid-zm77yjld> <h1 id="interview-with-james-lea">Interview with James Lea.</h1>
+<p>James Lea is the chief executive officer of the Save Our Seas Foundation.</p>
+<p>He has had a fascination for the marine realm from a young age and it was this that sparked his ambition to explore the oceans. James gained a first-class Honours degree in biological sciences from the University of Oxford and then volunteered as a shark researcher at the Bimini Biological Field Station. James then moved to work as a research scientist for the Save Our Seas Foundation, before completing a PhD in marine biology at the University of Plymouth in collaboration with the SOSF – D’Arros Research Centre. His primary research focus was a comprehensive tagging programme tracking almost 200 sharks of seven different species in Seychelles, aiming to determine the factors that drive their movement behaviour and use this knowledge to inform effective conservation strategies. He continues his research as part of the Evolutionary Ecology Group at the University of Cambridge. James Lea fully realises the importance of actively promoting awareness of marine conservation issues, so he is particularly excited to lead the Save Our Seas Foundation team to help ensure that we can live with healthy oceans for generations to come.</p>
+<p>James, we deeply thank you to accept this interview.</p>
+<br>
+<div style="text-align: center;">_________________________________________
+</div>
+<p><br><br><b><i>Hi James! I am a student aged 14 yrs. I love diving. I am still yet at my early steps as I dove in Greece, Port- Cros in South of France and in Brittany where I have some family roots. I love to swim under water, and observe the marine life, its fishes, and algae, seaweeds more than shipwrecks, I would say… I also love photography. I don’t know what I want to do in the future, but I am very happy to have this opportunity to talk with you about marine conservation issues and photography.</i></b></p><b><i>
+</i></b><i></i><p><i><b>James, could you please tell us about your first experiences with ocean?
+Do you have any anecdote to share with us?</b></i></p>
+<p>Hi Hadrien, great to meet you and thank you for having me to answer your questions. I think my earliest memories of the ocean are going rock pooling on the south coast of England with my family. It was amazing seeing these tiny pocket ecosystems of marine life trapped on the shore, and wondering what could lie beyond in the open ocean. Years later I was ultimately driven to take up scuba diving, and clearly remember the first time I ever saw a shark – much to my surprise it swam away very quickly, much more scared of me than me of it! I feel a bit like I have been chasing them ever since!</p>
+<p><br><br><b><i>Could you say it was the natural path to study in marine biology?</i></b></p>
+<p>I had long felt a strong pull to the ocean, but it wasn’t always clear that I wanted to do marine biology. I enjoyed science at school which led to me studying biology at university, but it was the growing fascination with sharks that made me want to work with them in some way, and marine biology was the path to that.</p>
+<p><br><br><b><i>I read that you are fascinated with sharks. How could you define them?</i></b></p>
+<p>Do you think there is a myth regarding sharks (Jaws movies might have cause prejudices to sharks?).</p>
+<p>Sharks are these ancient, enigmatic creatures that command your attention. Nothing quite compares to experiencing them in their natural habitat – their grace and beauty are so absorbing you can’t help but be fully present. I think sharks have long been engrained in our culture, long before Jaws had an impact. In fact, I think Jaws (apart from being a great film!) was so influential because of the existing mythos around sharks – they have been feared and revered by different cultures for thousands of years.</p>
+<p><br><br><b><i>What do you think about climate changes and its impacts on marine life? Could you mention some of them?</i></b></p>
+<p>Climate change is a very complex issue, but we are starting to see some very concerning impacts on marine life. Acidification of the oceans is severely impacting the growth of things like coral reefs and any animal with a shell. Warming oceans don’t mix as well, which is leaving large pockets of water without enough oxygen to support animals like sharks. Many marine species, including most sharks, also can’t regulate their body temperature, so changing temperatures affect the metabolic rate and can have major impacts on their physiology and development. It can also cause shifts in distribution, and affect the length and duration of migrations.</p>
+<p><br><br><b><i>Regarding plastic wastes, do you notice an improvement within the last ten years? Do you think people start to act in a better way? Is it challenging to drive changes?</i></b></p>
+<p>In many areas yes, especially where people are fortunate enough to be in a position to have access to alternatives to single use plastic and effective recycling facilities. In general people are very conscious and responsible. But there is still a long way to go, with a lot of historical issues to deal with, and a lot of areas where it’s very difficult to manage the use of plastic as the facilities and alternatives to do so just aren’t available.</p>
+<p><br><br><b><i>I discovered Thomas Peschak photography exhibition in Geneva at La Rotonde de Mont Blanc. Absolutely breathtaking. Do you also like photography?</i></b></p>
+<p>I’m very pleased to hear you enjoyed the exhibition! Yes, I am big fan of photography, I think it has tremendous power to capture moments and communicate emotion in a much more effective way than just writing. It helps form a much more tangible connection with our environment, helping us want to make the difference as opposed to just knowing that we should.</p>
+<p><br><br><b><i>What is your very best experience as a researcher and diver? Could you please describe us?</i></b></p>
+<p>Ooh, this is a tricky one! And will probably change each time you ask. But I think I will have to pick the first time I ever saw schooling hammerhead sharks. I was lucky enough to be in the Galapagos, with the hope of seeing the most iconic of all shark experiences – a wall of hammerhead sharks in the water column. We weren’t having much luck though, with some of the most famous sites for these encounters proving eerily quiet. But then, on the last dive we had a chance to see them, late in the evening, we were greeted with the most spectacular wall of hammerheads that filled  the water column! And it that wasn’t enough they were joined by a pod of dolphins! Breathtaking.</p>
+<p><br><br><b><i>Talking now about Older Than Trees. How did this project start? How did you manage it? How long did it take to produce it?</i></b></p>
+<p>Older Than Trees grew from an idea to mark the 20th anniversary of the Save Our Seas Foundation with a film about sharks that would hopefully help people fall in love with sharks and understand how important their conservation is. The key was teaming up with master storyteller Pippa Ehrlich, Oscar-winning director of My Octopus Teacher. She was really able to crystalise a narrative that we hope will connect with audiences and leave people with perhaps a different understanding of sharks from what they may have had before. It was a very collaborative and dynamic project that was a pleasure to work on with Pippa, which all told probably took us about 18 months to produce.</p>
+<p><br><br><b><i>Could you resume Older Than Trees in one sentence?</i></b></p>
+<p>Older Than Trees is a film about hope for the future of sharks and rays – through personal experience, it speaks to the captivating nature of sharks, the fragility of their crucial place in our oceans, and how science can show us a path to conservation.</p>
+<p><br><br><b><i>I hope that this interview will be shared and read amongst my friends and school. As a new generation, how can we act to raise awareness for healthy oceans?</i></b></p>
+<p>One of the most important things we can all do is talk to each other – tell stories about what the important issues are, and help others fall in love with the ocean. Only with that passion will people then have the motivation to make the difference. One of the most important things you can then do is use the power of your plate – where possible try and reduce the amount of seafood you eat, and when you do buy fish make sure you are choosing it from a sustainable source. This means that it is caught in a way that the population is still able to grow, and fortunately whether a product is considered sustainable is often marked on packaging. Of course, more general tasks like reducing use of single use plastics, recycling wherever possible, and reducing our energy consumption all can only help our oceans.</p>
+<p><br><br><b><i>My parents had an iconic character at their times, with Commandant Cousteau. He showed them the underwater world. Jacques Cousteau is known to have been one of the pioneers of diving in the middle of the 20th century. He was a former naval officer, and he gradually became interested in exploring and understanding the oceans as you are. We have to get such a great guide to teach us, to help us to understand, to make us dream, to inspire. I can’t wait to attend “Older Than Trees” film screening at the end of September.</i></b></p><b><i>
+</i></b><i></i><p><i><b>Do you have a motto, something in mind when you wake up in the morning?</b></i></p>
+<p>I haven’t really thought about this before! But it would probably be to just do your best, and remember to be kind.</p>
+<p><br><br><b><i>Thank You James. Very fulfilling</i></b></p>
+<br>
+<div style="text-align: center;">_________________________________________
+<br>
+Hommage aux océans
+<p>Théâtre du Léman Sept, 23, 2023, 5 PM</p>
+</div> </div> <!-- Carousel --> <section class="article-carousel" data-astro-cid-zm77yjld> <div class="carousel" id="carousel-mzgifmveo" data-slides-to-show="3" data-astro-cid-wfe7xcno> <div class="carousel-container" data-astro-cid-wfe7xcno> <button class="carousel-btn prev" aria-label="Previous images" data-astro-cid-wfe7xcno>‹</button> <div class="carousel-track-wrapper" data-astro-cid-wfe7xcno> <div class="carousel-track" data-astro-cid-wfe7xcno> <div class="carousel-slide" data-index="0" data-astro-cid-wfe7xcno> <img src="/images/sos2.webp" alt="Save our Seas" data-lightbox-index="0" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="1" data-astro-cid-wfe7xcno> <img src="/images/sos3.webp" alt="Save our Seas" data-lightbox-index="1" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="2" data-astro-cid-wfe7xcno> <img src="/images/sos4.webp" alt="Save our Seas" data-lightbox-index="2" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="3" data-astro-cid-wfe7xcno> <img src="/images/sos5.webp" alt="Save our Seas" data-lightbox-index="3" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="4" data-astro-cid-wfe7xcno> <img src="/images/sos6.webp" alt="Save our Seas" data-lightbox-index="4" data-astro-cid-wfe7xcno> </div><div class="carousel-slide" data-index="5" data-astro-cid-wfe7xcno> <img src="/images/sos7.webp" alt="Save our Seas" data-lightbox-index="5" data-astro-cid-wfe7xcno> </div> </div> </div> <button class="carousel-btn next" aria-label="Next images" data-astro-cid-wfe7xcno>›</button> </div> <div class="carousel-dots" data-astro-cid-wfe7xcno> <button class="dot active" data-index="0" aria-label="Go to slide group 1" data-astro-cid-wfe7xcno></button><button class="dot " data-index="1" aria-label="Go to slide group 2" data-astro-cid-wfe7xcno></button> </div> </div> <div class="lightbox" id="lightbox-carousel-mzgifmveo" data-astro-cid-wfe7xcno> <button class="lightbox-close" aria-label="Close lightbox" data-astro-cid-wfe7xcno>×</button> <button class="lightbox-btn lightbox-prev" aria-label="Previous image" data-astro-cid-wfe7xcno>‹</button> <button class="lightbox-btn lightbox-next" aria-label="Next image" data-astro-cid-wfe7xcno>›</button> <div class="lightbox-content" data-astro-cid-wfe7xcno> <img class="lightbox-image" src="" alt="" data-astro-cid-wfe7xcno> </div> <div class="lightbox-counter" data-astro-cid-wfe7xcno></div> </div>  <script>(function(){const carouselId = "carousel-mzgifmveo";
+const images = [{"src":"/images/sos2.webp","alt":"Save our Seas","caption":"Save our Seas"},{"src":"/images/sos3.webp","alt":"Save our Seas","caption":"Save our Seas"},{"src":"/images/sos4.webp","alt":"Save our Seas","caption":"Save our Seas"},{"src":"/images/sos5.webp","alt":"Save our Seas","caption":"Save our Seas"},{"src":"/images/sos6.webp","alt":"Save our Seas","caption":"Save our Seas"},{"src":"/images/sos7.webp","alt":"Save our Seas","caption":"Save our Seas"}];
+
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.getElementById(carouselId);
+  if (!carousel) return;
+
+  const track = carousel.querySelector('.carousel-track');
+  const prevBtn = carousel.querySelector('.prev');
+  const nextBtn = carousel.querySelector('.next');
+  const dots = Array.from(carousel.querySelectorAll('.dot'));
+  const lightbox = document.getElementById(`lightbox-${carouselId}`);
+  const lightboxImg = lightbox.querySelector('.lightbox-image');
+  const lightboxClose = lightbox.querySelector('.lightbox-close');
+  const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+  const lightboxNext = lightbox.querySelector('.lightbox-next');
+  const lightboxCounter = lightbox.querySelector('.lightbox-counter');
+
+  let slidesToShowLocal = parseInt(carousel.dataset.slidesToShow) || 3;
+  let originalSlides = Array.from(track.children);
+  const originalCount = originalSlides.length;
+  if (originalCount === 0) return;
+  let clonesCount = Math.min(originalCount, slidesToShowLocal * 2); // Doubler ou prendre le total//
+  function getGapPx() {
+    const styles = getComputedStyle(track);
+    const gap = styles.gap || styles.columnGap || '0px';
+    return parseFloat(gap) || 0;
+  }
+
+  function createClones() {
+    Array.from(track.querySelectorAll('.clone')).forEach(n => n.remove());
+    const currentChildren = Array.from(track.children);
+    const prependItems = currentChildren.slice(-clonesCount).map((node, idx) => {
+      const clone = node.cloneNode(true);
+      clone.classList.add('clone');
+      const img = clone.querySelector('img');
+      if (img) {
+        const origIdx = (originalCount - clonesCount + idx) % originalCount;
+        img.dataset.originalIndex = origIdx;
+      }
+      return clone;
+    }).reverse();
+    prependItems.forEach(n => track.insertBefore(n, track.firstChild));
+    const appendItems = currentChildren.slice(0, clonesCount).map((node, idx) => {
+      const clone = node.cloneNode(true);
+      clone.classList.add('clone');
+      const img = clone.querySelector('img');
+      if (img) {
+        img.dataset.originalIndex = idx;
+      }
+      return clone;
+    });
+    appendItems.forEach(n => track.appendChild(n));
+  }
+
+  let slideWidthPx = 0;
+  let movePx = 0;
+  let totalSlidesDom = 0;
+  let currentIndex = 0;
+  let isTransitioning = false;
+
+  function measure() {
+    const allSlides = Array.from(track.children);
+    totalSlidesDom = allSlides.length;
+    const sample = allSlides.find(s => s.getBoundingClientRect().width > 0) || allSlides[0];
+    const gapPx = getGapPx();
+    slideWidthPx = sample.getBoundingClientRect().width;
+    movePx = slideWidthPx + gapPx;
+  }
+
+  function init() {
+    if (window.innerWidth <= 768) {
+      slidesToShowLocal = 1;
+    } else if (window.innerWidth <= 1024) {
+      slidesToShowLocal = Math.min(2, slidesToShow);
+    } else {
+      slidesToShowLocal = parseInt(carousel.dataset.slidesToShow) || slidesToShow;
+    }
+    clonesCount = Math.min(originalCount, slidesToShowLocal * 2); // Doubler ou prendre le total
+    Array.from(track.querySelectorAll('.clone')).forEach(n => n.remove());
+    createClones();
+    measure();
+    currentIndex = clonesCount;
+    track.style.transition = 'none';
+    track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+    requestAnimationFrame(() => { track.style.transition = 'transform 0.1s ease'; });
+    updateDots();
+    attachImageClicks();
+  }
+
+  function updateDots() {
+    if (!dots.length) return;
+    const relativeIndex = (currentIndex - clonesCount + originalCount) % originalCount;
+    const dotIndex = Math.floor(relativeIndex / slidesToShowLocal);
+    dots.forEach((d, i) => d.classList.toggle('active', i === dotIndex));
+  }
+
+  function moveToIndex(index, withTransition = true) {
+    track.style.transition = withTransition ? 'transform 0.5s ease' : 'none';
+    currentIndex = index;
+    track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+    isTransitioning = !!withTransition;
+  }
+
+  function next() {
+    if (isTransitioning) return;
+    moveToIndex(currentIndex + 1, true);
+  }
+  function prev() {
+    if (isTransitioning) return;
+    moveToIndex(currentIndex - 1, true);
+  }
+
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
+    const leftBound = clonesCount;
+    const rightBound = clonesCount + originalCount - 1;
+    if (currentIndex > rightBound) {
+      const newIndex = currentIndex - originalCount;
+      track.style.transition = 'none';
+      currentIndex = newIndex;
+      track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+      requestAnimationFrame(() => { track.style.transition = 'transform 0.5s ease'; });
+    }
+    if (currentIndex < leftBound) {
+      const newIndex = currentIndex + originalCount;
+      track.style.transition = 'none';
+      currentIndex = newIndex;
+      track.style.transform = `translateX(${-currentIndex * movePx}px)`;
+      requestAnimationFrame(() => { track.style.transition = 'transform 0.5s ease'; });
+    }
+    updateDots();
+  });
+
+  const dotsEls = dots;
+  dotsEls.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.index);
+      const targetRelative = idx * slidesToShowLocal;
+      const targetDomIndex = clonesCount + (targetRelative % originalCount);
+      moveToIndex(targetDomIndex, true);
+    });
+  });
+
+  function attachImageClicks() {
+    const allImgs = track.querySelectorAll('img');
+    allImgs.forEach(img => {
+      const originalIndex = (img.dataset.originalIndex !== undefined) ? parseInt(img.dataset.originalIndex) : parseInt(img.dataset.lightboxIndex || img.closest('.carousel-slide')?.dataset.index || 0);
+      img.dataset._orig = originalIndex;
+      img.addEventListener('click', () => openLightbox(originalIndex));
+    });
+  }
+
+  let lightboxIndex = 0;
+  function openLightbox(index) {
+    lightboxIndex = index;
+    updateLightbox();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+  function updateLightbox() {
+    lightboxImg.src = images[lightboxIndex].src;
+    lightboxImg.alt = images[lightboxIndex].alt;
+    lightboxCounter.textContent = `${lightboxIndex + 1} / ${images.length}`;
+  }
+  function navigateLightbox(direction) {
+    lightboxIndex += direction;
+    if (lightboxIndex >= images.length) lightboxIndex = 0;
+    if (lightboxIndex < 0) lightboxIndex = images.length - 1;
+    updateLightbox();
+  }
+
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightboxPrev?.addEventListener('click', () => navigateLightbox(-1));
+  lightboxNext?.addEventListener('click', () => navigateLightbox(1));
+  lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+  });
+
+  prevBtn?.addEventListener('click', prev);
+  nextBtn?.addEventListener('click', next);
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { init(); }, 150);
+  });
+
+  init();
+});
+})();</script> </section> </article> </main>  </main> <footer class="full-width-footer" data-astro-cid-sz7xmlte> <div class="footer-container" data-astro-cid-sz7xmlte> <!-- Left Motto --> <div class="footer-motto left" data-astro-cid-sz7xmlte> <span class="motto-text" data-astro-cid-sz7xmlte>
+Business With Attitude<br data-astro-cid-sz7xmlte>Genève - Paris - Singapore
+</span> </div> <!-- Center Logo and Legal Link --> <div class="footer-center" data-astro-cid-sz7xmlte> <a href="/" class="footer-logo" data-astro-cid-sz7xmlte> <img src="/images/logo.svg" alt="Logo" class="logo-img" data-astro-cid-sz7xmlte> <span class="logo-text" data-astro-cid-sz7xmlte>We-TheAgency</span> </a> <a href="/legal" class="legal-link" data-astro-cid-sz7xmlte>Terms & Conditions</a> </div> <!-- Right Motto with Instagram --> <div class="footer-motto right" data-astro-cid-sz7xmlte> <span class="motto-text" data-astro-cid-sz7xmlte> </span> <a href="https://www.instagram.com/wta.wpp/" target="_blank" rel="noopener noreferrer" class="instagram-link" aria-label="Instagram" data-astro-cid-sz7xmlte> <svg class="instagram-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-astro-cid-sz7xmlte> <path d="M12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2ZM12 20C7.589 20 4 16.411 4 12C4 7.589 7.589 4 12 4C16.411 4 20 7.589 20 12C20 16.411 16.411 20 12 20Z" fill="currentColor" data-astro-cid-sz7xmlte></path> <path d="M12 7C9.243 7 7 9.243 7 12C7 14.757 9.243 17 12 17C14.757 17 17 14.757 17 12C17 9.243 14.757 7 12 7ZM12 15C10.346 15 9 13.654 9 12C9 10.346 10.346 9 12 9C13.654 9 15 10.346 15 12C15 13.654 13.654 15 12 15Z" fill="currentColor" data-astro-cid-sz7xmlte></path> <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" data-astro-cid-sz7xmlte></circle> </svg> </a> </div> </div></footer>   <script type="module">const n={threshold:.1,rootMargin:"0px 0px -50px 0px"},o=new IntersectionObserver(e=>{e.forEach(t=>{t.isIntersecting&&t.target.classList.add("animate")})},n);document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".scroll-animate").forEach(t=>o.observe(t))});document.addEventListener("click",e=>{if(e.target.matches('a[href^="#"]')){e.preventDefault();const t=e.target.getAttribute("href"),r=document.querySelector(t);r&&r.scrollIntoView({behavior:"smooth",block:"start"})}});</script> </body></html> 
