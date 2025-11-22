@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Dossier de sortie du build Astro (dist/ ou out/)
+dist/
