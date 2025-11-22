@@ -6,6 +6,10 @@ export default defineConfig({
   site: 'https://demo.we-theagency.com', 
   base: '/', 
   
+  devToolbar: {
+    enabled: false // ✅ ceci est la correction
+  },
+  
   // 2. Integrations Array (where React is added)
   integrations: [
     react()
