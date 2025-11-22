@@ -1,6 +1,8 @@
 ---
-// src/pages/offer.astro
+// src/pages/projets.astro
 import Layout from '../layouts/layout.astro';
+import Carousel from '../layouts/SwiperCarousel.astro';
+import ClickableMasonryGrid from '../components/ClickableMasonryGrid.astro';
 import '../styles/global.css';
 import BackToTop from '../components/BackToTop.astro';
 ---
@@ -8,25 +10,9 @@ import BackToTop from '../components/BackToTop.astro';
 <Layout 
   title="Services | We.TheAgency" 
   description="Une marque qui inspire. Une stratégie qui performe.."
-  currentPage="/offer"
+  currentPage="/projets"
 >
-  <!-- Navigation secondaire flottante -->
-  <nav class="floating-subnav" id="floatingSubnav">
-    <div class="subnav-container">
-      <a href="/offer" class="subnav-link active">
-        <span class="nav-icon">📋</span>
-        <span class="nav-text">Offre</span>
-      </a>
-      <a href="/projets" class="subnav-link">
-        <span class="nav-icon">🖥️</span>
-        <span class="nav-text">Projets</span>
-      </a>
-      <a href="/past-projets" class="subnav-link">
-        <span class="nav-icon">📚</span>
-        <span class="nav-text">Projets passés</span>
-      </a>
-    </div>
-  </nav>
+
 
   <!-- Spacer pour compenser le header et la subnav -->
   <div class="spacer-top"></div>
@@ -52,15 +38,14 @@ import BackToTop from '../components/BackToTop.astro';
     <div class="container">
       <div class="accordion-grid">
         
-        <!-- Accordéon Rêve -->
+        <!-- Accordéon Tout commence par une idée. -->
         <div class="accordion-box fade-in-down">
-          <button class="accordion-header" data-accordion="reve">
-            <h3 class="accordion-title"><strong>Rêve.</strong></h3>
+          <button class="accordion-header" data-accordion="Tout commence par une idée.">
+            <h3 class="accordion-title"><strong>Tout commence par une idée.</strong></h3>
             <span class="accordion-icon">+</span>
           </button>
-          <div class="accordion-content" id="reve">
+          <div class="accordion-content" id="Tout commence par une idée.">
             <div class="text-content">
-              <p>Tout commence par une idée.</p>
               <p>Peut-être souhaitez-vous créer une entreprise ?</p>
               <p>Peut-être souhaitez-vous donner une nouvelle dimension à votre entreprise, à votre projet ? Ou peut-être avez-vous un projet créatif que vous souhaitez partager avec votre communauté.</p>
               <p>Quoi qu'il en soit, la façon dont vous racontez votre histoire peut faire toute la différence.</p>
@@ -68,16 +53,18 @@ import BackToTop from '../components/BackToTop.astro';
           </div>
         </div>
 
-        <!-- Accordéon Cultive -->
+        <!-- Accordéon Développement commercial -->
         <div class="accordion-box fade-in-down">
-          <button class="accordion-header" data-accordion="cultive">
-            <h3 class="accordion-title"><strong>Cultive.</strong></h3>
+          <button class="accordion-header" data-accordion="Développement commercial">
+            <h3 class="accordion-title"><strong>Développement commercial.</strong></h3>
             <span class="accordion-icon">+</span>
           </button>
           <div class="accordion-content" id="cultive">
-            <div class="text-content">
-              <p>Grâce à nos recherches continues et à notre veille sur les tendances du monde du design et de la mode, l'agence offre à ses Clients une identité unique, qui reflète à la fois l'époque et leur vision.</p>
-              <p>Stratèges et visionnaires, nous leur inspirons des idées qui leur permettent de stimuler leur croissance, de se différencier et de se projeter.</p>
+            <div class="text-content"
+              <p>Stratège et visionnaire, l'agence insuffle à ses clients des idées qui leur permettent de stimuler leur croissance, de se différencier et de se projeter.</p>
+              <p>L'agence travaille avec des boutiques et des concepts stores situées en Suisse.</p>
+              <p>Elle collabore aussi avec des acteurs de l'industrie hotelière de luxe en Suisse et en France.</p>
+              <p>"Vu dans la presse" : Sur requête uniquement.</p>
             </div>
           </div>
         </div>
@@ -85,14 +72,14 @@ import BackToTop from '../components/BackToTop.astro';
         <!-- Accordéon Structure -->
         <div class="accordion-box fade-in-down">
           <button class="accordion-header" data-accordion="structure">
-            <h3 class="accordion-title"><strong>Structure.</strong></h3>
+            <h3 class="accordion-title"><strong>Structure ton identité de marque.</strong></h3>
             <span class="accordion-icon">+</span>
           </button>
           <div class="accordion-content" id="structure">
             <div class="text-content">
-              <p>Identité visuelle (branding), conception de sites web (Wordpress, Elementor, Javascript, CSS, HTML, Node.JS, Astro, ...),</p>
-              <p>Externalisation auprès de partenaires spécialisés pour l'acquisitions sur Instagram + Google Ads.</p>
-              <p>Sur requête uniquement "Vu dans la presse".</p>
+              <p>L'agence crée votre identité visuelle (logo et sites web).</p>
+              <p>Nous développons des solutions performantes (Wordpress, Elementor, Javascript, CSS, HTML, Node.JS, Astro, ...) pensées pour l'expérience utilisateur.</p>
+              <p>Nous externalisations certains services auprès de partenaires suisses experts (acquisitions Instagram + Google Ads).</p>
             </div>
           </div>
         </div>
@@ -100,12 +87,12 @@ import BackToTop from '../components/BackToTop.astro';
         <!-- Accordéon Crée du Lien -->
         <div class="accordion-box fade-in-down">
           <button class="accordion-header" data-accordion="lien">
-            <h3 class="accordion-title"><strong>Crée du Lien.</strong></h3>
+            <h3 class="accordion-title"><strong>Le Cercle des Entrepreneuses de l'Urban Belt.</strong></h3>
             <span class="accordion-icon">+</span>
           </button>
           <div class="accordion-content" id="lien">
             <div class="text-content">
-              <p>En nous rassemblant, nous créons une ressource puissante, riche en informations, en connexions et en opportunités exceptionnelles.</p>
+              <p>En nous rassemblant, nous créons du lien, une ressource puissante, riche en synergies et en opportunités.</p>
               <p>L'agence est fière d'établir et de faciliter des relations sincères et de trouver de nouvelles collaborations inexploitées.</p>
               <p><strong><a href="https://cube.we-theagency.com/" target="_blank" class="link-special">ici</a></strong></p>
             </div>
@@ -115,6 +102,81 @@ import BackToTop from '../components/BackToTop.astro';
       </div>
     </div>
   </section>
+
+
+  <section class="hero-section-second">
+    <div class="hero-container">
+      <h2 class="hero-title-second">Réalisations</h2>
+    </div>
+  </section>
+
+  <div class="divider-line"></div>
+
+  <!-- Content Sections - Carousel -->
+  <section class="content-section">
+    <Carousel />
+    <div class="container">
+    </div>
+  </section>
+
+
+
+  <section class="hero-section-second">
+    <div class="hero-container">
+      <h2 class="hero-title-second">Projets passés</h2>
+    </div>
+  </section>
+
+<!-- Features Section -->
+
+
+<section id="Geneve" class="hero-section-first">
+ <div class="divider-line"></div>
+ <div class="hero-container">
+      <h2 class="hero-title-first">Genève</h2>
+    </div>
+
+
+<ClickableMasonryGrid 
+    images={[
+      {src: '/images/USPG.webp', alt: 'APPAREAL', caption: 'APPAREAL (2020-2022): Retail – omnicanal & BtoB (Rugby Club – sport garment)' },
+      {src: '/images/inshapestudio.webp', alt: 'InShape', caption: 'Inshape Studio (2023-2024): Business Developement & Marketing offers'},
+      {src: '/images/mink.webp', alt: 'Mme Mink', caption: 'MME MINK (2020) US brand – Event canceled in Geneva (COVID)' },
+      {src: '/images/Kaio.webp', alt: 'Kaio', caption: 'Kaio Swim (2019-2026): Business Dev. Golden Age with 9 Retailers in Switzerland (Geneva, Lausanne, Gstaad, Zurich, Basel…) & 1 on French Riviera + online marketplaces.'},
+      {src: '/images/PIOUPIOUxLUCAS.webp', alt: 'Pioupiou x Lucas du Tertre', caption: 'Collaboration Pioupiou Cosmetic X LDT (2022)'},
+      {src: '/images/fashion.webp', alt: 'Lucas du Tertre', caption: 'Lucas du Tertre: Business Developement (2022)'},
+      // Ajoutez autant d'images que vous voulez ici
+    ]}
+    columns={6} 
+  />
+</section>
+
+
+<section id="Singapore" class="hero-section-first">
+ <div class="divider-line"></div>
+ <div class="hero-container">
+      <h2 class="hero-title-first">Singapour (2010 - 2014)</h2>
+    </div>
+
+
+<ClickableMasonryGrid 
+    images={[
+      {src: '/images/toupy.jpg', alt: 'Toupy', caption: 'Toupy'},
+      {src: '/images/feyue.png', alt: 'feiyue', caption: 'Feyue' },
+      {src: '/images/troizenfants.webp', alt: 'troizenfants HK', caption: 'Troizenfants Hong-Kong'},
+      {src: '/images/lucas.webp', alt: 'Lucas du Tertre', caption: 'Lucas du Tertre'},
+      {src: '/images/cp.webp', alt: 'Je suis en CP', caption: 'Je suis en CP' },
+      // Ajoutez autant d'images que vous voulez ici
+    ]}
+    columns={6} 
+  />
+</section>
+
+ 
+<BackToTop />
+</Layout>
+ 
+
 <BackToTop />
 </Layout>
 
@@ -535,7 +597,11 @@ import BackToTop from '../components/BackToTop.astro';
     .text-content {
       font-size: 13px;
     }
-
+    
+    .accordion-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
     .accordion-header {
       padding: 1rem;
     }

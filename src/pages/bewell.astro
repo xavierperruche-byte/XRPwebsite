@@ -1,5 +1,5 @@
 ---
-// src/pages/offer.astro
+// src/pages/well.astro
 import Layout from '../layouts/layout.astro';
 import '../styles/global.css';
 import ClickableMasonryGrid from '../components/ClickableMasonryGrid.astro';
@@ -9,79 +9,54 @@ import BackToTop from '../components/BackToTop.astro';
 <Layout 
   title="Services | We.TheAgency" 
   description="Une marque qui inspire. Une stratégie qui performe.."
-  currentPage="/past-projects"
+  currentPage="/well"
 >
-
-  <!-- Navigation secondaire flottante -->
-  <nav class="floating-subnav" id="floatingSubnav">
-    <div class="subnav-container">
-      <a href="/projets" class="subnav-link active">
-        <span class="nav-icon">📋</span>
-        <span class="nav-text">Offre</span>
-      </a>
-      <a href="/past-projets" class="subnav-link">
-        <span class="nav-icon">📚</span>
-        <span class="nav-text">Projets passés</span>
-      </a>
-    </div>
-  </nav
- 
-
 
   <!-- Spacer pour compenser le header et la subnav -->
   <div class="spacer-top"></div>
 
-
   <!-- Hero Section - First Title -->
   <section class="hero-section-first">
     <div class="hero-container">
-      <h2 class="hero-title-first">Projets passés</h2>
+      <h2 class="hero-title-first">Wellness & Hospitality</h2>
+    </div>
+  </section>
+
+  <!-- Hero Section - Second Title -->
+  <section class="hero-section-second">
+    <div class="hero-container">
+      <h2 class="hero-title-second">Our Wellness gateways</h2>
     </div>
   </section>
 
 <!-- Features Section -->
 
 
-<section id="Geneve" class="hero-section-first">
- <div class="divider-line"></div>
- <div class="hero-container">
-      <h2 class="hero-title-first">Genève</h2>
-    </div>
-
-
 <ClickableMasonryGrid 
     images={[
-      {src: '/images/USPG.webp', alt: 'APPAREAL', caption: 'APPAREAL (2020-2022): Retail – omnicanal & BtoB (Rugby Club – sport garment)' },
-      {src: '/images/inshapestudio.webp', alt: 'InShape', caption: 'Inshape Studio (2023-2024): Business Developement & Marketing offers'},
-      {src: '/images/mink.webp', alt: 'Mme Mink', caption: 'MME MINK (2020) US brand – Event canceled in Geneva (COVID)' },
-      {src: '/images/Kaio.webp', alt: 'Kaio', caption: 'Kaio Swim (2019-2026): Business Dev. Golden Age with 9 Retailers in Switzerland (Geneva, Lausanne, Gstaad, Zurich, Basel…) & 1 on French Riviera + online marketplaces.'},
-      {src: '/images/PIOUPIOUxLUCAS.webp', alt: 'Pioupiou x Lucas du Tertre', caption: 'Collaboration Pioupiou Cosmetic X LDT (2022)'},
-      {src: '/images/fashion.webp', alt: 'Lucas du Tertre', caption: 'Lucas du Tertre: Business Developement (2022 Retailer in Geneva)'},
+      {src: '/images/LeCran.webp', alt: 'Le Crans', caption: 'Le Crans – Alpine Haven' },
+      {src: '/images/BainBleu.webp', alt: 'BAIN BLEU', caption: 'Bain Bleu Hammam & Spa Genève'},
+      {src: '/images/Horlogers.webp', alt: 'Hôtel des Horlogers', caption: 'Hôtel des Horlogers'},
+      {src: '/images/Kaiowell.webp', alt: 'Kaio', caption: 'Kaio Swim'},
+      {src: '/images/LP_spa.webp', alt: 'Lausanne Palace', caption: 'Lausanne Palace'},
+      {src: '/images/horlogers2.webp', alt: 'Hôtel des Horlogers', caption: 'Hôtel des Horlogers'},
+      {src: '/images/BeauRivage.webp', alt: 'Beau Rivage', caption: 'Beau Rivage Genève' },
       // Ajoutez autant d'images que vous voulez ici
     ]}
     columns={3} 
   />
-</section>
 
-
-<section id="Singapore" class="hero-section-first">
- <div class="divider-line"></div>
- <div class="hero-container">
-      <h2 class="hero-title-first">Singapour</h2>
+    <div class="hero-container">
+      <h2 class="hero-title-second">&quot;When
+we thoughtfully and meaningfully consider wellness within all our guest
+experiences, that is when the magic happens. There is no better formula than
+combining wellness with hospitality to enhance overall wellbeing - of our
+guests, teams and environment, and of the surrounding community.&quot</h2>
+      <h2 class="hero-text">Sonal Uberoi in The Wellness Asset</h2>
     </div>
 
-
-<ClickableMasonryGrid 
-    images={[
-      {src: '/images/feyue.png', alt: 'feyue', caption: 'Feyue' },
-      {src: '/images/toupy.webp', alt: 'Toupy', caption: 'Toupy'},
-      {src: '/images/fashion.webp', alt: 'Lucas du Tertre', caption: 'Lucas du Tertre: Business Developement (2012-2013 Retailer in Singapore)'},
-      {src: '/images/cp.webp', alt: 'Je suis en CP', caption: 'Je suis en CP' },
-      // Ajoutez autant d'images que vous voulez ici
-    ]}
-    columns={3} 
-  />
 </section>
+
 
  
 <BackToTop />
@@ -157,7 +132,7 @@ import BackToTop from '../components/BackToTop.astro';
 
   /* Spacer pour éviter que le contenu soit caché sous les navs */
   .spacer-top {
-    height: 230px; /* Header (80px) + Subnav (60px) + marge (40px) */
+    height: 130px; /* Header (80px) + Subnav (60px) + marge (40px) */
   }
 
   /* Hero Sections - Style Elementor */
@@ -176,10 +151,10 @@ import BackToTop from '../components/BackToTop.astro';
     margin: 0 auto;
   }
 
-  .hero-title-first {
+  .hero-title-second {
     font-family: var(--font-main);
-    font-size: 30px;
-    font-weight: 400;
+    font-size: 20;
+    font-weight: 300;
     line-height: 1.4;
     letter-spacing: 4px;
     color: #000;
@@ -188,7 +163,7 @@ import BackToTop from '../components/BackToTop.astro';
     text-align: center;
   }
 
-  .hero-title-second {
+  .hero-title-first {
     font-family: var(--font-main);
     font-size: 50px;
     font-weight: 700;
@@ -199,6 +174,23 @@ import BackToTop from '../components/BackToTop.astro';
     padding: 1.5rem 0;
     text-align: center;
   }
+
+
+  .hero-text {
+    font-family: var(--font-main);
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: 3px;
+    color: #000;
+    width: 60vw;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    text-align: center;
+    padding: 1rem 0;
+    text-align: center;
+  }
+
 
   /* Divider */
   .divider-line {
@@ -418,9 +410,9 @@ import BackToTop from '../components/BackToTop.astro';
       font-size: 0.9rem;
     }
 
-    .spacer-top {
-      height: 160px;
-    }
+  .spacer-top {
+    height: 130px; /* Header (80px) + Subnav (60px) + marge (40px) */
+  }
 
     .hero-title-first {
       font-size: 20px;
@@ -428,7 +420,7 @@ import BackToTop from '../components/BackToTop.astro';
     }
 
     .hero-title-second {
-      font-size: 18px;
+      font-size: 16px;
       padding: 1rem 0;
     }
 
