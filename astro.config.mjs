@@ -1,19 +1,23 @@
+// astro.config.mjs
+
 import { defineConfig } from 'astro/config';
-import react from '@astrojs/react'; // Import the integration
+import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
+
 
 export default defineConfig({
-  // 1. Site and Base Configuration
+  // 1. Configuration de base
   site: 'https://demo.we-theagency.com', 
   base: '/', 
-  
-  devToolbar: {
-    enabled: false // ✅ ceci est la correction
-  },
-  
-  // 2. Integrations Array (where React is added)
+  outDir: './dist', // Le dossier de sortie est bien './dist'
+
   integrations: [
-    react()
+    react(), // Intégration React
+    sitemap() // Intégration Sitemap
   ],
   
-  // You can add other configurations here (e.g., markdown, output, etc.)
+  devToolbar: {
+    enabled: false // Évite la toolbar astro en mode dev
+  },
+
 });

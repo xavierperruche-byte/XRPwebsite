@@ -11,8 +11,8 @@ interface Props {
 }
 
 const { 
-  title, 
-  description = 'We - TheAgency',
+  title = 'We-TheAgency', 
+  description = 'We-TheAgency - Business with Attitude',
   currentPage = ''
 } = Astro.props;
 ---
@@ -21,10 +21,15 @@ const {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>We-TheAgency</title>
   <meta name="description" content={description}>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={Astro.url.href} />
+  <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
-  <title>We-TheAgency</title>
+
    
   <!-- Preload fonts for better performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
