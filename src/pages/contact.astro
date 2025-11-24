@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 
 // Add your reCAPTCHA site key here
-const RECAPTCHA_SITE_KEY = "6LdwdNsrAAAAAASMuuyUjO8isoLadajEvJL4yvD1";
+const RECAPTCHA_SITE_KEY = "6LdmWBcsAAAAAH0hzs_uPlj4UbKSY54OFA0WsZmT";
 
 // Define your projects/exhibitions data
 const projects = [
@@ -44,7 +44,7 @@ const projects = [
                   <div class="form-wrapper">
                     <div class="form-header">
                       <h1>Contact</h1>
-                      <p>Envoyez nous un message!</p>
+                      <p>Envoyez-nous un message !</p>
                     </div>
                     <div class="success-message" id="successMessage">
                       ✓ Message envoyé! Nous vous ferons un retour dès que possible.
@@ -278,6 +278,7 @@ const projects = [
       min-height: 100vh; /* Use min-height to ensure it respects content longer than viewport */
       margin: 0;
       padding: 0;
+      font-family: var(--font-main), -apple-system, BlinkMacSystemFont, 'Segoe UI', Urbanist, sans-serif;
     }
 
     .slider-container {
@@ -472,7 +473,7 @@ const projects = [
     }
 
     .form-header h1 {
-      font-size: 2.5rem;
+      font-size: 2.0rem;
       color: #2d3748;
       margin-bottom: 0.5rem;
     }
@@ -484,6 +485,7 @@ const projects = [
 
     .form-group {
       margin-bottom: 1.5rem;
+      font-family: var(--font-main), -apple-system, BlinkMacSystemFont, 'Segoe UI', Urbanist, sans-serif;
     }
 
     label {
@@ -492,6 +494,7 @@ const projects = [
       font-weight: 600;
       margin-bottom: 0.5rem;
       font-size: 0.95rem;
+      font-family: var(--font-main), -apple-system, BlinkMacSystemFont, 'Segoe UI', Urbanist, sans-serif;
     }
 
     input, textarea {
@@ -501,7 +504,7 @@ const projects = [
       border-radius: 10px;
       font-size: 1rem;
       transition: all 0.3s ease;
-      font-family: inherit;
+      font-family: var(--font-main), -apple-system, BlinkMacSystemFont, 'Segoe UI', Urbanist, sans-serif;
     }
 
     input:focus, textarea:focus {
@@ -518,7 +521,7 @@ const projects = [
     .submit-btn {
       width: 100%;
       padding: 1rem;
-      background: linear-gradient(135deg, #8d6868 0%, #fff0ea 100%);
+      background: linear-gradient(135deg, #686f8dff 0%, #fff0ea 100%);
       color: white;
       border: none;
       border-radius: 10px;

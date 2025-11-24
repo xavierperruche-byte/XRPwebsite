@@ -86,12 +86,20 @@ const { images, columns = 3 } = Astro.props;
   
   figcaption {
     padding: 0.75rem 1rem;
-    font-size: 1.1rem;
-    color: #202020ff;
+    font-size: 0.9rem;
+    color: #000000ff;
     text-align: center;
   }
   
   /* --- 4. RESPONSIVE --- */
+
+  /* Peetite Page */
+  @media (max-width: 2048px) {
+    .ClickableMasonryGrid {
+      column-count: 3;
+    }
+  }
+
 
   /* Tablette (2 colonnes) */
   @media (max-width: 1024px) {

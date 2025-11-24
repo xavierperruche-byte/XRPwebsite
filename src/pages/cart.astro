@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CartPage from "../components/CartPage.jsx";
+---
+
+<html>
+  <body>
+    <!-- ⚠️ Hydratation côté client -->
+    <CartPage client:load />
+  </body>
+</html>

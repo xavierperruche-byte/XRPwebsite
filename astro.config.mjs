@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   // 1. Configuration de base
-  site: 'https://demo.we-theagency.com', 
+  site: 'https://www.we-theagency.com/', 
   base: '/', 
   outDir: './dist', // Le dossier de sortie est bien './dist'
 

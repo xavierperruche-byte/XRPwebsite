@@ -2,7 +2,7 @@
 // Configuration
 $recipient_email = "REJANE.WE.THEAGENCY@GMAIL.COM"; // REPLACE WITH YOUR EMAIL
 $email_subject = "New Contact Form Submission";
-$recaptcha_secret_key = "6LdwdNsrAAAAAHcqUPeVRmf5BSzXwbo_pmYdrGGG"; // REPLACE WITH YOUR SECRET KEY
+$recaptcha_secret_key = "6LdmWBcsAAAAAOtmEU8h2FFvskpie_4Doa86MZ1r"; // REPLACE WITH YOUR SECRET KEY
 
 // Set headers for JSON response
 header('Content-Type: application/json');

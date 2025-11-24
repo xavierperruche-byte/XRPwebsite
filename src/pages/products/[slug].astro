@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import AddToCart from "../../components/AddToCart.jsx";
+
+export async function getStaticPaths() {
+  const products = await getCollection('products');
+  return products.map((product) => ({
+    params: { slug: product.slug }, 
+    props: { product },             
+  }));
+}
+
+const { product } = Astro.props;
+---
+
+<html>
+  <body>
+    <h1>{product.data.name}</h1>
+    <img src={product.data.image} alt={product.data.name}  width=500 height=500 />
+    <p>Prix : {product.data.price} {product.data.currency}</p>
+    <p>{product.data.description}</p>
+
+    <AddToCart client:load product={product.data} />
+    <p><a href="../cart" target="_blank" class="link-special">voir votre panier</a></p>
+  </body>
+</html>
