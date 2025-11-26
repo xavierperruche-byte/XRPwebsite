@@ -1,8 +1,14 @@
 <?php
 // Configuration
-$recipient_email = "REJANE.WE.THEAGENCY@GMAIL.COM"; // REPLACE WITH YOUR EMAIL
+$recipient_email = "xavier.perruche@gmail.com"; // REPLACE WITH YOUR EMAIL
 $email_subject = "New Contact Form Submission";
 $recaptcha_secret_key = "6LdmWBcsAAAAAOtmEU8h2FFvskpie_4Doa86MZ1r"; // REPLACE WITH YOUR SECRET KEY
+
+// --- Ajoutez cette ligne ---
+$sending_email = "wepopup@wepopup.net"; // **<<< À REMPLACER PAR VOTRE VRAIE ADRESSE BLUEHOST**
+// ---------------------------
+
+
 
 // Set headers for JSON response
 header('Content-Type: application/json');
@@ -80,11 +86,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_content .= "IP Address: " . $_SERVER['REMOTE_ADDR'] . "\n";
     $email_content .= "User Agent: " . $_SERVER['HTTP_USER_AGENT'] . "\n";
     
-    // Build email headers
-    $email_headers = "From: $name <$email>\r\n";
-    $email_headers .= "Reply-To: $email\r\n";
-    $email_headers .= "X-Mailer: PHP/" . phpversion();
     
+    // Build email headers
+    // ANCIEN : $email_headers = "From: $name <$email>\r\n"; 
+
+    // NOUVEAU : Le nom d'affichage sera "Formulaire de contact", l'email d'envoi sera celui de Bluehost.
+    $email_headers = "From: Formulaire de contact <$sending_email>\r\n"; 
+
+    // Le Reply-To reste l'email de l'utilisateur, pour que vous puissiez cliquer sur "Répondre".
+    $email_headers .= "Reply-To: $name <$email>\r\n"; 
+    $email_headers .= "X-Mailer: PHP/" . phpversion();
+
     // Send email
     if (mail($recipient_email, $email_subject, $email_content, $email_headers)) {
         http_response_code(200);
@@ -99,4 +111,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     http_response_code(403);
     echo json_encode(["success" => false, "error" => "Invalid request method."]);
 }
-?>
