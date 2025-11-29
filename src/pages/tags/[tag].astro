@@ -66,11 +66,11 @@ const { tag } = Astro.params;  // URL parameter (e.g., "astro")
 const { tagName, articles } = Astro.props;  // Data: tag name + filtered articles
 ---
 
-<Layout title={`Articles tagged "${tagName}"`}>
+<Layout title={`Articles taggés "${tagName}"`}>
   
   <main class="tag-gallery">
     <div class="gallery-header">
-      <h1>Articles tagged: <span class="tag-name">{tagName}</span></h1>
+      <h1>Articles taggés : <span class="tag-name">{tagName}</span></h1>
       <p class="article-count">{articles.length} {articles.length === 1 ? 'article' : 'articles'} found</p>
     </div>
 
@@ -102,7 +102,7 @@ const { tagName, articles } = Astro.props;  // Data: tag name + filtered article
     </div>
 
     <div class="back-link">
-      <a href="/articles">← Back to all articles</a>
+      <a href="/articles">← Retour vers tous les articles</br></a>
     </div>
   </main>
 

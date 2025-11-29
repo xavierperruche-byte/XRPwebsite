@@ -41,14 +41,14 @@ const articles = rawArticles
 // Liste finale des tags uniques pour l'affichage
 const allTags = Array.from(tagMap.values()).sort((a, b) => a.displayName.localeCompare(b.displayName));
 
-const pageTitle = "All Articles";
+const pageTitle = "Tous les Articles";
 ---
 
 <Layout title={pageTitle}>
   <main class="tag-gallery">
     <div class="gallery-header">
       <h1>{pageTitle}</h1>
-      <p class="article-count">{articles.length} {articles.length === 1 ? 'article' : 'articles'} found</p>
+      <p class="article-count">{articles.length} {articles.length === 1 ? 'article' : 'articles'} trouvés</p>
       
       <section class="tag-list-index">
         {allTags.map(tag => (
@@ -77,9 +77,7 @@ const pageTitle = "All Articles";
                   })}
                 </time>
               )}
-              {article.excerpt && (
-                <p class="card-excerpt">{article.excerpt}</p>
-              )}
+              {article.excerpt}
             </div>
           </a>
         </article>

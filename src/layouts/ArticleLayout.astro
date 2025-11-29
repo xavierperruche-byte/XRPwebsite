@@ -34,9 +34,15 @@ const { title, mainImage, mainImageAlt, tags, carouselImages, publishDate } = fr
           {tags.map(tag => (
             <a href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`} class="tag">
               {tag}
-            </a>
+            </a> 
           ))}
         </div>
+
+        <div class="article-all">
+            <a href="/articles" style="color: black;text-decoration: none;">tous les articles</a>
+        </div>
+
+
       </header>
 
       <!-- Article Content (your markdown renders here) -->
@@ -113,7 +119,25 @@ const { title, mainImage, mainImageAlt, tags, carouselImages, publishDate } = fr
     margin-top: 1rem;
   }
 
+  .article-all {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
   .tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+  }
+  
+  .article-all {
     display: inline-block;
     padding: 0.25rem 0.75rem;
     background: #f0f0f0;
