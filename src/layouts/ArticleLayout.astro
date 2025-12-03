@@ -3,6 +3,8 @@
 // This layout wraps your .md files
 import Layout from './Layout.astro';
 import Carousel from '../components/Carousel.astro';
+import BackToTop from '../components/BackToTop.astro';
+
 
 const { frontmatter } = Astro.props;
 const { title, mainImage, mainImageAlt, tags, carouselImages, publishDate } = frontmatter;
@@ -58,6 +60,8 @@ const { title, mainImage, mainImageAlt, tags, carouselImages, publishDate } = fr
       )}
     </article>
   </main>
+
+<BackToTop />
 
 </Layout>
 

@@ -1,18 +1,764 @@
 ---
+// src/pages/catalog.astro
+import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+
 const products = await getCollection('products');
 ---
 
-<html>
-  <body>
-    <h1>Catalogue</h1>
-    <ul>
-      {products.map(prod => (
-        <li>
-          <a href={`/products/${prod.slug}`}>{prod.data.name}</a>
-          — {prod.data.price} {prod.data.currency}
-        </li>
-      ))}
-    </ul>
-  </body>
-</html>
+<Layout title="Catalogue - We The Agency" currentPage="catalog">
+  <div class="catalog-page">
+    
+    <!-- Hero Section -->
+    <section class="catalog-hero">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Notre <span class="stabilo">Catalogue</span>
+        </h1>
+      </div>
+      <div class="hero-decoration">
+        <div class="decoration-circle circle-1"></div>
+        <div class="decoration-circle circle-2"></div>
+        <div class="decoration-circle circle-3"></div>
+      </div>
+    </section>
+
+    <!-- Filtres et recherche -->
+    <section class="filters-section">
+      <div class="container">
+        <div class="filters-wrapper">
+          <div class="search-box">
+            <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            <input 
+              type="text" 
+              id="searchInput" 
+              placeholder="Rechercher un produit..." 
+              class="search-input"
+            />
+          </div>
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">
+              Tous les produits
+            </button>
+            <button class="filter-btn" data-filter="adhesion">
+              Adhésions
+            </button>
+            <button class="filter-btn" data-filter="formation">
+              Formations
+            </button>
+          </div>
+          <select class="sort-select" id="sortSelect">
+            <option value="default">Trier par défaut</option>
+            <option value="price-asc">Prix croissant</option>
+            <option value="price-desc">Prix décroissant</option>
+            <option value="name">Nom A-Z</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grille de produits -->
+    <section class="products-section">
+      <div class="container">
+        <div class="products-grid" id="productsGrid">
+          {products.map((product) => (
+            <article class="product-card" data-product-name={product.data.name.toLowerCase()}>
+              <a href={`/products/${product.slug}`} class="card-link">
+                <div class="card-image-wrapper">
+                  <img 
+                    src={product.data.image} 
+                    alt={product.data.name}
+                    class="card-image"
+                    loading="lazy"
+                  />
+                  <div class="card-overlay">
+                    <span class="view-details">Voir les détails →</span>
+                  </div>
+                  <div class="card-badge">Nouveau</div>
+                </div>
+                
+                <div class="card-content">
+                  <h3 class="card-title">{product.data.name}</h3>
+                  <p class="card-description">{product.data.description}</p>
+                  
+                  <div class="card-footer">
+                    <div class="card-price">
+                      <span class="price-amount">{product.data.price}</span>
+                      <span class="price-currency">{product.data.currency}</span>
+                    </div>
+                    <div class="card-features">
+                      <span class="feature-tag">
+                        <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        Accès immédiat
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              
+              <div class="card-actions">
+                <button class="btn-quick-add" data-product-id={product.data.id}>
+                  <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                  Ajouter
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <!-- Message si aucun résultat -->
+        <div class="no-results" id="noResults" style="display: none;">
+          <svg class="no-results-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <h3>Aucun produit trouvé</h3>
+          <p>Essayez de modifier vos critères de recherche</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section CTA -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Besoin d'aide pour choisir ?</h2>
+        <p>Notre équipe est là pour vous accompagner dans votre choix</p>
+        <a href="/contact" class="cta-button">
+          Contactez-nous
+          <svg class="cta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</Layout>
+
+<script define:vars={{ products }}>
+  // Recherche
+  const searchInput = document.getElementById('searchInput');
+  const productsGrid = document.getElementById('productsGrid');
+  const productCards = document.querySelectorAll('.product-card');
+  const noResults = document.getElementById('noResults');
+
+  searchInput?.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    let visibleCount = 0;
+
+    productCards.forEach(card => {
+      const productName = card.dataset.productName;
+      if (productName.includes(searchTerm)) {
+        card.style.display = 'block';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    noResults.style.display = visibleCount === 0 ? 'flex' : 'none';
+  });
+
+  // Filtres
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      // Logique de filtrage à implémenter selon vos catégories
+    });
+  });
+
+  // Tri
+  const sortSelect = document.getElementById('sortSelect');
+  sortSelect?.addEventListener('change', (e) => {
+    const sortValue = e.target.value;
+    const cardsArray = Array.from(productCards);
+    
+    cardsArray.sort((a, b) => {
+      const priceA = parseFloat(a.querySelector('.price-amount').textContent);
+      const priceB = parseFloat(b.querySelector('.price-amount').textContent);
+      const nameA = a.dataset.productName;
+      const nameB = b.dataset.productName;
+
+      switch(sortValue) {
+        case 'price-asc':
+          return priceA - priceB;
+        case 'price-desc':
+          return priceB - priceA;
+        case 'name':
+          return nameA.localeCompare(nameB);
+        default:
+          return 0;
+      }
+    });
+
+    cardsArray.forEach(card => productsGrid.appendChild(card));
+  });
+
+  // Ajout rapide au panier
+  document.querySelectorAll('.btn-quick-add').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const productId = btn.dataset.productId;
+      const product = products.find(p => p.data.id === productId);
+      
+      if (product) {
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        cart.push({
+          id: product.data.id,
+          name: product.data.name,
+          price: product.data.price,
+          currency: product.data.currency,
+          image: product.data.image,
+          quantity: 1,
+          addedAt: new Date().toISOString()
+        });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        
+        // Animation du bouton
+        btn.classList.add('added');
+        btn.innerHTML = '<svg class="btn-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Ajouté';
+        
+        // Dispatch event
+        window.dispatchEvent(new CustomEvent('cartUpdated', { 
+          detail: { itemCount: cart.length } 
+        }));
+        
+        setTimeout(() => {
+          btn.classList.remove('added');
+          btn.innerHTML = '<svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>Ajouter';
+        }, 2000);
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Base */
+  .catalog-page {
+    width: 100%;
+    min-height: 100vh;
+    background: #fafafa;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Hero Section */
+  .catalog-hero {
+    position: relative;
+    padding: 8rem 2rem 4rem;
+    background: linear-gradient(135deg, #686f8d 0%, #fff0ea 100%);
+    overflow: hidden;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+  }
+
+  .stabilo {
+    background: linear-gradient(
+      104deg,
+      rgba(255, 238, 102, 0) 0.9%,
+      rgba(255, 238, 102, 1.25) 2.4%,
+      rgba(255, 238, 102, 0.5) 5.8%,
+      rgba(255, 238, 102, 0.1) 93%,
+      rgba(255, 238, 102, 0.7) 96%,
+      rgba(255, 238, 102, 0) 98%
+    );
+    padding: 0.1em 0.3em;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3rem;
+    opacity: 0.95;
+    margin-bottom: 3rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  .stat-label {
+    font-size: 0.95rem;
+    opacity: 0.9;
+  }
+
+  /* Decorations */
+  .hero-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .decoration-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    animation: float 20s ease-in-out infinite;
+  }
+
+  .circle-1 {
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    right: -50px;
+    animation-delay: 0s;
+  }
+
+  .circle-2 {
+    width: 200px;
+    height: 200px;
+    bottom: -50px;
+    left: 10%;
+    animation-delay: 5s;
+  }
+
+  .circle-3 {
+    width: 150px;
+    height: 150px;
+    top: 50%;
+    left: -75px;
+    animation-delay: 10s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    25% { transform: translateY(-20px) translateX(20px); }
+    50% { transform: translateY(0) translateX(0); }
+    75% { transform: translateY(20px) translateX(-20px); }
+  }
+
+  /* Filtres */
+  .filters-section {
+    padding: 3rem 0;
+    background: white;
+    border-bottom: 1px solid #e2e8f0;
+    position: sticky;
+    top: 80px;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+
+  .filters-wrapper {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    width: 20px;
+    height: 20px;
+    color: #a0aec0;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 3rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    font-family: var(--font-main), sans-serif;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: #686f8d;
+    box-shadow: 0 0 0 3px rgba(104, 111, 141, 0.1);
+  }
+
+  .filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .filter-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #e2e8f0;
+    background: white;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    font-family: var(--font-main), sans-serif;
+  }
+
+  .filter-btn:hover {
+    border-color: #686f8d;
+    color: #686f8d;
+  }
+
+  .filter-btn.active {
+    background: #686f8d;
+    color: white;
+    border-color: #686f8d;
+  }
+
+  .sort-select {
+    padding: 0.875rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: white;
+    font-family: var(--font-main), sans-serif;
+  }
+
+  .sort-select:focus {
+    outline: none;
+    border-color: #686f8d;
+  }
+
+  /* Grille de produits */
+  .products-section {
+    padding: 4rem 0;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .product-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .product-card:hover .card-image {
+    transform: scale(1.1);
+  }
+
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(104, 111, 141, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .product-card:hover .card-overlay {
+    opacity: 1;
+  }
+
+  .view-details {
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .card-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, #686f8d, #fff0ea);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 10;
+  }
+
+  .card-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .card-description {
+    color: #718096;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex: 1;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .card-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .price-amount {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #686f8d;
+  }
+
+  .price-currency {
+    font-size: 1rem;
+    color: #a0aec0;
+  }
+
+  .card-features {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .feature-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.85rem;
+    color: #48bb78;
+    font-weight: 600;
+  }
+
+  .feature-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .card-actions {
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  .btn-quick-add {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: linear-gradient(135deg, #686f8d 0%, #fff0ea 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+    font-family: var(--font-main), sans-serif;
+  }
+
+  .btn-quick-add:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(104, 111, 141, 0.3);
+  }
+
+  .btn-quick-add.added {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  }
+
+  .btn-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* No results */
+  .no-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: #718096;
+  }
+
+  .no-results-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+    opacity: 0.5;
+  }
+
+  .no-results h3 {
+    font-size: 1.5rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, #686f8d 0%, #fff0ea 100%);
+    text-align: center;
+    color: white;
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: white;
+    color: #686f8d;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .cta-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .filters-wrapper {
+      grid-template-columns: 1fr;
+    }
+
+    .filter-buttons {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .products-grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-stats {
+      gap: 2rem;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+    }
+
+    .catalog-hero {
+      padding: 6rem 1rem 3rem;
+    }
+
+    .products-section {
+      padding: 2rem 0;
+    }
+
+    .filters-section {
+      position: static;
+    }
+
+    .cta-content h2 {
+      font-size: 2rem;
+    }
+  }
+</style>

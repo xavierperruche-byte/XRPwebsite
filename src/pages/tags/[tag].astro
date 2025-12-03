@@ -4,12 +4,9 @@ import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
   // 🔍 Fetch ALL article files from src/pages/articles/
-  //const mdArticles = await Astro.glob('../articles/*.md');
-  //const astroArticles = await Astro.glob('../articles/*.astro');
-  //const articles = [...mdArticles, ...astroArticles];
-
   // if onlwy looking for md files:
-  const articles = await Astro.glob('../articles/*.md');
+  const articleFiles = import.meta.glob('../articles/*.md', { eager: true });
+  const articles = Object.values(articleFiles);
 
   // 📦 Create a map to organize articles by tag
   const tagMap = new Map();

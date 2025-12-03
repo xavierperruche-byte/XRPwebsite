@@ -1,27 +1,974 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-import AddToCart from "../../components/AddToCart.jsx";
+// src/pages/products/[slug].astro
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, getEntry } from 'astro:content';
+import AddToCart from '../../components/AddToCart';
 
 export async function getStaticPaths() {
   const products = await getCollection('products');
-  return products.map((product) => ({
-    params: { slug: product.slug }, 
-    props: { product },             
+  return products.map(product => ({
+    params: { slug: product.slug },
+    props: { product },
   }));
 }
 
-const { product } = Astro.props;
+export const prerender = true;
+
+const { slug } = Astro.params;
+
+// 👇 AJOUTEZ CETTE LIGNE POUR VÉRIFIER LE SLUG REÇU
+console.log('Slug reçu dans Astro.params:', slug);
+const { product } = Astro.props; 
+
+// Ajoutez cette vérification. Si le produit n'existe pas, renvoyez une erreur 404.
+if (!product) {
+  // Vous devez ajouter un module d'aide pour générer la page 404,
+  // ou simplement lancer une erreur que l'adaptateur Node/Astro gérera.
+  // Pour un débogage rapide, nous allons juste afficher un message.
+  return new Response('Produit non trouvé (Erreur 404)', {
+      status: 404
+  });
+}
+
+// Maintenant, nous sommes sûrs que product existe avant d'appeler .render()
+const { Content } = await product.render(); 
+// ...
+
+// Préparer les données produit pour le composant React
+const productData = {
+  id: product.data.id,
+  name: product.data.name,
+  price: product.data.price,
+  currency: product.data.currency,
+  image: product.data.image,
+  description: product.data.description
+};
 ---
 
-<html>
-  <body>
-    <h1>{product.data.name}</h1>
-    <img src={product.data.image} alt={product.data.name}  width=500 height=500 />
-    <p>Prix : {product.data.price} {product.data.currency}</p>
-    <p>{product.data.description}</p>
+<Layout title={`${product.data.name} - We The Agency`} currentPage="products">
+  <div class="product-page">
+    
+    <!-- Hero Section avec image -->
+    <section class="product-hero">
+      <div class="hero-background">
+        <img src={product.data.image} alt={product.data.name} class="hero-image" />
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <div class="breadcrumb">
+          <a href="/">Accueil</a> / <a href="/catalog">Produits</a> / <span>{product.data.name}</span>
+        </div>
+        <h1 class="product-title">{product.data.name}</h1>
+        <p class="product-tagline">{product.data.description}</p>
+      </div>
+          
+      <!-- Bouton panier flottant -->
+      <a href="/cart" class="floating-cart-btn" id="floatingCartBtn">
+        <svg class="cart-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+        </svg>
+        <span class="cart-count" id="floatingCartCount">0</span>
+      </a>
+    </section>
 
-    <AddToCart client:load product={product.data} />
-    <p><a href="../cart" target="_blank" class="link-special">voir votre panier</a></p>
-  </body>
-</html>
+    <!-- Main Content -->
+    <div class="product-container">
+      <div class="product-grid">
+        
+        <!-- Colonne gauche : Image et galerie -->
+        <div class="product-media">
+          <div class="main-image-wrapper">
+            <img src={product.data.image} alt={product.data.name} class="main-product-image" />
+            <div class="image-badge">
+              <span class="badge-label">Nouveau</span>
+            </div>
+          </div>
+          
+          <!-- Features rapides -->
+          <div class="quick-features">
+            <div class="feature-item">
+              <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Accès immédiat</span>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span>Support 24/7</span>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+              <span>Paiement sécurisé</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colonne droite : Détails et achat -->
+        <div class="product-details">
+          
+          <!-- Prix -->
+          <div class="price-section">
+            <div class="price-wrapper">
+              <span class="price-amount">{product.data.price}</span>
+              <span class="price-currency">{product.data.currency}</span>
+            </div>
+            <div class="price-note">Prix TTC</div>
+          </div>
+
+          <!-- Description riche du markdown -->
+          <div class="product-description">
+            <Content />
+          </div>
+
+          <!-- Avantages -->
+          <div class="benefits-section">
+            <h3>Ce que vous obtenez</h3>
+            <ul class="benefits-list">
+              <li>
+                <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Accès illimité pendant 1 an
+              </li>
+              <li>
+                <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Événements exclusifs membres
+              </li>
+              <li>
+                <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Réseau professionnel actif
+              </li>
+              <li>
+                <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Webinaires et formations
+              </li>
+            </ul>
+          </div>
+
+          <!-- CTA d'achat -->
+          <div class="purchase-section">
+            <AddToCart client:load product={productData} />
+            
+            <button class="btn-buy-now" id="buyNowBtn">
+              Acheter maintenant
+            </button>
+
+            <div class="trust-badges">
+              <span class="trust-item">🔒 Paiement sécurisé</span>
+              <span class="trust-item">↩️ Garantie satisfait ou remboursé</span>
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div class="contact-section">
+            <p>Des questions ? <a href="/contact">Contactez-nous</a></p>
+                        <div class="product-actions-links">
+              <a href="/catalog" class="action-link">
+                <svg class="link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Retour au catalogue
+              </a>
+              <a href="/cart" class="action-link cart-link">
+                <svg class="link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+                Voir mon panier <span class="cart-count-inline" id="inlineCartCount">(0)</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Mise à jour du compteur de panier
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const count = cart.length;
+    
+    // Mettre à jour les compteurs
+    const floatingCount = document.getElementById('floatingCartCount');
+    const inlineCount = document.getElementById('inlineCartCount');
+    
+    if (floatingCount) {
+      floatingCount.textContent = count;
+      floatingCount.style.display = count > 0 ? 'flex' : 'none';
+    }
+    
+    if (inlineCount) {
+      inlineCount.textContent = `(${count})`;
+      inlineCount.style.display = count > 0 ? 'inline' : 'none';
+    }
+  }
+
+  // Initialiser au chargement
+  updateCartCount();
+
+  // Écouter les mises à jour du panier
+  window.addEventListener('cartUpdated', updateCartCount);
+  window.addEventListener('storage', updateCartCount);
+
+
+  // Tabs functionality
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tabName = button.dataset.tab;
+      
+      // Remove active class from all
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      // Add active class to clicked
+      button.classList.add('active');
+      document.querySelector(`[data-content="${tabName}"]`).classList.add('active');
+    });
+  });
+
+  // Buy now functionality
+  document.getElementById('buyNowBtn')?.addEventListener('click', () => {
+    // Redirection vers la page de paiement/checkout
+    window.location.href = '/checkout';
+    // Ou ouvrir un modal de paiement
+    // alert('Redirection vers le paiement...');
+  });
+</script>
+
+<style>
+  /* Reset et base */
+  .product-page {
+    width: 100%;
+    min-height: 100vh;
+    background: #fafafa;
+  }
+
+  /* Hero Section */
+  .product-hero {
+    position: relative;
+    height: 45vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+    filter: blur(8px);
+    transform: scale(1.1);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(104, 111, 141, 0.9) 0%, rgba(255, 240, 234, 0.9) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    max-width: 800px;
+  }
+
+  .breadcrumb {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+  }
+
+  .breadcrumb a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 0.7;
+  }
+
+  .product-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .product-tagline {
+    font-size: 1.3rem;
+    opacity: 0.95;
+  }
+
+  /* Container principal */
+  .product-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  /* Grid principale */
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  /* Colonne média */
+  .product-media {
+    position: sticky;
+    top: 120px;
+    height: fit-content;
+  }
+
+  .main-image-wrapper {
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .main-product-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .image-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #686f8d, #fff0ea);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  /* Quick features */
+  .quick-features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .feature-icon {
+    width: 24px;
+    height: 24px;
+    color: #686f8d;
+  }
+
+  /* Colonne détails */
+  .product-details {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .price-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  .price-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .price-amount {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2d3748;
+  }
+
+  .price-currency {
+    font-size: 1.5rem;
+    color: #718096;
+  }
+
+  .price-note {
+    font-size: 0.9rem;
+    color: #a0aec0;
+  }
+
+  /* Description */
+  .product-description {
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    color: #4a5568;
+  }
+
+  .product-description :global(h2) {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+    color: #2d3748;
+  }
+
+  .product-description :global(p) {
+    margin-bottom: 1rem;
+  }
+
+  /* Benefits */
+  .benefits-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f7fafc;
+    border-radius: 10px;
+  }
+
+  .benefits-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #2d3748;
+  }
+
+  .benefits-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .benefits-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    color: #4a5568;
+  }
+
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    color: #48bb78;
+    flex-shrink: 0;
+  }
+
+  /* Purchase section */
+  .purchase-section {
+    margin-bottom: 2rem;
+  }
+
+  .btn-add-cart,
+  .btn-buy-now {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .btn-add-cart {
+    background: white;
+    color: #686f8d;
+    border: 2px solid #686f8d;
+    margin-bottom: 1rem;
+  }
+
+  .btn-add-cart:hover {
+    background: #686f8d;
+    color: white;
+  }
+
+  .btn-buy-now {
+    background: linear-gradient(135deg, #686f8d 0%, #fff0ea 100%);
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-buy-now:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(104, 111, 141, 0.3);
+  }
+
+  .cart-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .trust-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #718096;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Contact */
+  .contact-section {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+    font-size: 0.95rem;
+    color: #718096;
+  }
+
+  .contact-section > p {
+    margin-bottom: 1rem;
+  }
+
+  .contact-section a {
+    color: #686f8d;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .contact-section a:hover {
+    text-decoration: underline;
+  }
+
+  .product-actions-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+
+  .action-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    color: #4a5568;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+  }
+
+  .action-link:hover {
+    border-color: #686f8d;
+    color: #686f8d;
+    transform: translateY(-2px);
+  }
+
+  .action-link.cart-link {
+    background: linear-gradient(135deg, rgba(104, 111, 141, 0.1) 0%, rgba(255, 240, 234, 0.1) 100%);
+  }
+
+  .link-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .cart-count-inline {
+    display: none;
+    color: #686f8d;
+    font-weight: 700;
+  }
+
+  /* Floating Cart Button */
+  .floating-cart-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #686f8d 0%, #fff0ea 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(104, 111, 141, 0.4);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: white;
+  }
+
+  .floating-cart-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(104, 111, 141, 0.5);
+  }
+
+  .floating-cart-btn .cart-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #e53e3e;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    min-width: 24px;
+    height: 24px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 0 6px;
+    box-shadow: 0 2px 8px rgba(229, 62, 62, 0.4);
+    animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  @keyframes popIn {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Additional info */
+  .additional-info {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 4rem;
+  }
+
+  .info-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  .tab-btn {
+    padding: 1rem 2rem;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #718096;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s;
+  }
+
+  .tab-btn.active {
+    color: #686f8d;
+  }
+
+  .tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #686f8d;
+  }
+
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .tab-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #2d3748;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-item strong {
+    color: #2d3748;
+  }
+
+  .info-item span {
+    color: #718096;
+  }
+
+  /* FAQ */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1.5rem;
+    cursor: pointer;
+  }
+
+  .faq-item summary {
+    font-weight: 600;
+    color: #2d3748;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item p {
+    margin-top: 1rem;
+    color: #718096;
+    line-height: 1.6;
+  }
+
+  /* Reviews */
+  .reviews-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .review-card {
+    padding: 1.5rem;
+    background: #f7fafc;
+    border-radius: 10px;
+  }
+
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .reviewer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .reviewer-info strong {
+    color: #2d3748;
+  }
+
+  .review-date {
+    font-size: 0.85rem;
+    color: #a0aec0;
+  }
+
+  .review-stars {
+    color: #f6ad55;
+  }
+
+  .review-card p {
+    color: #4a5568;
+    line-height: 1.6;
+  }
+
+  /* Related products */
+  .related-products {
+    margin-top: 4rem;
+  }
+
+  .related-products h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #2d3748;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product-card h3 {
+    padding: 1rem 1.5rem 0.5rem;
+    color: #2d3748;
+  }
+
+  .card-price {
+    padding: 0 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #686f8d;
+  }
+
+  .card-link {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: #686f8d;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .card-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .product-media {
+      position: static;
+    }
+
+    
+    .product-actions-links {
+      flex-direction: column;
+    }
+
+    .action-link {
+      justify-content: center;
+    }
+
+  }
+
+  @media (max-width: 768px) {
+    .product-title {
+      font-size: 2rem;
+    }
+
+    .product-container {
+      padding: 2rem 1rem;
+    }
+
+    .product-details {
+      padding: 1.5rem;
+    }
+
+    .price-amount {
+      font-size: 2.5rem;
+    }
+
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .info-tabs {
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      padding: 1rem;
+      white-space: nowrap;
+    }
+    
+    .floating-cart-btn {
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 56px;
+      height: 56px;
+    }
+
+    .floating-cart-btn .cart-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    .cart-count {
+      min-width: 22px;
+      height: 22px;
+      font-size: 0.7rem;
+    }
+  }
+</style>

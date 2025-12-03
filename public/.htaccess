@@ -53,6 +53,13 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ /subfolder/index.html [L]
 
+Redirect 301 /cart/ https://www.we-theagency.com/
+Redirect 301 /catalog/ https://www.we-theagency.com/
+Redirect 301 /products/*/ https://www.we-theagency.com/
+Redirect 301 /success/ https://www.we-theagency.com/
+
+
+
 # Forcer domaine principal + www + https
 RewriteCond %{HTTP_HOST} !^www\.we-theagency\.com$ [NC]
 RewriteRule ^(.*)$ https://www.we-theagency.com/$1 [L,R=301]

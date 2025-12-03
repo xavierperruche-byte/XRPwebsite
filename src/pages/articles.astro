@@ -3,7 +3,8 @@
 import Layout from '../layouts/Layout.astro';
 
 // 🔍 Fetch ALL article files from src/pages/articles/
-const rawArticles = await Astro.glob('./articles/*.md');
+const articleFiles = import.meta.glob('./articles/*.md', { eager: true });
+const rawArticles = Object.values(articleFiles);
 
 // 📦 Logique d'extraction et de tri des articles et des tags
 const tagMap = new Map();
@@ -85,6 +86,7 @@ const pageTitle = "Tous les Articles";
     </div>
     
     </main>
+
 </Layout>
 
 <style>

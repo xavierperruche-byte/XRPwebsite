@@ -390,10 +390,17 @@ if (typeof window === 'undefined') {
       font-size: 2.5rem;
     }
      
-  .mySwiper::part(pagination) {
-    bottom: 25vh;
-  }
+    .mySwiper::part(pagination) {
+      bottom: 25vh;
+    }
 
+    .mySwiper::part(bullet) {
+      background-color: transparent;
+    }
+
+    .mySwiper::part(bullet-active) {
+      background-color: transparent;
+    }
   }
 
 </style>

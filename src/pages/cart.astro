@@ -1,11 +1,9 @@
 ---
+// src/pages/cart.astro
 import Layout from '../layouts/Layout.astro';
-import CartPage from "../components/CartPage.jsx";
+import CartPage from "../components/CartPage";
 ---
 
-<html>
-  <body>
-    <!-- ⚠️ Hydratation côté client -->
-    <CartPage client:load />
-  </body>
-</html>
+<Layout title="Mon Panier - We-TheAgency" currentPage="cart">
+  <CartPage client:load />
+</Layout>
