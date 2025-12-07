@@ -38,6 +38,11 @@ const projects = [
 
 
 <Layout title="We-TheAgency" description="Business with attitude" currentPage="/">
+
+  <!-- Preload critical images -->
+  <link rel="preload" as="image" href="/images/index3.webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/logo.svg" fetchpriority="high" />
+
     <!-- Hero Slider Section -->
     <main class="portfolio-page">
     <section class="hero-slider">
@@ -52,6 +57,10 @@ const projects = [
                 src={project.image} 
                 alt={project.title}
                 class="slide-image"
+                loading={index === 0 ? 'eager' : 'lazy'}
+                fetchpriority={index === 0 ? 'high' : 'low'}
+                width="1920"
+                height="1080"
               />
               <div class="slide-overlay"></div>
             </div>
@@ -65,7 +74,7 @@ const projects = [
                 </div>
                 <a href={`/${project.slug}`} class="slide-cta">
                   Découvrir ...
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                     <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </a>
@@ -120,20 +129,20 @@ const projects = [
     <div class="services-grid">
 
     <div class="service-card scroll-animate">
-      <div class="service-icon">📝</div>
+      <div class="service-icon" role="img" aria-label="Création">📝</div>
       <p>Des créations contemporaines pour une marque qui <span class="stabilo-simple orange">affirme sa singularité</span>.<br></br></p>
       <h3>Création d'identité visuelle</h3>
     </div>
     
 
       <div class="service-card scroll-animate">
-        <div class="service-icon">📈</div>     
+        <div class="service-icon" role="img" aria-label="Croissance">📈</div>     
         <p>Parce que chaque projet a son identité, nous imaginons des solutions personnalisées qui répondent à <span class="stabilo-simple orange">vos ambitions</span>.<br></br> </p>
         <h3>Mktg Digital & Développement Commercial</h3>
       </div>
             
       <div class="service-card scroll-animate">
-        <div class="service-icon">📱</div>
+        <div class="service-icon" role="img" aria-label="Tech">📱</div>
         <p>Une expérience <span class="stabilo-simple orange">fluide</span> sur tous les supports : nos designs sont entièrement <span class="stabilo-simple orange">responsives</span>, du smartphone au desktop.<br></br>
         <p>Un code fiable, évolutif et sur mesure <span class="stabilo-simple orange">pour que vous puissiez vous concentrer sur ce qui compte.</p>
         </p>
@@ -181,7 +190,7 @@ const projects = [
     class="linkedin-icon"
     aria-label="LinkedIn profile of Réjane Salaün"
   >
-    <img src="/icons/linkedin.svg" alt="LinkedIn" />
+  <img src="/icons/linkedin.svg" alt="LinkedIn" width="22" height="22" loading="lazy" />
   </a>
 
         <h3>Réjane Salaün</h3>
@@ -196,20 +205,28 @@ const projects = [
 
       <!-- Image Box -->
       <div class="about-box about-image scroll-animate">
-        <img src="/images/RS.webp" alt="Réjane Salaün" />
+      <img 
+              src="/images/RS.webp" 
+              alt="Réjane Salaün" 
+              width="600" 
+              height="800" 
+              loading="lazy"
+       />
       </div>
     </div>
   </div>
 </section>
-
+<BackToTop />
+</Layout>
 
 <style>
 
-  .content-section {}
+  .content-section { }
 
   .about-section {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     padding: 4rem 0;
+    margin-top: 4rem;
   }
 
   .about-header {
@@ -878,14 +895,7 @@ const projects = [
       font-size: 1rem;
     }
 }
-
-
-
-
 </style>
-<BackToTop />
-</Layout>
-
 
 <script>
   // Slider functionality

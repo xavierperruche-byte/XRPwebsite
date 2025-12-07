@@ -1,11 +1,13 @@
 ---
+// Imports Swiper - chargés de manière optimisée
+import '../styles/global.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { register } from 'swiper/element/bundle';
 import '../styles/global.css';
+import { register } from 'swiper/element/bundle';
 
-// Enregistre Swiper Element côté serveur si nécessaire
+// Enregistrement côté serveur
 if (typeof window === 'undefined') {
   register();
 }
@@ -44,11 +46,14 @@ if (typeof window === 'undefined') {
             muted
             loop
             playsinline
+            preload="metadata"
+            width="640"
+            height="360"
           ></video>
         </div>
         <div class="timeline-marker">
           <div class="timeline-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
               <line x1="16" y1="2" x2="16" y2="6"></line>
               <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -69,11 +74,17 @@ if (typeof window === 'undefined') {
            data-image="/images/2025101.webp" 
            data-title="Octobre 2025" 
            data-description="Nom, Identité Visuelle et Site Internet artsquare.ch"
-           data-details="<a href='https://www.artsquare.ch' target='_blank' rel='noopener'><b><u>artsquare.ch</b></u></a> est bien plus qu'une plateforme : c'est un espace vivant dédié à la scène artistique contemporaine suisse. </p><p>Pour accompagner sa naissance, notre agence a imaginé et façonné une identité complète, de la création du nom à la mise en ligne du site.</p> <p>- <strong>Naming</strong> : Le nom Artsquare évoque à la fois un lieu de rencontre, un carrefour créatif et une vitrine ouverte sur l\'art. Il incarne l\'ambition du projet : connecter, valoriser et faire rayonner les talents.</p><p>- <strong>Identité visuelle</strong> : Un logo minimaliste et structuré, une colorimétrie subtile mêlant modernité et chaleur, et une direction artistique pensée pour refléter l\'élégance et l\'accessibilité.</p><p>- <strong>Site web</strong> : Une interface fluide, responsive et intuitive, qui met en lumière les artistes, les événements et les contenus éditoriaux. Le design s\'adapte à tous les écrans, garantissant une expérience immersive et cohérente.</p><p>Notre approche a combiné stratégie, esthétique et technologie pour créer une marque qui inspire, rassemble et s'inscrit durablement dans le paysage culturel suisse.">
-        <img src="/images/2025101.webp" alt="NOWHERE SOCIETY" loading="lazy" /> 
+           data-details="<a href='https://www.artsquare.ch' target='_blank' rel='noopener'><b><u>artsquare.ch</b></u></a> est bien plus qu'une plateforme : c'est un espace vivant dédié à la scène artistique contemporaine suisse.">
+        <img 
+          src="/images/2025101.webp" 
+          alt="NOWHERE SOCIETY" 
+          loading="lazy" 
+          width="400" 
+          height="600"
+        /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
               <line x1="16" y1="2" x2="16" y2="6"></line>
               <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -93,10 +104,16 @@ if (typeof window === 'undefined') {
            data-title="Septembre 2025" 
            data-description="Nouvelle Collaboration : N°OW'HERE Society"
            data-details="À Genève, ville de raffinement et de discrétion, un nouveau cercle privé redéfinit l'art de se réunir, d'imaginer, d'appartenir.">
-        <img src="/images/2025091.webp" alt="Sleep Atelier with Studiolfactif" loading="lazy" /> 
+        <img 
+          src="/images/2025091.webp" 
+          alt="Sleep Atelier with Studiolfactif" 
+          loading="lazy"
+          width="400" 
+          height="600"
+        /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
               <line x1="16" y1="2" x2="16" y2="6"></line>
               <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -119,7 +136,7 @@ if (typeof window === 'undefined') {
         <img src="/images/2025092.webp" alt="Shilliger with Studiolfactif" loading="lazy" /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
               <line x1="16" y1="2" x2="16" y2="6"></line>
               <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -142,7 +159,7 @@ if (typeof window === 'undefined') {
         <img src="/images/2025061.webp" alt="Bucherer" loading="lazy" /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
               <line x1="16" y1="2" x2="16" y2="6"></line>
               <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -165,7 +182,7 @@ if (typeof window === 'undefined') {
         <img src="/images/2025041.webp" alt="fashion" loading="lazy" /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
               <line x1="16" y1="2" x2="16" y2="6"></line>
               <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -184,11 +201,11 @@ if (typeof window === 'undefined') {
            data-image="/images/2024121.webp" 
            data-title="Avril 2025" 
            data-description="Cercle des Entrepreneurs de l'Urban Belt"
-           data-details="ENTREPRENANTES ET HUMANISTES comme vous.</p><p>- Des rencontres stratégiques pour tisser des connexions à fort impact.</p><p>- Des ateliers animés par des Membres Expertes pour perfectionner vos compétences clés. </p><p>- Des évènements conférences inspirantes pour nourrir votre vision et votre ambition.">
+           data-details="ENTREPRENANTES ET HUMANISTES comme vous.</p><p>- Des rencontres stratégiques pour tisser des connexions à fort impact.</p><p>- Des ateliers animés par des Membres Expertes pour perfectionner vos compétences clés. </p><p>- Des évènements conférences inspirantes pour nourrir votre vision et votre ambition.</p><p><a href='https://cube.we-theagency.com'  target='_blank' rel='noopener'><b><u>cube.we-theagency.com</b></u></a></p>">
         <img src="/images/2024121.webp" alt="Bucherer" loading="lazy" /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
               <line x1="16" y1="2" x2="16" y2="6"></line>
               <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -211,7 +228,7 @@ if (typeof window === 'undefined') {
         <img src="/images/2024122.webp" alt="ArtSquare" loading="lazy" /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
               <line x1="16" y1="2" x2="16" y2="6"></line>
               <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -229,11 +246,11 @@ if (typeof window === 'undefined') {
 
   <!-- Overlay pour afficher l'image/vidéo en grand avec texte -->
   <div class="image-overlay" id="imageOverlay">
-    <button class="close-overlay" id="closeOverlay">&times;</button>
+    <button class="close-overlay" id="closeOverlay" aria-label="Fermer">&times;</button>
     <div class="overlay-content">
       <div class="overlay-image-container" id="overlayMediaContainer">
         <img src="" alt="Image agrandie" id="overlayImage" />
-        <video id="overlayVideo" loop muted playsinline style="display: none;">
+        <video id="overlayVideo" loop muted playsinline style="display: none;" preload="none">
           <source src="" type="video/mp4">
         </video>
       </div>
@@ -246,7 +263,6 @@ if (typeof window === 'undefined') {
       </div>
     </div>
   </div>
-
 </section>
 
 
