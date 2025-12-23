@@ -2,8 +2,8 @@
 // src/pages/articles.astro
 import Layout from '../layouts/Layout.astro';
 
-// 🔍 Fetch ALL article files from src/pages/articles/
-const articleFiles = import.meta.glob('./articles/*.md', { eager: true });
+// 🔍 Fetch ALL article files from src/content/articles/
+const articleFiles = import.meta.glob('../content/articles/*.md', { eager: true });
 const rawArticles = Object.values(articleFiles);
 
 // 📦 Logique d'extraction et de tri des articles et des tags

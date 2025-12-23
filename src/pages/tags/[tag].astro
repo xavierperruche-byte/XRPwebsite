@@ -1,111 +1,89 @@
+
 ---
 // src/pages/tags/[tag].astro
+import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-  // 🔍 Fetch ALL article files from src/pages/articles/
-  // if onlwy looking for md files:
-  const articleFiles = import.meta.glob('../articles/*.md', { eager: true });
-  const articles = Object.values(articleFiles);
-
-  // 📦 Create a map to organize articles by tag
+  // 1. On récupère les articles depuis la collection 'articles'
+  const allArticles = await getCollection('articles');
+  
   const tagMap = new Map();
   
-  // 🔄 Loop through each article
-    articles.forEach(article => {
-    // Ajout d'une vérification pour s'assurer que frontmatter existe
-    const frontmatter = article.frontmatter;
-    if (!frontmatter) return; // Ignore cet article s'il n'a pas de frontmatter
+  allArticles.forEach(article => {
+    // Avec les collections, les données sont dans 'article.data'
+    const tags = article.data.tags || [];
     
-    // Get tags from the article's frontmatter
-    const tags = frontmatter.tags || [];
-    
-    // For each tag in this article
     tags.forEach(tag => {
-      // Normalize tag name (lowercase, replace spaces with hyphens)
+      // Normalisation identique à celle utilisée pour les liens (minuscules)
       const normalizedTag = tag.toLowerCase().replace(/\s+/g, '-');
       
-      // If this is the first time we see this tag, create an entry
       if (!tagMap.has(normalizedTag)) {
         tagMap.set(normalizedTag, {
-          displayName: tag,  // Original tag name for display
-          articles: []       // Array to store articles with this tag
+          displayName: tag,
+          articles: []
         });
       }
       
-      // Add this article to the tag's article list
       tagMap.get(normalizedTag).articles.push({
-        title: article.frontmatter.title,
-        slug: article.url,
-        mainImage: article.frontmatter.mainImage,
-        mainImageAlt: article.frontmatter.mainImageAlt,
-        excerpt: article.frontmatter.excerpt || '',
-        publishDate: article.frontmatter.publishDate
+        title: article.data.title,
+        slug: `/articles/${article.slug}/`, // URL vers la page de l'article
+        mainImage: article.data.mainImage,
+        mainImageAlt: article.data.mainImageAlt,
+        excerpt: article.data.excerpt || '',
+        publishDate: article.data.publishDate
       });
     });
   });
-  
-  // 🎯 Generate a static path for EACH unique tag
-  // This creates: /tags/astro, /tags/web-development, etc.
-  return Array.from(tagMap.entries()).map(([tag, data]) => ({
-    params: { tag },  // The URL parameter (e.g., "astro")
+
+  // 2. On génère les chemins pour chaque tag
+  return Array.from(tagMap.entries()).map(([slug, data]) => ({
+    params: { tag: slug }, // Ceci correspond au nom du fichier [tag].astro
     props: { 
-      tagName: data.displayName,  // Original tag name (e.g., "Astro")
-      articles: data.articles.sort((a, b) => 
-        new Date(b.publishDate) - new Date(a.publishDate)
-      )  // Articles sorted by date (newest first)
+      tagName: data.displayName,
+      articles: data.articles
     }
   }));
 }
 
-// 📥 Receive the data passed from getStaticPaths()
-const { tag } = Astro.params;  // URL parameter (e.g., "astro")
-const { tagName, articles } = Astro.props;  // Data: tag name + filtered articles
+const { tag } = Astro.params;
+const { articles, tagName } = Astro.props;
 ---
 
-<Layout title={`Articles taggés "${tagName}"`}>
-  
-  <main class="tag-gallery">
-    <div class="gallery-header">
-      <h1>Articles taggés : <span class="tag-name">{tagName}</span></h1>
-      <p class="article-count">{articles.length} {articles.length === 1 ? 'article' : 'articles'} found</p>
-    </div>
+<Layout title={`Articles avec le tag : ${tagName}`}>
+  <main class="tag-page">
+    <header class="tag-header">
+      <div class="container">
+        <a href="/articles" class="back-link">← Tous les articles</a>
+        <h1>{tagName}</h1>
+        <p class="tag-count">{articles.length} article(s) trouvé(s)</p>
+      </div>
+    </header>
 
-    <div class="articles-grid">
-      {articles.map(article => (
-        <article class="article-card">
-          <a href={article.slug} class="card-link">
-            <div class="card-image">
-              <img src={article.mainImage} alt={article.mainImageAlt} />
-            </div>
-            <div class="card-content">
-              <h2 class="card-title">{article.title}</h2>
-              {article.publishDate && (
-                <time class="card-date" datetime={article.publishDate}>
-                  {new Date(article.publishDate).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric'
-                  })}
-                </time>
-              )}
-              {article.excerpt && (
+    <div class="container">
+      <div class="articles-grid">
+        {articles.map((article) => (
+          <article class="article-card">
+            <a href={article.slug} class="card-link">
+              <div class="card-image">
+                <img src={article.mainImage} alt={article.mainImageAlt} />
+              </div>
+              <div class="card-content">
+                <h2 class="card-title">{article.title}</h2>
                 <p class="card-excerpt">{article.excerpt}</p>
-              )}
-            </div>
-          </a>
-        </article>
-      ))}
-    </div>
-
-    <div class="back-link">
-      <a href="/articles">← Retour vers tous les articles</br></a>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
     </div>
   </main>
-
 </Layout>
 
 <style>
+  /* Gardez vos styles actuels ici */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  .tag-header { padding: 10rem 0; background: #f9f9f9; margin-bottom: 0rem; text-align: center; }
 
   .tag-gallery {
     max-width: 80vw;

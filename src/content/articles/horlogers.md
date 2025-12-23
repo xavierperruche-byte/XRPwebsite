@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Hôtel des horlogers"
 mainImage: "/images/horlogers1.webp"
 mainImageAlt: "Hôtel des horlogers"

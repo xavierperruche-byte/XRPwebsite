@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Timeline® Skin Health"
 mainImage: "/images/timeline1.webp"
 mainImageAlt: "Timeline®"

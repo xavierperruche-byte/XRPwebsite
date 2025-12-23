@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Beyond Men’s Care"
 mainImage: "/images/beyondmc1.webp"
 mainImageAlt: "Beyond Men’s Care"

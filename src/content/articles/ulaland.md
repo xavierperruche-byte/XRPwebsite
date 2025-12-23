@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Ulaland"
 mainImage: "/images/ulaland1.webp"
 mainImageAlt: "Ulaland"

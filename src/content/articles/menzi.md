@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Manuela Menzi Studio"
 mainImage: "/images/menzi1.webp"
 mainImageAlt: "Manuela Menzi Studio"

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Le Diamant Bleu"
 mainImage: "/images/DiamantBleu.webp"
 mainImageAlt: "Tessa Ang"

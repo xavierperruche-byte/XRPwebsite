@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Diane Servant"
 mainImage: "/images/dservant1.webp"
 mainImageAlt: "Diane Servant"

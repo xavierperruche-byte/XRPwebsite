@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "MEUNE, 'ce qui me lie'."
 mainImage: "/images/meune1.webp"
 mainImageAlt: "Meune"

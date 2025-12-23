@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Viyara Atelier"
 mainImage: "/images/viyara1.webp"
 mainImageAlt: "Viyara Atelier"

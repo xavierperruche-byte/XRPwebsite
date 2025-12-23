@@ -1,11 +1,11 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Pioupiou Cosmetics x Lucas du Tertre"
 mainImage: "/images/pioupiou1.webp"
 mainImageAlt: "Pioupiou Cosmetics x Lucas du Tertre"
 excerpt: "Pioupiou Cosmetics x Lucas du Tertre."
 publishDate: "2023-05-09"
 tags: ["beauté", "fashion"]
+keywords: ["Cosmétiques jeunesse"]
 carouselImages:
   - src: '/images/pioupiou2.webp'
     alt: 'Pioupiou Cosmetics x Lucas du Tertre'

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Garenne"
 mainImage: "/images/garenne1.webp"
 mainImageAlt: "Garenne"

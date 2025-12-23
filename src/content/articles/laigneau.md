@@ -1,11 +1,11 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Pauline Laigneau - Le Podcast Le Gratin"
 mainImage: "/images/laigneau1.webp"
 mainImageAlt: "Pauline Laigneau"
 excerpt: "Le Podcast Le Gratin"
 publishDate: "2024-10-21"
 tags: ["rencontre"]
+keywords: ["Podcast"]
 carouselImages:
   - src: '/images/laigneau2.webp'
     alt: 'Pauline Laigneau'
@@ -22,7 +22,6 @@ carouselImages:
   - src: '/images/laigneau6.webp'
     alt: 'Pauline Laigneau'
     caption: 'Pauline Laigneau'
-
 ---
 
 # Notre Rencontre avec Pauline Laigneau

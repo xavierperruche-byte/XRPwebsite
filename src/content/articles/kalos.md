@@ -1,11 +1,11 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Kalos Montreux"
 mainImage: "/images/kalos1.webp"
 mainImageAlt: "Kalos Montreux"
 excerpt: "ULa beauté."
 publishDate: "2023-11-02"
 tags: ["beauté"]
+keywords: ["Kalos"]
 carouselImages:
   - src: '/images/kalos2.webp'
     alt: 'Ulaland'

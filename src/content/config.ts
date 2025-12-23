@@ -12,4 +12,20 @@ const products = defineCollection({
   }),
 });
 
-export const collections = { products };
+const articles = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(), 
+    mainImage: z.string(), 
+    mainImageAlt: z.string(), 
+    tags: z.array(z.string()), 
+    publishDate: z.string().or(z.date()).optional(), 
+    carouselImages: z.array(  z.object({    src: z.string(),    alt: z.string(),    caption: z.string().optional(),  })).optional(),
+    keywords: z.array(z.string()).optional(), 
+  }),
+});
+
+export const collections = { 
+  products, 
+  articles 
+};

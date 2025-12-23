@@ -1,11 +1,11 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Hilton Geneva & Conference Center"
 mainImage: "/images/hilton1.webp"
 mainImageAlt: "Hilton Geneva & Conference Center"
 excerpt: "Un hôtel genevois dédié au tourisme d'affaires."
 publishDate: "2023-11-08"
 tags: ["escapade"]
+keywords: ["Hilton", "tourisme d'affaires"]
 carouselImages:
   - src: '/images/hilton2.webp'
     alt: 'Hilton Geneva & Conference Center'

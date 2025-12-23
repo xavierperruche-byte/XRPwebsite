@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Around Mrs. O"
 mainImage: "/images/aroundmrso1.webp"
 mainImageAlt: "Around Mrs. O"

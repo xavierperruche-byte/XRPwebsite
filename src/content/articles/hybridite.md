@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Art & Science"
 mainImage: "/images/hybridite1.webp"
 mainImageAlt: "Art & Science"

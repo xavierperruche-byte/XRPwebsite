@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Thalie Paris"
 mainImage: "/images/thalie1.webp"
 mainImageAlt: "Thalie Paris"

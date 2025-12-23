@@ -1,16 +1,29 @@
 ---
 // src/layouts/ArticleLayout.astro
-// This layout wraps your .md files
 import Layout from './Layout.astro';
 import Carousel from '../components/Carousel.astro';
 import BackToTop from '../components/BackToTop.astro';
 
+// Récupération compatible avec les Collections Astro 5
+const data = Astro.props.frontmatter || Astro.props;
+const { title, mainImage, mainImageAlt, tags, carouselImages, publishDate, keywords } = data;
 
-const { frontmatter } = Astro.props;
-const { title, mainImage, mainImageAlt, tags, carouselImages, publishDate } = frontmatter;
+
+// Calcul des mots-clés pour le SEO
+const allKeywords = [...(tags || []), ...(keywords || [])].join(', ');
 ---
 
 <Layout title={title}>
+  <meta name="keywords" content={allKeywords} slot="head" />
+    <script type="application/ld+json" is:inline slot="head"
+      set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "keywords": allKeywords,
+      "datePublished": publishDate
+    })}
+    />
   <main class="article-page">
     <article class="article-container">
       <!-- Main Image -->
@@ -32,13 +45,12 @@ const { title, mainImage, mainImageAlt, tags, carouselImages, publishDate } = fr
         )}
         
         <!-- Tags -->
-        <div class="article-tags">
-          {tags.map(tag => (
-            <a href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`} class="tag">
-              {tag}
-            </a> 
-          ))}
-        </div>
+<div class="article-tags">
+  {tags && tags.map((tag) => (
+    /* On pointe vers /tags/ car votre fichier est src/pages/tags/[tag].astro */
+    <a href={`/tags/${tag}`} class="tag">{tag}</a>
+  ))}
+</div>
 
         <div class="article-all">
             <a href="/articles" style="color: black;text-decoration: none;">tous les articles</a>

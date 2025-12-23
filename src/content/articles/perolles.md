@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Le Pérolles"
 mainImage: "/images/perolles1.webp"
 mainImageAlt: "Le Pérolles"

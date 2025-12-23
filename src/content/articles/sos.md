@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Save our Seas"
 mainImage: "/images/sos1.webp"
 mainImageAlt: "Save our Seas"

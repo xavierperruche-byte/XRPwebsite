@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Visit Monaco"
 mainImage: "/images/monaco1.webp"
 mainImageAlt: "Visit Monaco"

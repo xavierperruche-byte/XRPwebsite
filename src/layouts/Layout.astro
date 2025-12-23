@@ -80,6 +80,8 @@ const {
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-N2B3VHRS');
   </script>
+  
+  <slot name="head" />
 </head>
 
 <body>
@@ -100,6 +102,8 @@ const {
   <main class="main-content">
     <slot />
   </main>
+  
+  <Footer motto="une agence globale et indépendante" />
   </body>
  </html>
 

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ArticleLayout.astro
 title: "Tessa Ang"
 mainImage: "/images/tessaang1.webp"
 mainImageAlt: "Tessa Ang"
