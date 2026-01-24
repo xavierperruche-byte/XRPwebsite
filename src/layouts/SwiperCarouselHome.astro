@@ -24,7 +24,7 @@ if (typeof window === 'undefined') {
   
   <swiper-container
     class="mySwiper"
-    loop="false"
+    loop="true"
     pagination="true"
     pagination-clickable="true"
     navigation="false"
@@ -32,9 +32,39 @@ if (typeof window === 'undefined') {
     space-between="20"
   >
 
-    <!-- SLIDE AVEC VIDÉO -->
     <swiper-slide>
-      <div class="slide-content slide-video" 
+      <div class="slide-content carousel-slide-content" 
+           data-image="/images/cconsulting.webp" 
+           data-title="Janvier 2026" 
+           data-description="Nouvelle page d\'accueil site internet"
+           data-details="<a href='https://www.clamaron-consulting.com/' target='_blank' rel='noopener'><b><u>www.clamaron-consulting.com</b></u></a>.">
+        <img 
+          src="/images/cconsulting.webp" 
+          alt="Clamaron Consulting" 
+          loading="lazy" 
+        /image> 
+
+                </div>
+        <div class="timeline-marker">
+          <div class="timeline-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+        </div>
+        <div class="slide-text">
+          <h2>Janvier 2026</h2>
+          <p>Clamaron Consulting : page d'accueil</p>
+        </div>
+      </div>
+    </swiper-slide>
+
+    <swiper-slide>
+    <!-- SLIDE AVEC VIDÉO -->
+      <div class="slide-content carousel-slide-content slide-video" 
            data-video="/videos/WTA_WPP.mp4"
            data-title="Décembre 2025" 
            data-description="Nouveau site de l'Agence"
@@ -68,20 +98,18 @@ if (typeof window === 'undefined') {
       </div>
     </swiper-slide>
 
-
     <swiper-slide>
-      <div class="slide-content" 
+      <div class="slide-content carousel-slide-content" 
            data-image="/images/2025101.webp" 
            data-title="Octobre 2025" 
            data-description="Nom, Identité Visuelle et Site Internet artsquare.ch"
            data-details="<a href='https://www.artsquare.ch' target='_blank' rel='noopener'><b><u>artsquare.ch</b></u></a> est bien plus qu'une plateforme : c'est un espace vivant dédié à la scène artistique contemporaine suisse.">
         <img 
           src="/images/2025101.webp" 
-          alt="NOWHERE SOCIETY" 
+          alt="artsquare.ch" 
           loading="lazy" 
-          width="400" 
-          height="600"
         /> 
+        
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -99,7 +127,7 @@ if (typeof window === 'undefined') {
       </div>
     </swiper-slide>
     <swiper-slide>
-      <div class="slide-content" 
+      <div class="slide-content carousel-slide-content" 
            data-image="/images/2025091.webp" 
            data-title="Septembre 2025" 
            data-description="Nouvelle Collaboration : N°OW'HERE Society"
@@ -108,8 +136,6 @@ if (typeof window === 'undefined') {
           src="/images/2025091.webp" 
           alt="Sleep Atelier with Studiolfactif" 
           loading="lazy"
-          width="400" 
-          height="600"
         /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
@@ -128,7 +154,7 @@ if (typeof window === 'undefined') {
       </div>
     </swiper-slide>
     <swiper-slide>
-      <div class="slide-content" 
+      <div class="slide-content carousel-slide-content" 
            data-image="/images/2025092.webp" 
            data-title="Septembre 2025" 
            data-description="Magazine Art et Science. Cultivons l'hybridité"
@@ -151,7 +177,7 @@ if (typeof window === 'undefined') {
       </div>
     </swiper-slide>
     <swiper-slide>
-      <div class="slide-content" 
+      <div class="slide-content carousel-slide-content" 
            data-image="/images/2025061.webp" 
            data-title="Juin 2025" 
            data-description="Nouvelle Collaboration : STUDIOLFACTIF X BUCHERER GENEVE"
@@ -174,7 +200,7 @@ if (typeof window === 'undefined') {
       </div>
     </swiper-slide>
     <swiper-slide>
-      <div class="slide-content" 
+      <div class="slide-content carousel-slide-content" 
            data-image="/images/2025041.webp" 
            data-title="Mai 2025" 
            data-description="Nouvelle Collaboration : STUDIOLFACTIF X GARDEN CENTRE SCHILLIGER"
@@ -197,7 +223,7 @@ if (typeof window === 'undefined') {
       </div>
     </swiper-slide>
     <swiper-slide>
-      <div class="slide-content" 
+      <div class="slide-content carousel-slide-content" 
            data-image="/images/2024121.webp" 
            data-title="Avril 2025" 
            data-description="Cercle des Entrepreneurs de l'Urban Belt"
@@ -220,7 +246,7 @@ if (typeof window === 'undefined') {
       </div>
     </swiper-slide>
     <swiper-slide>
-      <div class="slide-content" 
+      <div class="slide-content carousel-slide-content" 
            data-image="/images/2024122.webp" 
            data-title="Décembre 2024" 
            data-description="L'Agence"
@@ -635,12 +661,12 @@ if (typeof window === 'undefined') {
   /* Personnalisation des points de pagination */
   .mySwiper::part(bullet) {
     background-color: black;
-    opacity: 0.5;
+    opacity: 0;
   }
 
   .mySwiper::part(bullet-active) {
     background-color: black;
-    opacity: 1;
+    opacity: 0;
   }
 
   /* Pagination positionnée en dessous du carousel */
@@ -650,7 +676,7 @@ if (typeof window === 'undefined') {
 
 
   /* Responsive pour l'overlay */
-  @media (max-width: 1024px) {
+  @media (max-width: 1536px) {
     .overlay-content {
       flex-direction: column;
       height: auto;
@@ -706,7 +732,7 @@ if (typeof window === 'undefined') {
   }
 
   /* Responsive */
-  @media (max-width: 1250px) {
+  @media (max-width: 1536px) {
     .full-width-carousel {
       width: 85%;
       height: auto;
@@ -775,7 +801,7 @@ if (typeof window === 'undefined') {
     }
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1536px) {
     .full-width-carousel {
       width: 85%;
       height: auto;
@@ -942,9 +968,9 @@ if (typeof window === 'undefined') {
         });
       }
 
-      // Gestion du clic sur les images pour l'overlay
-      const slideContents = document.querySelectorAll('.slide-content');
-      slideContents.forEach(content => {
+      // Gestion du clic UNIQUEMENT sur les slides du carousel avec la classe 'carousel-slide-content'
+      const carouselSlideContents = document.querySelectorAll('.carousel-slide-content');
+      carouselSlideContents.forEach(content => {
         content.addEventListener('click', () => {
           const imageSrc = content.getAttribute('data-image');
           const videoSrc = content.getAttribute('data-video');
@@ -1037,7 +1063,7 @@ if (typeof window === 'undefined') {
         } else if (width < 1024) {
           swiperEl.setAttribute('slides-per-view', '2');
           swiperEl.setAttribute('space-between', '15');
-        } else if (width < 1280) {
+        } else if (width < 1834) {
           swiperEl.setAttribute('slides-per-view', '3');
           swiperEl.setAttribute('space-between', '20');
         } else {

@@ -7,13 +7,20 @@ interface Props {
   title: string;
   description?: string;
   currentPage?: string;
+  ogImage?: string;
+  keywords?: string;
 }
 
 const { 
-  title = 'We-TheAgency', 
-  description = 'We-TheAgency - Business with Attitude',
-  currentPage = ''
+  title = 'We-TheAgency - Créativité Stratégique, Tech sur Mesure | Genève, Paris, Singapour', 
+  description = 'We-TheAgency : Agence de création d\'identité visuelle, webdesign et développement commercial à Genève, Paris et Singapour. Expertise en branding, marketing digital et solutions tech sur mesure. Business with Attitude.',
+  currentPage = '',
+  ogImage = 'https://www.we-theagency.com/images/og-image.jpg',
+  keywords = 'agence communication Genève, identité visuelle, webdesign, développement commercial, marketing digital, branding Suisse, création site web, agence créative, tech sur mesure'
 } = Astro.props;
+
+// URL canonique
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!DOCTYPE html>
@@ -22,6 +29,256 @@ const {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
+  <!-- ============================================ -->
+  <!-- MÉTADONNÉES DE BASE (Optimisées pour LLM) -->
+  <!-- ============================================ -->
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="keywords" content={keywords}>
+  <meta name="author" content="Réjane Salaün - We-TheAgency">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="language" content="fr">
+  <meta name="abstract" content="We-TheAgency est une agence de création d'identité visuelle et de développement commercial basée à Genève, Paris et Singapour. Fondée par Réjane Salaün, l'agence propose des services de branding, webdesign et marketing digital avec une approche créative et stratégique.">
+  
+  <!-- Géolocalisation -->
+  <meta name="geo.region" content="CH-GE">
+  <meta name="geo.placename" content="Genève">
+  <meta name="geo.position" content="46.204391;6.143158">
+  <meta name="ICBM" content="46.204391, 6.143158">
+  
+  <!-- Classification -->
+  <meta name="subject" content="Agence de communication et marketing digital">
+  <meta name="classification" content="Business Services">
+  <meta name="category" content="Marketing, Design, Technology">
+  
+  <!-- ============================================ -->
+  <!-- OPEN GRAPH (Facebook, LinkedIn, etc.) -->
+  <!-- ============================================ -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="We-TheAgency">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="We-TheAgency - Agence créative à Genève">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:locale:alternate" content="en_US">
+  
+  <!-- ============================================ -->
+  <!-- TWITTER CARDS -->
+  <!-- ============================================ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={ogImage}>
+  <meta name="twitter:image:alt" content="We-TheAgency">
+  
+  <!-- ============================================ -->
+  <!-- CANONICAL & ALTERNATE LANGUAGES -->
+  <!-- ============================================ -->
+  <link rel="canonical" href={canonicalURL}>
+  <link rel="alternate" hreflang="fr" href={canonicalURL}>
+  <link rel="alternate" hreflang="x-default" href={canonicalURL}>
+
+  <!-- ============================================ -->
+  <!-- SCHEMA.ORG - ORGANIZATION (Enrichi) -->
+  <!-- ============================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "We-TheAgency",
+  "alternateName": "WTA",
+  "legalName": "Réjane Salaün – Wepopup",
+  "image": "https://www.we-theagency.com/images/logo.svg",
+  "url": "https://www.we-theagency.com",
+  "logo": "https://www.we-theagency.com/images/logo.svg",
+  "description": "Agence de création d'identité visuelle, webdesign et développement commercial. Créativité stratégique, tech sur mesure, résultats.",
+  "slogan": "Business with Attitude",
+  "foundingDate": "2018",
+  "founder": {
+      "@type": "Person",
+      "name": "Réjane Salaün",
+      "jobTitle": "Fondatrice",
+      "description": "Parcours international riche et atypique. MBA en Ressources Humaines & Mobilité Internationale.",
+      "sameAs": "https://www.linkedin.com/in/réjane-salaün/",
+      "alumniOf": "Magellan Institute - Executive MBA, Ressources Humaines & Mobilité Internationale",
+      "knowsAbout": [
+        "Marketing Digital",
+        "Développement Commercial",
+        "Innovation",
+        "Mode Durable",
+        "Entrepreneuriat Féminin"
+      ]
+    },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rue des Eaux-Vives 15",
+      "addressLocality": "Genève",
+    "postalCode": "1207",
+    "addressCountry": "CH"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 46.2037,
+    "longitude": 6.1574
+  },
+    "location": [
+      {
+        "@type": "Place",
+        "name": "Genève",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Genève",
+          "addressCountry": "Suisse"
+        }
+      }
+    ],
+    "areaServed": [
+      {
+        "@type": "Country",
+        "name": "Suisse"
+      },
+      {
+        "@type": "Country",
+        "name": "France"
+      }
+  ],
+  "sameAs": [
+      "https://www.instagram.com/wta.wpp/",
+      "https://www.linkedin.com/in/réjane-salaün/",
+      "https://cube.we-theagency.com/"
+  ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": ["French", "English"]
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Création d'identité visuelle",
+            "description": "Des créations contemporaines pour une marque qui affirme sa singularité",
+            "serviceType": "Branding & Identity Design",
+            "provider": {
+              "@type": "Organization",
+              "name": "We-TheAgency"
+            }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "WebDesign",
+            "description": "Création de sites Web responsives et sur mesure. Une expérience fluide sur tous les supports.",
+            "serviceType": "Web Design & Development",
+            "provider": {
+              "@type": "Organization",
+              "name": "We-TheAgency"
+            }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Marketing Digital & Développement Commercial",
+            "description": "Solutions personnalisées qui répondent à vos ambitions. Le développement commercial est dans notre ADN.",
+            "serviceType": "Digital Marketing & Business Development",
+            "provider": {
+              "@type": "Organization",
+              "name": "We-TheAgency"
+            }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Tech",
+            "description": "Un code fiable, évolutif et sur mesure pour que vous puissiez vous concentrer sur ce qui compte.",
+            "serviceType": "Technology & Development",
+            "provider": {
+              "@type": "Organization",
+              "name": "We-TheAgency"
+            }
+          }
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- ============================================ -->
+  <!-- SCHEMA.ORG - WEBSITE -->
+  <!-- ============================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "We-TheAgency",
+    "url": "https://www.we-theagency.com",
+    "description": "Agence de création d'identité visuelle, webdesign et développement commercial",
+    "inLanguage": "fr",
+    "copyrightYear": "2024",
+    "publisher": {
+      "@type": "Organization",
+      "name": "We-TheAgency",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.we-theagency.com/images/logo.svg"
+      }
+    }
+}
+</script>
+
+  <!-- ============================================ -->
+  <!-- SCHEMA.ORG - PERSON (Fondatrice) -->
+  <!-- ============================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Réjane Salaün",
+    "jobTitle": "Fondatrice de We-TheAgency",
+    "description": "Une fondatrice visionnaire avec un parcours international riche et atypique. MBA en Ressources Humaines & Mobilité Internationale. Expertise en mode durable, innovation, et développement commercial en Asie du Sud-Est et en Suisse.",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "We-TheAgency"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/réjane-salaün/",
+      "https://cube.we-theagency.com/"
+    ],
+    "alumniOf": "MBA en Ressources Humaines & Mobilité Internationale",
+    "knowsAbout": [
+      "Marketing Digital",
+      "Développement Commercial",
+      "Innovation",
+      "Mode Durable",
+      "Entrepreneuriat Féminin",
+      "Networking",
+      "Leadership Féminin"
+    ],
+    "hasOccupation": {
+      "@type": "Occupation",
+      "name": "Fondatrice d'agence",
+      "occupationLocation": {
+        "@type": "City",
+        "name": "Genève"
+      }
+    }
+  }
+  </script>
+
   <!-- Preconnect CRITIQUE pour Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,15 +286,13 @@ const {
   <!-- DNS prefetch pour GTM -->
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   
-  <title>{title}</title>
-  <meta name="description" content={description}>
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:url" content={Astro.url.href} />
-  <meta property="og:type" content="website" />
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+   
+  <!-- Fichiers additionnels -->
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
-  <!-- CRITICAL CSS INLINE - Styles essentiels pour above-the-fold -->
+ <!-- CRITICAL CSS INLINE - Styles essentiels pour above-the-fold -->
   <style>
     /* Reset minimal critique */
     *{margin:0;padding:0;box-sizing:border-box}
@@ -99,7 +354,7 @@ const {
   <Header currentPage={currentPage} />
     
   <!-- Main Content -->
-  <main class="main-content">
+  <main class="main-content" role="main" aria-label="Contenu principal">
     <slot />
   </main>
   

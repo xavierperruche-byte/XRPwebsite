@@ -64,7 +64,7 @@ const projects = [
               />
               <div class="slide-overlay"></div>
             </div>
-            <div class="slide-content">
+            <div class="slide-content hero-slide-content">
               <div class="slide-info">
                 <span class="slide-type">{project.type}</span>
                 <h1 class="slide-title">{project.title}</h1>
@@ -465,8 +465,14 @@ const projects = [
     z-index: 1;
   }
 
+  /* Empêcher le curseur pointer sur le Hero Slider */
+  .hero-slide-content {
+    cursor: default !important;
+  }
+
   .slide-content {
     position: relative;
+    z-index: 2;
     height: 100%;
     display: flex;
     align-items: center;
