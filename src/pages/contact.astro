@@ -43,61 +43,97 @@ const projects = [
                 <div class="contact-container">
                   <div class="form-wrapper">
                     <div class="form-header">
-                      <h1>Contact</h1>
-                      <p>Envoyez-nous un message !</p>
+                      <div class="header-accent"></div>
+                      <h1>Prenons Contact</h1>
+                      <p>Transformons vos idées en réalité</p>
                     </div>
+
                     <div class="success-message" id="successMessage">
-                      ✓ Message envoyé! Nous vous ferons un retour dès que possible.
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span>Message envoyé avec succès! Nous vous répondrons très prochainement.</span>
                     </div>
+                    
                     <div class="error-message" id="errorMessage">
-                      ✗ Oops! Petite erreur. Essayez à nouveau.
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="15" y1="9" x2="9" y2="15"></line>
+                        <line x1="9" y1="9" x2="15" y2="15"></line>
+                      </svg>
+                      <span>Une erreur s'est produite. Veuillez réessayer.</span>
                     </div>
 
                     <form id="contactForm" action="/contact-handler.php" method="POST">
-                      <div class="form-group">
-                        <label for="name">Votre Nom *</label>
-                        <input 
-                          type="text" 
-                          id="name" 
-                          name="name" 
-                          required 
-                          placeholder="John Doe"
-                        />
+                      <div class="form-row">
+                        <div class="form-group">
+                          <label for="name">
+                            <span class="label-text">Nom</span>
+                            <span class="label-required">*</span>
+                          </label>
+                          <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            required 
+                            placeholder="Jean Dupont"
+                          />
+                        </div>
+
+                        <div class="form-group">
+                          <label for="email">
+                            <span class="label-text">Email</span>
+                            <span class="label-required">*</span>
+                          </label>
+                          <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            placeholder="jean@exemple.com"
+                          />
+                        </div>
                       </div>
+
                       <div class="form-group">
-                        <label for="email">Addresse Email *</label>
-                        <input 
-                          type="email" 
-                          id="email" 
-                          name="email" 
-                          required 
-                          placeholder="john@example.com"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label for="subject">Objet *</label>
+                        <label for="subject">
+                          <span class="label-text">Objet</span>
+                          <span class="label-required">*</span>
+                        </label>
                         <input 
                           type="text" 
                           id="subject" 
                           name="subject" 
                           required 
-                          placeholder="Que pouvons nous faire pour vous?"
+                          placeholder="Comment pouvons-nous vous aider ?"
                         />
                       </div>
+
                       <div class="form-group">
-                        <label for="message">Message *</label>
+                        <label for="message">
+                          <span class="label-text">Message</span>
+                          <span class="label-required">*</span>
+                        </label>
                         <textarea 
                           id="message" 
                           name="message" 
                           required 
-                          placeholder="Dites nous ce qui vous passe par la tete..."
+                          placeholder="Partagez vos idées avec nous..."
                         ></textarea>
                       </div>
-                      <button type="submit" class="submit-btn" id="submitBtn">Envoyez votre message</button>
+
+                      <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="btn-text">Envoyer le message</span>
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <line x1="5" y1="12" x2="19" y2="12"></line>
+                          <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                      </button>
+
                       <div class="recaptcha-notice">
-                        This site is protected by reCAPTCHA and the Google
-                        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and
-                        <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a> apply.
+                        Protégé par reCAPTCHA · 
+                        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Confidentialité</a> · 
+                        <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Conditions</a>
                       </div>
                     </form>
                   </div>
@@ -479,14 +515,40 @@ window.addEventListener('load', function() {
     }
 
     .form-wrapper {
-      background: rgba(255, 255, 255, 0.55);
+      background: rgba(255, 255, 255, 0.35);
       backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 2rem 1.5rem;
-      max-width: 1200px;
+      border-radius: 24px;
+      padding: 2rem 6rem;
+      max-width: 1000px;
       width: 100%;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      animation: slideUp 0.6s ease-out;
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.25),
+        0 0 1px rgba(255, 255, 255, 0.5) inset;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #fff0ea 0%, #8d6868 50%, #eae3d8 100%);
+      background-size: 200% 100%;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% {
+        background-position: 0% 0%;
+      }
+      50% {
+        background-position: 100% 0%;
+      }
     }
 
     @keyframes slideUp {
@@ -554,7 +616,7 @@ window.addEventListener('load', function() {
     .submit-btn {
       width: 100%;
       padding: 1rem;
-      background: linear-gradient(135deg, #686f8dff 0%, #fff0ea 100%);
+      background: linear-gradient(135deg, #8d6868 0%, #eae3d8 100%);
       color: white;
       border: none;
       border-radius: 10px;

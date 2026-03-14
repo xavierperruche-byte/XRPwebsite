@@ -34,6 +34,46 @@ const projects = [
     description: 'Le développement commercial est dans notre ADN'
   }
 ];
+// Testimonials data - simple format
+const testimonials = [
+  {
+    id: 1,
+    text: 'La création de mon site internet, <a href="https://www.artsquare.ch" target="_blank" rel="noopener noreferrer">www.artsquare.ch</a>, a été MON projet de l\'année 2025. Pour me conseiller et et me guider dans cette démarche, j\'ai eu le plaisir de travailler avec Réjane Salaün. Son professionnalisme en la matière et le suivi tout au long du processus ont été à la hauteur de mes attentes. J\'ai beaucoup apprécié son écoute et son regard bienveillant sur ce projet fondamental pour mes activités dans le domaine de l\'art. ',
+    author: 'Sonia Jebsen',
+    company: '<a href="https://www.artsquare.ch" target="_blank" rel="noopener noreferrer">Artsquare</a>'
+  },
+  {
+    id: 2,
+    text: 'J\'ai eu le plaisir de travailler avec Réjane à Singapour dans le cadre du développement de la marque TroiZenfantS avec ma société Malmousque Limited. Réjane a joué un rôle clé dans l\'implantation de nos produits sur le marché singapourien. Grâce à son expertise locale, à son réseau et à sa compréhension fine du retail, nous avons pu référencer la marque chez Mothercare Singapore ainsi qu\'à Takashimaya Singapore, grand magasin japonais de référence basé à Singapour. Son professionnalisme, sa rigueur et sa capacité à faire avancer les projets de manière concrète ont rendu cette collaboration particulièrement efficace et agréable. Cette implantation a été une étape stratégique et productive pour Malmousque Limited, et je recommande vivement Réjane pour tout projet de développement international ou d’expansion retail en Asie.',
+    author: 'Céline Pasteur',
+    company: '<a href="https://malmousqueltd.com/" target="_blank" rel="noopener noreferrer">Malmousque Limited</a>'
+  }
+  //,
+  //{
+  //  id: 3,
+  //  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+  //  author: 'Joanna Massacand',
+  //  company: '<a href="https://kaioswim.com/" target="_blank" rel="noopener noreferrer">Kaio Swim</a>'
+  //}
+];
+const reviewsSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": testimonials.map((t, index) => ({
+    "@type": "Review",
+    "position": index + 1,
+    "author": {
+      "@type": "Person",
+      "name": t.author
+    },
+    "itemReviewed": {
+      "@type": "Organization",
+      "name": "We-TheAgency"
+    },
+    "reviewBody": t.text,
+    "datePublished": t.date
+  }))
+};
 ---
 
 
@@ -127,14 +167,12 @@ const projects = [
     </div>
     
     <div class="services-grid">
-
     <div class="service-card scroll-animate">
       <div class="service-icon" role="img" aria-label="Création">📝</div>
       <p>Des créations contemporaines pour une marque qui <span class="stabilo-simple orange">affirme sa singularité</span>.<br></br></p>
       <h3>Création d'identité visuelle</h3>
     </div>
     
-
       <div class="service-card scroll-animate">
         <div class="service-icon" role="img" aria-label="Croissance">📈</div>     
         <p>Parce que chaque projet a son identité, nous imaginons des solutions personnalisées qui répondent à <span class="stabilo-simple orange">vos ambitions</span>.<br></br> </p>
@@ -148,11 +186,64 @@ const projects = [
         </p>
         <h3>Tech</h3>
       </div>
-
     </div>
   </div>
 </section>
   </main>
+
+
+<!-- Testimonials Section - Simple & Full Width -->
+<script type="application/ld+json" set:html={JSON.stringify(reviewsSchema)}></script>
+<section class="testimonials-section-simple">
+  <div class="testimonials-header">
+    <h2 class="scroll-animate">Ils en parlent mieux que nous</h2>
+  </div>
+
+  <div class="testimonials-slider-wrapper" id="testimonialsWrapper">
+    <div class="testimonials-slider" id="testimonialsSlider">
+      <!-- Clone of last item (for seamless loop) -->
+      <div class="testimonial-item">
+        <div class="testimonial-quote">
+          <p set:html={`"${testimonials[testimonials.length - 1].text}"`}></p>
+        </div>
+        <div class="testimonial-author">
+          <strong>{testimonials[testimonials.length - 1].author}</strong>
+          <span set:html={testimonials[testimonials.length - 1].company}></span>
+        </div>
+      </div>
+
+      <!-- Original testimonials -->
+      {testimonials.map((testimonial) => (
+        <div class="testimonial-item">
+          <div class="testimonial-quote">
+            <p set:html={`"${testimonial.text}"`}></p>
+          </div>
+          <div class="testimonial-author">
+            <strong>{testimonial.author}</strong>
+            <span set:html={testimonial.company}></span>
+          </div>
+        </div>
+      ))}
+
+      <!-- Clone of first item (for seamless loop) -->
+      <div class="testimonial-item">
+        <div class="testimonial-quote">
+          <p set:html={`"${testimonials[0].text}"`}></p>
+        </div>
+        <div class="testimonial-author">
+          <strong>{testimonials[0].author}</strong>
+          <span set:html={testimonials[0].company}></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Arrows -->
+  <div class="testimonials-nav">
+    <button class="nav-arrow nav-prev" aria-label="Témoignage précédent">‹</button>
+    <button class="nav-arrow nav-next" aria-label="Témoignage suivant">›</button>
+  </div>
+</section>
 
 
 <!-- Nos Projets -->
@@ -164,12 +255,16 @@ const projects = [
   </div>
 </section>
 
+
+
  <!-- Content Sections - Carousel -->
  <section class="content-section">
     <Carousel />
     <div class="container">
    </div>
 </section>
+
+
 
 
 
@@ -222,6 +317,246 @@ const projects = [
 <style>
 
   .content-section { }
+
+  /* ========================================
+     TESTIMONIALS SECTION - SIMPLE & FULL WIDTH
+     ======================================== */
+  
+  .testimonials-section-simple {
+    width: 100%;
+    max-width: 100%;
+    padding: 6rem 0;
+    background: #fafafa;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 0 2rem;
+  }
+
+  .testimonials-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+  }
+
+  /* Slider Wrapper - Full Width */
+  .testimonials-slider-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+      cursor: grab;
+    user-select: none;
+  }
+
+  .testimonials-slider-wrapper:active {
+    cursor: grabbing;
+}
+
+  .testimonials-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+  }
+
+  /* Testimonial Item - 50% width on large screens for 2 per view */
+  .testimonial-item {
+    min-width: 50%;
+    width: 50%;
+    padding: 0 5%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;    
+    flex-shrink: 0;
+  }
+
+  .testimonial-quote {
+    max-width: 500px;
+    margin-bottom: 2rem;
+  }
+
+  .testimonial-quote p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    font-style: italic;
+    margin: 0;
+    position: relative;
+  }
+
+  .testimonial-quote p::before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+/*    background: linear-gradient(90deg, #888 0%, #333 100%);*/
+    background: transparent;
+    margin: 0 auto 2rem;
+  }
+
+  .testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .testimonial-author strong {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .testimonial-author span {
+    font-size: 0.95rem;
+    color: #888;
+  }
+
+  /* Navigation Arrows */
+  .testimonials-nav {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    pointer-events: none;
+  }
+
+  .nav-arrow {
+    pointer-events: auto;
+    background: transparent;
+    border: 2px solid transparent;
+    color: #333;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 2rem;   
+    font-weight: 300;
+    line-height: 1;
+    transition: all 0.3s ease;
+  }
+
+  .nav-arrow:hover {
+    /*background: #888;
+    color: white;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);*/
+   font-weight: 700;
+  }
+
+  /* Responsive - 1 per view on tablet and mobile */
+  @media (max-width: 1024px) {
+    .testimonial-item {
+      min-width: 100%;
+      width: 100%;
+      padding: 0 8%;
+    }
+
+    .testimonials-header h2 {
+      font-size: 2rem;
+    }
+
+    .testimonial-quote {
+      max-width: 600px;
+    }
+
+    .testimonial-quote p {
+      font-size: 1.1rem;
+    }
+
+    /* HIDE ARROWS ON MOBILE 
+    .testimonials-nav {
+      display: none;
+    }*/
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-section-simple {
+      padding: 4rem 0;
+    }
+
+    .testimonials-header {
+      margin-bottom: 3rem;
+    }
+
+    .testimonials-header h2 {
+      font-size: 1.8rem;
+    }
+
+    .testimonial-item {
+      padding: 0 5%;
+    }
+
+    .testimonial-quote p {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .testimonial-quote p::before {
+      width: 40px;
+      height: 3px;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-author strong {
+      font-size: 1rem;
+    }
+
+    .testimonial-author span {
+      font-size: 0.9rem;
+    }
+
+    .nav-arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+    }
+
+    .testimonials-nav {
+      padding: 0 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .testimonials-section-simple {
+      padding: 3rem 0;
+    }
+
+    .testimonials-header h2 {
+      font-size: 1.5rem;
+    }
+
+    .testimonial-item {
+      padding: 0 1.5rem;
+    }
+
+    .testimonial-quote p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .nav-arrow {
+      width: 35px;
+      height: 35px;
+      font-size: 1.3rem;
+    }
+  }
+
+  /* ========================================
+     ABOUT SECTION 
+     ======================================== */
 
   .about-section {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -904,93 +1239,221 @@ const projects = [
 </style>
 
 <script>
-  // Slider functionality
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.slide');
-  const indicators = document.querySelectorAll('.indicator');
-  const totalSlides = slides.length;
-  let autoSlideInterval: number | null = null;
-  function showSlide(index: number) {
-    slides.forEach(slide => slide.classList.remove('active'));
-    indicators.forEach(indicator => indicator.classList.remove('active'));
+  // Infinite loop testimonials slider with 2 per view
+  const slider = document.getElementById('testimonialsSlider');
+  const wrapper = document.getElementById('testimonialsWrapper');
+  const prevBtn = document.querySelector('.nav-prev');
+  const nextBtn = document.querySelector('.nav-next');
+  
+  if (!slider) throw new Error('Slider not found');
+  
+  // Configuration
+  const totalOriginalItems = 2; // Your testimonials count
+  let currentIndex = 1; // Start at 1 (after the cloned last item)
+  let itemsPerView = window.innerWidth > 1024 ? 2 : 1;
+  let isTransitioning = false;
+  let autoPlayInterval: number;
+  
+  // Touch/Mouse drag variables
+  let isDragging = false;
+  let startPos = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let animationID: number;
+  
+  function getItemWidth() {
+    return 100 / itemsPerView;
+  }
+  
+  function updateSlider(instant = false) {
+    if (!slider) return;
+
+       const itemWidth = getItemWidth();
+       const offset = -currentIndex * itemWidth;
     
-    slides[index].classList.add('active');
-    indicators[index].classList.add('active');
-    currentSlide = index;
+    if (instant) {
+      slider.style.transition = 'none';
+    } else {
+      slider.style.transition = 'transform 0.5s ease-in-out';
+    }
+    
+    slider.style.transform = `translateX(${offset}%)`;
+    
+    if (instant) {
+      // Force reflow
+      void slider.offsetHeight;
+    }
   }
 
   function nextSlide() {
-    const next = (currentSlide + 1) % totalSlides;
-    showSlide(next);
+    if (isTransitioning) return;
+    
+    isTransitioning = true;
+    currentIndex++;
+    updateSlider(false);
+    
+    // Check if we've reached the cloned first item
+    setTimeout(() => {
+      if (currentIndex === totalOriginalItems + 1) {
+        currentIndex = 1;
+        updateSlider(true);
+      }
+      isTransitioning = false;
+    }, 500);
   }
-
+  
   function prevSlide() {
-    const prev = (currentSlide - 1 + totalSlides) % totalSlides;
-    showSlide(prev);
-  }
-
-
-  function startAutoSlide() {
-    // Clear any existing interval
-    if (autoSlideInterval) {
-      clearInterval(autoSlideInterval);
+    if (isTransitioning) return;
+    
+    isTransitioning = true;
+    
+    if (currentIndex === 1) {
+      // Jump to the cloned last item
+      currentIndex = totalOriginalItems + 1;
+      updateSlider(true);
+      
+      setTimeout(() => {
+        currentIndex = totalOriginalItems;
+        updateSlider(false);
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 500);
+      }, 50);
+    } else {
+      currentIndex--;
+      updateSlider(false);
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 500);
     }
-    // Start new interval
-    autoSlideInterval = setInterval(nextSlide, 3000);
   }
-
-  function stopAutoSlide() {
-    if (autoSlideInterval) {
-      clearInterval(autoSlideInterval);
-      autoSlideInterval = null;
-    }
-  }
-
-  // Navigation buttons
-  document.querySelector('.slider-nav.next')?.addEventListener('click', () => {
-    nextSlide();
-    stopAutoSlide();
-    startAutoSlide(); // Restart timer after manual interaction
-  });
-
-  document.querySelector('.slider-nav.prev')?.addEventListener('click', () => {
-    prevSlide();
-    stopAutoSlide();
-    startAutoSlide(); // Restart timer after manual interaction
-  });
-
-  // Indicators
-  indicators.forEach((indicator, index) => {
-    indicator.addEventListener('click', () => {
-      showSlide(index);
-      stopAutoSlide();
-      startAutoSlide(); // Restart timer after manual interaction
-    });
-  });
-
-  // Start auto-advance slides
-  startAutoSlide();
-
-  // Pause auto-advance on hover
-  //document.querySelector('.hero-slider')?.addEventListener('mouseenter', () => {
-  //  stopAutoSlide();
-  //});
-
-  document.querySelector('.hero-slider')?.addEventListener('mouseleave', () => {
-    startAutoSlide();
-  });
-
-  // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-      prevSlide();
-      stopAutoSlide();
-      startAutoSlide(); // Restart timer after manual interaction
-    }
-    if (e.key === 'ArrowRight') {
+  
+  // Auto-advance after 10s
+  function startAutoPlay() {
+    stopAutoPlay(); // Clear any existing interval
+    autoPlayInterval = setInterval(() => {
       nextSlide();
-      stopAutoSlide();
-      startAutoSlide(); // Restart timer after manual interaction
+    }, 10000);
+  }
+  
+  function stopAutoPlay() {
+    if (autoPlayInterval) {
+      clearInterval(autoPlayInterval);
+    }
+  }
+  
+  // Navigation buttons
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      stopAutoPlay();
+      startAutoPlay();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      stopAutoPlay();
+      startAutoPlay();
+    });
+  }
+  
+  // Touch/Mouse drag support
+  function touchStart(index: number) {
+    return function(event: TouchEvent | MouseEvent) {
+      isDragging = true;
+      startPos = getPositionX(event);
+      animationID = requestAnimationFrame(animation);
+      
+      if (wrapper) {
+        wrapper.style.cursor = 'grabbing';
+      }
+      
+      stopAutoPlay();
+    };
+  }
+  
+  function touchMove(event: TouchEvent | MouseEvent) {
+    if (isDragging) {
+      const currentPosition = getPositionX(event);
+      currentTranslate = prevTranslate + currentPosition - startPos;
+    }
+  }
+  
+  function touchEnd() {
+    isDragging = false;
+    cancelAnimationFrame(animationID);
+    
+    if (wrapper) {
+      wrapper.style.cursor = 'grab';
+    }
+    
+    const movedBy = currentTranslate - prevTranslate;
+    
+    // If moved enough, go to next/prev slide
+    if (movedBy < -50) {
+      nextSlide();
+    } else if (movedBy > 50) {
+      prevSlide();
+    } else {
+      updateSlider(false);
+    }
+    
+    currentTranslate = 0;
+    prevTranslate = 0;
+    
+    startAutoPlay();
+  }
+  
+  function getPositionX(event: TouchEvent | MouseEvent) {
+    return event.type.includes('mouse') 
+      ? (event as MouseEvent).pageX 
+      : (event as TouchEvent).touches[0].clientX;
+  }
+  
+  function animation() {
+    if (slider && isDragging) {
+      const itemWidth = getItemWidth();
+      const baseOffset = -currentIndex * itemWidth;
+      const dragOffset = (currentTranslate / window.innerWidth) * 100;
+      slider.style.transform = `translateX(${baseOffset + dragOffset}%)`;
+      requestAnimationFrame(animation);
+    }
+  }
+  
+  // Add event listeners
+  if (wrapper) {
+    // Mouse events
+    wrapper.addEventListener('mousedown', touchStart(0));
+    wrapper.addEventListener('mousemove', touchMove);
+    wrapper.addEventListener('mouseup', touchEnd);
+    wrapper.addEventListener('mouseleave', () => {
+      if (isDragging) {
+        touchEnd();
+      }
+    });
+    
+    // Touch events
+    wrapper.addEventListener('touchstart', touchStart(0), { passive: true });
+    wrapper.addEventListener('touchmove', touchMove, { passive: true });
+    wrapper.addEventListener('touchend', touchEnd);
+    
+    // Pause on hover (desktop only)
+    if (window.innerWidth > 1024) {
+      wrapper.addEventListener('mouseenter', stopAutoPlay);
+      wrapper.addEventListener('mouseleave', startAutoPlay);
+    }
+  }
+  
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    const newItemsPerView = window.innerWidth > 1024 ? 2 : 1;
+    if (newItemsPerView !== itemsPerView) {
+      itemsPerView = newItemsPerView;
+      updateSlider(true);
     }
   });
+
+  // Initialize
+  updateSlider(true);
+  startAutoPlay();
 </script>

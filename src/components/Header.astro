@@ -7,14 +7,15 @@ interface Props {
 const { currentPage = '' } = Astro.props;
 
 const navItems = [
-  { name: 'agence', href: '/', icon: '👩‍💻' },
-  { name: 'services', href: '/services', icon: '📖' },
-  { name: 'we.llbeing', href: '/bewell', icon: '🧘‍♀️' },
-  { name: 'magazine.we', href: '/magazine', icon: '📰' },
-  { name: 'presse', href: '/presse', icon: '📰' },
-  { name: 'contact', href: '/contact', icon: '📧' }
+  { name: 'agence', href: '/'},
+  { name: 'services', href: '/services'},
+  { name: 'we.llbeing', href: '/bewell'},
+  { name: 'magazine.we', href: '/magazine'},
+  { name: 'presse', href: '/presse' },
+  { name: 'contact', href: '/contact' }
 ];
 ---
+
 
 <header class="floating-header" id="floatingHeader">
   <div class="header-container" id="headerContainer">
@@ -155,9 +156,14 @@ const navItems = [
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
   }
 
-  .nav-icon {
+//remove icons
+  /*.nav-icon {
     margin-right: 0.5rem;
     font-size: 1rem;
+  }*/
+  .nav-icon {
+    margin-right: 0.0rem;
+    font-size: 0rem;
   }
 
   .nav-text {

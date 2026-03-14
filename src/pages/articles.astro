@@ -27,9 +27,13 @@ const articles = rawArticles
     });
     // ----------------------------------------
 
+const filePath = article.file || '';
+const fileName = filePath.split('/').pop()?.replace('.md', '') || '';
+const slug = `/articles/${fileName}`;
+
     return {
       title: frontmatter.title,
-      slug: article.url,
+      slug: slug,
       mainImage: frontmatter.mainImage,
       mainImageAlt: frontmatter.mainImageAlt,
       excerpt: frontmatter.excerpt || '',

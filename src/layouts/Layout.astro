@@ -51,6 +51,116 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta name="classification" content="Business Services">
   <meta name="category" content="Marketing, Design, Technology">
   
+  <!-- Canonical -->
+  <link rel="canonical" href={Astro.url.href}>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://www.we-theagency.com/#organization",
+    "name": "We-TheAgency",
+    "alternateName": "WTA",
+    "description": "Agence de création d'identité visuelle, webdesign et développement commercial à Genève, Paris et Singapour",
+    "url": "https://www.we-theagency.com",
+    "logo": "https://www.we-theagency.com/images/logo.svg",
+    "image": "https://www.we-theagency.com/images/og-image.jpg",
+    "email": "rejane.we.theagency@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rue des Eaux-Vives 15",
+      "addressLocality": "Genève",
+      "postalCode": "1207",
+      "addressCountry": "CH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 46.2037,
+      "longitude": 6.1574
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Genève",
+        "sameAs": "https://en.wikipedia.org/wiki/Geneva"
+      },
+      {
+        "@type": "City",
+        "name": "Paris",
+        "sameAs": "https://en.wikipedia.org/wiki/Paris"
+      },
+      {
+        "@type": "City",
+        "name": "Singapour",
+        "sameAs": "https://en.wikipedia.org/wiki/Singapore"
+      }
+    ],
+    "founder": {
+      "@type": "Person",
+      "name": "Réjane Salaün",
+      "url": "https://www.linkedin.com/in/réjane-salaün/",
+      "jobTitle": "Fondatrice",
+      "description": "MBA en Ressources Humaines & Mobilité Internationale. Expertise en marketing digital, mode durable et innovation."
+    },
+    "sameAs": [
+      "https://www.instagram.com/wta.wpp/",
+      "https://www.linkedin.com/in/réjane-salaün/",
+      "https://cube.we-theagency.com/"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Création d'identité visuelle",
+            "description": "Branding et design de marque pour entreprises à Genève",
+            "areaServed": "Genève, Paris, Singapour",
+            "provider": {
+              "@type": "Organization",
+              "name": "We-TheAgency"
+            }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "WebDesign & Développement",
+            "description": "Création de sites web responsives sur mesure",
+            "areaServed": "Genève, Paris, Singapour",
+            "provider": {
+              "@type": "Organization",
+              "name": "We-TheAgency"
+            }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Marketing Digital & Développement Commercial",
+            "description": "Stratégies marketing et croissance business",
+            "areaServed": "Genève, Paris, Singapour",
+            "provider": {
+              "@type": "Organization",
+              "name": "We-TheAgency"
+            }
+          }
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "3"
+    }
+  }
+  </script>
+
+
   <!-- ============================================ -->
   <!-- OPEN GRAPH (Facebook, LinkedIn, etc.) -->
   <!-- ============================================ -->
