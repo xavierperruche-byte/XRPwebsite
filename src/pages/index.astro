@@ -38,13 +38,13 @@ const projects = [
 const testimonials = [
   {
     id: 1,
-    text: 'La création de mon site internet, <a href="https://www.artsquare.ch" target="_blank" rel="noopener noreferrer">www.artsquare.ch</a>, a été MON projet de l\'année 2025. Pour me conseiller et et me guider dans cette démarche, j\'ai eu le plaisir de travailler avec Réjane Salaün. Son professionnalisme en la matière et le suivi tout au long du processus ont été à la hauteur de mes attentes. J\'ai beaucoup apprécié son écoute et son regard bienveillant sur ce projet fondamental pour mes activités dans le domaine de l\'art. ',
+    text: 'La création de mon site internet, <a href="https://www.artsquare.ch" target="_blank" rel="noopener noreferrer">www.artsquare.ch</a>, a été MON projet de l\'année 2025. Pour me conseiller et et me guider dans cette démarche, j\'ai eu le plaisir de travailler avec Réjane Salaün.<br><br>Son professionnalisme en la matière et le suivi tout au long du processus ont été à la hauteur de mes attentes.<br>J\'ai beaucoup apprécié son écoute et son regard bienveillant sur ce projet fondamental pour mes activités dans le domaine de l\'art. ',
     author: 'Sonia Jebsen',
     company: '<a href="https://www.artsquare.ch" target="_blank" rel="noopener noreferrer">Artsquare</a>'
   },
   {
     id: 2,
-    text: 'J\'ai eu le plaisir de travailler avec Réjane à Singapour dans le cadre du développement de la marque TroiZenfantS avec ma société Malmousque Limited. Réjane a joué un rôle clé dans l\'implantation de nos produits sur le marché singapourien. Grâce à son expertise locale, à son réseau et à sa compréhension fine du retail, nous avons pu référencer la marque chez Mothercare Singapore ainsi qu\'à Takashimaya Singapore, grand magasin japonais de référence basé à Singapour. Son professionnalisme, sa rigueur et sa capacité à faire avancer les projets de manière concrète ont rendu cette collaboration particulièrement efficace et agréable. Cette implantation a été une étape stratégique et productive pour Malmousque Limited, et je recommande vivement Réjane pour tout projet de développement international ou d’expansion retail en Asie.',
+    text: 'J\'ai eu le plaisir de travailler avec Réjane à Singapour dans le cadre du développement de la marque TroiZenfantS avec ma société Malmousque Limited.<br><br>Réjane a joué un rôle clé dans l\'implantation de nos produits sur le marché singapourien. Grâce à son expertise locale, à son réseau et à sa compréhension fine du retail, nous avons pu référencer la marque chez Mothercare Singapore ainsi qu\'à Takashimaya Singapore, grand magasin japonais de référence basé à Singapour. <br><br>Son professionnalisme, sa rigueur et sa capacité à faire avancer les projets de manière concrète ont rendu cette collaboration particulièrement efficace et agréable. Cette implantation a été une étape stratégique et productive pour Malmousque Limited, et je recommande vivement Réjane pour tout projet de développement international ou d’expansion retail.',
     author: 'Céline Pasteur',
     company: '<a href="https://malmousqueltd.com/" target="_blank" rel="noopener noreferrer">Malmousque Limited</a>'
   }
@@ -169,20 +169,20 @@ const reviewsSchema = {
     <div class="services-grid">
     <div class="service-card scroll-animate">
       <div class="service-icon" role="img" aria-label="Création">📝</div>
-      <p>Des créations contemporaines pour une marque qui <span class="stabilo-simple orange">affirme sa singularité</span>.<br></br></p>
+      <p>Des créations contemporaines pour une marque qui <span class="stabilo-simple orange">affirme sa singularité</span>.<br><br>Chaque détail est pensé pour être fluide, cohérent et efficace.</p>
       <h3>Création d'identité visuelle</h3>
     </div>
     
       <div class="service-card scroll-animate">
         <div class="service-icon" role="img" aria-label="Croissance">📈</div>     
-        <p>Parce que chaque projet a son identité, nous imaginons des solutions personnalisées qui répondent à <span class="stabilo-simple orange">vos ambitions</span>.<br></br> </p>
+        <p>Parce que chaque projet a son identité, nous imaginons des solutions personnalisées qui répondent à <span class="stabilo-simple orange">vos ambitions</span>. </p>
         <h3>Mktg Digital & Développement Commercial</h3>
       </div>
             
       <div class="service-card scroll-animate">
         <div class="service-icon" role="img" aria-label="Tech">📱</div>
-        <p>Une expérience <span class="stabilo-simple orange">fluide</span> sur tous les supports : nos designs sont entièrement <span class="stabilo-simple orange">responsives</span>, du smartphone au desktop.<br></br>
-        <p>Un code fiable, évolutif et sur mesure <span class="stabilo-simple orange">pour que vous puissiez vous concentrer sur ce qui compte.</p>
+        <p>Nous concevons des expériences digitales qui valorisent <span class="stabilo-simple orange">votre identité</span> et s’adaptent naturellement aux usages.<br></br>
+        Nos solutions techniques sont construites <span class="stabilo-simple orange">sur mesure</span>, fiables et prêtes à évoluer avec vos besoins, en intégrant l’IA comme un véritable levier de performance.</p>
         </p>
         <h3>Tech</h3>
       </div>
@@ -196,7 +196,7 @@ const reviewsSchema = {
 <script type="application/ld+json" set:html={JSON.stringify(reviewsSchema)}></script>
 <section class="testimonials-section-simple">
   <div class="testimonials-header">
-    <h2 class="scroll-animate">Ils en parlent mieux que nous</h2>
+    <h2 class="scroll-animate">Elles en parlent mieux que nous</h2>
   </div>
 
   <div class="testimonials-slider-wrapper" id="testimonialsWrapper">
@@ -388,6 +388,7 @@ const reviewsSchema = {
     color: #555;
     font-style: italic;
     margin: 0;
+        text-align: center;
     position: relative;
   }
 
@@ -1456,4 +1457,103 @@ const reviewsSchema = {
   // Initialize
   updateSlider(true);
   startAutoPlay();
+
+  // ========================================
+  // HERO SLIDER SCRIPT - AJOUTÉ ICI !
+  // ========================================
+  
+  const heroSlides = document.querySelectorAll('.hero-slider .slide');
+  const heroIndicators = document.querySelectorAll('.hero-slider .indicator');
+  const heroPrevBtn = document.querySelector('.hero-slider .slider-nav.prev');
+  const heroNextBtn = document.querySelector('.hero-slider .slider-nav.next');
+  
+  let heroCurrentSlide = 0;
+  let heroAutoPlayInterval;
+  
+  function showHeroSlide(index) {
+    // Remove active class from all slides and indicators
+    heroSlides.forEach(slide => slide.classList.remove('active'));
+    heroIndicators.forEach(indicator => indicator.classList.remove('active'));
+    
+    // Add active class to current slide and indicator
+    if (heroSlides[index]) {
+      heroSlides[index].classList.add('active');
+    }
+    if (heroIndicators[index]) {
+      heroIndicators[index].classList.add('active');
+    }
+    
+    heroCurrentSlide = index;
+  }
+  
+  function nextHeroSlide() {
+    let nextIndex = (heroCurrentSlide + 1) % heroSlides.length;
+    showHeroSlide(nextIndex);
+  }
+  
+  function prevHeroSlide() {
+    let prevIndex = (heroCurrentSlide - 1 + heroSlides.length) % heroSlides.length;
+    showHeroSlide(prevIndex);
+  }
+  
+  function startHeroAutoPlay() {
+    stopHeroAutoPlay();
+    heroAutoPlayInterval = setInterval(nextHeroSlide, 5000); // Change slide every 5 seconds
+  }
+  
+  function stopHeroAutoPlay() {
+    if (heroAutoPlayInterval) {
+      clearInterval(heroAutoPlayInterval);
+    }
+  }
+  
+  // Event listeners for hero slider
+  if (heroPrevBtn) {
+    heroPrevBtn.addEventListener('click', () => {
+      prevHeroSlide();
+      stopHeroAutoPlay();
+      startHeroAutoPlay();
+    });
+  }
+  
+  if (heroNextBtn) {
+    heroNextBtn.addEventListener('click', () => {
+      nextHeroSlide();
+      stopHeroAutoPlay();
+      startHeroAutoPlay();
+    });
+  }
+  
+  // Indicator clicks for hero
+  heroIndicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+      showHeroSlide(index);
+      stopHeroAutoPlay();
+      startHeroAutoPlay();
+    });
+  });
+  
+  // Keyboard navigation for hero
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      prevHeroSlide();
+      stopHeroAutoPlay();
+      startHeroAutoPlay();
+    } else if (e.key === 'ArrowRight') {
+      nextHeroSlide();
+      stopHeroAutoPlay();
+      startHeroAutoPlay();
+    }
+  });
+  
+  // Initialize hero slider
+  startHeroAutoPlay();
+  
+  // Pause on hover
+  const heroSlider = document.querySelector('.hero-slider');
+  if (heroSlider) {
+    heroSlider.addEventListener('mouseenter', stopHeroAutoPlay);
+    heroSlider.addEventListener('mouseleave', startHeroAutoPlay);
+  }
+  
 </script>
