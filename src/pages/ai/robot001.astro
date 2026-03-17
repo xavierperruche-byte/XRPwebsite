@@ -1,0 +1,813 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const defaultPrompts = {
+  chasseur: {
+    role: "Chasseur Immobilier de Luxe - Morbihan",
+    goal: "Dénicher des maisons (>1.6M€, 180m2) ou terrains (>800k€) d'exception à Baden (+20km)",
+    backstory: "Expert local du Golfe du Morbihan, tu connais les secteurs de Baden, Arradon, Le Bono, La Trinité sur Mer et Larmor-Baden."
+  },
+  expert: {
+    role: "Consultant en Architecture",
+    goal: "Valider la vue, le calme et la proximité des bus pour Vannes/Auray",
+    backstory: "Tu analyses la valeur et la logistique (transports Kicéo/BreizhGo) des biens trouvés."
+  }
+};
+
+const agentStats = {
+  status: 'ready',
+  lastRun: '2 heures',
+  totalRuns: 47,
+  successRate: 94
+};
+---
+
+<Layout title="Robot_0001 - Expert Immo Luxe">
+  <div class="robot-page">
+    <!-- Breadcrumb & Header -->
+    <p><br><br><br><br></p>
+    <div class="page-header">
+      <a href="/ai" class="breadcrumb">← AI Station</a>
+      <div class="header-row">
+        <div class="header-left">
+          <div class="agent-badge">
+            <span class="badge-icon">🤖</span>
+            <span>AGENT_Robot_0001</span>
+          </div>
+          <h1>Expert Immo Luxe</h1>
+          <p class="subtitle">Spécialiste du marché de prestige dans le Morbihan</p>
+        </div>
+        <div class="status-card">
+          <span class="status-dot active"></span>
+          <span class="status-text">Système Prêt</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats rapides -->
+    <div class="quick-stats">
+      <div class="stat-mini">
+        <div class="stat-mini-value">{agentStats.totalRuns}</div>
+        <div class="stat-mini-label">Exécutions</div>
+      </div>
+      <div class="stat-mini">
+        <div class="stat-mini-value">{agentStats.successRate}%</div>
+        <div class="stat-mini-label">Taux de succès</div>
+      </div>
+      <div class="stat-mini">
+        <div class="stat-mini-value">{agentStats.lastRun}</div>
+        <div class="stat-mini-label">Dernière exec.</div>
+      </div>
+    </div>
+
+    <!-- Grille principale -->
+    <div class="main-grid">
+      <!-- Colonne gauche : Configuration -->
+      <div class="config-column">
+        <div class="section-card">
+          <h2 class="card-title">Configuration des Agents</h2>
+          
+          <form id="agent-form" class="agent-form">
+            <!-- Agent Chasseur -->
+            <div class="agent-config">
+              <div class="agent-header">
+                <span class="agent-label">Agent : Chasseur de Prestige</span>
+                <span class="agent-role-badge">Recherche</span>
+              </div>
+              
+              <div class="form-group">
+                <label>Objectif</label>
+                <textarea 
+                  name="chasseur_goal" 
+                  rows="3"
+                  placeholder="Définissez l'objectif de l'agent..."
+                >{defaultPrompts.chasseur.goal}</textarea>
+              </div>
+
+              <div class="form-group">
+                <label>Contexte</label>
+                <textarea 
+                  name="chasseur_backstory" 
+                  rows="3"
+                  class="backstory-field"
+                >{defaultPrompts.chasseur.backstory}</textarea>
+              </div>
+            </div>
+
+            <!-- Agent Expert -->
+            <div class="agent-config">
+              <div class="agent-header">
+                <span class="agent-label">Agent : Expert Urbanisme</span>
+                <span class="agent-role-badge">Validation</span>
+              </div>
+              
+              <div class="form-group">
+                <label>Objectif</label>
+                <textarea 
+                  name="expert_goal" 
+                  rows="3"
+                >{defaultPrompts.expert.goal}</textarea>
+              </div>
+
+              <div class="form-group">
+                <label>Contexte</label>
+                <textarea 
+                  name="expert_backstory" 
+                  rows="3"
+                  class="backstory-field"
+                >{defaultPrompts.expert.backstory}</textarea>
+              </div>
+            </div>
+
+            <!-- Bouton d'exécution -->
+            <button type="submit" id="run-button" class="run-btn">
+              <svg id="loading-spinner" class="spinner hidden" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <span id="button-text">▶ Exécuter la recherche</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Colonne droite : Console -->
+      <div class="console-column">
+        <div class="console-card">
+          <div class="console-header">
+            <span class="console-title">Output Console</span>
+            <div class="console-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          
+          <div id="result-display" class="console-output">
+            <div class="console-empty">
+              <svg class="empty-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+              <p>En attente d'exécution...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script>
+  // On récupère les éléments
+  const form = document.getElementById('agent-form') as HTMLFormElement;
+  const runButton = document.getElementById('run-button') as HTMLButtonElement;
+  const buttonText = document.getElementById('button-text') as HTMLElement;
+  const spinner = document.getElementById('loading-spinner') as HTMLElement;
+  const resultDisplay = document.getElementById('result-display') as HTMLElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // 1. État de chargement UI
+    runButton.disabled = true;
+    runButton.classList.add('opacity-50', 'cursor-not-allowed');
+    buttonText.textContent = "IA en cours de réflexion...";
+    spinner.classList.remove('hidden');
+    
+    resultDisplay.innerHTML = `
+      <div class="flex flex-col items-center justify-center py-20 text-center space-y-4">
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-black"></div>
+        <p class="text-xs uppercase tracking-[0.2em] font-medium">Recherche en cours dans le Morbihan...</p>
+        <p class="text-[10px] text-gray-400 italic">Le Chasseur et l'Expert analysent les données en temps réel.</p>
+      </div>
+    `;
+
+    try {
+      // 2. Récupération des données du formulaire
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+
+      // 3. APPEL RÉEL À TON API RENDER
+        // Dans robot001.astro
+        const response = await fetch('https://robot001.onrender.com/run', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+      if (!response.ok) throw new Error('Erreur serveur lors de l\'exécution');
+
+      const data = await response.json();
+
+      // 4. AFFICHAGE DES RÉSULTATS RÉELS
+      if (data.result) {
+        // @ts-ignore - On utilise marked pour transformer le Markdown de Python en HTML
+        const htmlContent = window.marked.parse(data.result);
+
+        resultDisplay.innerHTML = `
+          <div class="animate-fade-in space-y-6">
+            <div class="flex justify-between items-center border-b border-gray-100 pb-4">
+              <span class="text-[10px] uppercase tracking-widest font-bold text-green-600">✓ Rapport Final Généré</span>
+              <span class="text-[10px] text-gray-400 font-mono">${new Date().toLocaleTimeString()}</span>
+            </div>
+            
+            <div class="prose prose-sm max-w-none prose-headings:font-light prose-a:text-black prose-a:font-bold prose-a:underline font-light leading-relaxed text-gray-700">
+              ${htmlContent}
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-gray-100">
+               <button onclick="window.print()" class="text-[9px] uppercase tracking-widest text-gray-400 hover:text-black transition-colors">
+                 ⎙ Imprimer le rapport expert
+               </button>
+            </div>
+          </div>
+        `;
+      }
+
+    } catch (error) {
+      console.error(error);
+      resultDisplay.innerHTML = `
+        <div class="p-6 border border-red-100 bg-red-50 text-red-700 rounded-sm">
+          <p class="text-xs font-bold uppercase tracking-widest mb-2">Erreur Système</p>
+          <p class="text-sm font-light">${error.message}</p>
+          <p class="mt-4 text-[10px] opacity-70">Connexion établie avec Render. Vérifiez les logs si le problème persiste.</p>
+        </div>
+      `;
+    } finally {
+      // 5. Rétablir le bouton
+      runButton.disabled = false;
+      runButton.classList.remove('opacity-50', 'cursor-not-allowed');
+      buttonText.textContent = "Relancer la mission";
+      spinner.classList.add('hidden');
+    }
+  });
+</script>
+
+<style>
+  .robot-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  /* === HEADER === */
+  .breadcrumb {
+    display: inline-block;
+    font-size: 11px;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .breadcrumb:hover {
+    color: #4b5563;
+  }
+
+  .page-header {
+    margin-bottom: 32px;
+  }
+
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .agent-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f3f4f6;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: monospace;
+    margin-bottom: 12px;
+  }
+
+  .badge-icon {
+    font-size: 16px;
+  }
+
+  .page-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 8px 0;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: #6b7280;
+    margin: 0;
+  }
+
+  .status-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    padding: 10px 16px;
+    border-radius: 6px;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+  }
+
+  .status-dot.active {
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .status-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: #065f46;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* === QUICK STATS === */
+  .quick-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .stat-mini {
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 16px;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .stat-mini-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #4f46e5;
+    margin-bottom: 4px;
+  }
+
+  .stat-mini-label {
+    font-size: 11px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* === GRILLE PRINCIPALE === */
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* === SECTION CARD === */
+  .section-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 24px;
+  }
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 24px 0;
+  }
+
+  /* === FORM === */
+  .agent-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .agent-config {
+    padding: 20px;
+    background: #fafafa;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+  }
+
+  .agent-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .agent-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .agent-role-badge {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+
+  .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #111827;
+    resize: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+  }
+
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #4f46e5;
+  }
+
+  .backstory-field {
+    font-style: italic;
+    color: #6b7280 !important;
+    font-size: 12px !important;
+  }
+
+  .run-btn {
+    width: 100%;
+    padding: 14px 24px;
+    background: #111827;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .run-btn:hover:not(:disabled) {
+    background: #1f2937;
+    transform: translateY(-1px);
+  }
+
+  .run-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .spinner {
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .spinner.hidden {
+    display: none;
+  }
+
+  /* === CONSOLE === */
+  .console-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    height: fit-content;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .console-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: #fafafa;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .console-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .console-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .console-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #d1d5db;
+  }
+
+  .console-output {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.6;
+  }
+
+  .console-output::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .console-output::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+  }
+
+  .console-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 400px;
+    color: #9ca3af;
+  }
+
+  .empty-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+    opacity: 0.3;
+  }
+
+  .console-empty p {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* === LOADING === */
+  .console-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 60px 24px;
+  }
+
+  .loading-dots {
+    display: flex;
+    gap: 8px;
+  }
+
+  .loading-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4f46e5;
+    animation: bounce 1.4s infinite ease-in-out both;
+  }
+
+  .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+  .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+  @keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+  }
+
+  .loading-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+  }
+
+  .loading-subtext {
+    font-size: 12px;
+    color: #6b7280;
+    margin: 0;
+  }
+
+  /* === RESULTS === */
+  .console-results {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  .result-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+  }
+
+  .success-badge {
+    background: #d1fae5;
+    color: #065f46;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .result-meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    font-size: 12px;
+    color: #6b7280;
+  }
+
+  .results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .result-item {
+    padding: 16px;
+    background: #fafafa;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+  }
+
+  .result-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 6px;
+  }
+
+  .result-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #4f46e5;
+    margin-bottom: 8px;
+  }
+
+  .result-desc {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .result-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .tag {
+    background: #ecfdf5;
+    color: #065f46;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .result-link {
+    display: inline-block;
+    font-size: 12px;
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .result-link:hover {
+    text-decoration: underline;
+  }
+
+  .result-footer {
+    padding: 16px;
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-radius: 6px;
+  }
+
+  .result-footer p {
+    margin: 0;
+    font-size: 13px;
+    color: #92400e;
+  }
+
+  /* === ERROR === */
+  .console-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 40px;
+    color: #dc2626;
+  }
+
+  .error-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .console-error p {
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .console-error small {
+    color: #6b7280;
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 1024px) {
+    .main-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .header-row {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .robot-page {
+      padding: 24px 16px;
+    }
+
+    .page-header h1 {
+      font-size: 24px;
+    }
+
+    .quick-stats {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
