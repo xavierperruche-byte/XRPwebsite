@@ -8,18 +8,18 @@ import BackToTop from '../components/BackToTop.astro';
 const projects = [
   {
     id: 1,
-    title: 'Identité de Marque',
+    title: 'IA Agentique',
     type: 'Services',
-    /*year: 2025,*/
+    /*year: 2026,*/
     image: '/images/index3.webp',
-    slug: 'services',
-    description: 'Création d\'identité visuelle'
+    slug: 'aisoon',
+    description: 'Création d\'agents IA autonomes sur-mesure'
   },
   {
     id: 2,
     title: 'WebDesign',
     type: 'Services',
-    /*year: 2025,*/
+    /*year: 2026,*/
     image: '/images/index1.webp',
     slug: 'services',
     description: 'Création de sites Web'
@@ -47,14 +47,13 @@ const testimonials = [
     text: 'J\'ai eu le plaisir de travailler avec Réjane à Singapour dans le cadre du développement de la marque TroiZenfantS avec ma société Malmousque Limited.<br><br>Réjane a joué un rôle clé dans l\'implantation de nos produits sur le marché singapourien. Grâce à son expertise locale, à son réseau et à sa compréhension fine du retail, nous avons pu référencer la marque chez Mothercare Singapore ainsi qu\'à Takashimaya Singapore, grand magasin japonais de référence basé à Singapour. <br><br>Son professionnalisme, sa rigueur et sa capacité à faire avancer les projets de manière concrète ont rendu cette collaboration particulièrement efficace et agréable. Cette implantation a été une étape stratégique et productive pour Malmousque Limited, et je recommande vivement Réjane pour tout projet de développement international ou d’expansion retail.',
     author: 'Céline Pasteur',
     company: '<a href="https://malmousqueltd.com/" target="_blank" rel="noopener noreferrer">Malmousque Limited</a>'
+  },
+  {
+    id: 3,
+    text: 'Réjane was the driving force behind our strategic expansion in Switzerland. Thanks to her network and dedication, we were able to build long lasting partnerships based on trust and shared values. She quickly became an integral part of the kaio swim team.<br><br>Réjane strengthened our digital presence and made original projects—such as photoshoots and fashion shows—possible.<br><br>What we valued most was her honesty and the certainty that she always had our best interests at heart.',
+    author: 'Joanna Massacand',
+    company: '<a href="https://kaioswim.com/" target="_blank" rel="noopener noreferrer">Kaio Swim</a>'
   }
-  //,
-  //{
-  //  id: 3,
-  //  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  //  author: 'Joanna Massacand',
-  //  company: '<a href="https://kaioswim.com/" target="_blank" rel="noopener noreferrer">Kaio Swim</a>'
-  //}
 ];
 const reviewsSchema = {
   "@context": "https://schema.org",
@@ -560,7 +559,8 @@ const reviewsSchema = {
      ======================================== */
 
   .about-section {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    /*background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);*/
+    background: linear-gradient(135deg, #efe9e4 0%, #fff0ea 100%);
     padding: 4rem 0;
     margin-top: 4rem;
   }
@@ -1249,7 +1249,7 @@ const reviewsSchema = {
   if (!slider) throw new Error('Slider not found');
   
   // Configuration
-  const totalOriginalItems = 2; // Your testimonials count
+  const totalOriginalItems = 3; // Your testimonials count
   let currentIndex = 1; // Start at 1 (after the cloned last item)
   let itemsPerView = window.innerWidth > 1024 ? 2 : 1;
   let isTransitioning = false;
@@ -1498,7 +1498,7 @@ const reviewsSchema = {
   
   function startHeroAutoPlay() {
     stopHeroAutoPlay();
-    heroAutoPlayInterval = setInterval(nextHeroSlide, 5000); // Change slide every 5 seconds
+    heroAutoPlayInterval = setInterval(nextHeroSlide, 2500); // Change slide every 3 seconds
   }
   
   function stopHeroAutoPlay() {
