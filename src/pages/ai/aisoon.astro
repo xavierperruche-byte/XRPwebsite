@@ -1,6 +1,6 @@
 ---
 // src/pages/prochainement.astro
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout title="Prochainement - We The Agency">
@@ -44,6 +44,15 @@ import Layout from '../layouts/Layout.astro';
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
         </svg>
         Retour à l'accueil
+      </a>
+
+      <!-- Accès Protégé -->
+      <p class="message"></p>
+      <a href="/ai" class="back-link">
+        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Accès protégé
       </a>
     </div>
   </div>

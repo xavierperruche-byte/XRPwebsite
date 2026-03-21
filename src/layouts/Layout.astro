@@ -3,6 +3,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
+
 interface Props {
   title: string;
   description?: string;
@@ -20,7 +21,7 @@ const {
 } = Astro.props;
 
 // URL canonique
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = new URL(Astro.request.url);
 ---
 
 <!DOCTYPE html>

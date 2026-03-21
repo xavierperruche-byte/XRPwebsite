@@ -1,6 +1,7 @@
 ---
 // src/pages/ai/index.astro
 import Layout from '../../layouts/Layout.astro';
+import Login from '../../components/loginComponent.astro';
 
 const stats = {
   agentsActifs: 1,
@@ -26,6 +27,8 @@ const activeAgents = [
   }
 ];
 ---
+
+<Login client:load />
 
 <Layout title="AI Station - Control Center">
   <div class="ai-station">

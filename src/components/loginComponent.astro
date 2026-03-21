@@ -1,0 +1,47 @@
+---
+/**
+ * Composant de protection d’accès + bouton logout
+ * À inclure dans les pages protégées :
+ *
+ *   <LoginComponent client:load />
+ */
+---
+<div class="logout-floating" onclick="logout()">
+  ⎋ Logout
+</div>
+
+<script>
+  // Vérification d'accès
+  if (localStorage.getItem("auth") !== "active") {
+    window.location.href = "/login";
+  }
+
+  // Fonction logout
+  window.logout = function () {
+    localStorage.removeItem("auth");
+    window.location.href = "/login";
+  };
+</script>
+
+<style>
+  .logout-floating {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    background: #111827;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
+    z-index: 9999;
+  }
+
+  .logout-floating:hover {
+    background: #374151;
+    transform: translateY(-2px);
+  }
+</style>

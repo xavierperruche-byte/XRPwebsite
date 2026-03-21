@@ -1,0 +1,379 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Accès Sécurisé | We-TheAgency AI">
+  <main class="login-container">
+    <div class="login-card fade-in-up">
+      <div class="card-header">
+        <div class="logo-wrapper">
+          <img src="/images/logo.svg" alt="WTA Logo" class="wta-logo" />
+        </div>
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span class="status-text">ZONE_SÉCURISÉE</span>
+        </div>
+        <h1 class="card-title">WTA_AI Station</h1>
+        <p class="card-subtitle">Veuillez entrer le code d'activation pour accéder au terminal expert.</p>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <div class="input-group">
+          <label for="password" class="sr-only">Code secret</label>
+          <input 
+            type="password" 
+            id="password"
+            name="password" 
+            class="password-input"
+            placeholder="········"
+            required
+            autocomplete="current-password"
+            autofocus
+          />
+          <span class="input-icon">🔒</span>
+        </div>
+
+        <div id="errorMessage" class="message error-message" style="display:none;">
+          <span class="icon">⚠️</span> Code incorrect.
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <span class="btn-text">Déverrouiller le terminal</span>
+          <span class="btn-icon">→</span>
+        </button>
+      </form>
+
+      <div class="card-footer">
+        <p>Business with Attitude.</p>
+        <a href="/" class="back-link">← Retour au site public</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const EXPECTED_HASH = import.meta.env.PUBLIC_STATION_PASSWORD_HASH;
+    async function sha256(str) {
+      const buf = new TextEncoder().encode(str);
+      const hash = await crypto.subtle.digest("SHA-256", buf);
+      return Array.from(new Uint8Array(hash))
+        .map(b => b.toString(16).padStart(2, "0"))
+        .join("");
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const pwd = document.getElementById("password").value;
+      const hash = await sha256(pwd);
+
+      if (hash === EXPECTED_HASH) {
+        localStorage.setItem("auth", "active");
+        window.location.href = "/ai";
+      } else {
+        document.getElementById("errorMessage").style.display = "flex";
+      }
+    });
+  </script>
+</Layout>
+
+<style is:global>
+  /* === GLOBAL RESET & FONTS === */
+  /* Assure-toi que Inter est chargée dans ton Layout principal */
+  :root {
+    --color-wta-dark: #111827; /* Noir We-TheAgency */
+    --color-wta-gray-light: #fafafa;
+    --color-wta-gray-medium: #6b7280;
+    --color-border: #e5e7eb;
+    --font-family-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-wta-gray-light);
+    font-family: var(--font-family-main);
+  }
+
+  /* Force le box-sizing pour tous les éléments pour éviter les débordements */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+</style>
+
+<style>
+  /* === LAYOUT CONTEUR === */
+  .login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height pour mobile */
+    padding: 24px;
+  }
+
+  /* === CARTE DE LOGIN === */
+  .login-card {
+    width: 100%;
+    max-width: 440px; /* Largeur max soignée */
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 28px; /* Coins arrondis plus doux */
+    padding: 56px 48px; /* Padding généreux */
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .login-card:hover {
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.07);
+    transform: translateY(-2px);
+  }
+
+  /* === EN-TÊTE DE LA CARTE === */
+  .card-header {
+    text-align: center;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo-wrapper {
+    margin-bottom: 28px;
+  }
+
+  .wta-logo {
+    height: 36px;
+    width: auto;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    padding: 6px 14px;
+    border-radius: 99px;
+    margin-bottom: 16px;
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-wta-dark);
+  }
+
+  .status-text {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--color-wta-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  .card-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--color-wta-dark);
+    letter-spacing: -0.03em;
+    margin: 0 0 14px 0;
+  }
+
+  .card-subtitle {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-wta-gray-medium);
+    font-weight: 300;
+    margin: 0;
+    max-width: 340px;
+  }
+
+  /* === FORMULAIRE & INPUT (CORRECTION ICI) === */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* Le Vigile de la boîte : on s'assure qu'elle prenne toute la largeur sans dépasser */
+  .input-group {
+    position: relative;
+    width: 100%; /* Prend toute la largeur dispo de la carte */
+  }
+
+  /* blindage de l'input */
+  .password-input {
+    width: 100%; /* Occupe tout l'espace de son parent (.input-group) */
+    display: block; /* Évite les comportements inline bizarres */
+    padding: 18px 18px 18px 52px; /* Padding généreux, avec espace pour l'icône à gauche */
+    font-size: 16px; /* Taille standard pour éviter le zoom iOS */
+    border: 1px solid #d8dbe0;
+    border-radius: 14px;
+    background: white;
+    color: var(--color-wta-dark);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.12em; /* Espace les points du mdp pour l'élégance */
+  }
+
+  /* Placeholder plus discret */
+  .password-input::placeholder {
+    color: #a1a7b3;
+    letter-spacing: normal;
+  }
+
+  /* Style au focus épuré */
+  .password-input:focus {
+    outline: none;
+    border-color: var(--color-wta-dark);
+    box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.05);
+  }
+
+  /* Icône cadenas */
+  .input-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    opacity: 0.4;
+    pointer-events: none; /* Évite d'intercepter les clics */
+  }
+
+  /* === MESSAGES D'ERREUR/SUCCÈS === */
+  .message {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 14px 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .error-message {
+    background-color: #fff1f2;
+    color: #9f1239;
+    border: 1px solid #fecdd3;
+  }
+
+  /* === BOUTON SOUSET === */
+  .submit-btn {
+    width: 100%;
+    padding: 18px;
+    background-color: var(--color-wta-dark);
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .submit-btn:hover {
+    background-color: #374151;
+  }
+
+  .submit-btn:active {
+    transform: scale(0.98); /* Petit effet d'enfoncement */
+  }
+
+  .btn-icon {
+    transition: transform 0.2s ease;
+  }
+
+  .submit-btn:hover .btn-icon {
+    transform: translateX(4px);
+  }
+
+  /* === PIED DE CARTE === */
+  .card-footer {
+    margin-top: 48px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 28px;
+  }
+
+  .card-footer p {
+    font-size: 11px;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+  }
+
+  .back-link {
+    font-size: 13px;
+    color: var(--color-wta-gray-medium);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .back-link:hover {
+    color: var(--color-wta-dark);
+  }
+
+  /* === ANIMATIONS & UTILITAIRES === */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.4s ease-out forwards;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+  }
+
+  .animate-shake {
+    animation: shake 0.3s ease-in-out;
+  }
+
+  /* === RESPONSIVE (Blindage Mobile) === */
+  @media (max-width: 480px) {
+    .login-card {
+      padding: 40px 24px;
+      border-radius: 20px;
+    }
+    
+    .card-title {
+      font-size: 22px;
+    }
+    
+    .password-input {
+      padding: 16px 16px 16px 48px;
+      font-size: 15px;
+    }
+    
+    .submit-btn {
+      padding: 16px;
+    }
+  }
+</style>
+
