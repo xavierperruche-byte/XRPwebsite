@@ -1,19 +1,25 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
-// 1. Génère un chemin pour chaque entrée de la collection "articles"
 export async function getStaticPaths() {
   const articleEntries = await getCollection('articles');
-  return articleEntries.map(entry => ({
-    params: { slug: entry.slug }, 
-    props: { entry },
-  }));
+  
+  return articleEntries
+    .filter(entry => entry.id && entry.id.trim() !== '') // filtre les ids vides
+    .map((entry) => ({
+      params: { slug: entry.id },
+    }));
 }
 
-// 2. Récupère l'article spécifique pour cette page
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { slug } = Astro.params;
+const entry = await getEntry('articles', slug!);
+
+if (!entry) {
+  return Astro.redirect('/404');
+}
+
+const { Content } = await render(entry);
 ---
 
 <ArticleLayout frontmatter={entry.data}>

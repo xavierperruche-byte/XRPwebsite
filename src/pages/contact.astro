@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 
 // Add your reCAPTCHA site key here
-const RECAPTCHA_SITE_KEY = "6LdmWBcsAAAAAH0hzs_uPlj4UbKSY54OFA0WsZmT";
+const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
 
 // Define your projects/exhibitions data
 const projects = [

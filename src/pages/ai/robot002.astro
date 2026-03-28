@@ -1,13 +1,16 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Login from '../../components/loginComponent.astro';
+const isDev = import.meta.env.DEV;
 ---
 
 <Login />
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+
 <Layout title="Robot002 – Email Automation">
   <div class="robot-container">
-    <!-- TITRE + DESCRIPTION -->
     <p><br><br><br><br><br></p>
     <h1>Robot002 – Email Automation</h1>
 
@@ -17,10 +20,9 @@ import Login from '../../components/loginComponent.astro';
       </div>
     )}
 
-
     <p class="robot-description">
       Robot002 est un agent autonome chargé d’envoyer des emails automatiquement selon une fréquence définie.
-      Il utilise <strong>HuggingFace</strong> pour générer le contenu du message et <strong>Google API</strong> pour l’envoi.
+      Il utilise <strong>HuggingFace</strong> pour générer le contenu du message et un <strong>CRON serveur</strong> pour l’envoi.
       Configurez le destinataire, le prompt et la fréquence, puis laissez l’agent travailler pour vous.
     </p>
 
@@ -30,13 +32,33 @@ import Login from '../../components/loginComponent.astro';
       <input id="emailTarget" type="email" placeholder="ex: x@tondomaine.com" />
     </div>
 
-    <!-- PROMPT PERSONNALISÉ -->
+    <!-- PROMPT -->
     <div class="form-group">
       <label>Prompt HuggingFace</label>
       <textarea id="emailPrompt" rows="4">
-Génère un email professionnel court, clair et utile, destiné à un humain. Le ton doit être poli, concis et informatif.
+Donne moi la version de ton moteur IA.
       </textarea>
     </div>
+
+<!-- REGION -->
+<div class="form-group">
+  <label>Région ciblée</label>
+  <input id="region" type="text" placeholder="Morbihan" />
+</div>
+
+<!-- PRIX MINIMUM -->
+<div class="form-group">
+  <label>Prix minimum (€)</label>
+  <input id="minPrice" type="number" placeholder="1000000" />
+</div>
+
+<!-- SOURCES -->
+<div class="form-group">
+  <label>Sources (séparées par des virgules)</label>
+  <input id="sources" type="text" placeholder="leboncoin,pap" />
+</div>
+
+
 
     <!-- FREQUENCE -->
     <div class="form-group">
@@ -49,31 +71,50 @@ Génère un email professionnel court, clair et utile, destiné à un humain. Le
         <option value="months">Tous les X mois</option>
       </select>
 
+
       <input id="frequencyValue" type="number" min="1" value="1" />
+      <span>minutes</span>
     </div>
 
     <!-- BOUTONS -->
     <button id="startRobot">Activer Robot002</button>
     <button id="stopRobot">Désactiver</button>
+    <button id="sendNow">Envoyer maintenant</button>
     <button id="testRobot">Tester Robot002</button>
+    <button id="saveConfig">💾 Sauvegarder la configuration</button>
 
+    <!-- APERCU -->
     <div class="preview-panel">
       <h3>Aperçu de l’email généré</h3>
       <div id="emailPreview" class="preview-box"></div>
     </div>
 
+    <!-- LOGS -->
     <div class="log-panel">
-
       <h3>Logs Robot002</h3>
     <div id="logOutput"></div>
 </div>
 
+    <div class="status-panel">
+      <h3>État du robot</h3>
+      <div id="robotState">Chargement…</div>
+    </div>
 
     <!-- STATUT -->
     <div id="status"></div>
   </div>
+</layout>
 
-<script>
+
+
+<script define:vars={{ isDev }}>
+  window.__IS_DEV__ = isDev;
+</script>
+
+
+<script is:client="load">
+
+window.onload = () => {
   let intervalId = null;
 
   function computeInterval(type, value) {
@@ -87,6 +128,73 @@ Génère un email professionnel court, clair et utile, destiné à un humain. Le
     }
   }
 
+  function log(message) {
+  const logOutput = document.getElementById("logOutput");
+  const entry = document.createElement("div");
+
+  const now = new Date().toLocaleTimeString("fr-FR", {
+    timeZone: "Europe/Paris",
+    hour12: false
+  });
+  entry.textContent = `[${now}] ${message}`;
+  logOutput.prepend(entry);
+  }
+
+document.getElementById("saveConfig").onclick = async () => {
+  const isLocal = window.__IS_DEV__;
+
+  if (isLocal) {
+    log("🚫 Mode SANDBOX — sauvegarde impossible en local");
+    return;
+  }
+
+  const payload = {
+    to: document.getElementById("emailTarget").value,
+    prompt: document.getElementById("emailPrompt").value,
+    frequency_minutes: document.getElementById("frequencyValue").value,
+    region: document.getElementById("region").value,
+    min_price_eur: parseInt(document.getElementById("minPrice").value),
+    sources: document.getElementById("sources").value.split(",").map(s => s.trim())
+  };
+
+  await fetch("/robot002-config.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  log("💾 Configuration sauvegardée");
+  loadRobotStatus();
+};
+
+  // 🔵 Fonction centrale : envoi structuré vers HuggingFace
+  async function callRobotEngine(prompt) {
+    const payload = {
+      data: [
+        JSON.stringify({
+          region: "Morbihan",
+          min_price_eur: 1000000,
+          sources: ["leboncoin", "pap"],
+          prompt: prompt
+        })
+      ]
+    };
+
+    const response = await fetch("https://xperruche-robot002.hf.space/run/predict", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const result = await response.json();
+    return result.data?.[0] || "Message automatique.";
+  }
+
+  // 🔵 TEST MANUEL
   async function generateEmailContent(prompt, destinataire, contexte) {
     const fullPrompt = `Tu es Robot002, un agent chargé de générer des emails professionnels.
 
@@ -101,31 +209,18 @@ Génère un email clair, professionnel, concis et utile.`;
     log('📤 Envoi vers HuggingFace...');
 
     try {
-      const response = await fetch("https://xperruche-robot002.hf.space/run/predict", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          data: [fullPrompt]
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
-      }
-
-      const result = await response.json();
+      const content = await callRobotEngine(fullPrompt);
       log('✅ Email généré avec succès');
-      
-      return result.data?.[0] || "Message automatique.";
-
+      return content;
     } catch (error) {
       log(`❌ Erreur: ${error.message}`);
       return `Erreur: ${error.message}`;
     }
   }
 
+  // 🔵 Envoi email manuel (ne touche pas HuggingFace)
   async function sendEmail(to, content) {
-    const isLocal = import.meta.env.DEV;
+    const isLocal = window.__IS_DEV__;
 
     if (isLocal) {
       log(`📨 [SANDBOX] Email simulé pour ${to}`);
@@ -143,6 +238,7 @@ Génère un email clair, professionnel, concis et utile.`;
     });
   }
 
+  // 🔵 Bouton TEST
   document.getElementById("testRobot").onclick = async () => {
     const to = document.getElementById("emailTarget").value;
     const prompt = document.getElementById("emailPrompt").value;
@@ -160,43 +256,149 @@ Génère un email clair, professionnel, concis et utile.`;
     previewBox.innerText = content;
   };
 
-  document.getElementById("startRobot").onclick = () => {
-    const to = document.getElementById("emailTarget").value;
-    const prompt = document.getElementById("emailPrompt").value;
-    const freqType = document.getElementById("frequencyType").value;
-    const freqValue = document.getElementById("frequencyValue").value;
+  // 🟢 ACTIVER ROBOT
+  document.getElementById("startRobot").onclick = async () => {
+  const isLocal = window.__IS_DEV__;
 
-    if (!to) return alert("Destinataire manquant");
-
-    const interval = computeInterval(freqType, freqValue);
-    log(`🤖 Robot002 activé (intervalle: ${freqValue} ${freqType})`);
-
-    intervalId = setInterval(async () => {
-      const content = await generateEmailContent(prompt, to, "Automated run");
-      await sendEmail(to, content);
-      document.getElementById("status").innerText = 
-        "Dernier envoi : " + new Date().toLocaleTimeString();
-    }, interval);
-
-    document.getElementById("status").innerText = "✅ Robot002 activé";
-  };
-
-  document.getElementById("stopRobot").onclick = () => {
-    clearInterval(intervalId);
-    log('🛑 Robot002 désactivé');
-    document.getElementById("status").innerText = "⏸️ Robot002 désactivé";
-  };
-
-  function log(message) {
-    const logOutput = document.getElementById("logOutput");
-    const entry = document.createElement("div");
-    entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
-    logOutput.prepend(entry);
+  if (isLocal) {
+    log("🚫 Mode SANDBOX — activation impossible en local");
+    document.getElementById("status").innerText = "Activation impossible en SANDBOX";
+    return;
   }
+
+  const payload = {
+    active: true,
+    to: document.getElementById("emailTarget").value,
+    prompt: document.getElementById("emailPrompt").value,
+    frequency_minutes: document.getElementById("frequencyValue").value,
+    region: document.getElementById("region").value,
+    min_price_eur: parseInt(document.getElementById("minPrice").value),
+    sources: document.getElementById("sources").value.split(",").map(s => s.trim())
+  };
+
+  await fetch("/robot002-config.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  log("🤖 Robot002 activé côté serveur");
+  document.getElementById("status").innerText = "Robot002 activé côté serveur";
+  };
+
+  // 🔴 DESACTIVER ROBOT
+  document.getElementById("stopRobot").onclick = async () => {
+    const isLocal = window.__IS_DEV__;
+
+    if (isLocal) {
+      log("🚫 Mode SANDBOX — désactivation impossible en local");
+      document.getElementById("status").innerText = "Désactivation impossible en SANDBOX";
+      return;
+    }
+
+    await fetch("/robot002-config.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ active: false })
+    });
+
+    log("🛑 Robot002 désactivé côté serveur");
+    document.getElementById("status").innerText = "Robot002 désactivé côté serveur";
+  };
+
+  // 🔵 STATUT ROBOT
+async function loadRobotStatus() {
+  const isLocal = window.__IS_DEV__;
+  const box = document.getElementById("robotState");
+
+  if (isLocal) {
+    box.innerHTML = `
+      <p>🚫 État du robot indisponible en mode SANDBOX</p>
+      <p>Aucun appel serveur n'est effectué.</p>
+    `;
+    return;
+  }
+
+  const res = await fetch("/robot002-status.php");
+  const data = await res.json();
+
+  // Sécurisation des champs manquants
+  const region = data.region ?? "Non défini";
+  const minPrice = data.min_price_eur ?? 0;
+  const sources = Array.isArray(data.sources) ? data.sources : [];
+  const prompt = data.prompt ?? "";
+  const to = data.to ?? "";
+  const freq = data.frequency_minutes ?? "";
+  const logs = Array.isArray(data.log_tail) ? data.log_tail : [];
+
+  // Mise à jour du panneau d’état
+  box.innerHTML = `
+    <p><strong>Statut :</strong> ${data.active ? "🟢 Activé" : "🔴 Désactivé"}</p>
+    <p><strong>Adresse email :</strong> ${to}</p>
+    <p><strong>Région ciblée :</strong> ${region}</p>
+    <p><strong>Prix minimum :</strong> ${minPrice} €</p>
+    <p><strong>Sources :</strong> ${sources.join(", ")}</p>
+    <p><strong>Prompt :</strong> ${prompt}</p>
+    <p><strong>Fréquence :</strong> ${freq} minute(s)</p>
+    <p><strong>Dernier envoi :</strong> ${data.last_sent ?? "Jamais"}</p>
+    <p><strong>Prochaine exécution :</strong> ${data.next_run ?? "N/A"}</p>
+    <p><strong>Derniers logs :</strong></p>
+    <pre>${logs.join("\n")}</pre>
+  `;
+
+  // Mise à jour automatique des champs du formulaire
+document.getElementById("emailTarget").value = to;
+document.getElementById("emailPrompt").value = prompt;
+document.getElementById("frequencyValue").value = freq;
+document.getElementById("region").value = region;
+document.getElementById("minPrice").value = minPrice;
+document.getElementById("sources").value = sources.join(",");
+}
+  loadRobotStatus();
+  if (!window.__IS_DEV__) {
+    setInterval(loadRobotStatus, 20000);
+  }
+
+  // ⚡ ENVOI IMMEDIAT
+  document.getElementById("sendNow").onclick = async () => {
+    const isLocal = window.__IS_DEV__;
+
+    if (isLocal) {
+      log("🚫 Mode SANDBOX — envoi immédiat impossible en local");
+      document.getElementById("status").innerText = "Envoi immédiat impossible en SANDBOX";
+      return;
+    }
+
+    log("⚡ Envoi immédiat demandé…");
+
+    const res = await fetch("/robot002-run-now.php");
+    const data = await res.json();
+
+    if (data.status === "ok") {
+      log("📨 Email envoyé immédiatement !");
+      document.getElementById("status").innerText = "Email envoyé immédiatement";
+    } else {
+      log("❌ Erreur lors de l’envoi immédiat");
+      document.getElementById("status").innerText = "Erreur lors de l’envoi immédiat";
+    }
+
+    loadRobotStatus();
+  };
+}; // ← FIN window.onload
+
 </script>
 
-
   <style>
+
+        .status-panel {
+          margin-top: 20px;
+          padding: 15px;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          background: #fafafa;
+        }
+
+
         .preview-panel {
           margin-top: 20px;
           padding: 15px;
@@ -270,17 +472,24 @@ Génère un email clair, professionnel, concis et utile.`;
       border: 1px solid #ddd;
       font-size: 15px;
     }
-    button {
-      padding: 12px 20px;
-      margin-right: 10px;
-      background: #111827;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #374151;
-    }
+
+
+.button-row button {
+  flex: 1;
+  min-width: 180px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #1a1a1a;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.button-row button:hover {
+  background: #333;
+}
     #status {
       margin-top: 20px;
       font-size: 14px;

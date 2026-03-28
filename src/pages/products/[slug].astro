@@ -1,40 +1,24 @@
 ---
-// src/pages/products/[slug].astro
 import Layout from '../../layouts/Layout.astro';
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import AddToCart from '../../components/AddToCart';
 
 export async function getStaticPaths() {
   const products = await getCollection('products');
   return products.map(product => ({
-    params: { slug: product.slug },
-    props: { product },
+    params: { slug: product.id }, // ← product.id au lieu de product.slug
   }));
 }
 
-export const prerender = true;
-
 const { slug } = Astro.params;
+const product = await getEntry('products', slug!);
 
-// 👇 AJOUTEZ CETTE LIGNE POUR VÉRIFIER LE SLUG REÇU
-console.log('Slug reçu dans Astro.params:', slug);
-const { product } = Astro.props; 
-
-// Ajoutez cette vérification. Si le produit n'existe pas, renvoyez une erreur 404.
 if (!product) {
-  // Vous devez ajouter un module d'aide pour générer la page 404,
-  // ou simplement lancer une erreur que l'adaptateur Node/Astro gérera.
-  // Pour un débogage rapide, nous allons juste afficher un message.
-  return new Response('Produit non trouvé (Erreur 404)', {
-      status: 404
-  });
+  return Astro.redirect('/404');
 }
 
-// Maintenant, nous sommes sûrs que product existe avant d'appeler .render()
-const { Content } = await product.render(); 
-// ...
+const { Content } = await render(product); // ← render() importé, pas product.render()
 
-// Préparer les données produit pour le composant React
 const productData = {
   id: product.data.id,
   name: product.data.name,

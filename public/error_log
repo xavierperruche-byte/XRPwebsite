@@ -1,0 +1,11 @@
+[24-Mar-2026 14:55:29 America/Boise] PHP Warning:  Undefined array key "to" in /home4/wepopupn/public_html/prodastro/robot002-config.php on line 13
+[24-Mar-2026 14:55:29 America/Boise] PHP Warning:  Undefined array key "prompt" in /home4/wepopupn/public_html/prodastro/robot002-config.php on line 14
+[24-Mar-2026 14:55:29 America/Boise] PHP Warning:  Undefined array key "frequency" in /home4/wepopupn/public_html/prodastro/robot002-config.php on line 15
+[24-Mar-2026 15:21:02 America/Boise] PHP Parse error:  syntax error, unexpected end of file in /home4/wepopupn/public_html/prodastro/robot002-cron.php on line 51
+[24-Mar-2026 15:22:01 America/Boise] PHP Parse error:  syntax error, unexpected end of file in /home4/wepopupn/public_html/prodastro/robot002-cron.php on line 51
+[24-Mar-2026 15:23:02 America/Boise] PHP Parse error:  syntax error, unexpected end of file in /home4/wepopupn/public_html/prodastro/robot002-cron.php on line 51
+[24-Mar-2026 15:24:01 America/Boise] PHP Parse error:  syntax error, unexpected end of file in /home4/wepopupn/public_html/prodastro/robot002-cron.php on line 51
+[24-Mar-2026 15:25:01 America/Boise] PHP Parse error:  syntax error, unexpected end of file in /home4/wepopupn/public_html/prodastro/robot002-cron.php on line 51
+[24-Mar-2026 15:26:01 America/Boise] PHP Parse error:  syntax error, unexpected end of file in /home4/wepopupn/public_html/prodastro/robot002-cron.php on line 51
+[24-Mar-2026 15:27:02 America/Boise] PHP Parse error:  syntax error, unexpected end of file in /home4/wepopupn/public_html/prodastro/robot002-cron.php on line 55
+[24-Mar-2026 15:28:01 America/Boise] PHP Parse error:  syntax error, unexpected end of file in /home4/wepopupn/public_html/prodastro/robot002-cron.php on line 55

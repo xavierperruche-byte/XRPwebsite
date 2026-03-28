@@ -1,0 +1,7 @@
+{
+    "active": true,
+    "to": "xavier.perruche@gmail.com",
+    "prompt": "donne moi le modele IA de mo robot\n      ",
+    "frequency_minutes": "1",
+    "last_sent": null
+}
