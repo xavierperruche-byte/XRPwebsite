@@ -165,6 +165,9 @@ document.getElementById("saveConfig").onclick = async () => {
 
   log("💾 Configuration sauvegardée");
   loadRobotStatus();
+  // Wait 2 seconds before hard refresh
+  await new Promise(resolve => setTimeout(resolve, 2000));
+  window.location.href = window.location.href;
 };
 
   // 🔵 Fonction centrale : envoi structuré vers HuggingFace
@@ -356,7 +359,7 @@ document.getElementById("sources").value = sources.join(",");
 }
   loadRobotStatus();
   if (!window.__IS_DEV__) {
-    setInterval(loadRobotStatus, 20000);
+    setInterval(loadRobotStatus, 30000);
   }
 
   // ⚡ ENVOI IMMEDIAT

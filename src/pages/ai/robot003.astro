@@ -1,0 +1,657 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const ROBOT003_URL = 'https://render-9xr2.onrender.com';
+---
+<!-- const ROBOT003_URL = 'https://xperruche-robot003.hf.space';
+--- -->
+
+<Layout title="Robot003 — Analyse Immobilier" currentPage="ai">
+  <div class="r3-root">
+
+    <!-- Top bar -->
+    <div class="r3-topbar">
+      <div class="r3-brand">
+        <span class="r3-badge">ROBOT</span>
+        <span class="r3-num">003</span>
+        <span class="r3-sep">—</span>
+        <span class="r3-title">Analyse Marché Immobilier</span>
+      </div>
+      <div class="r3-health" id="healthIndicator">
+        <span class="r3-health-dot"></span>
+        <span class="r3-health-label" id="healthLabel">Vérification…</span>
+      </div>
+    </div>
+
+    <main class="r3-main">
+
+      <!-- Colonne gauche : formulaires -->
+      <aside class="r3-sidebar">
+
+        <!-- Section : Analyse agent -->
+        <section class="r3-card">
+          <div class="r3-card-header">
+            <span class="r3-icon">⬡</span>
+            <h2>Analyse par agent</h2>
+          </div>
+
+          <div class="r3-field">
+            <label for="queryInput">Requête</label>
+            <textarea
+              id="queryInput"
+              rows="4"
+              placeholder="Ex: Évolution des prix des appartements à Paris entre 2019 et 2024…"
+            ></textarea>
+          </div>
+
+          <div class="r3-field">
+            <label for="taskType">Type d'analyse</label>
+            <div class="r3-select-wrap">
+              <select id="taskType">
+                <option value="general">Général</option>
+                <option value="evolution">Évolution temporelle</option>
+                <option value="ranking">Ranking des marchés</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="r3-btn-primary" id="btnAnalyse">
+            <span class="btn-text">Lancer l'analyse</span>
+            <span class="btn-loader" hidden>
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </span>
+          </button>
+        </section>
+
+        <!-- Section : Prix direct -->
+        <section class="r3-card">
+          <div class="r3-card-header">
+            <span class="r3-icon">◈</span>
+            <h2>Prix direct</h2>
+          </div>
+
+          <div class="r3-row">
+            <div class="r3-field">
+              <label for="deptInput">Département</label>
+              <input type="text" id="deptInput" placeholder="56" maxlength="3" />
+            </div>
+            <div class="r3-field">
+              <label for="anneeInput">Année</label>
+              <input type="number" id="anneeInput" min="2018" max="2025" value="2024" />
+            </div>
+          </div>
+
+          <div class="r3-field">
+            <label>Type de bien</label>
+            <div class="r3-toggle-group">
+              <button class="r3-toggle active" data-value="tous">Tous</button>
+              <button class="r3-toggle" data-value="appartement">Appart.</button>
+              <button class="r3-toggle" data-value="maison">Maison</button>
+            </div>
+          </div>
+
+          <button class="r3-btn-secondary" id="btnPrix">
+            <span class="btn-text">Obtenir le prix</span>
+            <span class="btn-loader" hidden>
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </span>
+          </button>
+
+          <!-- Résultat prix direct -->
+          <div class="r3-prix-result" id="prixResult" hidden>
+            <div class="r3-prix-value" id="prixValue">—</div>
+            <div class="r3-prix-meta" id="prixMeta"></div>
+            <div class="r3-prix-evo" id="prixEvo"></div>
+          </div>
+        </section>
+
+      </aside>
+
+      <!-- Colonne droite : rapport -->
+      <section class="r3-report-panel">
+        <div class="r3-report-header">
+          <span class="r3-report-label" id="reportLabel">En attente d'une analyse…</span>
+          <button class="r3-btn-copy" id="btnCopy" hidden title="Copier le rapport">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="r3-report-body" id="reportBody">
+          <div class="r3-empty-state">
+            <div class="r3-empty-icon">◎</div>
+            <p>Soumettez une requête ou interrogez directement<br>un département pour voir les résultats ici.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</Layout>
+
+<script define:vars={{ ROBOT003_URL }} is:inline>
+  const API = ROBOT003_URL;
+
+  // ── Health check ──────────────────────────────────────────────
+  async function checkHealth() {
+    const dot = document.querySelector('.r3-health-dot');
+    const label = document.getElementById('healthLabel');
+    try {
+      const res = await fetch(`${API}/health`, { signal: AbortSignal.timeout(8000) });
+      const data = await res.json();
+      if (res.ok && data.status === 'ok') {
+        dot.classList.add('online');
+        label.textContent = data.github_token_configured ? 'En ligne' : 'En ligne — GITHUB_TOKEN manquant';
+      } else {
+        throw new Error();
+      }
+    } catch {
+      dot.classList.add('offline');
+      label.textContent = 'Hors ligne';
+    }
+  }
+  checkHealth();
+
+  // ── Helpers ───────────────────────────────────────────────────
+  function setLoading(btn, on) {
+    btn.querySelector('.btn-text').hidden = on;
+    btn.querySelector('.btn-loader').hidden = !on;
+    btn.disabled = on;
+  }
+
+  function setReport(html, label = '') {
+    const body = document.getElementById('reportBody');
+    const lbl  = document.getElementById('reportLabel');
+    const copy = document.getElementById('btnCopy');
+    body.innerHTML = html;
+    if (label) lbl.textContent = label;
+    copy.hidden = false;
+  }
+
+  // Simple Markdown → HTML (titres, gras, listes, code)
+  function mdToHtml(md) {
+    return md
+      .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+      .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+      .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/`(.+?)`/g, '<code>$1</code>')
+      .replace(/^- (.+)$/gm, '<li>$1</li>')
+      .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+      .replace(/\n\n/g, '</p><p>')
+      .replace(/^(?!<[hucl])/gm, '')
+      .split('\n').filter(l => l.trim()).join('\n');
+  }
+
+  // ── Analyse agent ─────────────────────────────────────────────
+  document.getElementById('btnAnalyse').addEventListener('click', async () => {
+    const btn   = document.getElementById('btnAnalyse');
+    const query = document.getElementById('queryInput').value.trim();
+    const taskType = document.getElementById('taskType').value;
+
+    if (!query) {
+      document.getElementById('queryInput').focus();
+      return;
+    }
+
+    setLoading(btn, true);
+    setReport(
+      `<div class="r3-thinking">
+        <div class="r3-pulse"></div>
+        <p>L'agent analyse votre requête…<br><small>Cela peut prendre 30 à 60 secondes.</small></p>
+      </div>`,
+      'Analyse en cours…'
+    );
+
+    try {
+      const res = await fetch(`${API}/analyse`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query, task_type: taskType }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.detail || 'Erreur serveur');
+
+      const html = `<div class="r3-md">${mdToHtml(data.rapport)}</div>`;
+      setReport(html, `Rapport · ${new Date().toLocaleTimeString('fr-FR')}`);
+
+    } catch (err) {
+      setReport(
+        `<div class="r3-error"><strong>Erreur :</strong> ${err.message}</div>`,
+        'Erreur'
+      );
+    } finally {
+      setLoading(btn, false);
+    }
+  });
+
+  // ── Toggle type bien ──────────────────────────────────────────
+  let selectedTypeBien = 'tous';
+  document.querySelectorAll('.r3-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.r3-toggle').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedTypeBien = btn.dataset.value;
+    });
+  });
+
+  // ── Prix direct ───────────────────────────────────────────────
+  document.getElementById('btnPrix').addEventListener('click', async () => {
+    const btn   = document.getElementById('btnPrix');
+    const dept  = document.getElementById('deptInput').value.trim();
+    const annee = parseInt(document.getElementById('anneeInput').value);
+
+    if (!dept) { document.getElementById('deptInput').focus(); return; }
+
+    setLoading(btn, true);
+    document.getElementById('prixResult').hidden = true;
+
+    try {
+      const res = await fetch(`${API}/prix-direct`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ dept, type_bien: selectedTypeBien, annee }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.detail || 'Erreur');
+
+      const evo = data.evolution_1an_pct;
+      const evoStr = evo !== null && evo !== undefined
+        ? `${evo > 0 ? '▲' : '▼'} ${Math.abs(evo).toFixed(1)}% sur 1 an`
+        : '';
+      const evoClass = evo > 0 ? 'up' : evo < 0 ? 'down' : '';
+
+      document.getElementById('prixValue').textContent =
+        `${data.prix_median_m2.toLocaleString('fr-FR')} €/m²`;
+      document.getElementById('prixMeta').textContent =
+        `Dept ${data.code_departement} · ${data.type_bien} · ${data.annee} · ${data.nb_transactions.toLocaleString('fr-FR')} transactions`;
+      const evoEl = document.getElementById('prixEvo');
+      evoEl.textContent = evoStr;
+      evoEl.className = `r3-prix-evo ${evoClass}`;
+
+      document.getElementById('prixResult').hidden = false;
+
+    } catch (err) {
+      document.getElementById('prixValue').textContent = 'Erreur';
+      document.getElementById('prixMeta').textContent = err.message;
+      document.getElementById('prixEvo').textContent = '';
+      document.getElementById('prixResult').hidden = false;
+    } finally {
+      setLoading(btn, false);
+    }
+  });
+
+  // ── Copier rapport ────────────────────────────────────────────
+  document.getElementById('btnCopy').addEventListener('click', () => {
+    const text = document.getElementById('reportBody').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('btnCopy');
+      btn.classList.add('copied');
+      setTimeout(() => btn.classList.remove('copied'), 1500);
+    });
+  });
+</script>
+
+<style>
+  /* ── Tokens ───────────────────────────────────────────────── */
+  .r3-root {
+    --ink:       #0f1117;
+    --ink-2:     #3a3f52;
+    --ink-3:     #7a8099;
+    --line:      #e4e6ed;
+    --surface:   #ffffff;
+    --surface-2: #f6f7fb;
+    --accent:    #1a56db;
+    --accent-2:  #e8efff;
+    --up:        #059669;
+    --down:      #dc2626;
+    --radius:    10px;
+    --mono:      'JetBrains Mono', 'Fira Code', monospace;
+    --sans:      'DM Sans', 'Helvetica Neue', sans-serif;
+
+    font-family: var(--sans);
+    background: var(--surface-2);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* Top bar */
+  .r3-topbar {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 8rem 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .r3-brand { display: flex; align-items: center; gap: 0.5rem; }
+  .r3-badge {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    background: var(--accent-2);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .r3-num {
+    font-family: var(--mono);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .r3-sep { color: var(--line); font-size: 1.2rem; }
+  .r3-title { font-size: 0.9rem; color: var(--ink-2); font-weight: 500; }
+
+  .r3-health { display: flex; align-items: center; gap: 0.5rem; }
+  .r3-health-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--ink-3);
+    transition: background 0.4s;
+  }
+  .r3-health-dot.online  { background: var(--up); box-shadow: 0 0 0 3px rgba(5,150,105,.15); }
+  .r3-health-dot.offline { background: var(--down); }
+  .r3-health-label { font-size: 0.8rem; color: var(--ink-3); font-family: var(--mono); }
+
+  /* ── Layout ───────────────────────────────────────────────── */
+  .r3-main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  /* ── Cards ────────────────────────────────────────────────── */
+  .r3-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .r3-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+  .r3-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .r3-icon { font-size: 1rem; color: var(--accent); }
+  .r3-card-header h2 { font-size: 0.9rem; font-weight: 600; color: var(--ink); }
+
+  /* ── Fields ───────────────────────────────────────────────── */
+  .r3-field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .r3-field label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-3);
+  }
+  .r3-field textarea,
+  .r3-field input {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 0.6rem 0.75rem;
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    color: var(--ink);
+    transition: border-color 0.2s;
+    resize: none;
+    width: 100%;
+  }
+  .r3-field textarea:focus,
+  .r3-field input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: white;
+  }
+
+  .r3-select-wrap { position: relative; }
+  .r3-select-wrap select {
+    appearance: none;
+    width: 100%;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 0.6rem 2rem 0.6rem 0.75rem;
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .r3-select-wrap::after {
+    content: '▾';
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.7rem;
+    color: var(--ink-3);
+    pointer-events: none;
+  }
+
+  .r3-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+  /* ── Toggle ───────────────────────────────────────────────── */
+  .r3-toggle-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 3px;
+  }
+  .r3-toggle {
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    padding: 0.45rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--ink-3);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .r3-toggle.active {
+    background: var(--surface);
+    color: var(--accent);
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+
+  /* ── Buttons ──────────────────────────────────────────────── */
+  .r3-btn-primary,
+  .r3-btn-secondary {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 7px;
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 40px;
+  }
+  .r3-btn-primary {
+    background: var(--accent);
+    color: white;
+  }
+  .r3-btn-primary:hover:not(:disabled) { background: #1447b8; }
+  .r3-btn-secondary {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+  .r3-btn-secondary:hover:not(:disabled) { background: var(--accent-2); border-color: var(--accent); color: var(--accent); }
+  .r3-btn-primary:disabled, .r3-btn-secondary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  /* Loader dots */
+  .btn-loader { display: flex; gap: 4px; align-items: center; }
+  .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: bounce 1s infinite;
+  }
+  .dot:nth-child(2) { animation-delay: .15s; }
+  .dot:nth-child(3) { animation-delay: .3s; }
+  @keyframes bounce {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+    40% { transform: scale(1); opacity: 1; }
+  }
+
+  /* ── Prix result ──────────────────────────────────────────── */
+  .r3-prix-result {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 1rem;
+  }
+  .r3-prix-value {
+    font-family: var(--mono);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .r3-prix-meta { font-size: 0.75rem; color: var(--ink-3); margin-bottom: 0.25rem; }
+  .r3-prix-evo { font-size: 0.82rem; font-weight: 600; font-family: var(--mono); }
+  .r3-prix-evo.up   { color: var(--up); }
+  .r3-prix-evo.down { color: var(--down); }
+
+  /* ── Report panel ─────────────────────────────────────────── */
+  .r3-report-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+  }
+  .r3-report-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .r3-report-label {
+    font-size: 0.78rem;
+    font-family: var(--mono);
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .r3-btn-copy {
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 5px 8px;
+    cursor: pointer;
+    color: var(--ink-3);
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+  }
+  .r3-btn-copy:hover { background: var(--surface-2); color: var(--ink); }
+  .r3-btn-copy.copied { border-color: var(--up); color: var(--up); }
+
+  .r3-report-body { padding: 2rem; flex: 1; overflow-y: auto; }
+
+  /* Empty state */
+  .r3-empty-state {
+    height: 100%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+  }
+  .r3-empty-icon {
+    font-size: 2.5rem;
+    color: var(--line);
+    animation: spin 8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .r3-empty-state p { font-size: 0.88rem; color: var(--ink-3); line-height: 1.6; }
+
+  /* Thinking state */
+  .r3-thinking {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  .r3-pulse {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+  }
+  .r3-thinking p { font-size: 0.88rem; color: var(--ink-3); line-height: 1.7; }
+  .r3-thinking small { color: var(--ink-3); }
+
+  /* Error */
+  .r3-error {
+    background: #fff5f5;
+    border: 1px solid #fecaca;
+    border-radius: 7px;
+    padding: 1rem 1.25rem;
+    font-size: 0.875rem;
+    color: var(--down);
+  }
+
+  /* Markdown rendered */
+  .r3-md { font-size: 0.9rem; line-height: 1.75; color: var(--ink-2); }
+  .r3-md h1 { font-size: 1.3rem; color: var(--ink); margin: 1.5rem 0 0.75rem; }
+  .r3-md h2 { font-size: 1.1rem; color: var(--ink); margin: 1.25rem 0 0.6rem; border-bottom: 1px solid var(--line); padding-bottom: 0.4rem; }
+  .r3-md h3 { font-size: 0.95rem; color: var(--ink); margin: 1rem 0 0.4rem; font-weight: 600; }
+  .r3-md p  { margin-bottom: 0.75rem; }
+  .r3-md strong { color: var(--ink); font-weight: 600; }
+  .r3-md ul { padding-left: 1.25rem; margin-bottom: 0.75rem; }
+  .r3-md li { margin-bottom: 0.35rem; }
+  .r3-md code {
+    font-family: var(--mono);
+    font-size: 0.82em;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1px 5px;
+    color: var(--accent);
+  }
+
+  /* ── Responsive ───────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .r3-main { grid-template-columns: 1fr; padding: 1rem; }
+    .r3-report-panel { min-height: 400px; }
+    .r3-title { display: none; }
+  }
+</style>
