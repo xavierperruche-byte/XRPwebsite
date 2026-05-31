@@ -17,6 +17,10 @@ import BackToTop from '../components/BackToTop.astro';
   <!-- Navigation secondaire flottante -->
   <nav class="floating-subnav" id="floatingSubnav">
     <div class="subnav-container">
+      <a href="#IA" class="subnav-link active">
+        <span class="nav-icon">✨</span>
+        <span class="nav-text">IA</span>
+      </a>
       <a href="#Fashion" class="subnav-link active">
         <span class="nav-icon">👗</span>
         <span class="nav-text">Fashion</span>
@@ -67,6 +71,23 @@ import BackToTop from '../components/BackToTop.astro';
 
 
   <!-- Features Section -->
+
+<section id="IA" class="hero-section-first">
+ <div class="spacer-top"></div>  
+ <div class="divider-line"></div>
+ <div class="hero-container">
+      <h2 class="hero-title-first">IA</h2>
+    </div>
+
+
+<ClickableMasonryGrid 
+    images={[
+      {src: '/images/telma.webp', alt: 'Telma', caption: 'Le décryptage mensuel des agents IA opérationnels', url: '../articles/iadispatch1' }
+      // Ajoutez autant d'images que vous voulez ici
+    ]}
+    columns={3} 
+  />
+</section>
 
 
 <section id="Fashion" class="hero-section-first">

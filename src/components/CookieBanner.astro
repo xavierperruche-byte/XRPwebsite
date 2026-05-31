@@ -1,0 +1,190 @@
+<div id="cookie-banner" class="cookie-banner-hidden" role="dialog" aria-live="polite" aria-label="Gestion des cookies">
+  <div class="cookie-container">
+    <div class="cookie-text">
+      <p>
+        <strong>IA Dispatch</strong> utilise des cookies pour améliorer votre expérience et mesurer l'audience (Mailchimp et Google Analytics). En poursuivant votre navigation, vous acceptez notre politique de confidentialité.
+      </p>
+    </div>
+    <div class="cookie-buttons">
+      <button id="cookie-accept" class="cookie-btn cookie-btn-primary">Accepter</button>
+      <button id="cookie-refuse" class="cookie-btn cookie-btn-secondary">Refuser</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "; expires=" + date.toUTCString();
+    document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
+  }
+
+  function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  function deleteCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  }
+
+  function loadGoogleTagManager() {
+    const script = document.createElement('script');
+    script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-N2B3VHRS'; // Remplacez GTM-N2B3VHRS par votre ID de suivi Google Tag Manager
+    script.async = true;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtm(){dataLayer.push(arguments);}
+    gtm('js', new Date());
+    gtm('config', 'GTM-N2B3VHRS'); // Remplacez GTM-N2B3VHRS par votre ID de suivi Google Tag Manager
+  }
+
+  function initCookieBanner() {
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('cookie-accept');
+    const refuseBtn = document.getElementById('cookie-refuse');
+
+    if (!banner) return;
+
+    if (!getCookie('cookie_consent_accepted')) {
+      banner.classList.remove('cookie-banner-hidden');
+    }
+
+    acceptBtn?.addEventListener('click', () => {
+      setCookie('cookie_consent_accepted', 'true', 395);
+      banner.classList.add('cookie-banner-hidden');
+      loadGoogleTagManager(); // Charge Google Tag Manager
+    });
+
+    refuseBtn?.addEventListener('click', () => {
+      setCookie('cookie_consent_accepted', 'false', 395);
+      banner.classList.add('cookie-banner-hidden');
+      // Supprimez les cookies Google Analytics
+      deleteCookie('_ga');
+      deleteCookie('_ga_VC8JVK2D5C');
+      // Optionnel : Bloquer d'autres scripts tiers si l'utilisateur refuse
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded', initCookieBanner);
+</script>
+
+<style>
+  #cookie-banner {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    max-width: 600px;
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    z-index: 999999;
+    padding: 16px 20px;
+    box-sizing: border-box;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+    opacity: 1;
+  }
+
+  #cookie-banner.cookie-banner-hidden {
+    transform: translate(-50%, 100px);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .cookie-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  @media (min-width: 520px) {
+    .cookie-container {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 24px;
+    }
+  }
+
+  .cookie-text p {
+    margin: 0;
+    color: #ffffff;
+    font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .cookie-text strong {
+    color: #ACFA39;
+    font-weight: 700;
+  }
+
+  .cookie-buttons {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: flex-end;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 520px) {
+    .cookie-buttons {
+      width: auto;
+    }
+  }
+
+  .cookie-btn {
+    font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    width: 100%;
+    text-align: center;
+  }
+
+  @media (min-width: 520px) {
+    .cookie-btn {
+      width: auto;
+    }
+  }
+
+  .cookie-btn:hover {
+    transform: scale(1.03);
+  }
+
+  .cookie-btn-primary {
+    background: #ACFA39;
+    color: #1a1a1a;
+  }
+
+  .cookie-btn-primary:hover {
+    background: #ffffff;
+  }
+
+  .cookie-btn-secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .cookie-btn-secondary:hover {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+</style>

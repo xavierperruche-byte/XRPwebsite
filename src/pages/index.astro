@@ -3,6 +3,7 @@
 import Layout from '../layouts/Layout.astro';
 import Carousel from '../layouts/SwiperCarouselHome.astro';
 import BackToTop from '../components/BackToTop.astro';
+import Newsletter from '../components/Newsletter.astro';
 
 // Define your projects/exhibitions data
 const projects = [
@@ -190,6 +191,7 @@ const reviewsSchema = {
 </section>
   </main>
 
+<Newsletter />
 
 <!-- Testimonials Section - Simple & Full Width -->
 <script type="application/ld+json" set:html={JSON.stringify(reviewsSchema)}></script>
@@ -262,9 +264,6 @@ const reviewsSchema = {
     <div class="container">
    </div>
 </section>
-
-
-
 
 
 <!-- About Section -->
@@ -1237,6 +1236,7 @@ const reviewsSchema = {
       font-size: 1rem;
     }
 }
+
 </style>
 
 <script>
@@ -1555,5 +1555,4 @@ const reviewsSchema = {
     heroSlider.addEventListener('mouseenter', stopHeroAutoPlay);
     heroSlider.addEventListener('mouseleave', startHeroAutoPlay);
   }
-  
 </script>

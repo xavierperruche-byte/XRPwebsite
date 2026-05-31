@@ -4,7 +4,9 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 export async function getStaticPaths() {
   const articleEntries = await getCollection('articles');
-  
+
+   console.log('IDs:', articleEntries.map(e => e.id));
+    
   return articleEntries
     .filter(entry => entry.id && entry.id.trim() !== '') // filtre les ids vides
     .map((entry) => ({

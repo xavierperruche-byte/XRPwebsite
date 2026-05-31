@@ -27,7 +27,7 @@ export async function getStaticPaths() {
       
       tagMap.get(normalizedTag).articles.push({
         title: article.data.title,
-        slug: `/articles/${article.slug}/`, // URL vers la page de l'article
+        slug: `/articles/${article.id}/`, // URL vers la page de l'article
         mainImage: article.data.mainImage,
         mainImageAlt: article.data.mainImageAlt,
         excerpt: article.data.excerpt || '',

@@ -1,0 +1,344 @@
+---
+// src/components/Newsletter.astro
+---
+
+
+<div id="newsletter-star" aria-label="Inscription IA Dispatch" role="region">
+  <svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" style="background: transparent !important;">
+    <path d="M357 338.5 375.696 312.421 362.437 283.192 385.852 261.27 378.542 230.01 405.776 213.082 404.694 180.996 434.701 169.718 439.889 138.035 471.516 132.838 482.773 102.778 514.803 103.862 531.702 76.58 562.906 83.9031 584.79 60.4462 613.967 73.7289 640 55 666.033 73.7289 695.21 60.4462 717.094 83.9031 748.298 76.58 765.197 103.862 797.227 102.778 808.484 132.838 840.111 138.035 845.299 169.718 875.306 180.996 874.224 213.082 901.458 230.01 894.148 261.27 917.563 283.192 904.304 312.421 923 338.5 904.304 364.579 917.563 393.808 894.148 415.73 901.458 446.99 874.224 463.918 875.306 496.004 845.299 507.282 840.111 538.965 808.484 544.162 797.227 574.222 765.197 573.138 748.298 600.42 717.094 593.097 695.21 616.554 666.033 603.271 640 622 613.967 603.271 584.79 616.554 562.906 593.097 531.702 600.42 514.803 573.138 482.773 574.222 471.516 544.162 439.889 538.965 434.701 507.282 404.694 496.004 405.776 463.918 378.542 446.99 385.852 415.73 362.437 393.808 375.696 364.579Z"
+      fill="#ACFA39" 
+      fill-rule="evenodd"
+      stroke="transparent" 
+      stroke-width="5" 
+      stroke-linejoin="round"
+    />
+  </svg>
+  
+  <!-- Conteneur d'affichage dynamique -->
+  <div class="star-content-wrapper">
+    
+    <!-- Étape 1 : Le texte d'appel à l'action initial -->
+    <div class="star-text-initial" id="newsletter-trigger">
+      <span class="star-title">IA DISPATCH</span>
+      <span class="star-subtitle"><br/>Le décryptage mensuel des<br/>agents IA opérationnels.<br/><br/>Inscrivez-vous</span>
+    </div>
+
+    <!-- Étape 2 : Le formulaire masqué qui prend la place au clic -->
+    <form 
+      class="newsletter-form-inline" 
+      id="newsletter-form" 
+      action="https://we-theagency.us8.list-manage.com/subscribe/post?u=bdcd37a3511a76a9dca4db24f&id=9d35c4a47b&f_id=0039d3e2f0" 
+      method="POST"
+    >
+      <label for="newsletter-email" class="visually-hidden">Votre adresse email</label>
+      
+      <input 
+        type="email" 
+        id="newsletter-email" 
+        name="EMAIL" 
+        placeholder="Votre email..." 
+        required 
+        autocomplete="email"
+      />
+      <button type="submit" aria-label="Valider l'inscription">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+          <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </form>
+    
+  </div>
+</div>
+
+
+<script>
+  // --- FONCTIONS UTILITAIRES POUR LES COOKIES ---
+  function setCookie(name: string, value: string, days: number) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "; expires=" + date.toUTCString();
+    document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
+  }
+
+  function getCookie(name: string) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  // --- INITIALISATION SÉCURISÉE AU CHARGEMENT DU DOM ---
+  window.addEventListener('DOMContentLoaded', () => {
+    const starContainer = document.getElementById('newsletter-star');
+
+    if (!starContainer) return;
+
+    if (getCookie('cookie_consent_accepted') === 'false' || getCookie('newsletter_interacted') === 'true') {
+      return; 
+    }
+
+    starContainer.style.display = 'flex';
+
+    function positionStarRandomly() {
+      if (!starContainer || starContainer.classList.contains('is-active')) return;
+
+      const paddingX = 15; 
+      const paddingY = 15;
+      
+      const randomX = Math.floor(Math.random() * (100 - 2 * paddingX)) + paddingX;
+      const randomY = Math.floor(Math.random() * (100 - 2 * paddingY)) + paddingY;
+
+      starContainer.style.left = `${randomX}%`;
+      starContainer.style.top = `${randomY}%`;
+    }
+
+    positionStarRandomly();
+
+    const triggerZone = document.getElementById('newsletter-trigger');
+    const emailInput = document.getElementById('mce-EMAIL') as HTMLInputElement;
+    const form = document.getElementById('newsletter-form') as HTMLFormElement;
+
+    triggerZone?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (starContainer) {
+        starContainer.classList.add('is-active');
+        setCookie('newsletter_interacted', 'true', 60);
+        setTimeout(() => emailInput?.focus(), 200);
+      }
+    });
+
+    // Interception de la validation
+    form?.addEventListener('submit', () => {
+      // Pas de e.preventDefault() ici pour permettre l'envoi dans l'iframe invisible
+
+      // CORRECTION DU BUG "VIDE" : On ne met plus l'input en disabled immédiatement, 
+      // sinon le navigateur n'envoie pas sa valeur dans l'iframe.
+      if (emailInput) {
+        setTimeout(() => {
+          emailInput.disabled = true;
+        }, 50);
+      }
+
+      // Déclenchement visuel immédiat du message de succès
+      setCookie('newsletter_interacted', 'true', 60);
+      
+      if (triggerZone) {
+        triggerZone.innerHTML = '<span class="star-title">MERCI !</span><span class="star-subtitle"><br/>Bienvenue à bord.</span>';
+      }
+      
+      setTimeout(() => {
+        starContainer?.classList.remove('is-active');
+      }, 1000);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (starContainer?.classList.contains('is-active') && !starContainer.contains(e.target as Node)) {
+        starContainer.classList.remove('is-active');
+      }
+    });
+  });
+</script>
+
+<style>
+    #newsletter-star {
+            position: fixed;
+            z-index: 99999;
+            pointer-events: auto;
+            background: transparent !important;
+            width: 360px;
+            height: 224px; 
+            
+            display: none; 
+            align-items: center;
+            justify-content: center;
+            
+            /* CORRECTION CRUCIALE : On donne un ancrage de départ à l'écran fixed, 
+            le JS viendra écraser ces valeurs dynamiquement */
+            top: 0;
+            left: 0;
+            
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s ease-out, top 0.3s ease, left 0.3s ease;
+    }
+
+    #newsletter-star svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        filter: drop-shadow(4px 6px 12px rgba(0, 0, 0, 0.15));
+    }
+
+    #newsletter-star svg path {
+        fill: #ACFA39 !important;
+        transition: fill 0.2s ease;
+    }
+
+    /* Effet Hover stabilisé sans conflit */
+    #newsletter-star:not(.is-active):hover svg path {
+        fill: #bbfb5a !important; 
+    }
+    
+    #newsletter-star:not(.is-active):hover {
+        transform: translate(-50%, -50%) scale(1.03); 
+        cursor: pointer;
+    }
+
+    /* Quand le formulaire est ouvert */
+    #newsletter-star.is-active {
+        transform: translate(-50%, -50%) scale(1) !important;
+    }
+    
+  /* Conteneur global ajusté pour centrer les deux sous-éléments */
+  .star-content-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: translate(11px, 5px);
+    width: 100%;
+    height: 100%;
+    max-width: 200px;
+    box-sizing: border-box;
+  }
+
+  .star-text-initial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
+  /* Cache le texte initial de manière fluide quand actif */
+  #newsletter-star.is-active .star-text-initial {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+  }
+
+  /* Le Formulaire caché par défaut, apparaît quand actif */
+/* Le Formulaire caché par défaut, apparaît quand actif */
+  .newsletter-form-inline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1a1a1a; /* Fond noir contrasté pour l'input */
+    border-radius: 30px;
+    padding: 4px 6px 4px 16px;
+    width: 100%;
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.9);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  }
+
+  #newsletter-star.is-active .newsletter-form-inline {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  /* Style du champ Input de saisie */
+  .newsletter-form-inline input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    width: 75%; /* Ajusté légèrement pour laisser de la place au bouton */
+    padding: 8px 0;
+  }
+
+  .newsletter-form-inline input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Style du bouton flèche de soumission CORRIGÉ */
+  .newsletter-form-inline button {
+    background: #ACFA39 !important; /* Rappel du vert acide */
+    border: none !important;
+    outline: none !important;
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 50% !important;
+    
+    /* Centrage absolu du SVG interne */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    /* Réinitialisations cruciales pour éviter les décalages navigateurs */
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 0 !important;
+    flex-shrink: 0 !important; 
+    
+    color: #1a1a1a !important;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  /* Assure que le SVG ne déborde pas ou ne se décale pas */
+  .newsletter-form-inline button svg {
+    position: static !important; /* Annule le position: absolute global des SVG de l'étoile */
+    width: 18px !important;
+    height: 18px !important;
+    filter: none !important; /* Enleve l'ombre portée de l'étoile sur la petite flèche */
+    display: block;
+  }
+
+  .newsletter-form-inline button:hover {
+    transform: scale(1.05);
+    background: #ffffff !important;
+  }
+
+
+  /* Textes Typographies */
+  .star-title {
+    color: #1a1a1a !important;
+    font-size: 20px !important; 
+    font-weight: 900 !important;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-top: 30px;
+    letter-spacing: -0.02em;
+    font-family: Urbanist, serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .star-subtitle {
+    color: #2b2b2b !important;
+    font-size: 12px !important; 
+    font-weight: 600 !important;
+    line-height: 1;
+    padding: 0 4px;
+    font-family: Urbanist, serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  
+
+  /* Accessibilité */
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+</style>

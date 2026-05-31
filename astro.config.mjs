@@ -2,15 +2,6 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
-export async function getStaticPaths() {
-  const articleEntries = await getCollection('articles');
-  
-  console.log('IDs:', articleEntries.map(e => e.id));
-  
-  return articleEntries.map(entry => ({
-    params: { slug: entry.id.replace(/\.mdx?$/, '') },
-  }));
-}
 export default defineConfig({
   site: 'https://www.we-theagency.com/', 
   base: '/', 
