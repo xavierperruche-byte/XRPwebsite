@@ -437,34 +437,13 @@ const canonicalURL = new URL(Astro.request.url);
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@400;500;700&display=swap" rel="stylesheet">
   </noscript>
-
-//  <!-- Google Tag Manager - ASYNC - desormais géré dans CookieBanner-->
-//  <script>
-//    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-//    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-//    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-//    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-//    })(window,document,'script','dataLayer','GTM-N2B3VHRS');
-//  </script>
   
   <slot name="head" />
 </head>
 
 <body>
 
-
   <CookieBanner />
-
-
- // <!-- Google Tag Manager (noscript)- desormais géré dans CookieBanner -->
- // <noscript>
- //   <iframe 
- //     src="https://www.googletagmanager.com/ns.html?id=GTM-N2B3VHRS"
- //     height="0" 
- //     width="0" 
- //     style="display:none;visibility:hidden"
- //   ></iframe>
- // </noscript>
 
   <!-- Floating Header -->
   <Header currentPage={currentPage} />
