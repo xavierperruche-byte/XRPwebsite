@@ -1,63 +1,26 @@
-<?php
-header('Content-Type: application/json');
-
-// Charger PHPMailer
-require_once 'PHPMailer/PHPMailer.php';
-require_once 'PHPMailer/SMTP.php';
-require_once 'PHPMailer/Exception.php';
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
-// Configuration SMTP (identique à contact-handler.php)
-$sender_email = "wepopup@wepopup.net";
-$sender_password = "@Vhtg19151702";
-
-function createMailer($sender_email, $sender_password) {
-    $mail = new PHPMailer(true);
-
-    $mail->isSMTP();
-    $mail->Host = 'mail.wepopup.net';
-    $mail->SMTPAuth = true;
-    $mail->Username = $sender_email;
-    $mail->Password = $sender_password;
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $mail->Port = 465;
-    $mail->CharSet = 'UTF-8';
-
-    // Options SSL
-    $mail->SMTPOptions = [
-        'ssl' => [
-            'verify_peer' => false,
-            'verify_peer_name' => false,
-            'allow_self_signed' => true
-        ]
-    ];
-
-    return $mail;
-}
-
-// Lire le JSON envoyé par Robot002
-$data = json_decode(file_get_contents("php://input"), true);
-
-if (!$data || !isset($data["to"]) || !isset($data["subject"]) || !isset($data["message"])) {
-    echo json_encode(["success" => false, "message" => "Invalid payload"]);
-    exit;
-}
-
-$to = $data["to"];
-$subject = $data["subject"];
-$message = $data["message"];
-
 try {
     $mail = createMailer($sender_email, $sender_password);
+
+    $mail->CharSet = 'UTF-8';          // ← Move this FIRST
+    $mail->Encoding = 'base64';        // ← Add this: forces clean base64 transfer encoding
+
 
     $mail->setFrom($sender_email, 'Robot002');
     $mail->addAddress($to);
 
     $mail->Subject = $subject;
-    $mail->Body = $message;
+
+// Clean markdown artifacts
+$clean_message = trim($message);
+$clean_message = preg_replace('/^```html\s*/m', '', $clean_message);
+$clean_message = preg_replace('/^```\s*/m', '', $clean_message);
+$clean_message = preg_replace('/```\s*$/m', '', $clean_message);
+$clean_message = trim($clean_message);
+    $mail->isHTML(true);
+    $mail->Body = $html_message;
+
+    // 3. Sécurité : On fournit une version texte brut alternative (pour les clients mail stricts)
+    $mail->AltBody = strip_tags($message);
 
     $mail->send();
 

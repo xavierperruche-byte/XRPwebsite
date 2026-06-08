@@ -70,10 +70,13 @@ if (!$result) {
 $emailContent = $result["data"][0] ?? "Message automatique.";
 
 $to = $config["to"];
-$subject = "Message automatique Robot002";
-
-$headers = "From: wepopup@wepopup.net\r\n";
+$headers  = "From: wepopup@wepopup.net\r\n";
 $headers .= "Reply-To: wepopup@wepopup.net\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+$subject = "=?UTF-8?B?" . base64_encode("Message automatique Robot002") . "?=";
+
 
 if (!mail($to, $subject, $emailContent, $headers)) {
     file_put_contents($logFile, date("c") . " MAIL ERROR\n", FILE_APPEND);

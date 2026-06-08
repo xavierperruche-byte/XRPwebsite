@@ -170,15 +170,16 @@ document.getElementById("saveConfig").onclick = async () => {
   window.location.href = window.location.href;
 };
 
-  // 🔵 Fonction centrale : envoi structuré vers HuggingFace
-  async function callRobotEngine(prompt) {
+
+  // 🔵 Fonction centrale modifiée pour accepter l'objet complet des paramètres
+  async function callRobotEngine(params) {
     const payload = {
       data: [
         JSON.stringify({
-          region: "Morbihan",
-          min_price_eur: 1000000,
-          sources: ["leboncoin", "pap"],
-          prompt: prompt
+          region: params.region || "France",
+          min_price_eur: parseInt(params.min_price_eur) || 1000000,
+          sources: params.sources || ["leboncoin"],
+          prompt: params.prompt || ""
         })
       ]
     };
@@ -193,9 +194,9 @@ document.getElementById("saveConfig").onclick = async () => {
       throw new Error(`HTTP ${response.status}`);
     }
 
-    const result = await response.json();
-    return result.data?.[0] || "Message automatique.";
-  }
+      const result = await response.json();
+      return result.data?.[0] || "Message automatique.";
+    }
 
   // 🔵 TEST MANUEL
   async function generateEmailContent(prompt, destinataire, contexte) {
@@ -244,8 +245,7 @@ Génère un email clair, professionnel, concis et utile.`;
   // 🔵 Bouton TEST
   document.getElementById("testRobot").onclick = async () => {
     const to = document.getElementById("emailTarget").value;
-    const prompt = document.getElementById("emailPrompt").value;
-
+    
     if (!to) {
       alert("Destinataire manquant");
       return;
@@ -253,11 +253,32 @@ Génère un email clair, professionnel, concis et utile.`;
 
     const previewBox = document.getElementById("emailPreview");
     previewBox.innerText = "⏳ Génération en cours…";
-    log('Test manuel lancé');
+    log('Test manuel lancé via Mistral AI...');
 
-    const content = await generateEmailContent(prompt, to, "Test manuel");
-    previewBox.innerText = content;
+    // On crée l'objet attendu par app.py avec les vraies valeurs du formulaire Astro
+    const formParams = {
+      region: document.getElementById("region").value || "Morbihan",
+      min_price_eur: document.getElementById("minPrice").value || 1000000,
+      sources: document.getElementById("sources").value.split(",").map(s => s.trim()),
+      prompt: document.getElementById("emailPrompt").value
+    };
+
+    try {
+      // On appelle directement le moteur avec nos paramètres propres
+      const content = await callRobotEngine(formParams);
+      
+      log('✅ Email généré avec succès');
+      previewBox.innerText = content;
+
+      // OPTIONNEL : Si vous voulez que le bouton TEST envoie aussi le mail réellement :
+      // await sendEmail(to, content);
+
+    } catch (error) {
+      log(`❌ Erreur: ${error.message}`);
+      previewBox.innerText = `Erreur: ${error.message}`;
+    }
   };
+
 
   // 🟢 ACTIVER ROBOT
   document.getElementById("startRobot").onclick = async () => {
