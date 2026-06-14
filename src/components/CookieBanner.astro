@@ -13,6 +13,9 @@
 </div>
 
 <script>
+  // On récupère la clé publique définie dans votre fichier .env
+  const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
+
   function setCookie(name, value, days) {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -37,16 +40,52 @@
 
   function loadGoogleTagManager() {
     const script = document.createElement('script');
-    script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-N2B3VHRS'; // Remplacez GTM-N2B3VHRS par votre ID de suivi Google Tag Manager
+    script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-N2B3VHRS';
     script.async = true;
     document.head.appendChild(script);
 
     window.dataLayer = window.dataLayer || [];
     function gtm(){dataLayer.push(arguments);}
     gtm('js', new Date());
-    gtm('config', 'GTM-N2B3VHRS'); // Remplacez GTM-N2B3VHRS par votre ID de suivi Google Tag Manager
+    gtm('config', 'GTM-N2B3VHRS');
   }
 
+  // --- CHARGEMENT DYNAMIQUE DE RECAPTCHA ---
+  function loadReCaptcha() {
+    if (typeof grecaptcha !== 'undefined' || !RECAPTCHA_SITE_KEY) return;
+    const script = document.createElement('script');
+    script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  }
+
+  // --- VÉRIFICATION SÉCURISÉE (CAPTCHA + NEVERBOUNCE) ---
+  async function verifyEmailAndCaptcha(email, recaptchaToken) {
+    try {
+      const response = await fetch('/verify.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        // CORRECTION DE LA COQUILLE : JSON doit être en MAJUSCULES
+        body: JSON.stringify({ 
+          email: email,
+          recaptcha_token: recaptchaToken 
+        })
+      });
+
+      if (!response.ok) return true; 
+
+      const data = await response.json();
+      return data.isValid === true;
+    } catch (error) {
+      console.error('Erreur de validation serveur:', error);
+      return true; // Fallback local de sécurité pour ne pas bloquer l'abonné si le réseau flanche
+    }
+  }
+
+  // --- COMPORTEMENT DU BANDEAU DE COOKIES ---
   function initCookieBanner() {
     const banner = document.getElementById('cookie-banner');
     const acceptBtn = document.getElementById('cookie-accept');
@@ -56,25 +95,111 @@
 
     if (!getCookie('cookie_consent_accepted')) {
       banner.classList.remove('cookie-banner-hidden');
+    } else if (getCookie('cookie_consent_accepted') === 'true') {
+      loadGoogleTagManager();
     }
 
     acceptBtn?.addEventListener('click', () => {
       setCookie('cookie_consent_accepted', 'true', 395);
       banner.classList.add('cookie-banner-hidden');
-      loadGoogleTagManager(); // Charge Google Tag Manager
+      loadGoogleTagManager(); 
     });
 
     refuseBtn?.addEventListener('click', () => {
       setCookie('cookie_consent_accepted', 'false', 395);
       banner.classList.add('cookie-banner-hidden');
-      // Supprimez les cookies Google Analytics
       deleteCookie('_ga');
       deleteCookie('_ga_VC8JVK2D5C');
-      // Optionnel : Bloquer d'autres scripts tiers si l'utilisateur refuse
     });
   }
 
-  window.addEventListener('DOMContentLoaded', initCookieBanner);
+  // --- INTERCEPTION DU FORMULAIRE NEWSLETTER (DÉLÉGATION GLOBALE) ---
+  document.addEventListener('submit', async (e) => {
+    const newsletterForm = e.target as HTMLFormElement;
+    
+    // On intercepte uniquement le formulaire de l'étoile
+    if (!newsletterForm || newsletterForm.id !== 'newsletter-form') return;
+
+    e.preventDefault(); // On bloque l'envoi immédiat pour faire les vérifications
+    
+    const emailInput = document.getElementById('mce-EMAIL') as HTMLInputElement;
+    const triggerZone = document.getElementById('newsletter-trigger');
+    const starContainer = document.getElementById('newsletter-star');
+    const targetButton = e.submitter as HTMLButtonElement;
+    
+    if (!emailInput) {
+      HTMLFormElement.prototype.submit.call(newsletterForm);
+      return;
+    }
+
+    const email = emailInput.value;
+    
+    if (targetButton) {
+      targetButton.disabled = true; 
+      targetButton.style.opacity = '0.5';
+    }
+
+    try {
+      let token = '';
+      if (typeof grecaptcha !== 'undefined' && RECAPTCHA_SITE_KEY) {
+        token = await new Promise((resolve) => {
+          const timeout = setTimeout(() => resolve(''), 2000); // Sécurité anti-gel
+          grecaptcha.ready(async () => {
+            try {
+              const t = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'subscribe' });
+              clearTimeout(timeout);
+              resolve(t);
+            } catch (err) {
+              clearTimeout(timeout);
+              resolve('');
+            }
+          });
+        });
+      }
+
+      // 1. Exécution de votre double vérification reCAPTCHA + NeverBounce
+      const isValid = await verifyEmailAndCaptcha(email, token);
+      
+      if (isValid) {
+        console.log("Validation réussie ! Déclenchement des animations et envoi...");
+        
+        // 2. On applique les animations visuelles sur l'étoile
+        if (triggerZone) {
+          triggerZone.innerHTML = '<span class="star-title">MERCI !</span><span class="star-subtitle"><br/>Bienvenue à bord.</span>';
+        }
+        
+        // Cookie d'interaction pour ne plus afficher l'étoile
+        document.cookie = "newsletter_interacted=true; max-age=" + (60 * 24 * 60 * 60) + "; path=/; SameSite=Lax";
+
+        // Désactivation légère après envoi pour éviter les conflits d'iframe
+        setTimeout(() => { if (emailInput) emailInput.disabled = true; }, 50);
+
+        // Fermeture de l'étoile animée
+        setTimeout(() => {
+          starContainer?.classList.remove('is-active');
+        }, 1000);
+
+        // 3. ENVOI RÉEL À MAILCHIMP
+        HTMLFormElement.prototype.submit.call(newsletterForm);
+        
+      } else {
+        alert('La validation a échoué. Si vous êtes un humain, veuillez vérifier votre saisie.');
+        if (targetButton) {
+          targetButton.disabled = false;
+          targetButton.style.opacity = '1';
+        }
+      }
+    } catch (err) {
+      console.error('Erreur critique processus, envoi forcé :', err);
+      HTMLFormElement.prototype.submit.call(newsletterForm);
+    }
+  });
+
+  // Initialisation globale
+  window.addEventListener('DOMContentLoaded', () => {
+    initCookieBanner(); 
+    loadReCaptcha(); // Chargé par défaut pour s'assurer qu'il soit disponible même si le bandeau est masqué
+  });
 </script>
 
 <style>

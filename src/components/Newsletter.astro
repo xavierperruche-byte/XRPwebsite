@@ -34,7 +34,7 @@
       
       <input 
         type="email" 
-        id="newsletter-email" 
+        id="mce-EMAIL" 
         name="EMAIL" 
         placeholder="Votre email..." 
         required 
@@ -45,8 +45,9 @@
           <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
+      <small class="recaptcha-legal">Protégé par reCAPTCHA</small>
     </form>
-    
+   
   </div>
 </div>
 
@@ -109,30 +110,6 @@
         setCookie('newsletter_interacted', 'true', 60);
         setTimeout(() => emailInput?.focus(), 200);
       }
-    });
-
-    // Interception de la validation
-    form?.addEventListener('submit', () => {
-      // Pas de e.preventDefault() ici pour permettre l'envoi dans l'iframe invisible
-
-      // CORRECTION DU BUG "VIDE" : On ne met plus l'input en disabled immédiatement, 
-      // sinon le navigateur n'envoie pas sa valeur dans l'iframe.
-      if (emailInput) {
-        setTimeout(() => {
-          emailInput.disabled = true;
-        }, 50);
-      }
-
-      // Déclenchement visuel immédiat du message de succès
-      setCookie('newsletter_interacted', 'true', 60);
-      
-      if (triggerZone) {
-        triggerZone.innerHTML = '<span class="star-title">MERCI !</span><span class="star-subtitle"><br/>Bienvenue à bord.</span>';
-      }
-      
-      setTimeout(() => {
-        starContainer?.classList.remove('is-active');
-      }, 1000);
     });
 
     document.addEventListener('click', (e) => {
@@ -341,4 +318,22 @@
     clip: rect(0, 0, 0, 0);
     border: 0;
   }
+
+.recaptcha-legal {
+  position: absolute;
+  bottom: -22px; /* Propulse le texte sous le bloc noir du formulaire */
+  left: 50%;
+  transform: translateX(-50%); /* Centre parfaitement le texte */
+  width: 100%;
+  white-space: nowrap; /* Évite que le texte ne revienne à la ligne de force */
+  
+  /* Votre style reste inchangé */
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(0, 0, 0, 0.90);
+  font-family: 'Urbanist', sans-serif;
+  text-align: center;
+}
+  
 </style>

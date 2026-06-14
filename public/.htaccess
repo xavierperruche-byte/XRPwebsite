@@ -1,3 +1,19 @@
+# ====================================================================
+# 0. CONFIGURATION NEVERBOUNCE (VOTRE SCRIPT DE VÉRIFICATION)
+# ====================================================================
+# Déclaration globale et sécurisée de votre clé NeverBounce
+SetEnv NEVERBOUNCE_API_KEY private_c9c633a334118578ad8edf96844f5ff4
+SetEnv RECAPTCHA_SECRET_KEY 6LdmWBcsAAAAAOtmEU8h2FFvskpie_4Doa86MZ1r
+
+# Autoriser explicitement votre script PHP à s'exécuter
+<Files "verify.php">
+    Order allow,deny
+    Allow from all
+</Files>
+
+# ====================================================================
+# 1. CONFIGURATION SERVEUR & OPTIMISATIONS
+# ====================================================================
 php_value date.timezone "Europe/Paris"
 
 # Enable GZIP compression + Brotli
@@ -9,7 +25,6 @@ php_value date.timezone "Europe/Paris"
   BrotliCompressionQuality 5
   AddOutputFilterByType BROTLI_COMPRESS text/html text/css application/javascript application/json image/svg+xml
 </IfModule>
-
 
 # ---- Browser caching ----
 <IfModule mod_expires.c>
@@ -39,26 +54,28 @@ Header unset ETag
   Header always set X-XSS-Protection "1; mode=block"
 </IfModule>
 
-
+# ====================================================================
+# 2. RÈGLES DE RÉÉCRITURE ET REDIRECTIONS (ASTRO)
+# ====================================================================
 RewriteEngine On
-
 RewriteBase /prodastro/
 
+# Gestion des jolies URLs pour Astro (.html masqué)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.*)$ $1.html [L]
 
+# Redirection fallback
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ /subfolder/index.html [L]
 
+# Redirections 301 patrimoniales
 Redirect 301 /cart/ https://www.we-theagency.com/
 Redirect 301 /catalog/ https://www.we-theagency.com/
 Redirect 301 /products/*/ https://www.we-theagency.com/
 Redirect 301 /success/ https://www.we-theagency.com/
-
-
 
 # Forcer domaine principal + www + https
 RewriteCond %{HTTP_HOST} !^www\.we-theagency\.com$ [NC]
@@ -66,7 +83,9 @@ RewriteRule ^(.*)$ https://www.we-theagency.com/$1 [L,R=301]
 
 Options All
 
-
+# ====================================================================
+# 3. GESTION DE LA VERSION PHP (CPANEL)
+# ====================================================================
 # php -- BEGIN cPanel-generated handler, do not edit
 # Set the “ea-php84” package as the default “PHP” programming language.
 <IfModule mime_module>
