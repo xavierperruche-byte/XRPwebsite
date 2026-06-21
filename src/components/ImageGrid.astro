@@ -70,7 +70,7 @@ const sortedImages = [...images].slice(0, 5); // Conserve les 5 premières image
 }
 
 .image-aspect-ratio {
-  height: 110vh; 
+  aspect-ratio: 3 / 4; /* Format portrait classique de couverture magazine */
   position: relative;
   overflow: hidden;
   border-radius: 20px;
@@ -94,7 +94,7 @@ const sortedImages = [...images].slice(0, 5); // Conserve les 5 premières image
   width: calc(100% - 0rem);
   height: calc(100% - 0rem);
   border-radius: 20px;
-  object-fit: contain;
+  object-fit: cover;
   
   display: block;
   transition: none; 

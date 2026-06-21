@@ -112,7 +112,7 @@ import BackToTop from '../components/BackToTop.astro';
     <div class="book-detail-divider" aria-hidden="true"></div>
     <div class="book-detail-bio">
       <span class="book-detail-label">Bio de l'autrice</span>
-      <p>Réjane Salaün est une entrepreneur genevoise et auteur. Elle accompagne les marques et les créatrices dans la construction de leur identité digitale éditoriale et visuelle. Elle est aussi apporteur d'affaires. Son écriture explore les liens entre perception, langage et posture. <em>Mon infini est bleu</em> est son premier récit poétique publié.</p>
+      <p>Réjane Salaün accompagne les femmes entrepreneurs suisses dans leur développement commercial et digital. Elle publie son premier essai <em>Mon infini est bleu</em>. Son écriture explore les liens entre perception, langage et posture.</p>
     </div>
   </div>
 
@@ -127,11 +127,12 @@ import BackToTop from '../components/BackToTop.astro';
       </button>
       <span class="broche-modal-kicker">Version papier</span>
       <h4 id="broche-modal-title">Mon infini est bleu</h4>
-      <p class="broche-modal-sub">Bientôt disponible chez vos libraires habituels.</p>
+        <p class="broche-modal-sub">Bientôt disponible</p>
       <!-- Pour ajouter des liens distributeurs, remplace le <p> ci-dessus par :
       <ul class="broche-modal-links">
         <li><a href="https://..." target="_blank" class="broche-modal-link">Amazon <svg>...</svg></a></li>
         <li><a href="https://..." target="_blank" class="broche-modal-link">FNAC <svg>...</svg></a></li>
+
       </ul>
       -->
     </div>
@@ -385,13 +386,13 @@ import BackToTop from '../components/BackToTop.astro';
 /* Navigation secondaire flottante - Style identique au header */
 .floating-subnav {
   position: fixed;
-  top: 10px;
-  left: 2%;
+  bottom: 20px;
+  left: 1%;
   width: auto;
   max-width: 200px;
   z-index: 9999;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
@@ -411,8 +412,8 @@ import BackToTop from '../components/BackToTop.astro';
     width: 100%;
     align-items: flex-start; /* Aligne le contenu à gauche (mieux pour un menu vertical) */
     justify-content: center;
-    padding: 0.1rem 0.2rem;
-    gap: 0.1rem;
+    padding: 0.1rem 0.1rem;
+    gap: 0.05rem;
   }
 
 /* Masque tous les liens par défaut */
@@ -886,8 +887,8 @@ import BackToTop from '../components/BackToTop.astro';
 .book-detail-extract blockquote {
   margin: 0;
   font-family: 'Libre Bodoni', serif;
-  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-  line-height: 1.55;
+  font-size: clamp(1.05rem, 1.2vw, 1.2rem);
+  line-height: 1.6;
   font-style: italic;
   color: var(--book-ink);
   padding-left: 1.25rem;
