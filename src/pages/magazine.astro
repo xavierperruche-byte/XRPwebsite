@@ -127,14 +127,26 @@ import BackToTop from '../components/BackToTop.astro';
       </button>
       <span class="broche-modal-kicker">Version papier</span>
       <h4 id="broche-modal-title">Mon infini est bleu</h4>
-        <p class="broche-modal-sub">Bientôt disponible</p>
-      <!-- Pour ajouter des liens distributeurs, remplace le <p> ci-dessus par :
+                                  <!-- Pour ajouter des liens distributeurs, remplace le <p> ci-dessus par :
+                                          <p class="broche-modal-sub">Bientôt disponible</p>      -->
       <ul class="broche-modal-links">
-        <li><a href="https://..." target="_blank" class="broche-modal-link">Amazon <svg>...</svg></a></li>
-        <li><a href="https://..." target="_blank" class="broche-modal-link">FNAC <svg>...</svg></a></li>
-
+        <li>
+          <a href="https://www.amazon.fr/dp/B0H7Q92LKX/" target="_blank" class="broche-modal-link">
+            <span>Je commande en EUR (Amazon)</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://shop.we-theagency.com/product/moninfiniestbleu/" target="_blank" class="broche-modal-link">
+            <span>Je commande en CHF</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
       </ul>
-      -->
     </div>
   </div>
 </section>
@@ -1076,9 +1088,17 @@ import BackToTop from '../components/BackToTop.astro';
 .broche-modal-link svg {
   flex-shrink: 0;
   transition: transform 0.2s;
+  
+  /* FORCE LE COMPORTEMENT DU TRAIT */
+  stroke: currentColor; /* S'assure que le SVG suit la couleur du texte (noir puis blanc au survol) */
+  fill: none;            /* Évite qu'un style global ne remplisse l'icône de noir */
+  width: 14px;           /* Sécurité : force la taille si elle saute en CSS */
+  height: 14px;
 }
 
+/* Optionnel : Si vous voulez que la flèche devienne blanche au survol */
 .broche-modal-link:hover svg {
+  stroke: #ffffff; 
   transform: translate(2px, -2px);
 }
 </style>
