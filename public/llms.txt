@@ -1,0 +1,12 @@
+# llms.txt
+
+This file declares the site’s policy for large language models (LLMs) and agentic crawling.
+
+Website: https://www.we-theagency.com
+Contact: contact@we-theagency.com
+
+# Policy
+We permit LLMs to crawl and use public content for indexing and training unless otherwise specified in robots.txt.
+
+# Notes
+- Sitemap: https://www.we-theagency.com/sitemap.xml
