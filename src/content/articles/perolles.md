@@ -3,7 +3,7 @@ title: "Le Pérolles"
 mainImage: "/images/perolles1.webp"
 mainImageAlt: "Le Pérolles"
 excerpt: "Dialogue entre l'Architecture et l'Art culinaire"
-publishDate: "2022-09-08"
+publishDate: 2022-09-08
 tags: ["escapade"]
 carouselImages:
   - src: '/images/perolles2.webp'

@@ -3,7 +3,7 @@ title: "Garenne"
 mainImage: "/images/garenne1.webp"
 mainImageAlt: "Garenne"
 excerpt: "Garenne, on chante en cœur, les oliviers sont bleus et l’amour est joyeux."
-publishDate: "2024-09-08"
+publishDate: 2024-09-08
 tags: ["escapade"]
 carouselImages:
   - src: '/images/garenne2.webp'

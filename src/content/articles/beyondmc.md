@@ -3,7 +3,7 @@ title: "Beyond Men’s Care"
 mainImage: "/images/beyondmc1.webp"
 mainImageAlt: "Beyond Men’s Care"
 excerpt: "HEDONISME MANIFESTO !"
-publishDate: "2023-02-15"
+publishDate: 2023-02-15
 tags: ["beauté"]
 carouselImages:
   - src: '/images/beyondmc2.webp'

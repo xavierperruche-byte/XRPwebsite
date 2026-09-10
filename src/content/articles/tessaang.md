@@ -3,7 +3,7 @@ title: "Tessa Ang"
 mainImage: "/images/tessaang1.webp"
 mainImageAlt: "Tessa Ang"
 excerpt: "Over 50, Et alors ?"
-publishDate: "2023-09-12"
+publishDate: 2023-09-12
 tags: ["beauté", "rencontre"]
 carouselImages:
   - src: '/images/tessaang2.webp'

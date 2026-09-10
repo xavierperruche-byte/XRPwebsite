@@ -3,7 +3,7 @@ title: "Save our Seas"
 mainImage: "/images/sos1.webp"
 mainImageAlt: "Save our Seas"
 excerpt: "Interview with James Lea."
-publishDate: "2023-07-14"
+publishDate: 2023-07-14
 tags: ["rencontre", "swim"]
 carouselImages:
   - src: '/images/sos2.webp'

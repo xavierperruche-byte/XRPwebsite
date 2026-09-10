@@ -53,7 +53,7 @@ const canonicalURL = new URL(Astro.request.url);
   <meta name="category" content="Marketing, Design, Technology">
   
   <!-- Canonical -->
-  <link rel="canonical" href={Astro.url.href}>
+  
   
   <script type="application/ld+json">
   {
@@ -196,137 +196,7 @@ const canonicalURL = new URL(Astro.request.url);
   <!-- ============================================ -->
   <!-- SCHEMA.ORG - ORGANIZATION (Enrichi) -->
   <!-- ============================================ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "We-TheAgency",
-  "alternateName": "WTA",
-  "legalName": "Réjane Salaün – Wepopup",
-  "image": "https://www.we-theagency.com/images/logo.svg",
-  "url": "https://www.we-theagency.com",
-  "logo": "https://www.we-theagency.com/images/logo.svg",
-  "description": "Agence de création d'identité visuelle, webdesign et développement commercial. Créativité stratégique, tech sur mesure, résultats.",
-  "slogan": "Business with Attitude",
-  "foundingDate": "2018",
-  "founder": {
-      "@type": "Person",
-      "name": "Réjane Salaün",
-      "jobTitle": "Fondatrice",
-      "description": "Parcours international riche et atypique. MBA en Ressources Humaines & Mobilité Internationale.",
-      "sameAs": "https://www.linkedin.com/in/réjane-salaün/",
-      "alumniOf": "Magellan Institute - Executive MBA, Ressources Humaines & Mobilité Internationale",
-      "knowsAbout": [
-        "Marketing Digital",
-        "Développement Commercial",
-        "Innovation",
-        "Mode Durable",
-        "Entrepreneuriat Féminin"
-      ]
-    },
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Rue des Eaux-Vives 15",
-      "addressLocality": "Genève",
-    "postalCode": "1207",
-    "addressCountry": "CH"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 46.2037,
-    "longitude": 6.1574
-  },
-    "location": [
-      {
-        "@type": "Place",
-        "name": "Genève",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Genève",
-          "addressCountry": "Suisse"
-        }
-      }
-    ],
-    "areaServed": [
-      {
-        "@type": "Country",
-        "name": "Suisse"
-      },
-      {
-        "@type": "Country",
-        "name": "France"
-      }
-  ],
-  "sameAs": [
-      "https://www.instagram.com/wta.wpp/",
-      "https://www.linkedin.com/in/réjane-salaün/",
-      "https://cube.we-theagency.com/"
-  ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "customer service",
-      "availableLanguage": ["French", "English"]
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Services",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Création d'identité visuelle",
-            "description": "Des créations contemporaines pour une marque qui affirme sa singularité",
-            "serviceType": "Branding & Identity Design",
-            "provider": {
-              "@type": "Organization",
-              "name": "We-TheAgency"
-            }
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "WebDesign",
-            "description": "Création de sites Web responsives et sur mesure. Une expérience fluide sur tous les supports.",
-            "serviceType": "Web Design & Development",
-            "provider": {
-              "@type": "Organization",
-              "name": "We-TheAgency"
-            }
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Marketing Digital & Développement Commercial",
-            "description": "Solutions personnalisées qui répondent à vos ambitions. Le développement commercial est dans notre ADN.",
-            "serviceType": "Digital Marketing & Business Development",
-            "provider": {
-              "@type": "Organization",
-              "name": "We-TheAgency"
-            }
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Tech",
-            "description": "Un code fiable, évolutif et sur mesure pour que vous puissiez vous concentrer sur ce qui compte.",
-            "serviceType": "Technology & Development",
-            "provider": {
-              "@type": "Organization",
-              "name": "We-TheAgency"
-            }
-          }
-        }
-      ]
-    }
-  }
-  </script>
+  <!-- ProfessionalService JSON-LD removed to avoid duplication with LocalBusiness -->
 
   <!-- ============================================ -->
   <!-- SCHEMA.ORG - WEBSITE -->
@@ -354,41 +224,7 @@ const canonicalURL = new URL(Astro.request.url);
   <!-- ============================================ -->
   <!-- SCHEMA.ORG - PERSON (Fondatrice) -->
   <!-- ============================================ -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Réjane Salaün",
-    "jobTitle": "Fondatrice de We-TheAgency",
-    "description": "Une fondatrice visionnaire avec un parcours international riche et atypique. MBA en Ressources Humaines & Mobilité Internationale. Expertise en mode durable, innovation, et développement commercial en Asie du Sud-Est et en Suisse.",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "We-TheAgency"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/in/réjane-salaün/",
-      "https://cube.we-theagency.com/"
-    ],
-    "alumniOf": "MBA en Ressources Humaines & Mobilité Internationale",
-    "knowsAbout": [
-      "Marketing Digital",
-      "Développement Commercial",
-      "Innovation",
-      "Mode Durable",
-      "Entrepreneuriat Féminin",
-      "Networking",
-      "Leadership Féminin"
-    ],
-    "hasOccupation": {
-      "@type": "Occupation",
-      "name": "Fondatrice d'agence",
-      "occupationLocation": {
-        "@type": "City",
-        "name": "Genève"
-      }
-    }
-  }
-  </script>
+  <!-- Person JSON-LD removed (information included in LocalBusiness block) -->
 
   <!-- Preconnect CRITIQUE pour Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -451,8 +287,6 @@ const canonicalURL = new URL(Astro.request.url);
   <!-- Main Content -->
   <main class="main-content" role="main" aria-label="Contenu principal">
     <slot />
-
-  <CookieBanner />
 
   </main>
   

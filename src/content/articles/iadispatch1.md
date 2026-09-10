@@ -3,7 +3,7 @@ title: "IA DISPATCH - n'1"
 mainImage: "/images/telma.webp"
 mainImageAlt: "Telma"
 excerpt: "Le décryptage mensuel des agents IA opérationnels"
-publishDate: "2026-05-20"
+publishDate: 2026-05-20
 tags: ["IA"]
 ---
 

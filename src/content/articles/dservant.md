@@ -3,7 +3,7 @@ title: "Diane Servant"
 mainImage: "/images/dservant1.webp"
 mainImageAlt: "Diane Servant"
 excerpt: "Diane Servant, une adresse confidentielle à Genève."
-publishDate: "2024-08-11"
+publishDate: 2024-08-11
 tags: ["beauté"]
 carouselImages:
   - src: '/images/dservant2.webp'

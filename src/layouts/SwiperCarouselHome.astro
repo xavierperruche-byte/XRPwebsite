@@ -31,17 +31,65 @@ if (typeof window === 'undefined') {
     slides-per-view="4"
     space-between="20"
   >
+  <swiper-slide>
+      <div class="slide-content carousel-slide-content" 
+            data-image="/images/AtelierNeuro.webp" 
+            data-title="Septembre 2026" 
+            data-description="Ateliers Neurodiversité"
+            data-details="Ateliers Neurodiversité : à venir, sur inscription uniquement.</br></br> <a href='https://shop.we-theagency.com/product/atelier-diversite-cognitive-entreprenariat-matin/' target='_blank' rel='noopener'><b><u>Séance du matin</b></u></a></br></br><a href='https://shop.we-theagency.com/product/atelier-diversite-cognitive-entreprenariat-apres-midi/' target='_blank' rel='noopener'><b><u>Séance de l'après-midi</b></u></a>">
+        <img src="/images/AtelierNeuro.webp" alt="Mon infini est bleu" loading="lazy" decoding="async" />
+
+                </div>
+        <div class="timeline-marker">
+          <div class="timeline-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+        </div>
+        <div class="slide-text">
+          <h2>Septembre 2026</h2>
+          <p>Ateliers Neurodiversité</p>
+        </div>
+      </div>
+    </swiper-slide>
+
+  <swiper-slide>
+      <div class="slide-content carousel-slide-content" 
+           data-image="/images/MonInfiniEstBleu.webp" 
+           data-title="Juillet 2026" 
+           data-description="Mon infini est bleu"
+           data-details="<a href='../mon-infini-est-bleu' target='_blank' rel='noopener'><b><u>Mon infini est bleu</b></u></a> : un récit incarné sur l'autisme au féminin. Une écriture élégante, fluide, parfois drôle.">
+        <img src="/images/MonInfiniEstBleu2.webp" alt="Mon infini est bleu" loading="lazy" decoding="async" />
+
+                </div>
+        <div class="timeline-marker">
+          <div class="timeline-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+        </div>
+        <div class="slide-text">
+          <h2>Juillet 2026</h2>
+          <p>Mon infini est bleu</p>
+        </div>
+      </div>
+    </swiper-slide>
+
     <swiper-slide>
       <div class="slide-content carousel-slide-content" 
            data-image="/images/pioupiou5.webp" 
            data-title="Avril 2026" 
            data-description="Apporteur d'affaires"
            data-details="<a href='https://www.pioupiou-cosmetics.com/' target='_blank' rel='noopener'><b><u>Pioupiou Cosmetics</b></u></a>.">
-        <img 
-          src="/images/pioupiou5.webp" 
-          alt="Pioupiou" 
-          loading="lazy" 
-        /image> 
+        <img src="/images/pioupiou5.webp" alt="Pioupiou" loading="lazy" decoding="async" />
 
                 </div>
         <div class="timeline-marker">
@@ -67,11 +115,7 @@ if (typeof window === 'undefined') {
            data-title="Mars 2026" 
            data-description="Offre Agent IA"
            data-details="<i>prochainement</i>.">
-        <img 
-          src="/images/conciergerie.webp" 
-          alt="IA agentique" 
-          loading="lazy" 
-        /image> 
+        <img src="/images/conciergerie.webp" alt="IA agentique" loading="lazy" decoding="async" />
 
                 </div>
         <div class="timeline-marker">
@@ -97,11 +141,7 @@ if (typeof window === 'undefined') {
            data-title="Janvier 2026" 
            data-description="Nouvelle page d\'accueil site internet"
            data-details="<a href='https://www.clamaron-consulting.com/' target='_blank' rel='noopener'><b><u>www.clamaron-consulting.com</b></u></a>.">
-        <img 
-          src="/images/cconsulting.webp" 
-          alt="Clamaron Consulting" 
-          loading="lazy" 
-        /image> 
+        <img src="/images/cconsulting.webp" alt="Clamaron Consulting" loading="lazy" decoding="async" />
 
                 </div>
         <div class="timeline-marker">
@@ -124,20 +164,23 @@ if (typeof window === 'undefined') {
     <swiper-slide>
     <!-- SLIDE AVEC VIDÉO -->
       <div class="slide-content carousel-slide-content slide-video" 
-           data-video="/videos/WTA_WPP.mp4"
+           data-video="/videos/WTA_WPP-720.mp4"
+           data-video-webm="/videos/WTA_WPP-720.webm"
            data-title="Décembre 2025" 
            data-description="Nouveau site de l'Agence"
            data-details="<p>nouvelles technologies....</p>">
         <div class="video-container">
-          <video 
-            src="/videos/WTA_WPP.mp4" 
-            autoplay
+          <video
+            data-src-mp4="/videos/WTA_WPP-720.mp4"
+            data-src-webm="/videos/WTA_WPP-720.webm"
             muted
             loop
             playsinline
-            preload="metadata"
+            preload="none"
             width="640"
             height="360"
+            poster="/images/index3.webp"
+            aria-hidden="true"
           ></video>
         </div>
         <div class="timeline-marker">
@@ -163,11 +206,7 @@ if (typeof window === 'undefined') {
            data-title="Octobre 2025" 
            data-description="Nom, Identité Visuelle et Site Internet artsquare.ch"
            data-details="<a href='https://www.artsquare.ch' target='_blank' rel='noopener'><b><u>artsquare.ch</b></u></a> est bien plus qu'une plateforme : c'est un espace vivant dédié à la scène artistique contemporaine suisse.">
-        <img 
-          src="/images/2025101.webp" 
-          alt="artsquare.ch" 
-          loading="lazy" 
-        /> 
+        <img src="/images/2025101.webp" alt="artsquare.ch" loading="lazy" decoding="async" />
         
         <div class="timeline-marker">
           <div class="timeline-icon">
@@ -191,11 +230,7 @@ if (typeof window === 'undefined') {
            data-title="Septembre 2025" 
            data-description="Nouvelle Collaboration : N°OW'HERE Society"
            data-details="À Genève, ville de raffinement et de discrétion, un nouveau cercle privé redéfinit l'art de se réunir, d'imaginer, d'appartenir.">
-        <img 
-          src="/images/2025091.webp" 
-          alt="Sleep Atelier with Studiolfactif" 
-          loading="lazy"
-        /> 
+        <img src="/images/2025091.webp" alt="Sleep Atelier with Studiolfactif" loading="lazy" decoding="async" />
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -218,7 +253,7 @@ if (typeof window === 'undefined') {
            data-title="Septembre 2025" 
            data-description="Magazine Art et Science. Cultivons l'hybridité"
            data-details="Art et science. Cultivons l'hybridité.</p><p>Réjane Salaün.">
-        <img src="/images/2025092.webp" alt="Shilliger with Studiolfactif" loading="lazy" /> 
+        <img src="/images/2025092.webp" alt="Shilliger with Studiolfactif" loading="lazy" decoding="async" /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -241,7 +276,7 @@ if (typeof window === 'undefined') {
            data-title="Juin 2025" 
            data-description="Nouvelle Collaboration : STUDIOLFACTIF X BUCHERER GENEVE"
            data-details="STUDIOLFACTIF X BUCHERER GENEVE</span></p><p>Sur invitation exclusivement.">
-        <img src="/images/2025061.webp" alt="Bucherer" loading="lazy" /> 
+        <img src="/images/2025061.webp" alt="Bucherer" loading="lazy" decoding="async" /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -264,7 +299,7 @@ if (typeof window === 'undefined') {
            data-title="Mai 2025" 
            data-description="Nouvelle Collaboration : STUDIOLFACTIF X GARDEN CENTRE SCHILLIGER"
            data-details="STUDIOLFACTIF X GARDEN CENTRE SCHILLIGER</p><p>Ateliers olfactifs les 03 et 10 mai 2025.">
-        <img src="/images/2025041.webp" alt="fashion" loading="lazy" /> 
+        <img src="/images/2025041.webp" alt="fashion" loading="lazy" decoding="async" /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -287,7 +322,7 @@ if (typeof window === 'undefined') {
            data-title="Avril 2025" 
            data-description="Cercle des Entrepreneurs de l'Urban Belt"
            data-details="ENTREPRENANTES ET HUMANISTES comme vous.</p><p>- Des rencontres stratégiques pour tisser des connexions à fort impact.</p><p>- Des ateliers animés par des Membres Expertes pour perfectionner vos compétences clés. </p><p>- Des évènements conférences inspirantes pour nourrir votre vision et votre ambition.</p><p><a href='https://cube.we-theagency.com'  target='_blank' rel='noopener'><b><u>cube.we-theagency.com</b></u></a></p>">
-        <img src="/images/2024121.webp" alt="Bucherer" loading="lazy" /> 
+        <img src="/images/2024121.webp" alt="Bucherer" loading="lazy" decoding="async" /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -310,7 +345,7 @@ if (typeof window === 'undefined') {
            data-title="Décembre 2024" 
            data-description="L'Agence"
            data-details="Nous sommes des narrateurs visuels.">
-        <img src="/images/2024122.webp" alt="ArtSquare" loading="lazy" /> 
+        <img src="/images/2024122.webp" alt="ArtSquare" loading="lazy" decoding="async" /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -969,6 +1004,51 @@ if (typeof window === 'undefined') {
 </style>
 
 <script>
+if (typeof window !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', function () {
+    try {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const slide = entry.target;
+            const vid = slide.querySelector('video');
+            if (vid && vid.dataset) {
+              // Create <source> elements for WebM and MP4 if provided
+              const webm = vid.dataset.srcWebm || vid.dataset.srcWebm;
+              const mp4 = vid.dataset.srcMp4 || vid.dataset.srcMp4 || vid.dataset.src;
+              // Only add sources if none exist
+              if (vid.querySelectorAll('source').length === 0) {
+                if (webm) {
+                  const s1 = document.createElement('source');
+                  s1.src = webm;
+                  s1.type = 'video/webm';
+                  vid.appendChild(s1);
+                }
+                if (mp4) {
+                  const s2 = document.createElement('source');
+                  s2.src = mp4;
+                  s2.type = 'video/mp4';
+                  vid.appendChild(s2);
+                }
+                // Trigger loading but do not autoplay; leave the browser to defer playback
+                if (vid.load) vid.load();
+              }
+            }
+            io.unobserve(slide);
+          }
+        });
+      }, { rootMargin: '300px' });
+
+      document.querySelectorAll('.slide-video').forEach((el) => io.observe(el));
+    } catch (e) {
+      // graceful fallback
+      console.warn('Video lazy-load observer failed', e);
+    }
+  });
+}
+</script>
+
+<script>
   import { register } from 'swiper/element/bundle';
   
   // Enregistre Swiper Element côté client
@@ -987,26 +1067,17 @@ if (typeof window === 'undefined') {
     const overlayDetails = document.getElementById('overlayDetails');
     const closeBtn = document.getElementById('closeOverlay');
     
-    // Gestion de la lecture automatique des vidéos dans le carousel
+    // Keep carousel videos lazy: do NOT preload or autoplay here.
+    // When a video slide is intersected the observer will add sources and call load().
     const videoSlides = document.querySelectorAll('.slide-video');
     videoSlides.forEach(slide => {
       const video = slide.querySelector('video');
       if (video) {
-        // Configuration pour une boucle fluide
-        video.preload = 'auto';
-        
-        // Forcer le rechargement complet
-        video.load();
-        
-        // Démarrer la lecture
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(e => console.log('Autoplay prevented:', e));
-        }
-        
-        // Méthode alternative pour boucle fluide : revenir légèrement avant la fin
+        // Ensure preload remains 'none' until explicitly needed
+        video.preload = 'none';
+        // Keep loop handler for when the video eventually plays (overlay or user interaction)
         video.addEventListener('timeupdate', function() {
-          if (this.duration - this.currentTime < 0.1) {
+          if (this.duration && this.duration - this.currentTime < 0.1) {
             this.currentTime = 0;
           }
         });
@@ -1048,7 +1119,24 @@ if (typeof window === 'undefined') {
             if (videoSrc && overlayVideo) {
               overlayImage.style.display = 'none';
               overlayVideo.style.display = 'block';
-              overlayVideo.querySelector('source').src = videoSrc;
+              // Prefer WebM if available
+              const parent = content;
+              const webm = parent.getAttribute('data-video-webm');
+              const mp4 = parent.getAttribute('data-video') || parent.getAttribute('data-video-mp4');
+              // Remove existing sources
+              while (overlayVideo.firstChild) overlayVideo.removeChild(overlayVideo.firstChild);
+              if (webm) {
+                const s1 = document.createElement('source');
+                s1.src = webm;
+                s1.type = 'video/webm';
+                overlayVideo.appendChild(s1);
+              }
+              if (mp4) {
+                const s2 = document.createElement('source');
+                s2.src = mp4;
+                s2.type = 'video/mp4';
+                overlayVideo.appendChild(s2);
+              }
               overlayVideo.loop = true;
               overlayVideo.muted = true;
               overlayVideo.preload = 'auto';
@@ -1056,7 +1144,7 @@ if (typeof window === 'undefined') {
               
               // Méthode alternative pour boucle fluide
               overlayVideo.addEventListener('timeupdate', function() {
-                if (this.duration - this.currentTime < 0.1) {
+                if (this.duration && this.duration - this.currentTime < 0.1) {
                   this.currentTime = 0;
                 }
               });

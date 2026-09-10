@@ -3,7 +3,7 @@ title: "Art & Science"
 mainImage: "/images/hybridite1.webp"
 mainImageAlt: "Art & Science"
 excerpt: "Cultivons l'hybridité"
-publishDate: "2025-08-12"
+publishDate: 2025-08-12
 tags: ["art", "rencontre"]
 carouselImages:
   - src: '/images/hybridite2.webp'

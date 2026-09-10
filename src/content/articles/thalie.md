@@ -3,7 +3,7 @@ title: "Thalie Paris"
 mainImage: "/images/thalie1.webp"
 mainImageAlt: "Thalie Paris"
 excerpt: "UThalie, une muse par qui la nature refleurit."
-publishDate: "2022-11-13"
+publishDate: 2022-11-13
 tags: ["fashion"]
 carouselImages:
   - src: '/images/thalie2.webp'

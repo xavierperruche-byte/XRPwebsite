@@ -3,7 +3,7 @@ title: "Timeline® Skin Health"
 mainImage: "/images/timeline1.webp"
 mainImageAlt: "Timeline®"
 excerpt: "Construire l’avenir de la longévité."
-publishDate: "2022-03-21"
+publishDate: 2022-03-21
 tags: ["beauté"]
 carouselImages:
   - src: '/images/timeline2.webp'

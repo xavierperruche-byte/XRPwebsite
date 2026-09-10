@@ -3,7 +3,7 @@ title: "Around Mrs. O"
 mainImage: "/images/aroundmrso1.webp"
 mainImageAlt: "Around Mrs. O"
 excerpt: "Voyage au bout des steppes."
-publishDate: "2024-11-08"
+publishDate: 2024-11-08
 tags: ["fashion", "rencontre", "escapade"]
 carouselImages:
   - src: '/images/aroundmrso2.webp'

@@ -3,7 +3,7 @@ title: "Visit Monaco"
 mainImage: "/images/monaco1.webp"
 mainImageAlt: "Visit Monaco"
 excerpt: "Un univers joyeux de chapeaux personnalisables aux couleurs chatoyantes !"
-publishDate: "2024-09-08"
+publishDate: 2024-09-08
 tags: ["escapade"]
 carouselImages:
   - src: '/images/monaco2.webp'

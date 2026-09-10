@@ -3,7 +3,7 @@ title: "KAIO SWIM"
 mainImage: "/images/kaio1.webp"
 mainImageAlt: "KAIO SWIM"
 excerpt: "Le Plunge Red, monochrome et iconique.A glisser dans son vestiaire swimwear cet été."
-publishDate: "2022-03-21"
+publishDate: 2022-03-21
 tags: ["fashion","swim"]
 keywords: ["KAIO SWIM", "swimwear"]
 carouselImages:

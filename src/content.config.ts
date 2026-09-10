@@ -11,7 +11,7 @@ const articles = defineCollection({
     mainImage: z.string(), 
     mainImageAlt: z.string(), 
     tags: z.array(z.string()), 
-    publishDate: z.string().or(z.date()).optional(), 
+    publishDate: z.date().optional(), 
     carouselImages: z.array(z.object({ 
       src: z.string(), 
       alt: z.string(), 

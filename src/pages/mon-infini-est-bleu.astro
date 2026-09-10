@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Mon infini est bleu — Livre | We-TheAgency";
+const description = "Mon infini est bleu — récit et témoignage. Thèmes : autisme au féminin, asperger au féminin. Retrouvez ressources et articles sur notre page magazine.";
+const keywords = ["Mon infini est bleu","autisme au féminin","asperger au féminin","témoignage autisme","livre autisme"];
+---
+
+<Layout title={title} description={description} currentPage="/magazine">
+
+  <!-- Redirect immediately to /magazine for users and bots -->
+  <meta http-equiv="refresh" content="0; url=/magazine" />
+  <link rel="canonical" href="/magazine">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content={keywords.join(', ')}>
+
+  <!-- Visible short summary (useful for LLMs and users before redirect) -->
+  <main class="container" style="padding:3rem 1rem; text-align:left;">
+    <h1>{title}</h1>
+    <p style="font-size:1.05rem; max-width:80ch;">{description}</p>
+    <p style="margin-top:1rem;">Vous serez redirigé·e vers la page <a href="/magazine">Magazine</a> pour en savoir plus et accéder aux ressources, articles et interviews autour du livre.</p>
+    <p style="margin-top:1rem; font-weight:600;">Mots‑clés optimisés : {keywords.join(', ')}</p>
+    <p style="margin-top:2rem; font-size:0.95rem;color:#666;">Si la redirection n'opère pas, <a href="/magazine">cliquez ici</a>.</p>
+  </main>
+
+  <!-- JSON-LD optimisé pour moteurs et LLMs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "Mon infini est bleu",
+    "author": {
+      "@type": "Person",
+      "name": "Réjane Salaün"
+    },
+    "description": "Récit et témoignage centré sur l'expérience de l'autisme au féminin. Mots-clés : autisme au féminin, asperger au féminin.",
+    "inLanguage": "fr",
+    "keywords": ["autisme au féminin","asperger au féminin","Mon infini est bleu"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.we-theagency.com/magazine"
+    }
+  }
+  </script>
+
+</Layout>

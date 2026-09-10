@@ -3,7 +3,7 @@ title: "Le Diamant Bleu"
 mainImage: "/images/DiamantBleu.webp"
 mainImageAlt: "Tessa Ang"
 excerpt: "« Ne te fie pas aux apparences trompeuses. Regarde au-delà des faux-semblants. Dans les reflets de la lune, tu trouveras le diamant »."
-publishDate: "2023-09-12"
+publishDate: 2023-09-12
 tags: ["lecture"]
 
 ---

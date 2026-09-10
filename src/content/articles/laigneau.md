@@ -3,7 +3,7 @@ title: "Pauline Laigneau - Le Podcast Le Gratin"
 mainImage: "/images/laigneau1.webp"
 mainImageAlt: "Pauline Laigneau"
 excerpt: "Le Podcast Le Gratin"
-publishDate: "2024-10-21"
+publishDate: 2024-10-21
 tags: ["rencontre"]
 keywords: ["Podcast"]
 carouselImages:

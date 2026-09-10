@@ -1,3 +1,13 @@
+# .htaccess - Redirect for book page
+# Redirect /mon-infini-est-bleu permanently to /magazine (301)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_URI} ^/mon-infini-est-bleu/?$ [NC]
+  RewriteRule ^.*$ /magazine [R=301,L]
+</IfModule>
+
+# Fallback simple Redirect (if mod_rewrite not enabled)
+Redirect 301 /mon-infini-est-bleu /magazine
 	# 1. Déclaration globale et sécurisée de votre clé NeverBounce
 SetEnv NEVERBOUNCE_API_KEY private_c9c633a334118578ad8edf96844f5ff4
 

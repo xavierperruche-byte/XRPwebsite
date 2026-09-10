@@ -3,7 +3,7 @@ title: "MEUNE, 'ce qui me lie'."
 mainImage: "/images/meune1.webp"
 mainImageAlt: "Meune"
 excerpt: "Nahir, passeur de savoirs."
-publishDate: "2022-09-08"
+publishDate: 2022-09-08
 tags: ["fashion"]
 carouselImages:
   - src: '/images/meune2.webp'

@@ -3,7 +3,7 @@ title: "Hôtel des horlogers"
 mainImage: "/images/horlogers1.webp"
 mainImageAlt: "Hôtel des horlogers"
 excerpt: "Make Time à l’Hôtel des Horlogers"
-publishDate: "2024-01-08"
+publishDate: 2024-01-08
 tags: ["escapade"]
 carouselImages:
   - src: '/images/horlogers2.webp'

@@ -74,13 +74,28 @@ const reviewsSchema = {
     "datePublished": t.date
   }))
 };
+
+// Sanitizer: allow only <a> and <br> tags (basic whitelist). Strips other tags.
+function sanitizeHtml(input) {
+  if (!input) return '';
+  // Preserve anchor tags but normalize attributes
+  let out = input.replace(/<a[^>]*href=["']([^"']+)["'][^>]*>(.*?)<\/a>/gi, function(_, href, text){
+    const safeHref = href.replace(/javascript:/gi, '');
+    return `<a href="${safeHref}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+  });
+  // Preserve <br> tags
+  out = out.replace(/<br\s*\/?>/gi, '<br/>');
+  // Remove any other tags
+  out = out.replace(/<(?!\/?a\b|br\b)[^>]+>/gi, '');
+  return out;
+}
 ---
 
 
 <Layout title="We-TheAgency" description="Business with attitude" currentPage="/">
 
-  <!-- Preload critical images -->
-  <link rel="preload" as="image" href="/images/index3.webp" fetchpriority="high" />
+  <!-- Preload critical images (responsive) -->
+  <link rel="preload" as="image" href="/images/index3.webp" imagesrcset="/images/index3.webp 1x" imagesizes="100vw" fetchpriority="high" />
   <link rel="preload" as="image" href="/images/logo.svg" fetchpriority="high" />
 
     <!-- Hero Slider Section -->
@@ -93,14 +108,16 @@ const reviewsSchema = {
             data-slide={index}
           >
             <div class="slide-background">
-              <img 
-                src={project.image} 
+              <img
+                src={project.image}
                 alt={project.title}
                 class="slide-image"
                 loading={index === 0 ? 'eager' : 'lazy'}
                 fetchpriority={index === 0 ? 'high' : 'low'}
                 width="1920"
                 height="1080"
+                srcset={`${project.image} 1200w, ${project.image} 900w, ${project.image} 480w`}
+                sizes="(max-width: 600px) 480px, (max-width: 1200px) 900px, 1200px"
               />
               <div class="slide-overlay"></div>
             </div>
@@ -205,8 +222,8 @@ const reviewsSchema = {
       <!-- Clone of last item (for seamless loop) -->
       <div class="testimonial-item">
         <div class="testimonial-quote">
-          <p set:html={`"${testimonials[testimonials.length - 1].text}"`}></p>
-        </div>
+            <p set:html={sanitizeHtml(testimonials[testimonials.length - 1].text)}></p>
+          </div>
         <div class="testimonial-author">
           <strong>{testimonials[testimonials.length - 1].author}</strong>
           <span set:html={testimonials[testimonials.length - 1].company}></span>
@@ -217,11 +234,11 @@ const reviewsSchema = {
       {testimonials.map((testimonial) => (
         <div class="testimonial-item">
           <div class="testimonial-quote">
-            <p set:html={`"${testimonial.text}"`}></p>
+            <p set:html={sanitizeHtml(testimonial.text)}></p>
           </div>
           <div class="testimonial-author">
             <strong>{testimonial.author}</strong>
-            <span set:html={testimonial.company}></span>
+            <span set:html={sanitizeHtml(testimonial.company)}></span>
           </div>
         </div>
       ))}
@@ -229,11 +246,11 @@ const reviewsSchema = {
       <!-- Clone of first item (for seamless loop) -->
       <div class="testimonial-item">
         <div class="testimonial-quote">
-          <p set:html={`"${testimonials[0].text}"`}></p>
+          <p set:html={sanitizeHtml(testimonials[0].text)}></p>
         </div>
         <div class="testimonial-author">
           <strong>{testimonials[0].author}</strong>
-          <span set:html={testimonials[0].company}></span>
+          <span set:html={sanitizeHtml(testimonials[0].company)}></span>
         </div>
       </div>
     </div>
@@ -251,7 +268,7 @@ const reviewsSchema = {
 <section class="services-section section-padding">
   <div class="timeline-section fullwidth">
     <div class="section-header text-center scroll-animate">
-    <h1 style={{ textAlign: 'center', marginTop: '35px' }}>Notre actualité</h1> 
+    <h1 style="text-align: center; margin-top: 35px;">Notre actualité</h1>
     </div>
   </div>
 </section>

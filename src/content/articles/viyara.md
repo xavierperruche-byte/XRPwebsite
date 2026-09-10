@@ -3,7 +3,7 @@ title: "Viyara Atelier"
 mainImage: "/images/viyara1.webp"
 mainImageAlt: "Viyara Atelier"
 excerpt: "Viyara Atelier, 'avoir la foi'"
-publishDate: "2023-07-03"
+publishDate: 2023-07-03
 tags: ["fashion"]
 carouselImages:
   - src: '/images/viyara2.webp'

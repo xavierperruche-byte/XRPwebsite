@@ -3,7 +3,7 @@ title: "Manuela Menzi Studio"
 mainImage: "/images/menzi1.webp"
 mainImageAlt: "Manuela Menzi Studio"
 excerpt: "The Art Of Gifting."
-publishDate: "2022-09-08"
+publishDate: 2022-09-08
 tags: ["art"]
 carouselImages:
   - src: '/images/menzi2.webp'

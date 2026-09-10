@@ -41,10 +41,10 @@ const navItems = [
     </nav>
 
     <!-- Mobile Menu Button -->
-    <button class="mobile-menu-btn" id="mobileMenuBtn">
-      <span class="hamburger"></span>
-      <span class="hamburger"></span>
-      <span class="hamburger"></span>
+    <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-controls="mobileNav" aria-expanded="false" aria-label="Ouvrir le menu">
+      <span class="hamburger" aria-hidden="true"></span>
+      <span class="hamburger" aria-hidden="true"></span>
+      <span class="hamburger" aria-hidden="true"></span>
     </button>
   </div>
 
@@ -359,8 +359,11 @@ const navItems = [
 
     // Mobile menu toggle
     mobileMenuBtn.addEventListener('click', () => {
-      mobileMenuBtn.classList.toggle('active');
+      const isActive = mobileMenuBtn.classList.toggle('active');
       mobileNav.classList.toggle('active');
+      // update accessibility attributes
+      mobileMenuBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+      mobileMenuBtn.setAttribute('aria-label', isActive ? 'Fermer le menu' : 'Ouvrir le menu');
     });
 
     // Close mobile menu when clicking a link
@@ -369,6 +372,8 @@ const navItems = [
       link.addEventListener('click', () => {
         mobileMenuBtn.classList.remove('active');
         mobileNav.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.setAttribute('aria-label', 'Ouvrir le menu');
       });
     });
 
@@ -388,20 +393,23 @@ const navItems = [
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
-      const target = e.target as Node;
+      const target = e.target;
+      if (!(target instanceof Node)) return;
       if (mobileMenuBtn && mobileNav && header && !header.contains(target)) {
         mobileMenuBtn.classList.remove('active');
         mobileNav.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.setAttribute('aria-label', 'Ouvrir le menu');
       }
     });
 
     // Check overflow on load and resize
     checkOverflow();
     
-    let resizeTimeout: number;
+    let resizeTimeout;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(checkOverflow, 150) as unknown as number;
+      resizeTimeout = setTimeout(checkOverflow, 150);
     });
   }
 

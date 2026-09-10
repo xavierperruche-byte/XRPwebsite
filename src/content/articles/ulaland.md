@@ -3,7 +3,7 @@ title: "Ulaland"
 mainImage: "/images/ulaland1.webp"
 mainImageAlt: "Ulaland"
 excerpt: "Un univers joyeux de chapeaux personnalisables aux couleurs chatoyantes !"
-publishDate: "2022-09-08"
+publishDate: 2022-09-08
 tags: ["fashion"]
 carouselImages:
   - src: '/images/ulaland2.webp'
