@@ -8,5 +8,11 @@ Contact: contact@we-theagency.com
 # Policy
 We permit LLMs to crawl and use public content for indexing and training unless otherwise specified in robots.txt.
 
+# Links
+
+- [Home page](https://www.we-theagency.com/)
+- [Sitemap](https://www.we-theagency.com/sitemap.xml)
+- [Contact](mailto:contact@we-theagency.com)
+
 # Notes
-- Sitemap: https://www.we-theagency.com/sitemap.xml
+- Use robots.txt to fine-tune crawler access.
