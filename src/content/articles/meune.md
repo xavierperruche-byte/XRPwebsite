@@ -35,10 +35,10 @@ MEUNE est un label indépendant Mode et Art de Vivre qui développe un vestiaire
 Le Magazine a la chance d’interviewer Nahir Sarsur la fondatrice de MEUNE, une jeune femme authentique fière de ses origines argentines. 
 
 Nahir est passeur de savoir-faire ancestral.
-</br></br>
+<br /><br />
 <div style="text-align: center;">_________________________________________</div>
-</br></br>
-</div>
+<br /><br />
+
 
 L’idée concrète de créer une marque qui rassemblerait modernité, conscience environnementale et sociale, et héritage ancestral andin m’est venue à l’esprit lors d’un long voyage en voiture avec ma famille en Patagonie en 2018.
 
@@ -67,7 +67,7 @@ C’est à ce moment-là que je ressens le besoin irrépressible de renouer avec
 Je comprends que le sens de ma vie est dorénavant lié à la sauvegarde du Patrimoine Culturel et Naturel de mon pays.
 
 Une histoire d’amour qui avait commencé quelques mois auparavant en France me fait retourner à Paris où je décide de m’installer. Pendant plus de sept ans, je me suis imprégnée de cette culture, nouvelle et challengeant pour moi. Durant tout ce temps, j’ai pu réfléchir, étudier, planifier et travailler pour pouvoir mener à bien ce combat. Mais cette fois-ci avec un regard nouveau et différent, dans lequel Paris demeurait désormais une partie essentielle de mon univers. Je commence l’aventure de MEUNE en 2019.
-</br></br>
+<br /><br />
 
 ## Social. La Femme.
 
@@ -80,7 +80,7 @@ Nous envisageons également à l’avenir de créer de petites structures géré
  
 
 Pour Nahir, la Nature, l’Artisanat et la Femme, comme pièce maîtresse de cet ancrage naturel et culturel, sont au cœur de ses préoccupations et de ses engagements.
-</br></br>
+<br /><br />
 <b><i>Patrimoine Culturel et Biodiversité. Peux-tu nous expliquer le choix des graphismes retenus sur les broderies ?</b></i>
 
 Les graphismes des textiles artisanaux sont inspirés par les motifs traditionnels andins, qui sont riches en symboles et significations culturelles.
@@ -92,7 +92,7 @@ Les motifs sont créés en collaboration avec des artisanes locales en utilisant
 Les motifs et les couleurs sont donc le fruit d’une collaboration entre les artisanes et MEUNE pour s’assurer que les designs soient respectueux des communautés locales et leur culture.
 
 Je me rends deux fois par an en Argentine pour rendre visite à ma famille et dédie une partie de mon voyage à rencontrer des tisserandes des communautés autochtones qui souhaitent collaborer avec MEUNE. Je cocrée ainsi avec ces femmes les textiles traditionnels qui viendront par la suite sublimer nos créations.
-</br></br>
+<br /><br />
 <b><i>Connais-tu le Protocole de Nagoya ? Peux-tu nous en parler ?</b></i>
 
 Bien sûr, le Protocole de Nagoya a été adopté en 2010 comme un accord international juridiquement contraignant qui vise à protéger les droits des communautés locales et autochtones sur les ressources génétiques et les connaissances traditionnelles associées. Le Protocole de Nagoya a été ratifié par de nombreux États, mais il n’est pas signé par des entreprises.
@@ -107,10 +107,10 @@ Un ACPC est un accord qui garantit que l’accès aux ressources génétiques et
 
 En fin de compte, le fait de travailler directement et en communion avec les communautés nous permet d’adopter une approche responsable et respectueuse envers les communautés autochtones, ainsi que la biodiversité et les ressources naturelles.
 
-</br>
+<br />
 
 ## Votre Univers artistique
-</br>
+<br />
 <b><i>Quelle est la pièce emblématique de MEUNE ?</b></i>
 
 Toutes mes créations incarnent, à part entière, l’univers de MEUNE. Néanmoins, LONKO, notre pantalon taille haute, est notre pièce emblème. Il exprime sa personnalité en alliant caractère et élégance a l’univers utilitaire de MEUNE. J’aime son côté flatteur, versatile et durable.
@@ -127,7 +127,7 @@ Ce pantalon incarne ainsi la rencontre entre l’héritage traditionnel des comm
 
 Actuellement proposé en deux versions différentes, avec ceinture en laine tissée couleur Petrified Oak ou Kombu Green, ce pantalon pourra être associé à la surchemise KALH pour un look iconique.
 
-</br></br>
+<br /><br />
 <b><i>MEUNE se singularise par sa palette brune et sable. Au-delà des couleurs, quelles sont les étoffes que tu affectionnes plus particulièrement ? (laine, lin, soie ?)</b></i>
 
 Une question très difficile pour moi ! Nous utilisons principalement des étoffes naturelles de haute qualité, telles que la laine, le lin, la soie et le coton.
@@ -139,14 +139,14 @@ Nous utilisons aussi du coton comme pour notre robe-trench MAWE, et des mélange
 
 En résumé, nous privilégions les étoffes naturelles et durables, qui offrent un confort particulier.
 
-</br></br>
+<br /><br />
 <b><i>Où est fabriquée la collection MEUNE ?</b></i>
 
 Le design, le sourcing et la confection se fait en France, à Paris. Les décors artisanaux sont faits à la main par des femmes Mapuches en Argentine.
 
 Nous récupérons des stocks morts en France. Les lieux de fabrication de ces étoffes diffèrent, nous avons des stocks morts qui proviennent majoritairement d’Italie, mais nous avons également des tissus d’origine anglais ou encore japonais
 
-</br></br>
+<br /><br />
 <b><i>Donc je comprends que vous faites ajouter certaines pièces par exemple sur un pantalon une ceinture brodée à la main selon une méthode de tissage spécifique traditionnelle argentine ?</b></i>
 
 Oui, c’est exact. MEUNE collabore avec des artisans et des communautés autochtones en Argentine pour ajouter des éléments artisanaux à la plupart de nos pièces. Cela permet de valoriser et de préserver cette technique artisanale ancestrale, tout en créant des pièces uniques et authentiques pour nos collections.
@@ -161,12 +161,12 @@ La technique de tissage mapuche est transmise de génération en génération, e
 
 Le métier à tisser mapuche est un symbole important de la culture Mapuche et de son patrimoine artisanal, il est considéré comme un objet sacré qui est honoré et respecté. Las tisserandes Mapuches continuent de produire des pièces magnifiques avec cette technique traditionnelle.
 
-</br></br>
+<br /><br />
 <b><i>Ton business modèle.</b></i>
 
 MEUNE est une marque du Nouveau Luxe à double titre. Déjà, comme nous venons de le voir, grâce à la passion de la fondatrice pour le savoir-faire de artisans locaux. En pièce unique, upcyclée ou en série limitée, leur singularité repose sur la valorisation des savoir-faire traditionnels d’Amérique du Sud et de la fabrication française.
 
-</br></br>
+<br /><br />
 <b><i>Je comprends que l’Upcycling de tissus des maisons du luxe est une exigence. Peux-tu nous en dire davantage ?</b></i>
 
 En effet, chez MEUNE, l’upcycling de tissus provenant de maisons du luxe est une pratique essentielle. L’upcycling consiste à transformer des matériaux déjà existants en de nouveaux produits, souvent de meilleure qualité ou de valeur supérieure.
@@ -179,7 +179,7 @@ Cette pratique nous permet de réduire les déchets textiles et de promouvoir la
 
 Même si cette pratique souvent impose beaucoup de challenges et contraintes au niveau artistique et structurel, nous sommes fières de tout faire pour contribuer à la promotion d’une économie circulaire et d’une mode plus responsable et plus solidaire.
 
-</br></br>
+<br /><br />
 <b><i>Quel est ton modèle d’entreprise ?
 Est-ce difficile de travailler à la commande » en termes de distribution et de développement de marque ?</b></i>
 
@@ -212,7 +212,7 @@ Lorsqu’une marque est nouvelle, il peut être difficile d’attirer l’attent
 Nous travaillons avec un atelier parisien responsable qui prône nos mêmes valeurs en termes d’engagement éthique et environnemental donc l’idée d’une production raisonnée et sur demande ne pose aucun problème.
 
 
-</br></br>
+<br /><br />
 <b><i>Es-tu en relation avec LA CASERNE ? </b></i>
 
 Nous participons régulièrement à des meetups et d’autres événements sur la mode responsable organisés à la Caserne. 
@@ -221,7 +221,7 @@ Je me rends plusieurs fois par mois pour le sourcing des tissus également, car 
 
 Cependant, il me semble que les opportunités d’incubation à La Caserne pour les jeunes marques responsables restent très limitées et c’est bien dommage parce que le principe et l’initiative est très intéressant.
 
-</br></br>
+<br /><br />
 <b><i>J’aimerais évoquer ici le sujet de la pérennité ?Quelle est ta vision pour MEUNE ? Quels sont tes prochains projets ? Comment vois-tu MEUNE d’ici 3 ans ?</b></i>
 
 En tant que créatrice et designer de MEUNE, ma vision pour la marque est de continuer à mettre en avant les patrimoines vivants, les traditions et l’artisanat d’Amérique du Sud tout en proposant des pièces élégantes et sophistiquées qui ont du caractère. Je souhaite que MEUNE soit une marque reconnue pour sa qualité, son engagement en faveur de la durabilité et de la préservation de la culture ancestrale andine.
@@ -238,7 +238,7 @@ Dans trois ans, je vois MEUNE comme une marque bien établie et reconnue pour sa
 
 Nous souhaitons sensibiliser les consommateurs aux problèmes environnementaux et sociaux associés à cette industrie, tout en valorisant les marques qui mettent en place des pratiques éthiques et durables. Dans les années à venir, nous espérons voir un changement positif dans l’industrie de la mode, avec une prise de conscience accrue et une action concrète pour un avenir plus responsable.
 
- </br></br>
+ <br /><br />
 <b><i>Quel message souhaiterais-tu faire passer aux entrepreneurs ?</b></i>
 
 Je voudrais surtout m’adresser aux entrepreneuses. 
@@ -253,10 +253,9 @@ Ensemble, nous pouvons façonner un avenir plus juste, plus durable et plus pros
 
 Nous avons besoin de vous et de votre force.
 
-</br></br>
+<br /><br />
 <div style="text-align: center;">_________________________________________</div>
-</br></br>
-</div>
+<br /><br />
 
 Pour conclure …
 

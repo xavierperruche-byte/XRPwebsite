@@ -27,7 +27,7 @@ carouselImages:
 ## HEDONISME MANIFESTO
 
 <div style="text-align: center;"><b><i>Pour un hédonisme engagé</i></b></div>
-</br>
+<br />
 
 <i>
 BEYOND MEN’S CARE marque le grand retour de l’hédonisme.
@@ -50,7 +50,7 @@ un avenir plus durable et écologique, pour toutes et tous et les générations 
 
 
 <div style="text-align: center;"><i>Nathalie Gritti, BEYOND MEN’S CARE, Fondatrice</i></div>
-</br></br>
+<br /><br />
 
 Au-delà du concept philosophique de l’hédonisme, Nathalie Gritti a souhaité développer des produits cosmétiques sophistiqués et biologiques, aux ingrédients les plus purs qu’ils soient qui, déjà, correspondraient au mieux aux caractéristiques de votre peau, Messieurs.
 
@@ -62,23 +62,23 @@ En conséquence, les hommes sont en moyenne plus susceptibles de développer de 
 
 Partant de ce constat, BEYOND MEN’S CARE a développé une gamme de six produits 100% naturel. Ce sont des produits Cosmos Organic, certifiés par ECOCERT, un standard international qui permet la commercialisation de produits naturels biologiques. Cette certification signifie ainsi que les ingrédients ne sont pas que naturels mais surtout biologiques, selon un cahier des charges rigoureux et que toute la chaine de valeur a été auditée (sourcing, extraction, production). Des tests d’innocuité concluant nous permettent d’affirmer que cette société suisse est l’une des premières sociétés européennes à développer une gamme cosmétique pour Hommes bioéthique ultra sophistiquée et innovante. 
 
-</br>
+<br />
 <div style="text-align: center;"><b>Le Respect de la Biodiversité et des Communautés autochtones dans un environnement scientifique absolument passionnant !</b></div>
-</br>
+<br />
 BEYOND MEN’S CARE n’a pas souhaité se contenter du label Cosmos Organic. La fondatrice Nathalie Gritti a aussi souhaité s’engager en signant le PROTOCOLE DE NAGOYA, qui garantit le respect des savoirs empiriques et le respect des communautés locales, qu’elles soient en Amérique du Sud, en Asie ou en Afrique (en fonction des ingrédients soumis à l’instar du copaïba d’Amérique du Sud ou du sang du dragon dont la résine est réputée pour ses propriétés médicinales car il permet de lutter contre le stress oxydatif et les signes de l’âge). Le Protocole de Nagoya démontre qu’il est possible de démontrer de manière scientifique les savoirs empiriques. Il permet en outre de protéger les ressources génétiques, lutter contre la déforestation des forets et les connaissances traditionnelles des cultures autochtones et locales.
 
 BEYOND MEN’S CARE s’associe à des laboratoires suisses pour étudier les plantes extrêmophiles : il s’agit des plantes surprenantes qui vivent et se reproduisent dans des conditions extrêmes (de froid, de sécheresse, de pollution, de salinité). La société suisse souhaite comprendre leurs processus et stratégies de compensation afin de développer continuellement des baumes et des soins toujours plus pertinents et novateurs.
-</br></br>
-<div style="text-align: center;">Aujourd’hui nous sommes maitres de nos choix.</br>BEYOND MEN’S CARE est un acteur précurseur.</br>Made in Switzerland.
-</br></br>
+<br /><br />
+<div style="text-align: center;">Aujourd’hui nous sommes maitres de nos choix.<br />BEYOND MEN’S CARE est un acteur précurseur.<br />Made in Switzerland.
+<br /><br />
 </div>
 
 J’aimerai conclure sur une note plus personnelle et marketing. Après une courte enquête intergénérationnelle auprès d’hommes qui ne se connaissent pas, il en résulte que le packaging a été brillamment réussi. Le graphisme linéaire et savamment exécuté par Johann Terretaz répond parfaitement à l’imaginaire masculin : ce graphisme est rigoureux, concis. Il induit une routine de soins simplifiée quoiqu’ exigeante sur les résultats. Le graphisme est aussi une invitation au voyage, à l’ouverture en cette période où l’esprit de The Others occupe une place substantielle dans notre inconscient. Le packaging est raffiné, distingué.
-</br>
-<div style="text-align: center;">Bravo !</br>Maintenant, “Indulge Your Self”</br></br></div>
+<br />
+<div style="text-align: center;">Bravo !<br />Maintenant, “Indulge Your Self”<br /><br /></div>
 
 <div style="text-align: center;">_________________________________________
-</br></br></div>
+<br /><br /></div>
 <div style="text-align: center;"><i>Le Baume Après-Rasage Apaisant 01 BEYOND MEN’S CARE sera prochainement disponible sur La GALERIE.</i></div>
 
 www.beyondmenscare.ch

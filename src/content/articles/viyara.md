@@ -31,7 +31,7 @@ carouselImages:
 
 # Alexandrina Spasov, fondatrice de VIYARA ATELIER.
 
-</br>
+<br />
 <b><i>Chère Alexandrina, je suis très heureuse de présenter VIYARA ATELIER dans Le Magazine.
 Viyara est une jeune entreprise parisienne créée il y a à peine une année. Les collections sont très féminines, mystérieuses, spirituelles. Alexandrina Spasov s’inspire des matières brutes et naturelles pour créer un univers fluide, minimaliste et de danse.
 Alexandrina, pourriez vous nous parler de l’origine de Viyara Atelier ? Déjà, que signifie Viyara ?</i></b>
@@ -50,7 +50,7 @@ Créer et faire partager cet univers spirituel et minimaliste à travers son ide
 
 Je souhaite que nos clients partagent nos valeurs, nos convictions, nos messages – qu’elles se connectent à nous et qu’on les guide vers l’avant.
 
-</br>
+<br />
 <b><i>Pourriez-vous nous présenter la Collection 2023 ? Quelles sont vos sources d’inspiration ?</i></b>
 
 La collection VIYARA atelier 2023 sera composée de robes fluides et confortables qui s’alignent à la collection précédente mais proposera également des pièces plus minimalistes, élégantes et sexy avec l’utilisation de soie matte d’origine Italienne. Chaque robe sera ainsi pensée pour être portée du jour au soir.
@@ -67,7 +67,7 @@ Quelle est la palette de couleurs ?
 
  La palette de couleurs cette année est représentée par des tons naturels et neutres tel que champagne, sable, dark brown, rustic brown, cappuccino, bleu/gris.
 
-</br>
+<br />
 <b><i>Le Magazine aime parler de Beauté et de Philosophie. Quelle est votre définition de la beauté ? Pensez-vous que la beauté puisse etre spirituelle ? Qu’en dites vous ?</i></b>
 
 La beauté est partout. C’est elle qui permet de donner plaisir aux sens tant à l’extérieur qu’à l’intérieur de nous-même. Elle est unique.
@@ -80,14 +80,14 @@ La spiritualité est la compréhension de ce que nous sommes au fond de nous.
 
 De ce fait, je suis tout à fait d’accord de dire que la beauté peut-être spirituelle car finalement, la beauté est dans l’âme.
 
-</br>
+<br />
 <b><i>Diriez -vous que vous adhérez au panthéisme* ? Je suis personnellement très attachée à cette pensée.</i></b>
 
 La pensée panthéisme, qui prône l’unité de l’être est une philosophie qui me parle beaucoup. L’idée de la totalité et de l’unicité entre Dieu et l’univers est une vision à laquelle j’adhère complètement.
 
 Que nous croyions Dieu, en l’univers ou en quoi que ce soit d’autre, il est certain que le bien-être et la paix de l’esprit sont des facteurs extrêmement importants dans nos vies. Et c’est ce que nous recherchons tous au final.
 
-</br>
+<br />
 <b><i>La danse est très présente dans vos photographies. Avez-vous pratiqué cette activité que je considère relever davantage de l’art, de la création salvatrice que du sport ?</i></b>
 
 J’ai pratiqué la danse étant plus jeune et je continue encore à pratiquer cet « art » aujourd’hui, à ma manière. La danse et la musique ont la capacité de créer une déconnexion avec la réalité en quelques sortes, c’est ce qui me fait sentir vivante.
@@ -96,7 +96,7 @@ J’ai pratiqué la danse étant plus jeune et je continue encore à pratiquer c
 
 Elle nous incite à nous reconnecter avec nous même, à imaginer, rêver et ainsi – à créer.
 
-</br>
+<br />
 <b><i>L’entreprise est encore à ses prémices. Comment voyez-vous Viyara dans 5 ans ?</i></b>
 Mon objectif est de continuer à cultiver VIYARA Atelier sous toutes ses formes qu‘elles soient créatives ou techniques.
 
@@ -104,13 +104,13 @@ J’espère avoir déjà bien élargi la collection en proposant différents sty
 
 Dans 5 ans, j’imagine VIYARA atelier rester fidèle à son univers de marque, proposer et développer ses produits tout en restant alignée sur l’aspect éthique et durable et enfin, la création d’une véritable communauté au sein de la marque, qui est très important pour moi.
 
-</br>
+<br />
 <b><i>Une dernière question : quel est votre adresse favorite à Paris ? une recommandation ? un musée, une expo ?</i></b>
 J’adore visiter les musées, ils m’apaisent. Le musée des Arts Décoratifs est l’un de mes préférés, pour ses expositions toujours plus diversifiées et inspirantes.
 
 Le Loulou restaurant est juste à côté, il propose une cuisine Italienne délicieuse, le combo parfait – il met en avant le fait que la vie est un art.
 
-</br>
+<br />
 <b><i>Alexandrina, nous vous remercions.</i></b>
 
 

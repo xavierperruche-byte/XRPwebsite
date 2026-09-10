@@ -28,7 +28,7 @@ carouselImages:
 ---
 
 # The Art Of Gifting.
-</br>
+<br />
 
 «Gorgeous madness», «The lemons of Sicily» and «The awakening of spring».
 
@@ -41,14 +41,14 @@ Because the existing wrapping paper was too monotonous for Manuela, she started 
 The high-quality prints will make giving even better. It is a creative process. Then, let’s source it properly.
 
 «I wanted paper to look like a small work of art and to make giving and receiving presents even more fun and delicately elegant.»
-</br></br></br></br>
+<br /><br /><br /><br />
 <b>COOL COLLAGES</b>
 
 In her creations, she combines motifs from different style, from different worlds and culture. She is exploring various universes to share them with us. She may complete individual collages in a few days, others take months… A lot of patience and experimentations…
 
 “I love working on a subject and trying out different things until I think it’s perfect.”
 
-</br></br>
+<br /><br />
 
 <b>PÄCKLI POETRY</b>
 
@@ -56,22 +56,22 @@ The Spring Summer 2023 collection includes designs with names like «Gorgeous ma
 
 The designs of the Fall Winter 2023-24 collection and the special edition are already ready and available on her website.
 
-</br></br>
+<br /><br />
 <b>MORE THAN GIFT WRAP</b>
 
 The wrapping paper is printed in Europe on uncoated offset paper. The pleasant feel of the paper and the high-quality print are important to Manuela Menzi. Of course, the paper can also be used to line drawers or to enclose notebooks and books, or as an art print on the wall, as below.
 
 
-</br></br>
+<br /><br />
 <div style="text-align: center;">_________________________________________
-</br></br>
+<br /><br />
 
 https://manuelamenzi.com/
 
 Spring / Summer 23 collection</div>
 
 <div style="text-align: center;">_________________________________________
-</br></br>
+<br /><br />
 Credits (in order)
  
 Tabea Mathern @tabea.mathern

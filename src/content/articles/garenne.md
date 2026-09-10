@@ -63,7 +63,7 @@ Site accessible aux personnes
 
 
 <div style="text-align: center;">_________________________________________
-</br></br>
+<br /><br />
 
 site de l’hôtel : [ICI](https://garenne.net/)
 
@@ -73,5 +73,5 @@ Crédit Photographies :
 
 [@Ve___Studio](https://www.instagram.com/ve___studio/)
 
-Remerciements à toute l’équipe, et plus particulièrement à Cindy, Roméo et Uno 😉</br></br></div>
+Remerciements à toute l’équipe, et plus particulièrement à Cindy, Roméo et Uno 😉<br /><br /></div>
 

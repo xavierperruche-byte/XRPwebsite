@@ -21,7 +21,7 @@ carouselImages:
 
 # Le Plunge Red, monochrome et iconique....
 <b>... à glisser dans son vestiaire swimwear cet été.</b>
-</br></br></br>
+<br /><br /><br />
 
 Le maillot de bain est la pièce incontournable du vestiaire en été, un peu une IT pièce de l’été. Chaque année, on tergiverse sur le modèle à porter. Quel dilemme ! Et vous, êtes-vous plutôt  bikini ou une pièce ? 
 
@@ -51,9 +51,9 @@ Cette année, la marque privilégie la terre avec la couleur terracotta et le ro
 
 Réjane x
 
-</br></br>
+<br /><br />
 <div style="text-align: center;">_________________________________________
-</br></br></div>
+<br /><br /></div>
 Where to find?
 
 * DAD Plainpalais Genève
@@ -64,7 +64,7 @@ Where to find?
 * Modewerk Liestal
 * Online: kaioswim.com
 * On our shop https://shop.we-theagency.com/
-</br>
+<br />
 Text by Réjane Salaün, founder of wepopup
 
 For orders or more information about the brands, feel free to contact us. We would be delighted to assist you!

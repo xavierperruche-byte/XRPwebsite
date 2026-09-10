@@ -11,6 +11,8 @@ import { register } from 'swiper/element/bundle';
 if (typeof window === 'undefined') {
   register();
 }
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+
 ---
 
 <section class="full-width-carousel">
@@ -33,13 +35,12 @@ if (typeof window === 'undefined') {
   >
   <swiper-slide>
       <div class="slide-content carousel-slide-content" 
-            data-image="/images/AtelierNeuro.webp" 
-            data-title="Septembre 2026" 
-            data-description="Ateliers Neurodiversité"
-            data-details="Ateliers Neurodiversité : à venir, sur inscription uniquement.</br></br> <a href='https://shop.we-theagency.com/product/atelier-diversite-cognitive-entreprenariat-matin/' target='_blank' rel='noopener'><b><u>Séance du matin</b></u></a></br></br><a href='https://shop.we-theagency.com/product/atelier-diversite-cognitive-entreprenariat-apres-midi/' target='_blank' rel='noopener'><b><u>Séance de l'après-midi</b></u></a>">
-        <img src="/images/AtelierNeuro.webp" alt="Mon infini est bleu" loading="lazy" decoding="async" />
+        data-image="/images/AtelierNeuro.webp" 
+        data-title="Septembre 2026" 
+        data-description="Ateliers Neurodiversité"
+        data-details="Ateliers Neurodiversité : à venir, sur inscription uniquement.<br /><br /> <a href='https://shop.we-theagency.com/product/atelier-diversite-cognitive-entreprenariat-matin/' target='_blank' rel='noopener'><b><u>Séance du matin</b></u></a><br /><br /><a href='https://shop.we-theagency.com/product/atelier-diversite-cognitive-entreprenariat-apres-midi/' target='_blank' rel='noopener'><b><u>Séance de l'après-midi</b></u></a>">
+        <ResponsiveImage src="AtelierNeuro.webp" alt="Mon infini est bleu" />
 
-                </div>
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -63,9 +64,8 @@ if (typeof window === 'undefined') {
            data-title="Juillet 2026" 
            data-description="Mon infini est bleu"
            data-details="<a href='../mon-infini-est-bleu' target='_blank' rel='noopener'><b><u>Mon infini est bleu</b></u></a> : un récit incarné sur l'autisme au féminin. Une écriture élégante, fluide, parfois drôle.">
-        <img src="/images/MonInfiniEstBleu2.webp" alt="Mon infini est bleu" loading="lazy" decoding="async" />
+        <ResponsiveImage src="MonInfiniEstBleu2.webp" alt="Mon infini est bleu" />
 
-                </div>
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -89,9 +89,8 @@ if (typeof window === 'undefined') {
            data-title="Avril 2026" 
            data-description="Apporteur d'affaires"
            data-details="<a href='https://www.pioupiou-cosmetics.com/' target='_blank' rel='noopener'><b><u>Pioupiou Cosmetics</b></u></a>.">
-        <img src="/images/pioupiou5.webp" alt="Pioupiou" loading="lazy" decoding="async" />
+        <ResponsiveImage src="pioupiou5.webp" alt="Pioupiou" />
 
-                </div>
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -115,9 +114,8 @@ if (typeof window === 'undefined') {
            data-title="Mars 2026" 
            data-description="Offre Agent IA"
            data-details="<i>prochainement</i>.">
-        <img src="/images/conciergerie.webp" alt="IA agentique" loading="lazy" decoding="async" />
+        <ResponsiveImage src="conciergerie.webp" alt="IA agentique" />
 
-                </div>
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -141,9 +139,8 @@ if (typeof window === 'undefined') {
            data-title="Janvier 2026" 
            data-description="Nouvelle page d\'accueil site internet"
            data-details="<a href='https://www.clamaron-consulting.com/' target='_blank' rel='noopener'><b><u>www.clamaron-consulting.com</b></u></a>.">
-        <img src="/images/cconsulting.webp" alt="Clamaron Consulting" loading="lazy" decoding="async" />
+        <ResponsiveImage src="cconsulting.webp" alt="Clamaron Consulting" />
 
-                </div>
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -206,7 +203,7 @@ if (typeof window === 'undefined') {
            data-title="Octobre 2025" 
            data-description="Nom, Identité Visuelle et Site Internet artsquare.ch"
            data-details="<a href='https://www.artsquare.ch' target='_blank' rel='noopener'><b><u>artsquare.ch</b></u></a> est bien plus qu'une plateforme : c'est un espace vivant dédié à la scène artistique contemporaine suisse.">
-        <img src="/images/2025101.webp" alt="artsquare.ch" loading="lazy" decoding="async" />
+        <ResponsiveImage src="2025101.webp" alt="artsquare.ch" />
         
         <div class="timeline-marker">
           <div class="timeline-icon">
@@ -230,7 +227,7 @@ if (typeof window === 'undefined') {
            data-title="Septembre 2025" 
            data-description="Nouvelle Collaboration : N°OW'HERE Society"
            data-details="À Genève, ville de raffinement et de discrétion, un nouveau cercle privé redéfinit l'art de se réunir, d'imaginer, d'appartenir.">
-        <img src="/images/2025091.webp" alt="Sleep Atelier with Studiolfactif" loading="lazy" decoding="async" />
+        <ResponsiveImage src="2025091.webp" alt="Sleep Atelier with Studiolfactif" />
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -253,7 +250,7 @@ if (typeof window === 'undefined') {
            data-title="Septembre 2025" 
            data-description="Magazine Art et Science. Cultivons l'hybridité"
            data-details="Art et science. Cultivons l'hybridité.</p><p>Réjane Salaün.">
-        <img src="/images/2025092.webp" alt="Shilliger with Studiolfactif" loading="lazy" decoding="async" /> 
+        <ResponsiveImage src="2025092.webp" alt="Shilliger with Studiolfactif" /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -276,7 +273,7 @@ if (typeof window === 'undefined') {
            data-title="Juin 2025" 
            data-description="Nouvelle Collaboration : STUDIOLFACTIF X BUCHERER GENEVE"
            data-details="STUDIOLFACTIF X BUCHERER GENEVE</span></p><p>Sur invitation exclusivement.">
-        <img src="/images/2025061.webp" alt="Bucherer" loading="lazy" decoding="async" /> 
+        <ResponsiveImage src="2025061.webp" alt="Bucherer" /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -299,7 +296,7 @@ if (typeof window === 'undefined') {
            data-title="Mai 2025" 
            data-description="Nouvelle Collaboration : STUDIOLFACTIF X GARDEN CENTRE SCHILLIGER"
            data-details="STUDIOLFACTIF X GARDEN CENTRE SCHILLIGER</p><p>Ateliers olfactifs les 03 et 10 mai 2025.">
-        <img src="/images/2025041.webp" alt="fashion" loading="lazy" decoding="async" /> 
+        <ResponsiveImage src="2025041.webp" alt="fashion" /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -322,7 +319,7 @@ if (typeof window === 'undefined') {
            data-title="Avril 2025" 
            data-description="Cercle des Entrepreneurs de l'Urban Belt"
            data-details="ENTREPRENANTES ET HUMANISTES comme vous.</p><p>- Des rencontres stratégiques pour tisser des connexions à fort impact.</p><p>- Des ateliers animés par des Membres Expertes pour perfectionner vos compétences clés. </p><p>- Des évènements conférences inspirantes pour nourrir votre vision et votre ambition.</p><p><a href='https://cube.we-theagency.com'  target='_blank' rel='noopener'><b><u>cube.we-theagency.com</b></u></a></p>">
-        <img src="/images/2024121.webp" alt="Bucherer" loading="lazy" decoding="async" /> 
+        <ResponsiveImage src="2024121.webp" alt="Bucherer" /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -345,7 +342,7 @@ if (typeof window === 'undefined') {
            data-title="Décembre 2024" 
            data-description="L'Agence"
            data-details="Nous sommes des narrateurs visuels.">
-        <img src="/images/2024122.webp" alt="ArtSquare" loading="lazy" decoding="async" /> 
+        <ResponsiveImage src="2024122.webp" alt="ArtSquare" /> 
         <div class="timeline-marker">
           <div class="timeline-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">

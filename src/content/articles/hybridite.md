@@ -47,9 +47,9 @@ Aujourd’hui les scientifiques collaborent avec des artistes, les scientifiques
 
 En conclusion, la science ne serait-elle pas une approche innovante de l’art, peut-être la plus ambitieuse, la plus belle et la plus périlleuse ?
 
-</br></br>
+<br /><br />
 <div style="text-align: center;">_________________________________________
-</br></br>
+<br /><br />
 Crédit Photographies
 
 Eilena Braye

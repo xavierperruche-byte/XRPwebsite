@@ -45,12 +45,12 @@ Qui, parmi les proches de la baronne, aurait pu commettre ce vol ?
 
 Après « Un Amour d’ADN » que je vous avais recommandé en 2022, Abigaelle Lacombe-Didier signe son deuxième roman avec ce polar ésotérique, sensible et drôle.
 
- </br></br>
-</br></br>
+ <br /><br />
+<br /><br />
 <div style="text-align: center;">_________________________________________
 
 <b>« Les plus grandes aventures sont intérieures » Hergé.</b>
-</br></br>
+<br /><br />
 Format : Broché
 Nb de pages : 129 pages
 Poids : 190 g
@@ -66,5 +66,5 @@ https://www.fnac.com/a19616091/Abigaelle-Lacombe-Didier-Le-Diamant-Bleu
 https://www.amazon.fr/Diamant-Bleu-Abigaelle-Lacombe-Didier/dp/297017670X
 
 
-</br></br></div>
+<br /><br /></div>
 

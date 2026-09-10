@@ -133,10 +133,10 @@ Hilton est reconnu par EcoVadis depuis 2012 et a récemment reçu une médaille 
 – Hilton a été reconnu comme #1 Best Workplace Switzerland 2023 par Great Place to Work (catégorie medium 49 – 250 employés)
 – Également reconnu Swisstainable niveau 3 (Leading) par Swiss Tourism grâce aux certifications ISO9001 et ISO14001
 
-</br></br>
-<div style="text-align: center;">Merci.</br></br>
+<br /><br />
+<div style="text-align: center;">Merci.<br /><br />
 _________________________________________
-</br></br>
+<br /><br />
 
 [Instagram @hiltongeneva](https://www.instagram.com/hiltongeneva/)
 
@@ -144,10 +144,10 @@ Crédit Photographies : [Victor pour l’Agence](https://www.we-theagency.com/)
 
 </div>
 
-</br></br>
-<div style="text-align: center;">Merci.</br></br>
+<br /><br />
+<div style="text-align: center;">Merci.<br /><br />
 _________________________________________
-</br></br>
+<br /><br />
 
 Remerciements.
 

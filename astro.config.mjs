@@ -23,12 +23,12 @@ export default defineConfig({
 
   vite: {
     build: {
-      minify: 'esbuild',
       cssMinify: true,
     },
     optimizeDeps: {
       include: ['react', 'react-dom', 'swiper'],
+      // Empêche les plugins d'injecter des options esbuild dépréciées
+      esbuildOptions: undefined,
     }
   }
 });
-

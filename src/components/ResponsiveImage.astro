@@ -1,0 +1,28 @@
+---
+import { getManifest } from '../lib/image-manifest';
+
+const { src, alt = '', class: className = '', sizes, loading = 'lazy', decoding = 'async', width, height } = Astro.props;
+
+const manifest = await getManifest();
+const key = src?.startsWith('/images/') ? src.replace(/^\/images\//, '') : src?.startsWith('images/') ? src.replace(/^images\//,'') : src;
+const entry = key ? manifest[key] : null;
+let srcAttr = src;
+let srcsetAttr = undefined;
+let sizesAttr = sizes || '(max-width: 600px) 480px, (max-width: 1200px) 900px, 1200px';
+if (entry){
+  // pick the smallest generated as default src
+  srcAttr = entry.entries && entry.entries.length ? entry.entries[0].url : entry.original || src;
+  srcsetAttr = entry.srcset;
+}
+---
+
+<img
+  src={srcAttr}
+  {...(srcsetAttr ? { srcset: srcsetAttr, sizes: sizesAttr } : {})}
+  alt={alt}
+  class={className}
+  loading={loading}
+  decoding={decoding}
+  width={width}
+  height={height}
+/> 

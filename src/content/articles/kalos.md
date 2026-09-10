@@ -30,7 +30,7 @@ carouselImages:
 
 # La beauté.
 
-</br></br>
+<br /><br />
 Qu’est-ce qui fait que ce qui est beau est beau ?
  
  
@@ -62,11 +62,11 @@ Elle est pour moi la finalité d’un accomplissement que ce soit dans la confia
  
  
 
-</br></br>
+<br /><br />
 
 
 <div style="text-align: center;"><b>Merci Fabiola.</b>
-</br></br>
+<br /><br />
 Photographies : Adrian Gramund.
 </div>
 

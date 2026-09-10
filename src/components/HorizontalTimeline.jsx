@@ -148,7 +148,7 @@ const hasDescription = block && block.description
             <div 
               className="description-content" // Utilisez une div pour un meilleur contrôle du style
               dangerouslySetInnerHTML={{ __html: block.description }} 
-            />
+            ></div>
 
               {/* Le bouton pour fermer pourrait être utile */}
               <button className="close-btn" onClick={(e) => { e.stopPropagation(); handleBlockClick(null); }}>

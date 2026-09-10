@@ -39,7 +39,7 @@ Comment les ignorer ?
 
 Nathalie souriante s’avance vers moi « Je vous attendais, Réjane, laissez-moi vous conter l’histoire de Thalie Paris… ».
 
-</br>
+<br />
 
 <b>Paris, mars 2020, 1er confinement.</b>
 
@@ -49,14 +49,14 @@ L’esthétique de la marque s’inspire de l’art moderne des années 30, de P
 
 Aparté : Je recommande vivement la visite de la Villa Noailles (Le Clos Saint Bernard) et de ses jolis jardins terrassés à Hyères, pour celles et ceux qui ne connaissent pas encore.
 
-</br></br>
-<div style="text-align: center;"><b>Thalie, une muse par qui la nature refleurit, et une petite fille aimée et aimante.</b> </br>
+<br /><br />
+<div style="text-align: center;"><b>Thalie, une muse par qui la nature refleurit, et une petite fille aimée et aimante.</b> <br />
 <i>En grec ancien, Thalie(Thaleia) signifie la Florissante. Celle qui préside aux grandes fêtes ! Thalie est aussi un surnom attachant, diminutif de Nathalie que son père lui donnait…
-</br>
+<br />
 Thalie Paris, c’est aussi aujourd’hui des sacs à main qui subliment la femme, des sacs à main qui épousent le style de vie de celle qui les porte, de celle qui les accompagne dans une vie d’audace, d’expériences personnelles et professionnelles, de voyage, et de respect.
-</i></br>
+</i><br />
 </div>
-</br></br>
+<br /><br />
 
 Respect de soi-même, de notre peau, de notre esprit, respect de notre environnement grâce à l’usage de matériaux nobles, sensuels et durables, de végétal, de l’eau et de la terre, respect de l’autre, de l’artisan, du savoir-faire. Thalie a été conçue comme une marque fortement orientée vers la durabilité dans toutes ses phases. Du concept à la distribution, <b>Thalie est une marque pionnière dans la maroquinerie de luxe durable</b> et un nouvel acteur clé aux côtés d’autres marques de luxe françaises.
 
@@ -64,17 +64,17 @@ La collection Sushi de Thalie propose des sacs produits à partir du recyclage i
 
 Autre matériau innovant comme alternative au cuir, le cactus. Il s’agit d’un matériau approuvé PeTA qui consomme peu d’eau et qui est durable.
 
-</br></br>
+<br /><br />
 <div style="text-align: center;"><b>Comme il est bon d’aborder ce printemps avec légèreté et beauté.</b>
-</br>
+<br />
 <i>Une beauté simple et durable, et toujours innovante, et esthète. Merci Nathalie Dionne pour ce rêve, devenu une réalité.
-</br>
+<br />
 Thalie Paris est à l’image de sa muse, fleurie, gaie et audacieuse.</i>
 </div>
 
-</br>
+<br />
 <div style="text-align: center;">_________________________________________
-</br></br>
+<br /><br />
 Thalie Paris.
 
 Le sac Margot ici en noir est disponible sur [La Galerie](https://shop.we-theagency.com/).

@@ -49,25 +49,25 @@ L’Hôtel des Horlogers rend hommage aux paysages et produits régionaux, grâc
 
 Aujourd’hui nous avons la chance d’avoir une belle conversation avec André Cheminade, le Directeur Général de l’Hôtel des Horlogers. André Cheminade est un passionné, il représente avec élégance, audace et humour cet écrin de luxe et d’exception.
 
-</br></br>
+<br /><br />
 <b><i>André, pouvez -nous nous décrire la genèse du projet de l’Hôtel des Horlogers ?</b></i>
 
 C’est en 1857 que le premier hotel est construit et commence à accueillir les passionnés de l’horlogerie. Les années passent et les propriétaires aussi. En 1984, l’hôtel est entièrement reconstruit et ce n’est qu’en 2003 qu’Audemars Piguet achète le bâtiment et le renomme l’Hôtel des Horlogers. Aujourd’hui, l’hôtel qui héberge toutes les marques horlogères et qui reçoit des visiteurs du monde entier sert d’écrin au passionnées de la gastronomie, de la nature, du design aussi bien qu’aux amoureux de la haute horlogerie.
 
-</br></br>
+<br /><br />
 <b><i>Certifié Minergie ECO®, ce Boutique Hôtel 4 étoiles supérieur a été pensé pour réduire au maximum son empreinte sur l’environnement et intégrer le principe d’écoresponsabilité, aussi bien lors de la construction du bâtiment que dans son fonctionnement quotidien. Nous aimerions développer ce sujet avec vous.</b></i>
 
 Commençons déjà par le bâtiment. Je crois que les propriétaires ont à cœur de mettre à l’honneur les ressources locales, en l’occurrence ici le bois – nous sommes face à la Foret du Risoud – et la pierre, propre à la Vallée de l’horlogerie et le béton, minimaliste et précis. L’Hôtel des Horlogers a un profil unique du fait qu’il aide au bon développement de la destination dès sa conception. Construit par des artisans locaux, il a été conçu pour que la qualité de l’air que l’on respire à son intérieur soit libre de solvants, tout en mettant en avant l’utilisation de la lumière du jour pour remplir les chambres est les espaces publiques. Dans le quotidien, le fait de travailler avec les brasseurs de bière locaux, de sourcer l’eau dans la rivière du Brassus, et d’offrir la majorité des vins et spiritueux de provenance Suisse permet à l’Hôtel des Horlogers de réduire des tonnes de transport de bouteilles en verre qui chaque année doivent traverser les cols pour arriver dans la vallée. Nous accueillons nos hôtes avec des infusions de plantes et fleurs que la Famille Grünenfelder cueille chaque saison dans la Vallée de Joux. De nos fromagers au pêcheur, nous partageons la passion des producteurs locaux avec tous ceux qui nous visitent. Et ceci nous aide à faire des dons et des collaborations régulières avec le Parc Naturel du Jura Vaudois pour le bon entretien de la nature qui nous entoure. A l’intérieur de l’hôtel on trouve le travail des artistes locaux dans les chambres ainsi que dans les salles de réunion et conférences. Les activités proposées pour les sorties d’entreprises ou entre amis, se déroulent aussi bien dans la nature que dans les espaces horlogers avec l’accompagnement des guides locaux tout le long de l’année.
 
 
-</br></br>
+<br /><br />
 <b><i>
 Qu’en est -il de la stricte protection des sols ?</b></i>
 
 Les sols de l’hôtel nous rappellent une randonnée dans la Foret du Risoud. Leur couleur gris clair ainsi que leurs textures nous rappellent d’où viennent les murs de pierre sèche qui séparent les champs dans la Vallée. Dans les couloirs, nous avons choisi une moquette qui a été installée avec une colle libre de solvants, un de nos défis majeurs était de bien trouver cette « colle bio ».
 
  
-</br></br>
+<br /><br />
 <b><i>
 Et maintenant évoquons la toiture, recouverte de 126 panneaux photovoltaïques.</b></i>
 
@@ -76,7 +76,7 @@ Effectivement, nous avons atteint la catégorie A+ en niveau énergétique grâc
 Les entreprises et groupes d’amis relèvent souvent le défi de prendre les raquettes de neige et partir dans une des cabanes qui se trouvent dans la forêt pour y faire une fondue avec le gruyère local. Cette connexion avec la nature, le fait de prendre du temps et de marcher dans la neige est une expérience que nous conseillons sincèrement. Un de nos soins avec les cosmétiques d’Alpeor, maison Suisse qui -depuis 1950- travaille avec les produits des Alpes (et de la Vallée de Joux), est la meilleure manière de consolider ce lien avec tout ce qui entoure l’Hôtel des Horlogers.
 
 
-</br></br>
+<br /><br />
 <b><i>
 Mettant la gastronomie à l’honneur, l’Hôtel des Horlogers se dote de trois lieux de restauration aux ambiances et aux cartes différentes, mais tous placés sous la houlette du chef français aux trois étoiles Michelin, Emmanuel Renaut. Partons à la découverte des savoirs faire locaux avec vous André !</b></i>
 
@@ -86,13 +86,13 @@ Le Bar des Horlogers, est le lieu pour le partage. Des plats locaux des cafés g
 
 C’est à la Table des Horlogers que nous allons plus loin dans le parcours de la Vallée de Joux. Les échanges francs entre le Chef Renaut et les éleveurs, fromagers, distilleurs de la région nous permettent de parcourir les champs, les lacs, la foret et les rivières dans les mets et boissons proposés.
 
-</br></br>
+<br /><br />
 <b><i>
 L’hôtel comptabilise 50 chambres de catégories différentes allant de la Valley Guest Room à la Signature Suite. Dans chacune des chambres, l’hôtel a  opté pour des sacs en toile de jute, des peignes en bois, des chaussons 100% biodégradables et même des crayons contenant des graines de thym à la place des stylos habituels. Pourriez vous également nous illustrer par un exemple ou deux comment l’hôtel intègre l’éco responsabilité dans son fonctionnement quotidien, notamment dans la gestion des chambres et des salles de bain.</b></i>
 
 L’ensemble de l’équipe aide à atteindre des objectifs plus ambitieux au niveau de notre RSE. Le système en place au niveau des lits, qui permet à notre équipe des chambres de ne pas se faire mal au dos en bougeant les matelas, ainsi que les transports des outils sur roulettes pour réduire leur poids, sont que deux exemples d’à quel point nous tenons à que nos équipes puissent travailler en sécurité et sans risques de blessure.  
 
-</br></br>
+<br /><br />
 <b><i>
 Pour conclure, à titre personnel, André, que représente pour vous l’hôtel des horlogers ? je vous ai senti très attaché à cet hôtel lors de ma toute première visite. Votre verve est inaltérable et vous êtes insatiable en anecdotes lorsque vous en parlez. Pouvez-vous nous en dire davantage ?</b></i>
 
@@ -100,7 +100,7 @@ Ayant grandi en Patagonie, au cœur des Andes, je voyais souvent l’impact nég
 
 C’était de la main des horlogers que j’allais apprendre ma meilleure leçon en hôtellerie : Prenons le temps… pour nous… et pour les choses qui nous sont importantes.
 
-</br></br>
+<br /><br />
 <b><i>
 N.B.
 
@@ -109,10 +109,10 @@ Pour garantir une mobilité confortable à ses visiteurs, l’Hôtel dispose de 
 Merci André.</b></i>
  
 
-</br></br>
-<div style="text-align: center;">Merci.</br></br>
+<br /><br />
+<div style="text-align: center;">Merci.<br /><br />
 _________________________________________
-</br></br>
+<br /><br />
 
 site de l’hôtel : [ICI](https://www.hoteldeshorlogers.com/fr)
 

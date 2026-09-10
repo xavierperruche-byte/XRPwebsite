@@ -81,9 +81,9 @@ Vous l’avez compris, Monaco se réinvente sans cesse. La Principauté de Monac
 Un travail au quotidien et au long cours pour prendre les mesures efficaces en faveur du climat et atteindre les objectifs nécessaires.
 
 
-</br></br>
+<br /><br />
 <div style="text-align: center;">_________________________________________
-</br></br>
+<br /><br />
 VISIT MONACO
 
 Crédit Photographies : 

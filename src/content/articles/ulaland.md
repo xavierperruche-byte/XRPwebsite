@@ -31,7 +31,7 @@ carouselImages:
 
 <div style="text-align: center;"><b>Un univers joyeux de chapeaux personnalisables aux couleurs chatoyantes !</b></div>
 
-</br>
+<br />
 
 J’ai rencontré Usua Landa il y a quelques semaines à son atelier. Usua Landa est la créatrice et fondatrice de Ulaland, une terre de cocagne où l’on aime la couleur, la joie et l’émerveillement.
 
@@ -57,9 +57,9 @@ Le saviez vous ? Il faut plus de 70 étapes dans la production d’un chapeau ? 
 Ulaland propose actuellement une collection de 9 modèles de chapeaux en feutre 100% laine et 3 modèles en paille haut de gamme, déclinés en plusieurs coloris, avec une large disponibilité de tailles adaptées pour les femmes et les hommes. L’idée est d’ajuster l’offre au mieux et toujours satisfaire le client.
 
 Les prix de vente avoisinent les 290-380CH, ce qui reste accessible, au vu de la grande qualité de ces produits, tout à fait exceptionnels. Les chapeaux sont livrés dans des boites en bois délicates.
-</br></br>
+<br /><br />
 <div style="text-align: center;">_________________________________________
-</br></br>
+<br /><br />
 Je ne puis clore ce chapitre sans vous présenter le fameux Panama d’Equateur Ulaland.
 
 Une magnifique idée de cadeaux de Noël, vous ne trouvez pas ?

@@ -11,7 +11,7 @@ tags: ["IA"]
 
 
 
-</br></br>
+<br /><br />
 <b>Édito</b>
 
 Premier numéro. Une conviction. Les agents IA ont quitté le stade de la promesse. Ils s'installent dans nos entreprises — silencieusement, rapidement, durablement. IA Dispatch de we-theagency.com est né pour que vous ne soyez jamais en retard d'un temps sur ce qui s'annonce. A l'agence, nous concevons des agents IA sur mesure. Des agents qui travaillent dans les vrais flux de l\'entreprise. Qui comprennent un objectif. Qui exécutent. Qui collaborent. 
