@@ -17,18 +17,7 @@ const outDir = path.join(imagesDir, 'optimized');
 
 // Default image list (from Lighthouse suggestions). You can add filenames or pass list via argv.
 const defaultImages = [
-  '2025091.webp',
-  '2024122.webp',
-  'pioupiou5.webp',
-  'MonInfiniEstBleu2.webp',
-  '2025061.webp',
-  'index3.webp',
-  '2024121.webp',
-  'AtelierNeuro.webp',
-  'conciergerie.webp',
-  '2025101.webp',
-  '2025041.webp',
-  'cconsulting.webp'
+  '2025092.webp'
 ];
 
 const widths = [480, 691, 900, 1200];

@@ -1101,6 +1101,15 @@ import BackToTop from '../components/BackToTop.astro';
   stroke: #ffffff; 
   transform: translate(2px, -2px);
 }
+
+@media (max-width: 1284px) {
+    .floating-subnav {
+      display: none; /* Masque la navigation secondaire sur mobile */
+    }
+    
+    /* ... suite de ton code ... */
+  }
+
 </style>
 
 <script>
