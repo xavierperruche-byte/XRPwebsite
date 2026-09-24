@@ -2,4 +2,4 @@ User-agent: *
 Disallow:
 
 # Sitemap
-Sitemap: https://www.we-theagency.com/sitemap.xml
+Sitemap: https://www.we-theagency.com/sitemap-index.xml
