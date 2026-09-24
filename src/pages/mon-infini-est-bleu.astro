@@ -1,46 +1,1423 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "Mon infini est bleu — Livre | We-TheAgency";
-const description = "Mon infini est bleu — récit et témoignage. Thèmes : autisme au féminin, asperger au féminin. Retrouvez ressources et articles sur notre page magazine.";
-const keywords = ["Mon infini est bleu","autisme au féminin","asperger au féminin","témoignage autisme","livre autisme"];
+const title = "Mon infini est bleu — Réjane Salaün | We-TheAgency";
+const description = "Mon infini est bleu, le récit de Réjane Salaün sur l'autisme au féminin, la diversité cognitive et les expériences du quotidien.";
+const canonical = "https://www.we-theagency.com/mon-infini-est-bleu";
+const coverImage = "https://www.we-theagency.com/images/MonInfiniEstBleu.webp";
+const siteUrl = "https://www.we-theagency.com";
+const lastUpdated = "2026-09-24";
+
+const organizationId = `${siteUrl}/#organization`;
+const websiteId = `${siteUrl}/#website`;
+const authorId = `${canonical}#author`;
+const bookId = `${canonical}#book`;
+
+const bookDetails = [
+  { label: "Format", value: "Broché" },
+  { label: "Pages", value: "140 pages" },
+  { label: "Dimensions", value: "12,7 × 0,84 × 20,32 cm" },
+  { label: "ISBN-13", value: "979-8185716458" },
+  { label: "Langue", value: "Français" },
+  { label: "Publication", value: "2 juillet 2026" },
+  { label: "Poids", value: "209 g" }
+];
+
+const testimonials = [
+  {
+    quote: "Je trouve que c'est difficile de trouver des témoignages de vie quotidienne de personnes autistes. Des scènes vraiment précises, et ton livre c'est exactement ça.",
+    author: "Instagram"
+  },
+  {
+    quote: "Un livre incontournable pour décrypter, analyser, comprendre et surtout s'adapter aux personnes neuroatypiques en général, et autistes en particulier. C'est écrit avec une grande sensibilité, beaucoup d'humanité, et des touches d'humour qui rendent le sujet léger, alors qu'il est profond et sociétal.",
+    author: "Arnaud M. · Amazon"
+  },
+  {
+    quote: "Un superbe livre que j'ai adoré lire, je l'ai même lu 2 fois. Une superbe personne vraiment, raconté avec humour, ce livre je l'ai trouvé très apaisant et très bien expliqué.",
+    author: "Agnès J. · Amazon"
+  },
+  {
+    quote: "Merci à l'autrice pour ce livre, qui m'a offert deux lectures en une. La première est une découverte : n'ayant jamais rien lu sur l'autisme, j'ai apprécié d'y entrer par le quotidien et des scènes vécues plutôt que par un traité médical. La seconde s'est faite malgré moi, en écho à mon métier d’expert dans l’accompagnement des transformations et situations sociales complexes.",
+    author: "Xavier T. · Amazon"
+  },
+  {
+    quote: "J'ai le coeur serré à lire votre livre car je me dis Ouf Quel soulagement de ne pas etre seule à ressentir cela.",
+    author: "Morgane · Instagram"
+  }
+];
+
+/*
+ * Les références de presse ci-dessous sont volontairement limitées aux mentions
+ * vérifiables. D'autres articles peuvent être ajoutés au fur et à mesure des parutions.
+ */
+const pressReferences = [
+  {
+    name: "Tribune de Genève",
+    logo: "tdg",
+    description: "Mention de Réjane Salaün et de Mon infini est bleu par la Tribune de Genève.",
+    url: "https://x.com/tdgch/status/2089315053170278870"
+  },
+  {
+    name: "24 heures",
+    logo: "24h",
+    description: "Autisme : les femmes de plus en plus nombreuses à être diagnostiquées.",
+    url: "https://www.24heures.ch/autisme-les-femmes-de-plus-en-plus-nombreuses-a-etre-diagnostiquees-589932415024"
+  },
+  {
+    name: "Femina",
+    logo: "femina",
+    description: "Article consacré au parcours de Réjane Salaün et à son témoignage autour de l'autisme au féminin.",
+    url: ""
+  }
+];
+
+const pressCitations = pressReferences
+  .filter((reference) => reference.url)
+  .map((reference) => ({
+    "@type": "CreativeWork",
+    "name": reference.description,
+    "url": reference.url,
+    "publisher": {
+      "@type": "Organization",
+      "name": reference.name
+    }
+  }));
+
+const bookJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "@id": `${canonical}#book`,
+  "name": "Mon infini est bleu",
+  "author": {
+    "@type": "Person",
+    "name": "Réjane Salaün"
+  },
+  "description": description,
+  "inLanguage": "fr-FR",
+  "genre": ["Essai", "Récit", "Témoignage"],
+  "keywords": [
+    "Mon infini est bleu",
+    "Réjane Salaün",
+    "autisme au féminin",
+    "diversité cognitive",
+    "neurodiversité",
+    "témoignage autisme",
+    "livre sur l'autisme"
+  ],
+  "about": [
+    { "@type": "Thing", "name": "Autisme au féminin" },
+    { "@type": "Thing", "name": "Diversité cognitive" },
+    { "@type": "Thing", "name": "Neurodiversité" }
+  ],
+  "image": coverImage,
+  "isbn": "979-8185716458",
+  "numberOfPages": 140,
+  "bookFormat": "https://schema.org/Paperback",
+  "datePublished": "2026-07-02",
+  "url": canonical,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonical
+  }
+};
+
+const pageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": canonical,
+  "url": canonical,
+  "name": title,
+  "description": description,
+  "inLanguage": "fr-FR",
+  "mainEntity": { "@id": `${canonical}#book` }
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "We-TheAgency",
+      "item": "https://www.we-theagency.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Magazine",
+      "item": "https://www.we-theagency.com/magazine"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Mon infini est bleu",
+      "item": canonical
+    }
+  ]
+};
 ---
-
 <Layout title={title} description={description} currentPage="/magazine">
+  <link rel="canonical" href={canonical} />
+  <link rel="alternate" hreflang="fr-FR" href={canonical} />
 
-  <!-- Redirect immediately to /magazine for users and bots -->
-  <meta http-equiv="refresh" content="0; url=/magazine" />
-  <link rel="canonical" href="/magazine">
-  <meta name="robots" content="index, follow">
-  <meta name="keywords" content={keywords.join(', ')}>
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="Réjane Salaün" />
 
-  <!-- Visible short summary (useful for LLMs and users before redirect) -->
-  <main class="container" style="padding:3rem 1rem; text-align:left;">
-    <h1>{title}</h1>
-    <p style="font-size:1.05rem; max-width:80ch;">{description}</p>
-    <p style="margin-top:1rem;">Vous serez redirigé·e vers la page <a href="/magazine">Magazine</a> pour en savoir plus et accéder aux ressources, articles et interviews autour du livre.</p>
-    <p style="margin-top:1rem; font-weight:600;">Mots‑clés optimisés : {keywords.join(', ')}</p>
-    <p style="margin-top:2rem; font-size:0.95rem;color:#666;">Si la redirection n'opère pas, <a href="/magazine">cliquez ici</a>.</p>
+  <!-- Open Graph -->
+  <meta property="og:type" content="book" />
+  <meta property="og:site_name" content="We-TheAgency" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={coverImage} />
+  <meta property="og:image:secure_url" content={coverImage} />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:width" content="900" />
+  <meta property="og:image:height" content="1200" />
+  <meta property="og:image:alt" content="Couverture du livre Mon infini est bleu de Réjane Salaün" />
+  <meta property="og:locale" content="fr_FR" />
+
+  <!-- Open Graph Book -->
+  <meta property="book:isbn" content="979-8185716458" />
+  <meta property="book:release_date" content="2026-07-02" />
+  <meta property="book:tag" content="autisme au féminin" />
+  <meta property="book:tag" content="neurodiversité" />
+  <meta property="book:tag" content="diversité cognitive" />
+
+  <!-- X / Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={coverImage} />
+  <meta name="twitter:image:alt" content="Couverture du livre Mon infini est bleu de Réjane Salaün" />
+
+  <main class="book-page">
+    <nav class="book-breadcrumb" aria-label="Fil d’Ariane">
+      <a href="/">We-TheAgency</a>
+      <span aria-hidden="true">/</span>
+      <a href="/magazine">Magazine</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Mon infini est bleu</span>
+    </nav>
+
+    <div class="book-page-layout">
+      <!-- Rail éditorial gauche : témoignages en mouvement -->
+      <aside class="testimonial-rail" aria-labelledby="testimonials-title">
+        <div class="testimonial-rail-inner">
+          <div class="testimonial-rail-heading">
+            <p class="rail-label">Regards de lecteurs</p>
+            <h2 id="testimonials-title">Ils ont lu <em>Mon infini est bleu</em></h2>
+          </div>
+
+          <div class="testimonial-viewport">
+            <div class="testimonial-track" id="testimonial-track">
+              <div class="testimonial-group">
+                {testimonials.map((testimonial) => (
+                  <figure class="rail-testimonial">
+                    <blockquote>{testimonial.quote}</blockquote>
+                    <figcaption>— {testimonial.author}</figcaption>
+                  </figure>
+                ))}
+              </div>
+
+              <!-- Copie nécessaire à la boucle visuelle sans rupture. -->
+              <div class="testimonial-group" aria-hidden="true">
+                {testimonials.map((testimonial) => (
+                  <figure class="rail-testimonial">
+                    <blockquote>{testimonial.quote}</blockquote>
+                    <figcaption>— {testimonial.author}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-rail-footer" aria-hidden="true">
+            <span></span>
+            <span>↓</span>
+            <span></span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Corps principal : 2/3 de la largeur sur desktop -->
+      <div class="book-main-column">
+        <section class="book-hero" aria-labelledby="book-title">
+          <div class="book-hero-inner">
+            <div class="book-cover-column">
+              <div class="living-cover" id="living-cover">
+                <div class="living-cover-shadow" aria-hidden="true"></div>
+                <div class="living-cover-card">
+                  <img
+                    src="/images/MonInfiniEstBleu.webp"
+                    alt="Couverture du livre Mon infini est bleu de Réjane Salaün"
+                    width="900"
+                    height="1200"
+                    loading="eager"
+                    fetchpriority="high"
+                  />
+                  <span class="living-cover-shine" aria-hidden="true"></span>
+                </div>
+              </div>
+              <p class="cover-caption">Mon infini est bleu · Réjane Salaün</p>
+            </div>
+
+            <div class="book-intro">
+              <p class="eyebrow">Livre · Essai · Témoignage</p>
+              <h1 id="book-title">Mon infini est bleu</h1>
+              <p class="book-author-line">Réjane Salaün</p>
+
+              <p class="book-pitch">
+                <strong>Mon infini est bleu</strong> est le premier essai de <strong>Réjane Salaün</strong>,
+                consacré à l'expérience de l'<strong>autisme au féminin</strong>, à la
+                <strong>neurodiversité</strong> et à la manière dont nos différences de perception
+                influencent notre rapport aux autres et au monde.
+
+                Le récit part de scènes du quotidien pour parler de perception, de différence,
+                de lien humain et de diversité cognitive.
+              </p>
+
+              <div class="book-actions" aria-label="Acheter le livre">
+                <a
+                  href="https://www.amazon.fr/Mon-infini-bleu-R%C3%A9jane-Sala%C3%BCn-ebook/dp/B0H49NMJW1/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="book-action book-action-primary"
+                >
+                  Kindle
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a
+                  href="https://www.amazon.fr/dp/B0H7Q92LKX/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="book-action"
+                >
+                  Broché
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a
+                  href="https://shop.we-theagency.com/product/moninfiniestbleu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="book-action"
+                >
+                  Acheter en CHF
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="page-divider" aria-hidden="true"></div>
+
+        <section class="book-section book-details-section" aria-labelledby="book-details-title">
+          <div class="section-number">01</div>
+          <div class="section-copy section-copy-wide">
+            <p class="section-label">Le livre</p>
+            <h2 id="book-details-title">Fiche bibliographique</h2>
+            <div class="book-details-grid">
+              {bookDetails.map((detail) => (
+                <div class="book-detail-item">
+                  <dt>{detail.label}</dt>
+                  <dd>{detail.value}</dd>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <div class="page-divider" aria-hidden="true"></div>
+
+        <section class="book-section author-section" aria-labelledby="author-title">
+          <div class="section-number">02</div>
+          <div class="section-copy">
+            <p class="section-label">L'autrice</p>
+            <h2 id="author-title">Réjane Salaün</h2>
+            <p>
+              Réjane Salaün accompagne les femmes entrepreneures suisses dans leur développement commercial et digital.
+              Fondatrice de We-TheAgency, elle développe depuis plusieurs années des projets à la croisée du digital,
+              des rencontres et des initiatives à impact.
+            </p>
+            <p>
+              Avec <em>Mon infini est bleu</em>, elle publie son premier essai et choisit une écriture ancrée dans les
+              situations vécues : des scènes du quotidien, des décalages parfois invisibles et une réflexion sur la
+              perception, le langage et la manière de trouver sa place.
+            </p>
+          </div>
+          <div class="author-aside">
+            <p>Perception</p>
+            <p>Différence</p>
+            <p>Neurodiversité</p>
+            <p>Autisme au féminin</p>
+          </div>
+        </section>
+
+        <div class="page-divider" aria-hidden="true"></div>
+
+        <section class="book-section press-section" aria-labelledby="press-title">
+          <div class="section-number">03</div>
+          <div class="section-copy section-copy-wide">
+            <p class="section-label">Presse</p>
+            <h2 id="press-title">Références de presse</h2>
+            <p class="section-intro">
+              Articles, interviews et publications consacrés au parcours de Réjane Salaün et à
+              <em>Mon infini est bleu</em>.
+            </p>
+
+        <div class="press-list">
+          {pressReferences.map((reference) => (
+            <article class="press-item">
+              <div class="press-brand">
+                {reference.logo === "tdg" && (
+                <svg width="60%" height="60%" viewBox="0 0 128 50" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" class="logo-img logo-light astro-4ivgp5cp" role="img" aria-label="Tribune de Genève">
+                    <g>
+                        <rect x="0" y="0" width="128" height="50" style="fill:none;"></rect>
+                        <rect x="0" y="0" width="128.525" height="49.924" style="fill:rgb(44,56,144);"></rect>
+                        <path d="M47.07,25.063C49.983,25.063 51.908,25.634 53.313,26.441L52.289,30.786C50.312,29.912 48.75,29.416 46.797,29.416C43.249,29.416 41.503,33.352 41.503,36.656C41.503,38.949 42.318,40.358 44.061,40.358C44.719,40.358 45.109,40.244 45.414,40.098L46.107,37.081L44.39,37.081L45.17,33.595L52.617,33.595L50.481,42.868C49.152,43.518 46.685,44.364 43.979,44.364C38.959,44.364 35.357,42.048 35.357,36.82C35.357,30.628 39.447,25.063 47.07,25.063ZM19.32,25.349C20.89,25.349 21.997,26.383 21.615,28.043L17.942,44.078L15.34,44.078C13.702,44.078 12.999,43.349 12.869,42.231C12.037,43.349 10.762,44.338 8.889,44.338C6.678,44.338 4.545,42.986 4.545,39.318C4.545,34.505 7.276,30.108 11.515,30.108C13.285,30.108 14.325,30.732 15.002,31.618L16.454,25.348L19.32,25.349ZM118.122,30.082C121.212,30.082 124.027,31.678 123.975,35.441C123.975,36.456 123.845,37.392 123.533,38.459L115.393,38.459C115.393,39.994 116.285,40.764 118.248,40.764C119.805,40.764 121.117,40.409 122.674,39.749L121.898,43.138C120.775,43.844 119.162,44.312 116.795,44.312C112.295,44.312 109.824,42.309 109.85,38.562C109.85,33.698 113.075,30.134 118.122,30.082M90.679,30.082C93.769,30.082 96.583,31.678 96.532,35.441C96.532,36.456 96.402,37.392 96.09,38.459L87.95,38.459C87.95,39.994 88.842,40.764 90.804,40.764C92.361,40.764 93.674,40.409 95.231,39.749L94.455,43.138C93.332,43.844 91.719,44.312 89.352,44.312C84.852,44.312 82.381,42.309 82.407,38.562C82.407,33.698 85.632,30.134 90.679,30.082M60.917,30.082C64.007,30.082 66.821,31.678 66.77,35.441C66.77,36.456 66.64,37.392 66.327,38.459L58.188,38.459C58.188,39.994 59.08,40.764 61.042,40.764C62.599,40.764 63.912,40.409 65.469,39.749L64.693,43.138C63.57,43.844 61.957,44.312 59.59,44.312C55.09,44.312 52.618,42.309 52.644,38.562C52.644,33.698 55.87,30.134 60.917,30.082M28.601,30.082C31.691,30.082 34.505,31.678 34.454,35.441C34.454,36.456 34.324,37.392 34.011,38.459L25.872,38.459C25.872,39.994 26.764,40.764 28.726,40.764C30.283,40.764 31.596,40.409 33.153,39.749L32.377,43.138C31.254,43.844 29.641,44.312 27.274,44.312C22.774,44.312 20.302,42.309 20.328,38.562C20.328,33.698 23.554,30.134 28.601,30.082M79.23,30.082C81.31,30.082 82.924,31.513 82.17,34.843L80.036,44.078L77.201,44.078C75.631,44.078 74.509,43.098 74.887,41.466L76.134,36.013C76.342,35.051 76.108,34.583 75.041,34.583C74.625,34.583 74.209,34.687 73.766,34.895L71.686,44.078L65.885,44.078L69.058,30.342L71.738,30.342C73.298,30.342 74.105,30.915 74.105,32.528C75.509,31.097 76.992,30.082 79.23,30.082M100.224,30.342C101.586,30.342 102.502,30.982 102.602,32.331L103.002,37.757L103.08,37.757L106.67,30.343L112.197,30.343L111.535,31.487L104.355,44.077L98.58,44.077L96.837,31.487L96.671,30.342L100.224,30.342ZM13.207,34.166C11.387,34.166 10.45,36.664 10.45,38.901C10.45,40.071 10.97,40.618 11.985,40.618C12.323,40.618 12.687,40.54 12.999,40.384L14.352,34.505C14.118,34.323 13.78,34.167 13.207,34.167M28.187,33.543C27.199,33.543 26.522,34.506 26.184,35.807L29.355,35.807C29.381,35.572 29.407,35.364 29.407,35.052C29.407,34.062 29.019,33.543 28.187,33.543M60.503,33.543C59.514,33.543 58.838,34.506 58.5,35.807L61.67,35.807C61.697,35.572 61.723,35.364 61.723,35.052C61.723,34.062 61.336,33.543 60.503,33.543M90.265,33.543C89.276,33.543 88.6,34.506 88.262,35.807L91.433,35.807C91.459,35.572 91.485,35.364 91.485,35.052C91.485,34.062 91.097,33.543 90.265,33.543M117.709,33.543C116.719,33.543 116.043,34.506 115.705,35.807L118.876,35.807C118.902,35.572 118.928,35.364 118.928,35.052C118.928,34.062 118.541,33.543 117.708,33.543M91.435,25.34L92.502,28.28L92.837,29.19L88.99,29.19L85.776,25.34L91.435,25.34ZM42.003,4.538C43.573,4.538 44.68,5.572 44.297,7.233L43.37,11.197C44.358,10.13 45.737,9.272 47.506,9.272C49.586,9.272 51.356,10.651 51.356,14.162C51.356,19.287 48.754,23.528 44.098,23.528C42.225,23.528 40.976,22.825 40.3,21.758C39.597,22.721 38.765,23.267 37.699,23.267L34.81,23.267L39.134,4.538L42.003,4.538ZM90.34,9.272C93.431,9.272 96.245,10.868 96.193,14.631C96.193,15.645 96.063,16.581 95.751,17.649L87.611,17.649C87.611,19.183 88.504,19.954 90.466,19.954C92.023,19.954 93.336,19.599 94.893,18.939L94.117,22.327C92.993,23.033 91.381,23.501 89.013,23.501C84.513,23.501 82.042,21.499 82.068,17.752C82.068,12.888 85.293,9.324 90.34,9.272M56.387,9.532C57.957,9.532 59.044,10.483 58.702,12.144L57.391,17.882C57.183,18.845 57.417,19.339 58.405,19.339C58.847,19.339 59.238,19.235 59.654,19.053L61.839,9.533L67.614,9.533L64.44,23.266L61.865,23.266C60.148,23.266 59.472,22.304 59.368,21.211C58.093,22.46 56.636,23.501 54.529,23.501C52.292,23.501 50.627,22.122 51.408,18.766L53.541,9.531L56.387,9.532ZM78.913,9.272C80.994,9.272 82.607,10.702 81.853,14.032L79.72,23.268L76.884,23.268C75.314,23.268 74.193,22.288 74.57,20.656L75.817,15.203C76.025,14.241 75.792,13.773 74.725,13.773C74.308,13.773 73.893,13.877 73.45,14.085L71.369,23.268L65.569,23.268L68.742,9.532L71.422,9.532C72.982,9.532 73.789,10.105 73.789,11.718C75.193,10.287 76.676,9.272 78.913,9.272M22.387,4.538L21.409,8.752L17.196,8.752L13.819,23.268L7.627,23.268L11.004,8.752L6.764,8.752L7.726,4.538L22.387,4.538ZM29.205,9.428C29.465,9.428 29.725,9.454 29.959,9.532L28.866,14.267C27.341,14.074 25.786,14.18 24.496,14.969L22.597,23.268L16.796,23.268L19.87,9.987L22.18,9.987C23.911,9.987 25.034,10.81 24.82,12.773C25.952,10.785 27.539,9.428 29.203,9.428M33.937,9.532C35.507,9.532 36.593,10.483 36.25,12.143L33.675,23.268L27.874,23.268L31.047,9.532L33.937,9.532ZM43.862,13.434C43.497,13.434 43.133,13.564 42.769,13.746L41.42,19.6C41.68,19.782 41.992,19.963 42.642,19.963C44.437,19.963 45.4,17.804 45.4,15.151C45.4,13.851 44.827,13.434 43.865,13.434M89.928,12.732C88.939,12.732 88.263,13.695 87.925,14.995L91.095,14.995C91.121,14.761 91.148,14.553 91.148,14.241C91.148,13.251 90.76,12.731 89.928,12.731M34.614,3.974C36.227,3.974 37.294,4.832 37.294,6.185C37.294,7.798 35.994,8.839 34.224,8.839C32.637,8.839 31.57,8.006 31.57,6.679C31.57,5.041 32.82,3.974 34.614,3.974" style="fill:white;"></path>
+                    </g>
+                </svg>
+                )}
+
+                {reference.logo === "24h" && (
+                  <svg width="60%" height="60%" viewBox="0 0 50 50" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" class="logo-img logo-light astro-4ivgp5cp" role="img" aria-label="24 heures">
+                      <g>
+                          <g>
+                              <rect x="0" y="0" width="30" height="30" style="fill:none;"></rect>
+                              <path d="M10.435,11.74C6.914,15.219 4.757,19.893 4.757,25.035C4.757,30.142 6.885,34.788 10.365,38.261L0,38.261L0,11.739L10.435,11.74ZM50,11.74L50,38.26L39.635,38.26C43.115,34.788 45.243,30.142 45.243,25.035C45.243,19.893 43.086,15.219 39.565,11.739L50,11.74Z" style="fill:rgb(217,0,11);"></path>
+                              <path d="M37.363,14.783L37.363,27.663L40,27.663L39.864,29.206L37.363,29.206L37.363,31.696C37.363,33.691 37.622,33.809 38.725,34.044L39.639,34.236L39.639,35.217L29.606,35.217L29.606,34.237L30.464,34.044C31.567,33.78 31.826,33.691 31.826,31.696L31.826,29.206L23.043,29.206L23.043,28.216L32.985,14.783L37.363,14.783ZM17.605,14.783C19.025,14.783 20.242,14.956 21.254,15.275L21.295,15.288L21.328,15.298L21.361,15.31C23.647,16.066 25.009,17.659 25.009,20.233C25.009,24.76 17.573,29.193 15.182,30.74L25.217,30.74L24.802,35.217L10,35.217L10,33.967L10.065,33.824L15.327,28.78C15.477,28.636 16.012,28.114 16.147,27.964C18.065,25.987 19.162,23.751 19.339,21.442C19.382,20.918 19.395,20.407 19.367,19.923C19.277,18.426 18.95,17.223 17.872,16.651C17.215,16.303 16.42,16.124 15.59,16.389C15.179,16.52 14.88,16.729 14.784,17.016C14.664,17.376 14.778,17.67 15.049,18.037C15.339,18.431 15.848,18.827 15.943,19.529C15.965,19.698 15.967,19.875 15.948,20.059C15.82,21.367 14.528,22.031 13.171,22.031C11.32,22.031 10.354,20.871 10.354,19.314C10.354,17.329 12.9,14.802 17.554,14.783L17.605,14.783ZM31.825,19.063L25.478,27.663L31.826,27.663L31.825,19.063Z" style="fill:rgb(29,29,27);fill-rule:nonzero;"></path>
+                          </g>
+                      </g>
+                  </svg>
+                )}
+
+                {reference.logo === "femina" && (
+                 <svg width="60%" height="60%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="250" height="150" zoomAndPan="magnify" viewBox="0 0 187.5 112.499997" preserveAspectRatio="xMidYMid meet" version="1.0"><defs><filter x="0%" y="0%" width="100%" height="100%" id="ba48f7d13d"><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0" color-interpolation-filters="sRGB"/></filter><filter x="0%" y="0%" width="100%" height="100%" id="a96a5016be"><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0.2126 0.7152 0.0722 0 0" color-interpolation-filters="sRGB"/></filter><clipPath id="ee3867d2b9"><path d="M 0.164062 0 L 186.835938 0 L 186.835938 112.003906 L 0.164062 112.003906 Z M 0.164062 0 " clip-rule="nonzero"/></clipPath><clipPath id="25c3a425a7"><path d="M 62.40625 0 L 124 0 L 124 112 L 62.40625 112 Z M 62.40625 0 " clip-rule="nonzero"/></clipPath><mask id="d36b9c62ff"><g filter="url(#ba48f7d13d)"><g filter="url(#a96a5016be)" transform="matrix(0.195503, 0, 0, 0.196495, 62.404667, 0)"><image x="0" y="0" width="317" xlink:href="data:image/png;base64,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" height="570" preserveAspectRatio="xMidYMid meet"/></g></g></mask></defs><g clip-path="url(#ee3867d2b9)"></g><g clip-path="url(#25c3a425a7)"><g mask="url(#d36b9c62ff)"><g transform="matrix(0.195503, 0, 0, 0.196495, 62.404667, 0)"><image x="0" y="0" width="317" xlink:href="data:image/png;base64,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" height="570" preserveAspectRatio="xMidYMid meet"/></g></g></g></svg>
+                )}
+              </div>
+
+              <div class="press-content">
+                <div class="press-publication">{reference.name}</div>
+                <p>{reference.description}</p>
+
+                {reference.url ? (
+                  <a
+                    href={reference.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="press-link"
+                  >
+                    Lire l'article <span aria-hidden="true">↗</span>
+                  </a>
+                ) : null}
+              </div>
+            </article>
+          ))}
+        </div>
+          </div>
+        </section>
+
+        <section class="book-end" aria-label="Découvrir le livre">
+          <div class="book-end-inner">
+            <p class="section-label">Découvrir le livre</p>
+            <h2>Une autre manière de raconter l'autisme au féminin.</h2>
+          </div>
+        </section>
+      </div>
+    </div>
   </main>
 
-  <!-- JSON-LD optimisé pour moteurs et LLMs -->
-  <script type="application/ld+json">
-  {
+  <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "Book",
-    "name": "Mon infini est bleu",
-    "author": {
-      "@type": "Person",
-      "name": "Réjane Salaün"
-    },
-    "description": "Récit et témoignage centré sur l'expérience de l'autisme au féminin. Mots-clés : autisme au féminin, asperger au féminin.",
-    "inLanguage": "fr",
-    "keywords": ["autisme au féminin","asperger au féminin","Mon infini est bleu"],
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://www.we-theagency.com/magazine"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": organizationId,
+        "name": "We-TheAgency",
+        "url": siteUrl,
+        "founder": {
+          "@id": authorId
+        }
+      },
+
+      {
+        "@type": "WebSite",
+        "@id": websiteId,
+        "url": siteUrl,
+        "name": "We-TheAgency",
+        "inLanguage": "fr-FR",
+        "publisher": {
+          "@id": organizationId
+        }
+      },
+
+      {
+        "@type": "Person",
+        "@id": authorId,
+        "name": "Réjane Salaün",
+        "jobTitle": "Fondatrice de We-TheAgency",
+        "worksFor": {
+          "@id": organizationId
+        },
+        "description": "Réjane Salaün est la fondatrice de We-TheAgency et l'autrice de Mon infini est bleu."
+      },
+
+      {
+        "@type": "Book",
+        "@id": bookId,
+        "name": "Mon infini est bleu",
+        "author": {
+          "@id": authorId
+        },
+        "description": description,
+        "abstract": "Un récit qui part du quotidien pour parler de perception, de différence et de lien humain. Mon infini est bleu explore l'expérience de l'autisme au féminin et la manière dont la diversité cognitive transforme notre regard sur soi, sur les autres et sur les codes qui nous entourent.",
+        "inLanguage": "fr-FR",
+        "genre": [
+          "Essai",
+          "Récit",
+          "Témoignage"
+        ],
+        "keywords": [
+          "Mon infini est bleu",
+          "Réjane Salaün",
+          "autisme au féminin",
+          "autisme féminin",
+          "neurodiversité",
+          "diversité cognitive",
+          "témoignage autisme",
+          "livre sur l'autisme"
+        ],
+        "about": [
+          {
+            "@type": "Thing",
+            "name": "Autisme au féminin"
+          },
+          {
+            "@type": "Thing",
+            "name": "Neurodiversité"
+          },
+          {
+            "@type": "Thing",
+            "name": "Diversité cognitive"
+          },
+          {
+            "@type": "Thing",
+            "name": "Expériences du quotidien"
+          }
+        ],
+        "image": {
+          "@type": "ImageObject",
+          "url": coverImage,
+          "width": 900,
+          "height": 1200,
+          "caption": "Couverture de Mon infini est bleu de Réjane Salaün"
+        },
+        "isbn": "979-8185716458",
+        "numberOfPages": 140,
+        "bookFormat": "https://schema.org/Paperback",
+        "datePublished": "2026-07-02",
+        "url": canonical,
+        "citation": pressCitations,
+        "mainEntityOfPage": {
+          "@id": canonical
+        }
+      },
+
+      {
+        "@type": "WebPage",
+        "@id": canonical,
+        "url": canonical,
+        "name": title,
+        "headline": "Mon infini est bleu — Réjane Salaün",
+        "description": description,
+        "inLanguage": "fr-FR",
+        "dateModified": lastUpdated,
+        "author": {
+          "@id": authorId
+        },
+        "isPartOf": {
+          "@id": websiteId
+        },
+        "mainEntity": {
+          "@id": bookId
+        },
+        "about": {
+          "@id": bookId
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": coverImage,
+          "width": 900,
+          "height": 1200,
+          "caption": "Couverture de Mon infini est bleu de Réjane Salaün"
+        },
+        "citation": pressCitations
+      },
+
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${canonical}#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "We-TheAgency",
+            "item": siteUrl
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Magazine",
+            "item": `${siteUrl}/magazine`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Mon infini est bleu",
+            "item": canonical
+          }
+        ]
+      }
+    ]
+  })}></script>
+</Layout>
+
+<style>
+  :global(body) {
+    background: #faf9f6;
+  }
+
+  .book-breadcrumb {
+    width: min(1500px, calc(100% - 3rem));
+    margin: 20 auto;
+    padding: 1.5rem 0 0;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: transparent;
+  }
+
+  .book-breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .book-breadcrumb a:hover {
+    color: transparent;
+  }
+
+  .book-breadcrumb span:last-child {
+    color: transparent;
+  }
+
+  @media (max-width: 600px) {
+    .book-breadcrumb {
+      width: calc(100% - 1.5rem);
+      padding-top: 1.1rem;
+      font-size: 0.6rem;
     }
   }
-  </script>
 
-</Layout>
+
+  .book-page {
+    --ink: #14141a;
+    --ink-soft: #5a5a64;
+    --hairline: #dfddd7;
+    --paper: #faf9f6;
+    --white: #ffffff;
+    width: 100%;
+    overflow-x: clip;
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  /* ============================================
+     DESKTOP : 1/3 témoignages + 2/3 contenu
+     ============================================ */
+
+  .book-page-layout {
+    width: min(20px00px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(0, 2fr);
+    align-items: start;
+  }
+
+  .testimonial-rail {
+    position: sticky;
+    top: 150px;
+    height: calc(100vh - 150px);
+    min-height: 620px;
+    border-right: 1px solid var(--hairline);
+    overflow: hidden;
+    background:
+      linear-gradient(to bottom, rgba(250,249,246,0.98), rgba(250,249,246,0.9) 14%, rgba(250,249,246,0.9) 86%, rgba(250,249,246,0.98)),
+      var(--paper);
+  }
+
+.testimonial-rail-inner {
+  position: relative;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  padding: clamp(2.5rem, 4vw, 4rem) clamp(1.75rem, 3vw, 3.5rem);
+}
+
+  .testimonial-rail-heading {
+    position: relative;
+    z-index: 3;
+    flex: 0 0 auto;
+    padding-bottom: 1.8rem;
+    background: linear-gradient(var(--paper) 78%, rgba(250,249,246,0));
+  }
+
+  .rail-label {
+    margin: 0 0 0.75rem;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8a8790;
+  }
+
+  .testimonial-rail-heading h2 {
+    margin: 0;
+    max-width: 13ch;
+    font-family: 'Libre Bodoni', serif;
+    font-size: clamp(1.55rem, 2.35vw, 2.25rem);
+    font-weight: 500;
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+  }
+
+  .testimonial-viewport {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, transparent 0, #000 7%, #000 93%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 7%, #000 93%, transparent 100%);
+  }
+
+  .testimonial-track {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    animation: testimonialLoop 72s linear infinite;
+    will-change: transform;
+  }
+
+  .testimonial-group {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+  }
+
+  .rail-testimonial {
+    margin: 0;
+    padding: 1.65rem 0 2.15rem;
+    border-bottom: 1px solid rgba(223,221,215,0.82);
+  }
+
+  .rail-testimonial blockquote {
+    margin: 0;
+    font-family: 'Libre Bodoni', serif;
+    font-size: clamp(0.92rem, 1.18vw, 1.08rem);
+    font-weight: 400;
+    line-height: 1.48;
+    color: var(--ink);
+  }
+
+  .rail-testimonial figcaption {
+    margin-top: 0.75rem;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.66rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: #6a6a6a;
+  }
+
+  .testimonial-rail-footer {
+    position: relative;
+    z-index: 3;
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    color: #aaa6a0;
+    background: linear-gradient(rgba(250,249,246,0), var(--paper) 38%);
+  }
+
+  .testimonial-rail-footer span:first-child,
+  .testimonial-rail-footer span:last-child {
+    height: 1px;
+    background: var(--hairline);
+  }
+
+  .testimonial-rail-footer span:nth-child(2) {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.8rem;
+  }
+
+  @keyframes testimonialLoop {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50%); }
+  }
+
+  .book-main-column {
+    min-width: 0;
+  }
+
+  .book-hero {
+    padding: clamp(6rem, 9vw, 9.5rem) clamp(2rem, 5vw, 6rem) clamp(5rem, 8vw, 7.5rem);
+  }
+
+  .book-hero-inner {
+    width: min(920px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(280px, 0.86fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: center;
+  }
+
+  .book-cover-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .living-cover {
+    position: relative;
+    width: min(100%, 500px);
+    perspective: 1400px;
+    transform-style: preserve-3d;
+  }
+
+  .living-cover-shadow {
+    position: absolute;
+    inset: 10% 7% 0;
+    background: rgba(20, 20, 26, 0.23);
+    filter: blur(35px);
+    transform: translate3d(2%, 8%, -70px) rotate(-2deg);
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.65s ease;
+  }
+
+  .living-cover-card {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 470px);
+    margin: 0 auto;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 2px;
+    transform: rotateX(0deg) rotateY(0deg) translateZ(0);
+    transform-style: preserve-3d;
+    box-shadow: 0 34px 70px -26px rgba(20, 20, 26, 0.42);
+    transition: transform 0.18s ease-out, box-shadow 0.5s ease;
+    background: #eae7e0;
+  }
+
+  .living-cover-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.001);
+  }
+
+  .living-cover-shine {
+    position: absolute;
+    inset: -20% -60%;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(115deg, transparent 42%, rgba(255,255,255,0.18) 50%, transparent 58%);
+    transform: translateX(-45%) rotate(5deg);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+    mix-blend-mode: screen;
+  }
+
+  .living-cover:hover .living-cover-card {
+    box-shadow: 0 44px 90px -24px rgba(20, 20, 26, 0.48);
+  }
+
+  .living-cover:hover .living-cover-shadow {
+    transform: translate3d(3%, 10%, -80px) rotate(-2deg) scale(1.02);
+    filter: blur(42px);
+  }
+
+  .living-cover:hover .living-cover-shine {
+    opacity: 1;
+    transform: translateX(45%) rotate(5deg);
+  }
+
+  .cover-caption {
+    margin: 1.15rem 0 0;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+
+  .book-intro {
+    max-width: 560px;
+  }
+
+  .eyebrow,
+  .section-label {
+    margin: 0 0 1.1rem;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .book-intro h1 {
+    margin: 0;
+    font-family: 'Libre Bodoni', serif;
+    font-size: clamp(2.8rem, 5vw, 5.1rem);
+    font-weight: 500;
+    line-height: 0.94;
+    letter-spacing: -0.045em;
+  }
+
+  .book-author-line {
+    margin: 1.2rem 0 0;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+  }
+
+  .book-pitch {
+    max-width: 52ch;
+    margin: clamp(1.8rem, 3.5vw, 2.8rem) 0 0;
+    font-family: 'Libre Bodoni', serif;
+    font-size: clamp(1.18rem, 2vw, 1.5rem);
+    line-height: 1.52;
+  }
+
+  .book-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 2rem;
+  }
+
+  .book-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.68rem 1rem;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--ink);
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 600;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  }
+
+  .book-action:hover {
+    background: var(--ink);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .book-action-primary {
+    background: var(--ink);
+    color: white;
+  }
+
+  .page-divider {
+    width: calc(100% - clamp(3rem, 10vw, 8rem));
+    max-width: 920px;
+    height: 1px;
+    margin: 0 auto;
+    background: var(--hairline);
+  }
+
+  .book-section {
+    width: min(920px, calc(100% - clamp(3rem, 10vw, 8rem)));
+    margin: 0 auto;
+    padding: clamp(4.5rem, 8vw, 8rem) 0;
+    display: grid;
+    grid-template-columns: 50px minmax(0, 1fr) 150px;
+    gap: clamp(1.5rem, 3.5vw, 3rem);
+    align-items: start;
+  }
+
+  .section-number {
+    padding-top: 0.2rem;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
+    color: #8a8790;
+  }
+
+  .section-copy {
+    max-width: 680px;
+  }
+
+  .section-copy-wide {
+    max-width: 760px;
+  }
+
+  .section-copy h2 {
+    margin: 0;
+    font-family: 'Libre Bodoni', serif;
+    font-size: clamp(2rem, 4.2vw, 3.45rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .section-copy > p:not(.section-label):not(.section-intro) {
+    margin: 1.55rem 0 0;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.94rem;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+  }
+
+  .section-copy-wide > .section-intro {
+    margin: 1.35rem 0 0;
+    max-width: 58ch;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.94rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  .author-aside {
+    border-top: 1px solid var(--hairline);
+    padding-top: 0.65rem;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.7rem;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .author-aside p {
+    margin: 0.42rem 0;
+  }
+
+  .text-link,
+  .press-link,
+  .book-end-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    margin-top: 1.8rem;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 0.22rem;
+  }
+
+  .book-details-grid {
+    margin-top: clamp(2.5rem, 4vw, 3.5rem);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .book-detail-item {
+    padding: 1.2rem 0.85rem 1.2rem 0;
+    border-right: 1px solid var(--hairline);
+  }
+
+  .book-detail-item:nth-child(3n) {
+    border-right: 0;
+  }
+
+  .book-detail-item:nth-child(n + 4) {
+    border-top: 1px solid var(--hairline);
+  }
+
+  .book-detail-item dt {
+    margin: 0 0 0.4rem;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8a8790;
+  }
+
+  .book-detail-item dd {
+    margin: 0;
+    font-family: 'Libre Bodoni', serif;
+    font-size: 0.98rem;
+    line-height: 1.35;
+    color: var(--ink);
+  }
+
+.press-list {
+  margin-top: 2.8rem;
+  border-top: 1px solid var(--hairline);
+}
+
+.press-item {
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--hairline);
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.press-brand {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--ink);
+}
+
+.press-logo {
+  display: block;
+  width: 155px;
+  height: auto;
+}
+
+.press-logo text {
+  fill: var(--paper);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+.press-logo-tdg text:first-of-type {
+  font-size: 21px;
+  letter-spacing: -0.04em;
+}
+
+.press-logo-tdg text:last-of-type {
+  font-size: 20px;
+  letter-spacing: -0.05em;
+}
+
+.press-logo-24h .logo-24 {
+  fill: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.press-logo-24h .logo-heures {
+  fill: var(--paper);
+  font-family: Georgia, serif;
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.press-logo-text {
+  font-family: 'Libre Bodoni', serif;
+  font-size: 2rem;
+  font-style: italic;
+  line-height: 1;
+}
+
+.press-content {
+  min-width: 0;
+}
+
+.press-publication {
+  margin-bottom: 0.55rem;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a8790;
+}
+
+.press-item p {
+  margin: 0;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.press-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  margin-top: 1rem;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.22rem;
+}
+
+  .book-end {
+    border-top: 1px solid var(--hairline);
+    padding: clamp(4.5rem, 8vw, 8rem) 1.5rem;
+    text-align: center;
+  }
+
+  .book-end-inner {
+    width: min(700px, 100%);
+    margin: 0 auto;
+  }
+
+  .book-end h2 {
+    margin: 0;
+    font-family: 'Libre Bodoni', serif;
+    font-size: clamp(2rem, 4.8vw, 3.5rem);
+    font-weight: 500;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+  }
+
+  .book-end-link {
+    margin-top: 1.8rem;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .testimonial-rail:hover .testimonial-track {
+      animation-play-state: paused;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .book-page-layout {
+      grid-template-columns: minmax(250px, 0.9fr) minmax(0, 2fr);
+    }
+
+    .book-hero-inner {
+      grid-template-columns: 1fr;
+      max-width: 650px;
+    }
+
+    .book-cover-column {
+      justify-self: center;
+      width: min(100%, 500px);
+    }
+
+    .book-intro {
+      max-width: none;
+    }
+
+    .testimonial-rail {
+      min-height: 560px;
+    }
+  }
+
+  @media (max-width: 820px) {
+    .book-page-layout {
+      display: block;
+    }
+
+    .book-main-column {
+      width: 100%;
+    }
+
+    .testimonial-rail {
+      position: relative;
+      top: auto;
+      height: auto;
+      min-height: 0;
+      border-right: 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .testimonial-rail-inner {
+      min-height: 440px;
+      height: 56vh;
+      padding: 2.2rem 1.5rem 1.5rem;
+    }
+
+    .testimonial-rail-heading h2 {
+      max-width: none;
+      font-size: clamp(1.55rem, 6vw, 2.1rem);
+    }
+
+    .testimonial-track {
+      animation-duration: 62s;
+    }
+
+    .book-hero {
+      padding-top: 4rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .book-hero,
+    .book-section {
+      width: calc(100% - 1.5rem);
+    }
+
+    .page-divider {
+      width: calc(100% - 1.5rem);
+    }
+
+    .book-hero {
+      padding: 3.5rem 0 4.5rem;
+    }
+
+    .book-hero-inner {
+      width: 100%;
+      gap: 3rem;
+    }
+
+    .living-cover {
+      width: min(100%, 390px);
+    }
+
+    .book-intro h1 {
+      font-size: clamp(2.65rem, 13vw, 4rem);
+    }
+
+    .book-pitch {
+      font-size: 1.28rem;
+    }
+
+    .book-actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .book-action {
+      justify-content: center;
+    }
+
+    .book-section {
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+      padding: 4.5rem 0;
+    }
+
+    .section-number {
+      order: -1;
+    }
+
+    .book-details-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .book-detail-item,
+    .book-detail-item:nth-child(3n),
+    .book-detail-item:nth-child(2n) {
+      border-right: 0;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .book-detail-item:first-child {
+      border-top: 0;
+    }
+
+    .author-aside {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem 1rem;
+      border-top: 0;
+      padding-top: 0.5rem;
+    }
+
+    .author-aside p {
+      margin: 0;
+    }
+      .press-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        align-items: start;
+      }
+
+      .press-brand {
+        padding-bottom: 0.25rem;
+      }
+
+      .press-logo {
+        width: 135px;
+      }
+
+      .press-logo-text {
+        font-size: 1.7rem;
+      }
+
+      .press-link {
+        grid-column: auto;
+      }
+    }
+    .testimonial-rail-inner {
+      min-height: 380px;
+      height: 52vh;
+    }
+
+    .rail-testimonial {
+      padding-bottom: 1.85rem;
+    }
+
+    .rail-testimonial blockquote {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .testimonial-track {
+      animation: none;
+    }
+
+    .living-cover-card,
+    .living-cover-shadow,
+    .living-cover-shine,
+    .book-action {
+      transition: none;
+    }
+
+    .living-cover-card {
+      transform: none !important;
+    }
+
+    .testimonial-track .testimonial-group[aria-hidden="true"] {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const cover = document.getElementById('living-cover');
+  const card = cover?.querySelector('.living-cover-card');
+
+  if (cover && card && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const reset = () => {
+      card.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0)';
+    };
+
+    cover.addEventListener('pointermove', (event) => {
+      const rect = cover.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+      const rotateY = (x - 0.5) * 9;
+      const rotateX = (0.5 - y) * 9;
+      card.style.transform = `rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(8px)`;
+    });
+
+    cover.addEventListener('pointerleave', reset);
+  }
+</script>

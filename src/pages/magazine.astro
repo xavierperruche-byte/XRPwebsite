@@ -102,17 +102,52 @@ import BackToTop from '../components/BackToTop.astro';
       </div>
 
   <div class="book-detail">
-    <div class="book-detail-extract">
-      <span class="book-detail-label">Extrait</span>
-      <blockquote>
-        « Je n'avais pas prévu d'écrire ce livre. D'abord parce que je n'avais pas prévu d'être autiste.
-        Ensuite parce que, pendant longtemps, j'ai cru que ce que je vivais relevait surtout d'un défaut de caractère, d'un manque de souplesse, ou d'une sincérité un peu trop nue pour le monde qui m'entourait. J'ai longtemps porté une différence que je ressentais sans pouvoir la nommer (…). »
-      </blockquote>
+    <div class="book-detail-editorial">
+      <div class="book-detail-extract">
+        <span class="book-detail-label">Extrait</span>
+        <blockquote>
+          « Je n'avais pas prévu d'écrire ce livre. D'abord parce que je n'avais pas prévu d'être autiste.
+          Ensuite parce que, pendant longtemps, j'ai cru que ce que je vivais relevait surtout d'un défaut de caractère, d'un manque de souplesse, ou d'une sincérité un peu trop nue pour le monde qui m'entourait. J'ai longtemps porté une différence que je ressentais sans pouvoir la nommer (…). »
+        </blockquote>
+      </div>
+
+      <div class="book-detail-bio">
+        <span class="book-detail-label">Bio de l'autrice</span>
+        <p>Réjane Salaün accompagne les femmes entrepreneurs suisses dans leur développement commercial et digital. Elle publie son premier essai <em>Mon infini est bleu</em>. Son écriture explore les liens entre perception, langage et posture.</p>
+      </div>
     </div>
+
     <div class="book-detail-divider" aria-hidden="true"></div>
-    <div class="book-detail-bio">
-      <span class="book-detail-label">Bio de l'autrice</span>
-      <p>Réjane Salaün accompagne les femmes entrepreneurs suisses dans leur développement commercial et digital. Elle publie son premier essai <em>Mon infini est bleu</em>. Son écriture explore les liens entre perception, langage et posture.</p>
+
+    <div class="book-testimonials">
+      <div class="book-testimonials-heading">
+        <h4>Ils ont lu <em>Mon infini est bleu</em></h4>
+      </div>
+
+      <div class="book-testimonial">
+        <p class="book-testimonial-quote">Je trouve que c'est difficile de trouver des témoignages de vie quotidienne de personnes autistes. Des scènes vraiment précises, et ton livre c'est exactement ça.</p>
+        <span class="book-testimonial-author">— Instagram</span>
+      </div>
+
+      <div class="book-testimonial">
+        <p class="book-testimonial-quote">Un livre incontournable pour décrypter, analyser, comprendre et surtout s'adapter aux personnes neuroatypiques en général, et autistes en particulier. C'est écrit avec une grande sensibilité, beaucoup d'humanité, et des touches d'humour qui rendent le sujet léger, alors qu'il est profond et sociétal.</p>
+        <span class="book-testimonial-author">— Arnaud M. · Amazon</span>
+      </div>
+
+      <div class="book-testimonial">
+        <p class="book-testimonial-quote">Un superbe livre que j'ai adoré lire, je l'ai même lu 2 fois. Une superbe personne vraiment, raconté avec humour, ce livre je l'ai trouvé très apaisant et très bien expliqué.</p>
+        <span class="book-testimonial-author">— Agnès J. · Amazon</span>
+      </div>
+
+      <div class="book-testimonial">
+        <p class="book-testimonial-quote">Merci à l'autrice pour ce livre, qui m'a offert deux lectures en une. La première est une découverte : n'ayant jamais rien lu sur l'autisme, j'ai apprécié d'y entrer par le quotidien et des scènes vécues plutôt que par un traité médical. La seconde s'est faite malgré moi, en écho à mon métier d’expert dans l’accompagnement des transformation et situations sociales complexes.</p>
+        <span class="book-testimonial-author">— Xavier T. · Amazon</span>
+      </div>
+
+      <div class="book-testimonial">
+        <p class="book-testimonial-quote">J'ai le coeur serré à lire votre livre car je me dis OUF, quel soulagement de ne pas etre seule à ressentir cela.</p>
+        <span class="book-testimonial-author">— Morgane · Instagram</span>
+      </div>
     </div>
   </div>
 
@@ -867,7 +902,7 @@ import BackToTop from '../components/BackToTop.astro';
   }
 }
 
-/* ---- Bloc détail : Extrait + Bio ---- */
+/* ---- Bloc détail : Extrait + Bio + Témoignages ---- */
 .book-detail {
   max-width: 1240px;
   margin: clamp(3rem, 7vw, 5rem) auto 0;
@@ -896,6 +931,10 @@ import BackToTop from '../components/BackToTop.astro';
   margin-bottom: 1.1rem;
 }
 
+.book-detail-editorial {
+  min-width: 0;
+}
+
 .book-detail-extract blockquote {
   margin: 0;
   font-family: 'Libre Bodoni', serif;
@@ -905,6 +944,10 @@ import BackToTop from '../components/BackToTop.astro';
   color: var(--book-ink);
   padding-left: 1.25rem;
   border-left: 2px solid var(--book-ink);
+}
+
+.book-detail-bio {
+  margin-top: clamp(4rem, 7vw, 6rem);
 }
 
 .book-detail-bio p {
@@ -921,24 +964,113 @@ import BackToTop from '../components/BackToTop.astro';
   font-style: italic;
 }
 
+/* ---- Témoignages flottants : colonne droite ---- */
+.book-testimonials {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  min-width: 0;
+}
+
+.book-testimonials-heading {
+  margin-bottom: clamp(2.5rem, 6vw, 3rem);
+}
+
+.book-testimonials-heading h4 {
+  margin: 0;
+  font-family: 'Libre Bodoni', serif;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--book-ink);
+}
+
+.book-testimonial {
+  margin: 0 auto clamp(2.0rem, 4vw, 3rem);
+}
+
+.book-testimonial:last-child {
+  margin-bottom: 0;
+}
+
+.book-testimonial-quote {
+  margin: 0 auto;
+  font-family: 'Libre Bodoni', serif;
+  font-size: clamp(0.9rem, 1.9vw, 0.9rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--book-ink);
+}
+
+.book-testimonial-author {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: #6A6A6A;
+}
+
 .book-detail-divider {
   display: none;
 }
 
 @media (min-width: 900px) {
   .book-detail {
-    grid-template-columns: 1.1fr auto 1fr;
-    align-items: start;
+    grid-template-columns: minmax(0, 2fr) auto minmax(0, 3fr);
+    align-items: stretch;
     gap: clamp(2rem, 4vw, 3.5rem);
   }
 
+  .book-detail-editorial {
+    grid-column: 1;
+  }
+
   .book-detail-divider {
+    grid-column: 2;
     display: block;
     width: 1px;
     height: 100%;
     background: var(--book-hairline);
   }
+
+  .book-testimonials {
+    grid-column: 3;
+  }
 }
+
+@media (max-width: 899px) {
+  .book-testimonials {
+    width: min(88%, 720px);
+    margin: 1rem auto 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .book-detail-bio {
+    margin-top: 3.5rem;
+  }
+
+  .book-testimonials {
+    width: min(92%, 620px);
+    margin-top: 4.5rem;
+  }
+
+  .book-testimonials-heading {
+    margin-bottom: 3rem;
+  }
+
+  .book-testimonial {
+    margin-bottom: 4.5rem;
+  }
+
+  .book-testimonial-quote {
+    font-size: clamp(1.2rem, 5.2vw, 1.4rem);
+    line-height: 1.55;
+  }
+}
+
 
 /* Respecte les préférences de mouvement réduit */
 @media (prefers-reduced-motion: reduce) {
